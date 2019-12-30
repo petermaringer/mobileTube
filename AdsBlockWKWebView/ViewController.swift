@@ -28,7 +28,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         
         //webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
-        webview = WKWebView(frame: CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.height - 200))
+        webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - self.view.safeAreaInsets.top))
 
         webview.navigationDelegate = self
         webview.uiDelegate = self
