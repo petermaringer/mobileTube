@@ -29,14 +29,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         //webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
         
-        var wvheight = self.view.frame.height
-        if #available(iOS 11.0, *) {
+        let wvheight = self.view.frame.height
+        //if #available(iOS 11.0, *) {
         //let guide = self.view.safeAreaLayoutGuide
         //wvheight = guide.layoutFrame.size.height
         
-        wvheight = wvheight - UIApplication.shared.keyWindow.safeAreaInsets.top
+        //wvheight = wvheight - UIApplication.shared.keyWindow.safeAreaInsets.top
         
-        }
+        //}
         
         webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: wvheight))
 
@@ -45,6 +45,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         webview.allowsBackForwardNavigationGestures = true
         view.addSubview(webview)
         //webview.frame = view.bounds
+
+        let popup = UIView(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
+        let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
+        lb.text = "anything"
+        popup.backgroundColor = UIColor.redColor
+        self.view.addSubview(popup)
+        popup.addSubview(lb)
+        lb.center = popup.center
+        
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
