@@ -27,7 +27,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         UserDefaults.standard.synchronize()
         
         //webview = WKWebView(frame: CGRect.zero)
-        webview = WKWebView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height - 200))
+        webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
 
         webview.navigationDelegate = self
         webview.uiDelegate = self
