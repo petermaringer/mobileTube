@@ -28,7 +28,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         
         //webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
-        webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - self.view.safeAreaInsets.top))
+        
+        var wvheight = self.view.frame.height
+        if #available(iOS 11.0, *) {
+        let guide = self.view.safeAreaLayoutGuide
+        wvheight = guide.layoutFrame.size.height
+        }
+        
+        webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: wvheight))
 
         webview.navigationDelegate = self
         webview.uiDelegate = self
