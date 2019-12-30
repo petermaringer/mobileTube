@@ -34,7 +34,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = true
         view.addSubview(webview)
-        webview.frame = view.bounds
+        //webview.frame = view.bounds
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
