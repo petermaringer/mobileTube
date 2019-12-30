@@ -34,7 +34,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         //let guide = self.view.safeAreaLayoutGuide
         //wvheight = guide.layoutFrame.size.height
         
-        wvheight = wvheight - UIApplication.shared.delegate?.window??.safeAreaInsets.top
+        wvheight = wvheight - UIApplication.shared.keyWindow?.safeAreaInsets.top
         
         }
         
