@@ -96,6 +96,8 @@
 				TargetAttributes = {
 					5ED4D2BC1F47AF2E0019CC83 = {
 						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = NG9KE3E3Q3;
+						DevelopmentTeamName = "Wolfgang Weinmann";
 						ProvisioningStyle = Manual;
 					};
 				};
