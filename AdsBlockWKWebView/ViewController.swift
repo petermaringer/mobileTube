@@ -47,8 +47,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         //webview.frame = view.bounds
 
         //let popup = UIView(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
-        let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
-        lb.text = "anything \(wvheight)"
+        let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
+        lb.text = "log: \(wvheight)"
+        lb.textAlignment = .center
         lb.backgroundColor = UIColor.red
         self.view.addSubview(lb)
         //popup.addSubview(lb)
