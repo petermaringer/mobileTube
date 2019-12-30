@@ -46,13 +46,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         view.addSubview(webview)
         //webview.frame = view.bounds
 
-        let popup = UIView(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
+        //let popup = UIView(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
         let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
-        lb.text = "anything"
-        popup.backgroundColor = UIColor.red
-        self.view.addSubview(popup)
-        popup.addSubview(lb)
-        lb.center = popup.center
+        lb.text = "anything \(wvheight)"
+        lb.backgroundColor = UIColor.red
+        self.view.addSubview(lb)
+        //popup.addSubview(lb)
+        //lb.center = popup.center
         
         
         if #available(iOS 11, *) {
