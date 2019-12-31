@@ -28,7 +28,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        lb.text = lb.text! + textField.text!
+        lb.text = lb.text! + " " + textField.text!
         lb.frame.size.width = self.view.frame.width
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
