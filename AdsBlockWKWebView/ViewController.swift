@@ -17,7 +17,19 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     var webview: WKWebView!
     
     override func viewSafeAreaInsetsDidChange() {
-        webview.frame.size.height = 400
+        
+        var wvinx = self.view.frame.height
+        //var wvheight = self.view.frame.height
+        if #available(iOS 11.0, *) {
+        //let guide = self.view.safeAreaLayoutGuide
+        //wvheight = guide.layoutFrame.size.height
+        
+        wvinx = self.view.safeAreaInsets.top
+        
+        }
+        
+        webview.frame.size.height = self.view.frame.height - wvinx
+        
     }
     
     override func viewDidLoad() {
