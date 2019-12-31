@@ -36,6 +36,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         lb.numberOfLines = 0
         lb.sizeToFit()
         
+        lb.frame.origin.x = self.view.frame.width - lb.frame.width / 2
+        
         view.addSubview(lb)
         
     }
