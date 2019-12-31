@@ -29,17 +29,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         //let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
         let lb = UILabel(frame: CGRect(x: 0, y: self.view.frame.height - insetB, width: self.view.frame.width, height: insetB))
         lb.text = "log: \(insetT) \(insetB)"
-        lb.textAlignment = .center
+        //lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .red
         
         lb.numberOfLines = 0
         lb.sizeToFit()
-        
-        lb.frame.origin.x = self.view.frame.width - lb.frame.width / 2
-        
+        lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
         view.addSubview(lb)
-        
     }
     
     override func viewDidLoad() {
