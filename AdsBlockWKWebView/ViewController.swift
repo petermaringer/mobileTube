@@ -19,16 +19,24 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     override func viewSafeAreaInsetsDidChange() {
         var insetT: CGFloat = 0
         var insetB: CGFloat = 0
+        var insetL: CGFloat = 0
+        var insetR: CGFloat = 0
         if #available(iOS 11.0, *) {
         insetT = self.view.safeAreaInsets.top
         insetB = self.view.safeAreaInsets.bottom
+        insetL = self.view.safeAreaInsets.left
+        insetR = self.view.safeAreaInsets.right
         }
+        webview.frame.origin.x = insetL
         webview.frame.origin.y = insetT
+        
+        webview.frame.size.width = self.view.frame.width - insetL - insetR
+        
         webview.frame.size.height = self.view.frame.height - insetT - insetB
         
         //let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
         let lb = UILabel(frame: CGRect(x: 0, y: self.view.frame.height - insetB, width: self.view.frame.width, height: insetB))
-        lb.text = "log: \(insetT) \(insetB)"
+        lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR)"
         //lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .red
