@@ -26,13 +26,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         webview.frame.origin.y = insetT
         webview.frame.size.height = self.view.frame.height - insetT - insetB
         
-        //let popup = UIView(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
-        let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
+        //let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
+        let lb = UILabel(frame: CGRect(x: 0, y: self.view.frame.height - insetB, width: self.view.frame.width, height: insetB))
         lb.text = "log: \(insetT) \(insetB)"
         lb.textAlignment = .center
         lb.backgroundColor = .red
-        self.view.addSubview(lb)
-        //popup.addSubview(lb)
+        view.addSubview(lb)
         
     }
     
@@ -49,16 +48,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
         
-        //var wvins = self.view.frame.height
-        //var wvheight = self.view.frame.height
-        //if #available(iOS 11.0, *) {
-        //let guide = self.view.safeAreaLayoutGuide
-        //wvheight = guide.layoutFrame.size.height
-        //wvins = self.view.safeAreaInsets.top
-        //}
-        
-        //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: wvheight))
-
         webview.navigationDelegate = self
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = true
