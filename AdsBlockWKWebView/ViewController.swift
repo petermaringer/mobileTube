@@ -33,7 +33,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         //webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
         
-        var wvins = 134.0
+        var wvins = self.view.frame.height
         var wvheight = self.view.frame.height
         if #available(iOS 11.0, *) {
         let guide = self.view.safeAreaLayoutGuide
