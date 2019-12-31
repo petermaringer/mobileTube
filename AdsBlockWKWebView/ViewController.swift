@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
-//  AdsBlockWKWebView
+// ViewController.swift
+// AdsBlockWKWebView
 //
-//  Created by Shingo Fukuyama on 2017/08/19.
-//  Copyright © 2017 Shingo Fukuyama. All rights reserved.
+// Created by Wolfgang Weinmann on 2019/12/31.
+// Copyright © 2019 Wolfgang Weinmann.
 //
 
 import UIKit
@@ -17,18 +17,21 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     var webview: WKWebView!
     
     override func viewSafeAreaInsetsDidChange() {
-        
-        var wvinx = self.view.frame.height
-        //var wvheight = self.view.frame.height
+        var insetT: CGFloat = 0
+        var insetB: CGFloat = 0
         if #available(iOS 11.0, *) {
-        //let guide = self.view.safeAreaLayoutGuide
-        //wvheight = guide.layoutFrame.size.height
-        
-        wvinx = self.view.safeAreaInsets.top
-        
+        insetT = self.view.safeAreaInsets.top
+        insetB = self.view.safeAreaInsets.bottom
         }
+        webview.frame.size.height = self.view.frame.height - insetT - insetB
         
-        webview.frame.size.height = self.view.frame.height - wvinx
+        //let popup = UIView(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
+        let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
+        lb.text = "log: \(insetT) \(insetB)"
+        lb.textAlignment = .center
+        lb.backgroundColor = .red
+        self.view.addSubview(lb)
+        //popup.addSubview(lb)
         
     }
     
@@ -42,34 +45,24 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
             ])
         UserDefaults.standard.synchronize()
         
-        //webview = WKWebView(frame: CGRect.zero)
+        webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
         
-        var wvins = self.view.frame.height
-        var wvheight = self.view.frame.height
-        if #available(iOS 11.0, *) {
-        let guide = self.view.safeAreaLayoutGuide
-        wvheight = guide.layoutFrame.size.height
+        //var wvins = self.view.frame.height
+        //var wvheight = self.view.frame.height
+        //if #available(iOS 11.0, *) {
+        //let guide = self.view.safeAreaLayoutGuide
+        //wvheight = guide.layoutFrame.size.height
+        //wvins = self.view.safeAreaInsets.top
+        //}
         
-        wvins = self.view.safeAreaInsets.top
-        
-        }
-        
-        webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: wvheight))
+        //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: wvheight))
 
         webview.navigationDelegate = self
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = true
         view.addSubview(webview)
-        //webview.frame = view.bounds
-
-        //let popup = UIView(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
-        let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
-        lb.text = "log: \(wvins)"
-        lb.textAlignment = .center
-        lb.backgroundColor = UIColor.red
-        self.view.addSubview(lb)
-        //popup.addSubview(lb)
+        webview.frame = view.bounds
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
