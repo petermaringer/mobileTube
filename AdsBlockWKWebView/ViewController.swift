@@ -23,6 +23,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         insetT = self.view.safeAreaInsets.top
         insetB = self.view.safeAreaInsets.bottom
         }
+        webview.frame.origin.y = insetT
         webview.frame.size.height = self.view.frame.height - insetT - insetB
         
         //let popup = UIView(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
