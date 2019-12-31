@@ -31,6 +31,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         lb.text = lb.text! + textField.text!
         lb.frame.size.width = self.view.frame.width
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     
     override func viewSafeAreaInsetsDidChange() {
