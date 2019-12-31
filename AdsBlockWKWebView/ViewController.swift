@@ -18,6 +18,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     let lb = UILabel(frame: CGRect.zero)
     
+    
+    //var shouldHideHomeIndicator = false
+    override func prefersHomeIndicatorAutoHidden() -> Bool {
+        //return shouldHideHomeIndicator
+        return true
+    }
+    
+    
     override func viewSafeAreaInsetsDidChange() {
         var insetT: CGFloat = 0
         var insetB: CGFloat = 0
@@ -50,6 +58,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         lb.frame.origin.y = self.view.frame.height - insetB
         
         view.addSubview(lb)
+        
+        //self.shouldHideHomeIndicator = true
+        //self.setNeedsUpdateOfHomeIndicatorAutoHidden()
+        
     }
     
     override func viewDidLoad() {
