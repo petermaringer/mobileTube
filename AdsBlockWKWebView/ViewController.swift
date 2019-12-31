@@ -12,7 +12,7 @@ import WebKit
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
-class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
+class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
     
     var webview: WKWebView!
     
@@ -24,6 +24,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     override func prefersHomeIndicatorAutoHidden() -> Bool {
         //return shouldHideHomeIndicator
         return true
+    }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        lb.text = "\(lb.text) textField"
+        //print("TextField did end editing method called")
     }
     
     
@@ -86,6 +92,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         
         counter += 1
         //lb.text = "\(lb.text) + \(counter)"
+        
+        
+        let urlField = UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 40))
+        urlField.placeholder = "Enter text here"
+        urlField.font = UIFont.systemFont(ofSize: 15)
+        urlField.borderStyle = UITextField.BorderStyle.roundedRect
+        urlField.autocorrectionType = UITextAutocorrectionType.no
+        urlField.keyboardType = UIKeyboardType.default
+        urlField.returnKeyType = UIReturnKeyType.done
+        urlField.clearButtonMode = UITextField.ViewMode.whileEditing
+        urlField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        urlField.delegate = self
+        view.addSubview(urlField)
+        
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
