@@ -47,7 +47,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         //let lb = UILabel(frame: CGRect(x: 0, y: self.view.frame.height - insetB, width: self.view.frame.width, height: insetB))
         
         lb.frame.size.width = self.view.frame.width
-        lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR)"
+        lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
         //lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .gray
@@ -85,7 +85,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         webview.frame = view.bounds
         
         counter += 1
-        lb.text = "\(lb.text) + \(counter)"
+        //lb.text = "\(lb.text) + \(counter)"
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
