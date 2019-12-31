@@ -18,6 +18,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     let lb = UILabel(frame: CGRect.zero)
     
+    var counter: Int = 0
     
     //var shouldHideHomeIndicator = false
     override func prefersHomeIndicatorAutoHidden() -> Bool {
@@ -82,6 +83,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         webview.allowsBackForwardNavigationGestures = true
         view.addSubview(webview)
         webview.frame = view.bounds
+        
+        counter += 1
+        lb.text = "\(lb.text) + \(counter)"
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
