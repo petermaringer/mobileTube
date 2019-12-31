@@ -29,12 +29,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         //webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
         
+        var wvins = 134
         var wvheight = self.view.frame.height
         if #available(iOS 11.0, *) {
         let guide = self.view.safeAreaLayoutGuide
         wvheight = guide.layoutFrame.size.height
         
-        //wvheight = wvheight - UIApplication.shared.keyWindow.safeAreaInsets.top
+        wvins = self.view.safeAreaInsets.top
         
         }
         
@@ -48,13 +49,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
 
         //let popup = UIView(frame: CGRect(x: 100, y: 200, width: 200, height: 200))
         let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
-        lb.text = "log: \(wvheight)"
+        lb.text = "log: \(wvins)"
         lb.textAlignment = .center
         lb.backgroundColor = UIColor.red
         self.view.addSubview(lb)
         //popup.addSubview(lb)
-        //lb.center = popup.center
-        
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
