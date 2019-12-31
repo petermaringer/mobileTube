@@ -34,7 +34,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         lb.backgroundColor = .red
         
         lb.numberOfLines = 0
-        [lb sizeToFit]
+        lb.sizeToFit()
         
         view.addSubview(lb)
         
