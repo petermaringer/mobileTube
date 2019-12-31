@@ -16,6 +16,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     var webview: WKWebView!
     
+    let lb = UILabel(frame: CGRect.zero)
+    
     override func viewSafeAreaInsetsDidChange() {
         var insetT: CGFloat = 0
         var insetB: CGFloat = 0
@@ -29,27 +31,28 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         }
         webview.frame.origin.x = insetL
         webview.frame.origin.y = insetT
-        
         webview.frame.size.width = self.view.frame.width - insetL - insetR
-        
         webview.frame.size.height = self.view.frame.height - insetT - insetB
         
         //let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
-        let lb = UILabel(frame: CGRect(x: 0, y: self.view.frame.height - insetB, width: self.view.frame.width, height: insetB))
+        //let lb = UILabel(frame: CGRect(x: 0, y: self.view.frame.height - insetB, width: self.view.frame.width, height: insetB))
         lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR)"
         //lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
-        lb.backgroundColor = .red
+        lb.backgroundColor = .gray
         
         lb.numberOfLines = 0
         lb.sizeToFit()
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
+        
+        lb.frame.origin.y = self.view.frame.height - insetB
+        
         view.addSubview(lb)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .yellow
+        self.view.backgroundColor = .lightGray
         
         UserDefaults.standard.register(defaults: [
             ruleId1 : false,
