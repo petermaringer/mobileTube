@@ -29,11 +29,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         lb.text = lb.text! + " " + textField.text!
-        lb.frame.size.width = self.view.frame.width
+        adjustLabel()
+        //lb.frame.size.width = self.view.frame.width
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    
+    private func adjustLabel() {
+        lb.frame.size.width = self.view.frame.width
+        lb.sizeToFit()
+        lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
+        lb.frame.origin.y = self.view.frame.height - insetB
     }
     
     
@@ -56,17 +65,17 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
         //let lb = UILabel(frame: CGRect(x: 0, y: self.view.frame.height - insetB, width: self.view.frame.width, height: insetB))
         
-        lb.frame.size.width = self.view.frame.width
+        //lb.frame.size.width = self.view.frame.width
         lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
         //lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .gray
         
         lb.numberOfLines = 0
-        lb.sizeToFit()
-        lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
-        
-        lb.frame.origin.y = self.view.frame.height - insetB
+        adjustLabel()
+        //lb.sizeToFit()
+        //lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
+        //lb.frame.origin.y = self.view.frame.height - insetB
         
         view.addSubview(lb)
         
