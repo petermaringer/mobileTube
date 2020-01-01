@@ -74,12 +74,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         insetR = self.view.safeAreaInsets.right
         }
         webview.frame.origin.x = insetL
-        webview.frame.origin.y = insetT + urlField.frame.size.height
+        webview.frame.origin.y = insetT + urlField.frame.size.height + 10
         webview.frame.size.width = self.view.frame.width - insetL - insetR
-        webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height
+        webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
         
-        urlField.frame.origin.x = insetL
-        urlField.frame.origin.y = insetT
+        urlField.frame.origin.x = insetL + 5
+        urlField.frame.origin.y = insetT + 5
+        urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
+        urlField.frame.size.height = 30
         
         lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
         adjustLabel()
@@ -117,12 +119,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         lb.numberOfLines = 0
         view.addSubview(lb)
         
-        urlField = UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 30))
+        urlField = UITextField(frame: CGRect.zero)
         urlField.placeholder = "Type your Address"
         urlField.font = UIFont.systemFont(ofSize: 15)
         urlField.backgroundColor = .white
-        urlField.borderStyle = UITextField.BorderStyle.roundedRect
+        //urlField.borderStyle = UITextField.BorderStyle.roundedRect
         urlField.layer.borderWidth = 0
+        urlField.layer.cornerRadius = 15
+        urlField.clipsToBounds = true
         urlField.autocapitalizationType = .none
         urlField.autocorrectionType = UITextAutocorrectionType.no
         urlField.keyboardType = UIKeyboardType.webSearch
