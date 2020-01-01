@@ -36,16 +36,19 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        lb.text = lb.text! + " " + textField.text!
-        adjustLabel()
         
         if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://")) {
             textField.text = "https://" + textField.text!
         }
-        
         url = URL(string: textField.text!)
         startLoading()
+        
+        lb.text = lb.text! + " " + textField.text!
+        adjustLabel()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -154,7 +157,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.delegate = self
         view.addSubview(urlField)
         
-        url = URL(string: "https://www.google.com")!
+        url = URL(string: "https://www.google.com")
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
