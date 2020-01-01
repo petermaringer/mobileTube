@@ -50,7 +50,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        button.removeFromSuperview()
+        self.button.removeFromSuperview()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
