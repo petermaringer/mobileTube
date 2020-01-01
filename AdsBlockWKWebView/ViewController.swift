@@ -36,12 +36,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    //func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        //textField.resignFirstResponder()
+        //return true
+    //}
+    //func textFieldDidEndEditing(_ textField: UITextField) {
         
+        
+    //}
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
         if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://")) {
             textField.text = "https://" + textField.text!
         }
@@ -50,8 +54,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         lb.text = lb.text! + " " + textField.text!
         adjustLabel()
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         return true
     }
