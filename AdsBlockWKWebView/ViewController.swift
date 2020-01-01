@@ -54,8 +54,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         if lb.frame.size.width > self.view.frame.width - insetL - insetR {
             lb.frame.size.width = self.view.frame.width - insetL - insetR
-        } else if lb.frame.size.width == self.view.frame.width {
-            lb.frame.size.width = self.view.frame.width - 84
+        } else if lb.frame.size.width > self.view.frame.width - 42 {
+            lb.frame.size.width = self.view.frame.width - 42
         }
         
         
