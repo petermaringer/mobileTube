@@ -73,15 +73,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         insetL = self.view.safeAreaInsets.left
         insetR = self.view.safeAreaInsets.right
         }
-        webview.frame.origin.x = insetL
-        webview.frame.origin.y = insetT + urlField.frame.size.height + 10
-        webview.frame.size.width = self.view.frame.width - insetL - insetR
-        webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
         
         urlField.frame.origin.x = insetL + 5
         urlField.frame.origin.y = insetT + 5
         urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
         urlField.frame.size.height = 30
+        
+        webview.frame.origin.x = insetL
+        webview.frame.origin.y = insetT + urlField.frame.size.height + 10
+        webview.frame.size.width = self.view.frame.width - insetL - insetR
+        webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
         
         lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
         adjustLabel()
@@ -124,8 +125,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.font = UIFont.systemFont(ofSize: 15)
         urlField.backgroundColor = .white
         //urlField.borderStyle = UITextField.BorderStyle.roundedRect
-        urlField.layer.borderWidth = 0
-        urlField.layer.cornerRadius = 15
+        //urlField.layer.borderWidth = 0
+        
+        urlField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 30))
+        urlField.leftViewMode = .always
+        
+        urlField.layer.cornerRadius = 5
         urlField.clipsToBounds = true
         urlField.autocapitalizationType = .none
         urlField.autocorrectionType = UITextAutocorrectionType.no
