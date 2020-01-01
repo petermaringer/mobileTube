@@ -39,7 +39,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     func textFieldDidEndEditing(_ textField: UITextField) {
         lb.text = lb.text! + " " + textField.text!
         adjustLabel()
-        url = URL(string: textField.text)!
+        url = URL(string: textField.text!)!
         startLoading()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
