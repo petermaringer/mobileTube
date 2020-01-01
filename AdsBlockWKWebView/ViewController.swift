@@ -98,11 +98,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         insetR = self.view.safeAreaInsets.right
         }
         
-        //button = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-        button.frame.origin.x = 100
-        button.frame.origin.y = 400
-        button.frame.size.width = 100
-        button.frame.size.height = 30
+        button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
+        //button.frame.origin.x = 100
+        //button.frame.origin.y = 400
+        //button.frame.size.width = 100
+        button.size.height = 30
         
         urlField.frame.origin.x = insetL
         if insetL == 0 {
@@ -177,7 +177,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         button = UIButton(frame: CGRect.zero)
         //button.frame = CGRectMake(15, -50, 300, 500)
-        //button.backgroundColor = .clear
+        button.backgroundColor = .black
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(.blue, for: .normal)
         button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
