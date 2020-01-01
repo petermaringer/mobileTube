@@ -156,8 +156,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
             lb.text = "log: ls"
+            urlField.leftAnchor.constraint.constant = 0
         } else {
             lb.text = "log: pt"
+            urlField.leftAnchor.constraint.constant = 5
         }
     }
     
@@ -214,7 +216,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urlField.translatesAutoresizingMaskIntoConstraints = false
     urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
     urlField.rightAnchor.constraint(equalTo: view.safeRightAnchor, constant: -5.0).isActive = true
-    urlField.topAnchor.constraint(equalTo: view.safeTopAnchor, constant: 0.0).isActive = true
+    urlField.topAnchor.constraint(equalTo: view.safeTopAnchor, constant: 5.0).isActive = true
     urlField.bottomAnchor.constraint(equalTo: urlField.topAnchor, constant: 30.0).isActive = true
     
     
