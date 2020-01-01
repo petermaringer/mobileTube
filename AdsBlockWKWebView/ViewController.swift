@@ -104,14 +104,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //button.frame.size.width = 100
         button.frame.size.height = 30
         
-        urlField.frame.origin.x = insetL
-        if insetL == 0 {
-            urlField.frame.origin.x = 5
-        }
-        urlField.frame.origin.y = insetT + 5
+        //urlField.frame.origin.x = insetL
+        //if insetL == 0 {
+            //urlField.frame.origin.x = 5
+        //}
+        //urlField.frame.origin.y = insetT + 5
         
-        urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
-        urlField.frame.size.height = 30
+        //urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
+        //urlField.frame.size.height = 30
         
         webview.frame.origin.x = insetL
         webview.frame.origin.y = insetT + urlField.frame.size.height + 10
@@ -162,7 +162,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         lb.numberOfLines = 0
         view.addSubview(lb)
         
-        urlField = UITextField(frame: CGRect.zero)
+        //urlField = UITextField(frame: CGRect.zero)
+        urlField = UITextField()
         urlField.placeholder = "Type your Address"
         urlField.font = UIFont.systemFont(ofSize: 15)
         urlField.backgroundColor = .white
@@ -182,6 +183,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         urlField.delegate = self
         view.addSubview(urlField)
+        
+        urlField.translatesAutoresizingMaskIntoConstraints = false
+urlField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0).isActive = true
+urlField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0).isActive = true
+urlField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
+urlField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45.0).isActive = true
+
         
         button = UIButton(frame: CGRect.zero)
         //button.frame = CGRectMake(15, -50, 300, 500)
