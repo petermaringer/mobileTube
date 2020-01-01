@@ -16,6 +16,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     var webview: WKWebView!
     
+    var urlField: UITextField!
+    
     var lb: UILabel!
     
     var insetT: CGFloat = 0
@@ -58,7 +60,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             lb.frame.size.width = self.view.frame.width - 42
         }
         
-        
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
         lb.frame.origin.y = self.view.frame.height - insetB
         lb.textAlignment = .center
@@ -76,6 +77,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         webview.frame.origin.y = insetT
         webview.frame.size.width = self.view.frame.width - insetL - insetR
         webview.frame.size.height = self.view.frame.height - insetT - insetB
+        
+        urlField.frame.origin.x = insetL
+        urlField.frame.origin.y = insetT
         
         lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
         adjustLabel()
@@ -113,7 +117,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         lb.numberOfLines = 0
         view.addSubview(lb)
         
-        let urlField = UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 40))
+        urlField = UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 40))
         urlField.placeholder = "Enter text here"
         urlField.font = UIFont.systemFont(ofSize: 15)
         urlField.borderStyle = UITextField.BorderStyle.roundedRect
