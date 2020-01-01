@@ -47,15 +47,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     @objc func buttonClicked() {
+        button.removeFromSuperview()
         urlField.resignFirstResponder()
-        let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        //let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
+        //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        //self.present(alert, animated: true, completion: nil)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
         button.removeFromSuperview()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    
+        button.removeFromSuperview()
+        textField.resignFirstResponder()
         if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://")) {
             textField.text = "https://" + textField.text!
         }
@@ -64,8 +69,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         lb.text = lb.text! + " " + textField.text!
         adjustLabel()
-        
-        textField.resignFirstResponder()
         return true
     }
     
