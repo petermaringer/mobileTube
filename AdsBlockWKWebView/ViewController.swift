@@ -37,6 +37,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return false
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
