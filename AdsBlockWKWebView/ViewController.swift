@@ -46,10 +46,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     @objc func buttonClicked() {
+        urlField.resignFirstResponder()
         let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        //print("Button Clicked")
+        button.removeFromSuperview()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
