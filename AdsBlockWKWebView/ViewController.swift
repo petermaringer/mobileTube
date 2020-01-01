@@ -122,7 +122,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.font = UIFont.systemFont(ofSize: 15)
         urlField.backgroundColor = .white
         urlField.borderStyle = UITextField.BorderStyle.roundedRect
-        urlField.borderWidth = 0
+        urlField.layer.borderWidth = 0
         urlField.autocapitalizationType = .none
         urlField.autocorrectionType = UITextAutocorrectionType.no
         urlField.keyboardType = UIKeyboardType.webSearch
