@@ -44,11 +44,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     
     private func adjustLabel() {
-        //if insetL + insetR > 42 {
-            //lb.frame.size.width = self.view.frame.width - insetL - insetR
-        //} else {
+        if insetL + insetR > 42 {
+            lb.frame.size.width = self.view.frame.width - insetL - insetR
+        } else {
             lb.frame.size.width = self.view.frame.width - 42
-        //}
+        }
         lb.sizeToFit()
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
         lb.frame.origin.y = self.view.frame.height - insetB
