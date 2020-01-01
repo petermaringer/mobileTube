@@ -98,7 +98,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         insetR = self.view.safeAreaInsets.right
         }
         
-        button = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
+        //button = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
+        button.frame.origin.x = 100
+        button.frame.origin.y = 400
+        button.frame.size.width = 100
+        button.frame.size.height = 30
         
         urlField.frame.origin.x = insetL
         if insetL == 0 {
