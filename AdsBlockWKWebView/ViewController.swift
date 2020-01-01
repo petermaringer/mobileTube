@@ -12,11 +12,9 @@ import WebKit
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
-class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
-    
-    
-    extension UIView {
 
+extension UIView {
+    
     var safeTopAnchor: NSLayoutYAxisAnchor {
     if #available(iOS 11.0, *) {
       return self.safeAreaLayoutGuide.topAnchor
@@ -45,7 +43,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     return self.bottomAnchor
   }
 }
-    
+
+
+class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
     
     var webview: WKWebView!
     
