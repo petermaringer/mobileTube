@@ -126,6 +126,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            lb.text = "log: ls"
+        } else {
+            lb.text = "log: pt"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
