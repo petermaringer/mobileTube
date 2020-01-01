@@ -38,12 +38,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        button = UIButton(frame: CGRect.zero)
-        //button.frame = CGRectMake(15, -50, 300, 500)
-        //button.backgroundColor = .clear
-        button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
         view.addSubview(button)
     }
     
@@ -176,6 +170,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         urlField.delegate = self
         view.addSubview(urlField)
+        
+        button = UIButton(frame: CGRect.zero)
+        //button.frame = CGRectMake(15, -50, 300, 500)
+        //button.backgroundColor = .clear
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
         
         url = URL(string: "https://www.google.com")
         
