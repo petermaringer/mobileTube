@@ -21,7 +21,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     var insetL: CGFloat = 0
     var insetR: CGFloat = 0
     
-    let lb = UILabel(frame: CGRect.zero)
+    //let lb = UILabel(frame: CGRect.zero)
+    var lb: UILabel!
     
     var counter: Int = 0
     
@@ -35,7 +36,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     func textFieldDidEndEditing(_ textField: UITextField) {
         lb.text = lb.text! + " " + textField.text!
         adjustLabel()
-        //lb.frame.size.width = self.view.frame.width
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -44,7 +44,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     
     private func adjustLabel() {
-        lb.frame.size.width = self.view.frame.width
+        lb.frame.size.width = self.view.frame.width - 88
         lb.sizeToFit()
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
         lb.frame.origin.y = self.view.frame.height - insetB
@@ -52,10 +52,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     
     override func viewSafeAreaInsetsDidChange() {
-        //var insetT: CGFloat = 0
-        //var insetB: CGFloat = 0
-        //var insetL: CGFloat = 0
-        //var insetR: CGFloat = 0
         if #available(iOS 11.0, *) {
         insetT = self.view.safeAreaInsets.top
         insetB = self.view.safeAreaInsets.bottom
@@ -67,20 +63,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         webview.frame.size.width = self.view.frame.width - insetL - insetR
         webview.frame.size.height = self.view.frame.height - insetT - insetB
         
-        //let lb = UILabel(frame: CGRect(x: 100, y: 200, width: 200, height: 100))
-        //let lb = UILabel(frame: CGRect(x: 0, y: self.view.frame.height - insetB, width: self.view.frame.width, height: insetB))
-        
-        //lb.frame.size.width = self.view.frame.width
+        lb = UILabel(frame: CGRect.zero)
         lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
         //lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .gray
-        
         lb.numberOfLines = 0
         adjustLabel()
-        //lb.sizeToFit()
-        //lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
-        //lb.frame.origin.y = self.view.frame.height - insetB
         
         view.addSubview(lb)
         
@@ -109,8 +98,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         webview.frame = view.bounds
         
         counter += 1
-        //lb.text = "\(lb.text) + \(counter)"
-        
         
         let urlField = UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 40))
         urlField.placeholder = "Enter text here"
