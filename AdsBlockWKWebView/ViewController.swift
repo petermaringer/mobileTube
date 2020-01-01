@@ -36,13 +36,23 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        let button = UIButton()
-        button.setTitle("Cancel", forState: .Normal)
-        button.setTitleColor(.blue, forState: .Normal)
-        button.frame = CGRectMake(15, -50, 300, 500)
-        button.addTarget(self, action: #selector(myClass.pressed(_:)), forControlEvents: .TouchUpInside)
+        let button = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
+        //button.frame = CGRectMake(15, -50, 300, 500)
+        button.backgroundColor = .black
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
         view.addSubview(button)
-    }    
+    }
+    
+    @objc func buttonClicked() {
+        var alertView = UIAlertView()
+        alertView.addButtonWithTitle("Ok")
+        alertView.title = "title"
+        alertView.message = "message"
+        alertView.show()
+        //print("Button Clicked")
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     
