@@ -16,6 +16,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     var webview: WKWebView!
     
+    var insetT: CGFloat = 0
+    var insetB: CGFloat = 0
+    var insetL: CGFloat = 0
+    var insetR: CGFloat = 0
+    
     let lb = UILabel(frame: CGRect.zero)
     
     var counter: Int = 0
@@ -47,10 +52,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     
     override func viewSafeAreaInsetsDidChange() {
-        var insetT: CGFloat = 0
-        var insetB: CGFloat = 0
-        var insetL: CGFloat = 0
-        var insetR: CGFloat = 0
+        //var insetT: CGFloat = 0
+        //var insetB: CGFloat = 0
+        //var insetL: CGFloat = 0
+        //var insetR: CGFloat = 0
         if #available(iOS 11.0, *) {
         insetT = self.view.safeAreaInsets.top
         insetB = self.view.safeAreaInsets.bottom
