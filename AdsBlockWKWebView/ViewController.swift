@@ -102,7 +102,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //button.frame.origin.x = 100
         //button.frame.origin.y = 400
         //button.frame.size.width = 100
-        button.size.height = 30
+        button.frame.size.height = 30
         
         urlField.frame.origin.x = insetL
         if insetL == 0 {
