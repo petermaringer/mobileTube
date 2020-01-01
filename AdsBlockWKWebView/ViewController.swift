@@ -187,8 +187,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.translatesAutoresizingMaskIntoConstraints = false
 urlField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0).isActive = true
 urlField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0).isActive = true
+if #available(iOS 11.0, *) {
 urlField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
-urlField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45.0).isActive = true
+} else {
+urlField.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
+}
+urlField.bottomAnchor.constraint(equalTo: urlField.topAnchor, constant: 45.0).isActive = true
 
         
         button = UIButton(frame: CGRect.zero)
