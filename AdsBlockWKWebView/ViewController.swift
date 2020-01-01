@@ -12,30 +12,25 @@ import WebKit
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
-
 extension UIView {
-    
-    var safeTopAnchor: NSLayoutYAxisAnchor {
+  var safeLeftAnchor: NSLayoutXAxisAnchor {
+    if #available(iOS 11.0, *) {
+      return self.safeAreaLayoutGuide.leftAnchor
+    }
+    return self.leftAnchor
+  }
+  var safeRightAnchor: NSLayoutXAxisAnchor {
+    if #available(iOS 11.0, *) {
+      return self.safeAreaLayoutGuide.rightAnchor
+    }
+    return self.rightAnchor
+  }
+  var safeTopAnchor: NSLayoutYAxisAnchor {
     if #available(iOS 11.0, *) {
       return self.safeAreaLayoutGuide.topAnchor
     }
     return self.topAnchor
   }
-
-  var safeLeftAnchor: NSLayoutXAxisAnchor {
-    if #available(iOS 11.0, *){
-      return self.safeAreaLayoutGuide.leftAnchor
-    }
-    return self.leftAnchor
-  }
-
-  var safeRightAnchor: NSLayoutXAxisAnchor {
-    if #available(iOS 11.0, *){
-      return self.safeAreaLayoutGuide.rightAnchor
-    }
-    return self.rightAnchor
-  }
-
   var safeBottomAnchor: NSLayoutYAxisAnchor {
     if #available(iOS 11.0, *) {
       return self.safeAreaLayoutGuide.bottomAnchor
@@ -44,13 +39,12 @@ extension UIView {
   }
 }
 
-
 class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
-    
-    var webview: WKWebView!
-    
-    var urlField: UITextField!
-    
+  
+  var webview: WKWebView!
+  
+  var urlField: UITextField!
+  
     var button: UIButton!
     
     var lb: UILabel!
@@ -217,18 +211,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.delegate = self
         view.addSubview(urlField)
         
-        urlField.translatesAutoresizingMaskIntoConstraints = false
-urlField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0).isActive = true
-urlField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0).isActive = true
-urlField.topAnchor.constraint(equalTo: view.safeTopAnchor, constant: 0.0).isActive = true
-//if #available(iOS 11.0, *) {
-//urlField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
-//} else {
-//urlField.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
-//}
-urlField.bottomAnchor.constraint(equalTo: urlField.topAnchor, constant: 45.0).isActive = true
-
-        
+    urlField.translatesAutoresizingMaskIntoConstraints = false
+    urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
+    urlField.rightAnchor.constraint(equalTo: view.safeRightAnchor, constant: -5.0).isActive = true
+    urlField.topAnchor.constraint(equalTo: view.safeTopAnchor, constant: 0.0).isActive = true
+    urlField.bottomAnchor.constraint(equalTo: urlField.topAnchor, constant: 30.0).isActive = true
+    
+    
         button = UIButton(frame: CGRect.zero)
         //button.frame = CGRectMake(15, -50, 300, 500)
         button.backgroundColor = .black
