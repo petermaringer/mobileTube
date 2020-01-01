@@ -18,6 +18,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     var urlField: UITextField!
     
+    var button: UIButton!
+    
     var lb: UILabel!
     
     var url: URL!
@@ -35,11 +37,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         return true
     }
     
-    let button = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        button = UIButton(frame: CGRect.zero)
         //button.frame = CGRectMake(15, -50, 300, 500)
-        button.backgroundColor = .black
+        //button.backgroundColor = .clear
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(.blue, for: .normal)
         button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
@@ -102,6 +103,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         insetL = self.view.safeAreaInsets.left
         insetR = self.view.safeAreaInsets.right
         }
+        
+        button = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
         
         urlField.frame.origin.x = insetL
         if insetL == 0 {
