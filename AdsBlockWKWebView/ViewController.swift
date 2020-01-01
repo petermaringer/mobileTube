@@ -35,8 +35,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         return true
     }
     
+    let button = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        let button = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
         //button.frame = CGRectMake(15, -50, 300, 500)
         button.backgroundColor = .black
         button.setTitle("Cancel", for: .normal)
@@ -50,7 +51,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        self.button.removeFromSuperview()
+        button.removeFromSuperview()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
