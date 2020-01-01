@@ -16,13 +16,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     var webview: WKWebView!
     
+    var lb: UILabel!
+    
     var insetT: CGFloat = 0
     var insetB: CGFloat = 0
     var insetL: CGFloat = 0
     var insetR: CGFloat = 0
-    
-    //let lb = UILabel(frame: CGRect.zero)
-    var lb: UILabel!
     
     var counter: Int = 0
     
@@ -44,12 +43,22 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     
     private func adjustLabel() {
-        if insetL + insetR > 42 {
+        //if insetL + insetR > 42 {
+            //lb.frame.size.width = self.view.frame.width - insetL - insetR
+        //} else {
+            //lb.frame.size.width = self.view.frame.width - 42
+        //}
+        
+        lb.frame.size.width = self.view.frame.width
+        lb.sizeToFit()
+        
+        if lb.frame.size.width > self.view.frame.width - insetL - insetR {
             lb.frame.size.width = self.view.frame.width - insetL - insetR
-        } else {
+        } else if lb.frame.size.width = self.view.frame.width {
             lb.frame.size.width = self.view.frame.width - 42
         }
-        lb.sizeToFit()
+        
+        
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
         lb.frame.origin.y = self.view.frame.height - insetB
     }
@@ -115,7 +124,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.font = UIFont.systemFont(ofSize: 15)
         urlField.borderStyle = UITextField.BorderStyle.roundedRect
         urlField.autocorrectionType = UITextAutocorrectionType.no
-        urlField.keyboardType = UIKeyboardType.default
+        urlField.keyboardType = UIKeyboardType.webSearch
         urlField.returnKeyType = UIReturnKeyType.done
         urlField.clearButtonMode = UITextField.ViewMode.whileEditing
         urlField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
