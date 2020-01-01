@@ -46,11 +46,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     @objc func buttonClicked() {
-        var alertView = UIAlertView()
-        alertView.addButtonWithTitle("Ok")
-        alertView.title = "title"
-        alertView.message = "message"
-        alertView.show()
+        let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         //print("Button Clicked")
     }
     
