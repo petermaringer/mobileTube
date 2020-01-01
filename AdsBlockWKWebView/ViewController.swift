@@ -20,6 +20,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     var lb: UILabel!
     
+    var url: URL!
+    
     var insetT: CGFloat = 0
     var insetB: CGFloat = 0
     var insetL: CGFloat = 0
@@ -37,6 +39,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     func textFieldDidEndEditing(_ textField: UITextField) {
         lb.text = lb.text! + " " + textField.text!
         adjustLabel()
+        url = URL(string: textField.text)!
+        startLoading()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -74,8 +78,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         insetR = self.view.safeAreaInsets.right
         }
         
-        urlField.frame.origin.x = insetL + 5
+        urlField.frame.origin.x = insetL
+        if insetL == 0 {
+            urlField.frame.origin.x = 5
+        }
         urlField.frame.origin.y = insetT + 5
+        
         urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
         urlField.frame.size.height = 30
         
@@ -141,6 +149,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.delegate = self
         view.addSubview(urlField)
         
+        url = URL(string: "https://www.google.com")!
+        
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
@@ -162,7 +172,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     private func startLoading() {
-        let url = URL(string: "https://www.google.com")!
+        //let url = URL(string: "https://www.google.com")!
         let request = URLRequest(url: url)
         webview.load(request)
     }
