@@ -55,12 +55,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         if lb.frame.size.width > self.view.frame.width - insetL - insetR {
             lb.frame.size.width = self.view.frame.width - insetL - insetR
         } else if lb.frame.size.width == self.view.frame.width {
-            lb.frame.size.width = self.view.frame.width - 42
+            lb.frame.size.width = self.view.frame.width - 84
         }
         
         
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
         lb.frame.origin.y = self.view.frame.height - insetB
+        lb.textAlignment = .center
     }
     
     
@@ -76,15 +77,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         webview.frame.size.width = self.view.frame.width - insetL - insetR
         webview.frame.size.height = self.view.frame.height - insetT - insetB
         
-        //lb = UILabel(frame: CGRect.zero)
         lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
-        //lb.textAlignment = .center
-        //lb.font = lb.font.withSize(12)
-        //lb.backgroundColor = .gray
-        //lb.numberOfLines = 0
         adjustLabel()
-        
-        //view.addSubview(lb)
         
         //self.shouldHideHomeIndicator = true
         //self.setNeedsUpdateOfHomeIndicatorAutoHidden()
