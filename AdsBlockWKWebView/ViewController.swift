@@ -118,9 +118,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         view.addSubview(lb)
         
         urlField = UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 30))
-        urlField.placeholder = "Enter text here"
+        urlField.placeholder = "Type your Address"
         urlField.font = UIFont.systemFont(ofSize: 15)
-        //urlField.borderStyle = UITextField.BorderStyle.roundedRect
+        urlField.backgroundColor = .white
+        urlField.borderStyle = UITextField.BorderStyle.roundedRect
+        urlField.borderWidth = 0
+        urlField.autocapitalizationType = .none
         urlField.autocorrectionType = UITextAutocorrectionType.no
         urlField.keyboardType = UIKeyboardType.webSearch
         urlField.returnKeyType = UIReturnKeyType.done
