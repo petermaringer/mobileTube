@@ -35,15 +35,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let button = UIButton()
+        button.setTitle("Cancel", forState: .Normal)
+        button.setTitleColor(.blue, forState: .Normal)
+        button.frame = CGRectMake(15, -50, 300, 500)
+        button.addTarget(self, action: #selector(myClass.pressed(_:)), forControlEvents: .TouchUpInside)
+        view.addSubview(button)
+    }    
     
-    //func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        //textField.resignFirstResponder()
-        //return true
-    //}
-    //func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        
-    //}
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     
         if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://")) {
