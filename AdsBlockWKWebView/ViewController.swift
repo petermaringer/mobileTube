@@ -36,21 +36,25 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
+    urlField.frame.size.width -= 80
     view.addSubview(button)
   }
   
   @objc func buttonClicked() {
     button.removeFromSuperview()
+    urlField.frame.size.width += 80
     urlField.resignFirstResponder()
     changeUserAgent()
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
     button.removeFromSuperview()
+    urlField.frame.size.width += 80
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     button.removeFromSuperview()
+    urlField.frame.size.width += 80
     textField.resignFirstResponder()
     
     let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
@@ -125,6 +129,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       if insetR == 0 {
         urlField.frame.size.width -= 5
       }
+      
+      //if button.isDescendant(of: self.view) {
+        //urlField.frame.size.width -= 80
+      //}
       
       //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
       button.frame.origin.x = insetL + urlField.frame.size.width - 80
