@@ -123,10 +123,21 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
     }
     
+    
+    override func viewDidLayoutSubviews() {
+      super.viewDidLayoutSubviews()
+      if (view.size.width > view.size.height) {
+        lb.text = "log: ls2"
+      } else {
+        lb.text = "log: pt2"
+      }
+    }
+    
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     
-    super.viewWillTransition(to: size, with: coordinator)
-    coordinator.animate(alongsideTransition: nil) { _ in
+    //super.viewWillTransition(to: size, with: coordinator)
+    //coordinator.animate(alongsideTransition: nil) { [unowned self] _ in
     
     urlField.frame.origin.x = insetL
         if insetL == 0 {
@@ -150,7 +161,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             //urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
             //self.view.layoutIfNeeded()
         }
-    }
+    //}
     }
     
     override func viewDidLoad() {
