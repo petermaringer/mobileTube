@@ -36,7 +36,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    urlField.frame.size.width -= 80
+    urlField.frame.size.width -= 100
     view.addSubview(button)
   }
   
