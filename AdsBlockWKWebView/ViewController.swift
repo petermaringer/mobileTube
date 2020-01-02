@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var url: URL!
-  var defaultUserAgent: String
+  var defaultUserAgent: String!
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
@@ -253,9 +253,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   
   private func changeUserAgent() {
-    webview.evaluateJavaScript("navigator.userAgent") { result, _ in
-      defaultUserAgent = result as? String ?? ""
-    }
+    defaultUserAgent = webview.stringByEvaluatingJavaScript(from: "navigator.userAgent")
+    //webview.evaluateJavaScript("navigator.userAgent") { result, _ in
+      //defaultUserAgent = result as? String ?? ""
+    //}
     lb.text = lb.text! + " " + defaultUserAgent
   }
   
@@ -263,7 +264,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //let url = URL(string: "https://www.google.com")!
         let request = URLRequest(url: url)
         
-        let userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
+        //let userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
         //request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
         
         //request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
