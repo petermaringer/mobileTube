@@ -253,15 +253,22 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   
   private func changeUserAgent() {
+    
+    var htmlString = "initial value"
+    //webView.evaluateJavaScript("navigator.userAgent", completionHandler: { (html: Any?, error: Error?) in htmlString = html as! String})
+//print(htmlString)
+    
     webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
-      self.defaultUserAgent = "\(result)"
+      htmlString = html as! String
+      lb.text = lb.text! + " " + htmlString
+      //self.defaultUserAgent = "\(result)"
       //print(result)
     }
     //defaultUserAgent = webview.stringByEvaluatingJavaScript(from: "navigator.userAgent")
     //webview.evaluateJavaScript("navigator.userAgent") { result, _ in
       //defaultUserAgent = result as? String ?? ""
     //}
-    lb.text = lb.text! + " " + defaultUserAgent
+    //lb.text = lb.text! + " " + defaultUserAgent
   }
   
     private func startLoading() {
