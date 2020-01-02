@@ -96,8 +96,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         insetR = self.view.safeAreaInsets.right
         //}
         
+        lb.text = lb.text! + "_dc_"
         //lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
-        //adjustLabel()
+        adjustLabel()
         
         //self.shouldHideHomeIndicator = true
         //self.setNeedsUpdateOfHomeIndicatorAutoHidden()
@@ -114,19 +115,24 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       button.frame.size.height = 30
       
       urlField.frame.origin.x = insetL
+      urlField.frame.origin.y = insetT + 5
+      urlField.frame.size.width = self.view.frame.width - insetL - insetR
+      urlField.frame.size.height = 30
       if insetL == 0 {
         urlField.frame.origin.x = 5
+        urlField.frame.size.width -= 5
       }
-      urlField.frame.origin.y = insetT + 5
-      urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
-      urlField.frame.size.height = 30
+      if insetR == 0 {
+        urlField.frame.size.width -= 5
+      }
+      
       
       webview.frame.origin.x = insetL
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
+      lb.text = lb.text! + "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
         lb.text = lb.text! + " ls"
         //lb.text = "log: ls2"
