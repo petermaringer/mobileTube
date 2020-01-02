@@ -253,6 +253,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     private func startLoading() {
         //let url = URL(string: "https://www.google.com")!
         let request = URLRequest(url: url)
+        
+        let userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
+        request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
+        
         webview.load(request)
     }
     
