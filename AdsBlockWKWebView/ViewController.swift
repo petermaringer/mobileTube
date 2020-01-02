@@ -58,7 +58,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     url = URL(string: textField.text!)
     startLoading()
     
-    let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " \(webview.URL)", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url as! String, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     self.present(alert, animated: true, completion: nil)
     
