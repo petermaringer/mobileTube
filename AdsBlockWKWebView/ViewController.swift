@@ -120,11 +120,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       urlField.frame.size.height = 30
       if insetL == 0 {
         urlField.frame.origin.x = 5
-        //urlField.frame.size.width -= 5
+        urlField.frame.size.width -= 5
       }
-      //if insetR == 0 {
-        //urlField.frame.size.width -= 5
-      //}
+      if insetR == 0 {
+        urlField.frame.size.width -= 5
+      }
       
       
       webview.frame.origin.x = insetL
