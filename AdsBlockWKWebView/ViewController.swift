@@ -87,59 +87,52 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     
+    @available(iOS 11.0, *)
     override func viewSafeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
+        //if #available(iOS 11.0, *) {
         insetT = self.view.safeAreaInsets.top
         insetB = self.view.safeAreaInsets.bottom
         insetL = self.view.safeAreaInsets.left
         insetR = self.view.safeAreaInsets.right
-        }
-        
-        button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
-        //button.frame.origin.x = 100
-        //button.frame.origin.y = 400
-        //button.frame.size.width = 100
-        button.frame.size.height = 30
-        
-        //urlField.frame.origin.x = insetL
-        //if insetL == 0 {
-            //urlField.frame.origin.x = 5
         //}
-        //urlField.frame.origin.y = insetT + 5
-        
-        //urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
-        //urlField.frame.size.height = 30
-        
-        webview.frame.origin.x = insetL
-        webview.frame.origin.y = insetT + urlField.frame.size.height + 10
-        webview.frame.size.width = self.view.frame.width - insetL - insetR
-        webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
         
         //lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
-        adjustLabel()
+        //adjustLabel()
         
         //self.shouldHideHomeIndicator = true
         //self.setNeedsUpdateOfHomeIndicatorAutoHidden()
-        
     }
     
     
     override func viewDidLayoutSubviews() {
       super.viewDidLayoutSubviews()
       
+      button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
+      //button.frame.origin.x = 100
+      //button.frame.origin.y = 400
+      //button.frame.size.width = 100
+      button.frame.size.height = 30
+      
       urlField.frame.origin.x = insetL
       if insetL == 0 {
         urlField.frame.origin.x = 5
       }
       urlField.frame.origin.y = insetT + 5
-      
       urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
       urlField.frame.size.height = 30
       
+      webview.frame.origin.x = insetL
+      webview.frame.origin.y = insetT + urlField.frame.size.height + 10
+      webview.frame.size.width = self.view.frame.width - insetL - insetR
+      webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
+      
+      lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
-        lb.text = "log: ls2"
+        lb.text = lb.text! + " ls"
+        //lb.text = "log: ls2"
       } else {
-        lb.text = "log: pt2"
+        lb.text = lb.text! + " pt"
+        //lb.text = "log: pt2"
       }
       adjustLabel()
     }
