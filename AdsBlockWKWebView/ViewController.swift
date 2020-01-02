@@ -145,7 +145,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         webview.frame.size.width = self.view.frame.width - insetL - insetR
         webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
         
-        lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
+        //lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
         adjustLabel()
         
         //self.shouldHideHomeIndicator = true
@@ -157,9 +157,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         if UIDevice.current.orientation.isLandscape {
             lb.text = "log: ls"
             urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 0.0).isActive = true
+            self.view.layoutIfNeeded()
         } else {
             lb.text = "log: pt"
             urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
+            self.view.layoutIfNeeded()
         }
     }
     
