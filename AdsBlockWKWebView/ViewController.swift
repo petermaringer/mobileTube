@@ -141,31 +141,30 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       } else {
         lb.text = "log: pt2"
       }
+      adjustLabel()
     }
     
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    //override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     
     //super.viewWillTransition(to: size, with: coordinator)
     //coordinator.animate(alongsideTransition: nil) { [unowned self] _ in
     
-    
-    
-        if UIDevice.current.orientation.isLandscape {
-            lb.text = "log: ls"
+        //if UIDevice.current.orientation.isLandscape {
+            //lb.text = "log: ls"
             
             //urlField.leftAnchor.constraint.isActive = false
             //urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 0.0).isActive = true
             //self.view.layoutIfNeeded()
-        } else {
-            lb.text = "log: pt"
+        //} else {
+            //lb.text = "log: pt"
             
             //urlField.leftAnchor.constraint.isActive = false
             //urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
             //self.view.layoutIfNeeded()
-        }
+        //}
     //}
-    }
+    //}
     
     override func viewDidLoad() {
         super.viewDidLoad()
