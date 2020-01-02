@@ -111,12 +111,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     override func viewDidLayoutSubviews() {
       super.viewDidLayoutSubviews()
       
-      button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
-      //button.frame.origin.x = 100
-      //button.frame.origin.y = 400
-      //button.frame.size.width = 100
-      button.frame.size.height = 30
-      
       urlField.frame.origin.x = insetL
       urlField.frame.origin.y = insetT + 5
       urlField.frame.size.width = self.view.frame.width - insetL - insetR
@@ -129,6 +123,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.frame.size.width -= 5
       }
       
+      //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
+      button.frame.origin.x = urlField.frame.size.width - 80
+      button.frame.origin.y = insetT + 10 + urlField.frame.size.height
+      button.frame.size.width = 80
+      button.frame.size.height = 30
       
       webview.frame.origin.x = insetL
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
@@ -252,18 +251,18 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   
   private func changeUserAgent() {
-    
     if defaultUserAgent == "default" {
-    webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
-      self.defaultUserAgent = result as! String
-      webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
-      //webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
-    }
+      webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
+        self.defaultUserAgent = result as! String
+        self.webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
+        //self.webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
+        self.webview.reload()
+      }
     } else {
       webview.customUserAgent = defaultUserAgent
       defaultUserAgent = "default"
+      webview.reload()
     }
-    
   }
   
   private func startLoading() {
