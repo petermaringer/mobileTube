@@ -36,7 +36,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    lb.text = lb.text! + " " + defaultUserAgent
     view.addSubview(button)
   }
   
@@ -44,9 +43,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     changeUserAgent()
     button.removeFromSuperview()
     urlField.resignFirstResponder()
-    //let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
-    //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    //self.present(alert, animated: true, completion: nil)
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
@@ -61,6 +57,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     url = URL(string: textField.text!)
     startLoading()
+    
+    //lb.text = lb.text! + " " + defaultUserAgent
+    let alert = UIAlertController(title: "Alert", message: defaultUserAgent, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
     
     lb.text = lb.text! + " " + textField.text!
     adjustLabel()
