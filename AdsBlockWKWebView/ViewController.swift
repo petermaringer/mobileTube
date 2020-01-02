@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var url: URL!
-  var defaultUserAgent: String!
+  var defaultUserAgent: String = "hi"
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
