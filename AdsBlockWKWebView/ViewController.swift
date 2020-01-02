@@ -36,6 +36,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
+    lb.text = lb.text! + " " + defaultUserAgent
     view.addSubview(button)
   }
   
@@ -254,14 +255,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   private func changeUserAgent() {
     
-    var htmlString = "initial value"
+    //var htmlString = "initial value"
     //webView.evaluateJavaScript("navigator.userAgent", completionHandler: { (html: Any?, error: Error?) in htmlString = html as! String})
 //print(htmlString)
     
     webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
-      htmlString = result as! String
-      self.lb.text = self.lb.text! + htmlString
-      //self.defaultUserAgent = "\(result)"
+      //htmlString = result as! String
+      //self.lb.text = self.lb.text! + htmlString
+      self.defaultUserAgent = result as! String
       //print(result)
     }
     //defaultUserAgent = webview.stringByEvaluatingJavaScript(from: "navigator.userAgent")
