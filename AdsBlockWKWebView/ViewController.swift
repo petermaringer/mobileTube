@@ -58,7 +58,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     url = URL(string: textField.text!)
     startLoading()
     
-    let alert = UIAlertController(title: "Alert", message: defaultUserAgent, preferredStyle: .alert)
+    let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.URL, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     self.present(alert, animated: true, completion: nil)
     
@@ -124,10 +124,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       }
       
       //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
-      button.frame.origin.x = urlField.frame.size.width - 80
-      button.frame.origin.y = insetT + 10 + urlField.frame.size.height
+      button.frame.origin.x = insetL + urlField.frame.size.width - 80
+      //button.frame.origin.y = insetT + 10 + urlField.frame.size.height
+      button.frame.origin.y = insetT + 5
       button.frame.size.width = 80
       button.frame.size.height = 30
+      if insetL == 0 {
+        button.frame.origin.x += 5
+      }
       
       webview.frame.origin.x = insetL
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
@@ -225,6 +229,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         button = UIButton(frame: CGRect.zero)
         //button.frame = CGRectMake(15, -50, 300, 500)
         button.backgroundColor = .gray
+        
+        button.layer.cornerRadius = 5
+        button.clipsToBounds = true
+        
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
