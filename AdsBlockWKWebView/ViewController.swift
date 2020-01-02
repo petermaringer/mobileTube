@@ -259,7 +259,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
 //print(htmlString)
     
     webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
-      htmlString = html as! String
+      htmlString = result as! String
       lb.text = lb.text! + " " + htmlString
       //self.defaultUserAgent = "\(result)"
       //print(result)
