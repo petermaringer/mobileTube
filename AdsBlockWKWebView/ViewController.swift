@@ -126,7 +126,17 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     override func viewDidLayoutSubviews() {
       super.viewDidLayoutSubviews()
-      if (view.size.width > view.size.height) {
+      
+      urlField.frame.origin.x = insetL
+      if insetL == 0 {
+        urlField.frame.origin.x = 5
+      }
+      urlField.frame.origin.y = insetT + 5
+      
+      urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
+      urlField.frame.size.height = 30
+      
+      if (view.frame.width > view.frame.height) {
         lb.text = "log: ls2"
       } else {
         lb.text = "log: pt2"
@@ -139,14 +149,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //super.viewWillTransition(to: size, with: coordinator)
     //coordinator.animate(alongsideTransition: nil) { [unowned self] _ in
     
-    urlField.frame.origin.x = insetL
-        if insetL == 0 {
-            urlField.frame.origin.x = 5
-        }
-        urlField.frame.origin.y = insetT + 5
-        
-        urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
-        urlField.frame.size.height = 30
+    
     
         if UIDevice.current.orientation.isLandscape {
             lb.text = "log: ls"
