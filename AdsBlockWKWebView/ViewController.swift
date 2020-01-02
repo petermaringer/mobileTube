@@ -40,9 +40,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   @objc func buttonClicked() {
-    changeUserAgent()
     button.removeFromSuperview()
     urlField.resignFirstResponder()
+    changeUserAgent()
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
@@ -52,15 +52,18 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     button.removeFromSuperview()
     textField.resignFirstResponder()
-    if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://") || textField.text!.isEmpty) {
-      textField.text = "https://" + textField.text!
-    }
-    url = URL(string: textField.text!)
-    startLoading()
     
     let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     self.present(alert, animated: true, completion: nil)
+    
+    if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://") || textField.text!.isEmpty) {
+      textField.text = "https://" + textField.text!
+    }
+    if !(textField.text!.isEmpty) {
+      url = URL(string: textField.text!)
+      startLoading()
+    }
     
     lb.text = lb.text! + " " + textField.text!
     adjustLabel()
