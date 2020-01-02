@@ -132,7 +132,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
       button.frame.origin.x = insetL + urlField.frame.size.width + 5
       //button.frame.origin.y = insetT + 10 + urlField.frame.size.height
-      button.frame.origin.y = insetT + 15
+      button.frame.origin.y = insetT + 5
       button.frame.size.width = 80
       button.frame.size.height = 30
       if insetL == 0 {
@@ -289,6 +289,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func webview(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
+    
+    let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+    
     urlField.text = webview.url!.absoluteString
   }
   
