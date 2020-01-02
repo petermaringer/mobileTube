@@ -125,6 +125,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: nil) { _ in
+    
     urlField.frame.origin.x = insetL
         if insetL == 0 {
             urlField.frame.origin.x = 5
@@ -147,6 +150,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             //urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
             //self.view.layoutIfNeeded()
         }
+    }
     }
     
     override func viewDidLoad() {
