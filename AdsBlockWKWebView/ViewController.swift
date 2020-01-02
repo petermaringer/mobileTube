@@ -96,9 +96,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         insetR = self.view.safeAreaInsets.right
         //}
         
-        lb.text = lb.text! + "_dc_"
+        //lb.text = lb.text! + "_dc_"
         //lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
-        adjustLabel()
+        //adjustLabel()
         
         //self.shouldHideHomeIndicator = true
         //self.setNeedsUpdateOfHomeIndicatorAutoHidden()
@@ -132,7 +132,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      lb.text = lb.text! + "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
+      lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
         lb.text = lb.text! + " ls"
         //lb.text = "log: ls2"
