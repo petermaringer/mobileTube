@@ -256,9 +256,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     if defaultUserAgent == "default" {
     webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       self.defaultUserAgent = result as! String
+      webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
+      //webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
     }
-    webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
-    //webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
     } else {
       webview.customUserAgent = defaultUserAgent
       defaultUserAgent = "default"
