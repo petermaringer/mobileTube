@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var url: URL!
-  var defaultUserAgent: String = "hi"
+  var defaultUserAgent: String = "default"
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
@@ -58,7 +58,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     url = URL(string: textField.text!)
     startLoading()
     
-    //lb.text = lb.text! + " " + defaultUserAgent
     let alert = UIAlertController(title: "Alert", message: defaultUserAgent, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     self.present(alert, animated: true, completion: nil)
@@ -139,10 +138,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
         lb.text = lb.text! + " ls"
-        //lb.text = "log: ls2"
       } else {
         lb.text = lb.text! + " pt"
-        //lb.text = "log: pt2"
       }
       adjustLabel()
     }
@@ -228,9 +225,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
         button = UIButton(frame: CGRect.zero)
         //button.frame = CGRectMake(15, -50, 300, 500)
-        button.backgroundColor = .black
+        button.backgroundColor = .gray
         button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
         
         url = URL(string: "https://www.google.com")
@@ -256,38 +253,29 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   private func changeUserAgent() {
     
-    //var htmlString = "initial value"
-    //webView.evaluateJavaScript("navigator.userAgent", completionHandler: { (html: Any?, error: Error?) in htmlString = html as! String})
-//print(htmlString)
-    
+    if defaultUserAgent == "default" {
     webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
-      //htmlString = result as! String
-      //self.lb.text = self.lb.text! + htmlString
       self.defaultUserAgent = result as! String
-      //print(result)
     }
-    //defaultUserAgent = webview.stringByEvaluatingJavaScript(from: "navigator.userAgent")
-    //webview.evaluateJavaScript("navigator.userAgent") { result, _ in
-      //defaultUserAgent = result as? String ?? ""
-    //}
-    //lb.text = lb.text! + " " + defaultUserAgent
+    webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
+    //webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
+    } else {
+      webview.customUserAgent = defaultUserAgent
+      defaultUserAgent = "default"
+    }
+    
   }
   
-    private func startLoading() {
-        //let url = URL(string: "https://www.google.com")!
-        let request = URLRequest(url: url)
-        
-        //let userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
-        //request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
-        
-        //request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        
-        //webview.customUserAgent = userAgent
-        
-        webview.load(request)
-    }
+  private func startLoading() {
+    let request = URLRequest(url: url)
     
+    //request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
+    //request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
     
+    webview.load(request)
+  }
+  
+  
     @available(iOS 11.0, *)
     private func setupContentBlockFromStringLiteral(_ completion: (() -> Void)?) {
         // Swift 4  Multi-line string literals
