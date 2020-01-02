@@ -253,7 +253,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   
   private func changeUserAgent() {
-    defaultUserAgent = webview.stringByEvaluatingJavaScript(from: "navigator.userAgent")
+    webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
+      defaultUserAgent = result
+      //print(result)
+    }
+    //defaultUserAgent = webview.stringByEvaluatingJavaScript(from: "navigator.userAgent")
     //webview.evaluateJavaScript("navigator.userAgent") { result, _ in
       //defaultUserAgent = result as? String ?? ""
     //}
