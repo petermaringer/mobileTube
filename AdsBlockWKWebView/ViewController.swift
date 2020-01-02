@@ -130,9 +130,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.frame.size.width -= 5
       }
       
-      //if button.isDescendant(of: self.view) {
-        //urlField.frame.size.width -= 80
-      //}
+      if button.isDescendant(of: self.view) {
+        urlField.frame.size.width -= 80
+      }
       
       //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
       button.frame.origin.x = insetL + urlField.frame.size.width - 80
