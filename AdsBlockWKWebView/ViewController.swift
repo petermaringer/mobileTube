@@ -12,89 +12,59 @@ import WebKit
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
-extension UIView {
-  var safeLeftAnchor: NSLayoutXAxisAnchor {
-    if #available(iOS 11.0, *) {
-      return self.safeAreaLayoutGuide.leftAnchor
-    }
-    return self.leftAnchor
-  }
-  var safeRightAnchor: NSLayoutXAxisAnchor {
-    if #available(iOS 11.0, *) {
-      return self.safeAreaLayoutGuide.rightAnchor
-    }
-    return self.rightAnchor
-  }
-  var safeTopAnchor: NSLayoutYAxisAnchor {
-    if #available(iOS 11.0, *) {
-      return self.safeAreaLayoutGuide.topAnchor
-    }
-    return self.topAnchor
-  }
-  var safeBottomAnchor: NSLayoutYAxisAnchor {
-    if #available(iOS 11.0, *) {
-      return self.safeAreaLayoutGuide.bottomAnchor
-    }
-    return self.bottomAnchor
-  }
-}
-
 class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
   
   var webview: WKWebView!
-  
   var urlField: UITextField!
+  var button: UIButton!
+  var lb: UILabel!
   
-    var button: UIButton!
-    
-    var lb: UILabel!
-    
-    var url: URL!
-    
-    var insetT: CGFloat = 0
-    var insetB: CGFloat = 0
-    var insetL: CGFloat = 0
-    var insetR: CGFloat = 0
-    
-    var counter: Int = 0
-    
-    //var shouldHideHomeIndicator = false
-    override func prefersHomeIndicatorAutoHidden() -> Bool {
-        //return shouldHideHomeIndicator
-        return true
+  var url: URL!
+  
+  var insetT: CGFloat = 0
+  var insetB: CGFloat = 0
+  var insetL: CGFloat = 0
+  var insetR: CGFloat = 0
+  
+  var counter: Int = 0
+  
+  //var shouldHideHomeIndicator = false
+  override func prefersHomeIndicatorAutoHidden() -> Bool {
+    //return shouldHideHomeIndicator
+    return true
+  }
+  
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    view.addSubview(button)
+  }
+  
+  @objc func buttonClicked() {
+    button.removeFromSuperview()
+    urlField.resignFirstResponder()
+    //let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
+    //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    //self.present(alert, animated: true, completion: nil)
+  }
+  
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    button.removeFromSuperview()
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    button.removeFromSuperview()
+    textField.resignFirstResponder()
+    if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://")) {
+      textField.text = "https://" + textField.text!
     }
+    url = URL(string: textField.text!)
+    startLoading()
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        view.addSubview(button)
-    }
-    
-    @objc func buttonClicked() {
-        button.removeFromSuperview()
-        urlField.resignFirstResponder()
-        //let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
-        //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        //self.present(alert, animated: true, completion: nil)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        button.removeFromSuperview()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        button.removeFromSuperview()
-        textField.resignFirstResponder()
-        if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://")) {
-            textField.text = "https://" + textField.text!
-        }
-        url = URL(string: textField.text!)
-        startLoading()
-        
-        lb.text = lb.text! + " " + textField.text!
-        adjustLabel()
-        return true
-    }
-    
-    
+    lb.text = lb.text! + " " + textField.text!
+    adjustLabel()
+    return true
+  }
+  
+  
     private func adjustLabel() {
         //if insetL + insetR > 42 {
             //lb.frame.size.width = self.view.frame.width - insetL - insetR
@@ -154,18 +124,28 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    
+    urlField.frame.origin.x = insetL
+        if insetL == 0 {
+            urlField.frame.origin.x = 5
+        }
+        urlField.frame.origin.y = insetT + 5
+        
+        urlField.frame.size.width = self.view.frame.width - insetL - insetR - 10
+        urlField.frame.size.height = 30
+    
         if UIDevice.current.orientation.isLandscape {
             lb.text = "log: ls"
             
-            urlField.leftAnchor.constraint.isActive = false
-            urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 0.0).isActive = true
-            self.view.layoutIfNeeded()
+            //urlField.leftAnchor.constraint.isActive = false
+            //urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 0.0).isActive = true
+            //self.view.layoutIfNeeded()
         } else {
             lb.text = "log: pt"
             
-            urlField.leftAnchor.constraint.isActive = false
-            urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
-            self.view.layoutIfNeeded()
+            //urlField.leftAnchor.constraint.isActive = false
+            //urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
+            //self.view.layoutIfNeeded()
         }
     }
     
@@ -197,8 +177,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         lb.numberOfLines = 0
         view.addSubview(lb)
         
-        //urlField = UITextField(frame: CGRect.zero)
-        urlField = UITextField()
+        urlField = UITextField(frame: CGRect.zero)
+        //urlField = UITextField()
         urlField.placeholder = "Type your Address"
         urlField.font = UIFont.systemFont(ofSize: 15)
         urlField.backgroundColor = .white
@@ -219,11 +199,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField.delegate = self
         view.addSubview(urlField)
         
-    urlField.translatesAutoresizingMaskIntoConstraints = false
-    urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
-    urlField.rightAnchor.constraint(equalTo: view.safeRightAnchor, constant: -5.0).isActive = true
-    urlField.topAnchor.constraint(equalTo: view.safeTopAnchor, constant: 5.0).isActive = true
-    urlField.bottomAnchor.constraint(equalTo: urlField.topAnchor, constant: 30.0).isActive = true
+    //urlField.translatesAutoresizingMaskIntoConstraints = false
+    //urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
+    //urlField.rightAnchor.constraint(equalTo: view.safeRightAnchor, constant: -5.0).isActive = true
+    //urlField.topAnchor.constraint(equalTo: view.safeTopAnchor, constant: 5.0).isActive = true
+    //urlField.bottomAnchor.constraint(equalTo: urlField.topAnchor, constant: 30.0).isActive = true
     
     
         button = UIButton(frame: CGRect.zero)
