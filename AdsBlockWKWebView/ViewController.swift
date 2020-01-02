@@ -52,13 +52,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     button.removeFromSuperview()
     textField.resignFirstResponder()
-    if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://")) {
+    if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://") || textField.text!.isEmpty) {
       textField.text = "https://" + textField.text!
     }
     url = URL(string: textField.text!)
     startLoading()
     
-    let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.URL, preferredStyle: .alert)
+    let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " \(webview.URL)", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     self.present(alert, animated: true, completion: nil)
     
