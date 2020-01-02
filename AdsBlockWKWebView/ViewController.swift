@@ -288,6 +288,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview.load(request)
   }
   
+  func webview(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
+    urlField.text = webview.url!.absoluteString
+  }
+  
   
     @available(iOS 11.0, *)
     private func setupContentBlockFromStringLiteral(_ completion: (() -> Void)?) {
