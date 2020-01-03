@@ -256,12 +256,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
         
         //let tapGesture = UITapGestureRecognizer(target: self, #selector (buttonClicked))
         //tapGesture.numberOfTapsRequired = 1
         //button.addGestureRecognizer(tapGesture)
-        let longGesture = UILongPressGestureRecognizer(target: self, #selector(buttonPressed))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(buttonPressed))
         button.addGestureRecognizer(longGesture)
         
         url = URL(string: "https://www.google.com")
