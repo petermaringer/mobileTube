@@ -40,9 +40,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       case urlField:
         view.addSubview(button)
         
-        textField.becomeFirstResponder()
-        textField.selectAll(self)
-        //textField.selectAll(nil)
+        //textField.becomeFirstResponder()
+        //textField.selectAll(self)
+        textField.selectAll(nil)
         //textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
       default:
         break
@@ -70,7 +70,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         button.removeFromSuperview()
-        textField.resignFirstResponder()
+        //textField.resignFirstResponder()
+        textField.selectedTextRange = nil
       default:
         break
     }
@@ -80,7 +81,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         button.removeFromSuperview()
-        textField.resignFirstResponder()
+        //textField.resignFirstResponder()
         
         let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
