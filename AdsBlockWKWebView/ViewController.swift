@@ -39,8 +39,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         view.addSubview(button)
-        //textField.selectAll(self)
         textField.selectAll(nil)
+        //textField.selectAll(self)
         //textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
       default:
         break
@@ -48,6 +48,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   @objc func buttonClicked() {
+    urlField.endEditing(true)
     //button.removeFromSuperview()
     //urlField.resignFirstResponder()
     changeUserAgent()
@@ -81,9 +82,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //button.removeFromSuperview()
         //textField.resignFirstResponder()
         
-        let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        //let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
+        //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        //self.present(alert, animated: true, completion: nil)
         
         if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://") || textField.text!.isEmpty) {
           textField.text = "https://" + textField.text!
