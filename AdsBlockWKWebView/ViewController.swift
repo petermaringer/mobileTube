@@ -290,9 +290,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
     
-    let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    self.present(alert, animated: true, completion: nil)
+    //let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
+    //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    //self.present(alert, animated: true, completion: nil)
     
     urlField.text = webview.url!.absoluteString
   }
