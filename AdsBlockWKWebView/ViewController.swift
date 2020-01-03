@@ -39,7 +39,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         view.addSubview(button)
-        textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+        
+        textField.becomeFirstResponder()
+        textField.selectAll(self)
+        //textField.selectAll(nil)
+        //textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
       default:
         break
     }
@@ -51,35 +55,50 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     changeUserAgent()
   }
   
-  
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    alertToUseIOS11()
+    switch textField {
+      case urlField:
+        //alertToUseIOS11()
+        break
+      default:
+        break
+    }
     return true
   }
   
-  
   func textFieldDidEndEditing(_ textField: UITextField) {
-    button.removeFromSuperview()
+    switch textField {
+      case urlField:
+        button.removeFromSuperview()
+        textField.resignFirstResponder()
+      default:
+        break
+    }
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    button.removeFromSuperview()
-    textField.resignFirstResponder()
-    
-    let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    self.present(alert, animated: true, completion: nil)
-    
-    if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://") || textField.text!.isEmpty) {
-      textField.text = "https://" + textField.text!
+    switch textField {
+      case urlField:
+        button.removeFromSuperview()
+        textField.resignFirstResponder()
+        
+        let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+        if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://") || textField.text!.isEmpty) {
+          textField.text = "https://" + textField.text!
+        }
+        if !(textField.text!.isEmpty) {
+          url = URL(string: textField.text!)
+          startLoading()
+        }
+        
+        lb.text = lb.text! + " " + textField.text!
+        adjustLabel()
+      default:
+        break
     }
-    if !(textField.text!.isEmpty) {
-      url = URL(string: textField.text!)
-      startLoading()
-    }
-    
-    lb.text = lb.text! + " " + textField.text!
-    adjustLabel()
     return true
   }
   
