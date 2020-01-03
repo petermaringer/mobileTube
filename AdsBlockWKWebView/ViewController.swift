@@ -80,7 +80,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     switch textField {
       case urlField:
-        button.removeFromSuperview()
+        textField.endEditing(true)
+        //button.removeFromSuperview()
         //textField.resignFirstResponder()
         
         let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
