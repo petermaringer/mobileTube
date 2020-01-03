@@ -51,6 +51,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urlField.endEditing(true)
     //button.removeFromSuperview()
     //urlField.resignFirstResponder()
+    //changeUserAgent()
+  }
+  
+  @objc func buttonPressed() {
+    urlField.endEditing(true)
     changeUserAgent()
   }
   
@@ -252,6 +257,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
+        
+        //let tapGesture = UITapGestureRecognizer(target: self, #selector (buttonClicked))
+        //tapGesture.numberOfTapsRequired = 1
+        //button.addGestureRecognizer(tapGesture)
+        let longGesture = UILongPressGestureRecognizer(target: self, #selector(buttonPressed))
+        button.addGestureRecognizer(longGesture)
         
         url = URL(string: "https://www.google.com")
         
