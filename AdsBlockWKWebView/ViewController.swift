@@ -54,9 +54,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //changeUserAgent()
   }
   
-  @objc func buttonPressed() {
-    urlField.endEditing(true)
-    changeUserAgent()
+  @objc func buttonPressed(gesture: UILongPressGestureRecognizer) {
+    if gesture.state == UIGestureRecognizerState.ended {
+      urlField.endEditing(true)
+      changeUserAgent()
+    }
   }
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -261,7 +263,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //let tapGesture = UITapGestureRecognizer(target: self, #selector (buttonClicked))
         //tapGesture.numberOfTapsRequired = 1
         //button.addGestureRecognizer(tapGesture)
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(buttonPressed))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(buttonPressed(gesture:)))
         button.addGestureRecognizer(longGesture)
         
         url = URL(string: "https://www.google.com")
