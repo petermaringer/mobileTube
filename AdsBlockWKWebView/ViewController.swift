@@ -39,8 +39,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         view.addSubview(button)
-        
-        //textField.becomeFirstResponder()
         //textField.selectAll(self)
         textField.selectAll(nil)
         //textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
@@ -50,8 +48,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   @objc func buttonClicked() {
-    button.removeFromSuperview()
-    urlField.resignFirstResponder()
+    //button.removeFromSuperview()
+    //urlField.resignFirstResponder()
     changeUserAgent()
   }
   
@@ -70,7 +68,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         button.removeFromSuperview()
-        //textField.resignFirstResponder()
         textField.selectedTextRange = nil
       default:
         break
