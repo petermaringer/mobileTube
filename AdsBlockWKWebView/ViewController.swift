@@ -288,7 +288,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview.load(request)
   }
   
-  func webview(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
+  func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
     
     let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
