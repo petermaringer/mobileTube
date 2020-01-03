@@ -36,7 +36,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    view.addSubview(button)
+    switch textField {
+      case urlField:
+        view.addSubview(button)
+        textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+      case default:
+        break
+    }
   }
   
   @objc func buttonClicked() {
@@ -44,6 +50,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urlField.resignFirstResponder()
     changeUserAgent()
   }
+  
+  
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    alertToUseIOS11()
+    return true
+  }
+  
   
   func textFieldDidEndEditing(_ textField: UITextField) {
     button.removeFromSuperview()
@@ -131,7 +144,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       
       //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
       button.frame.origin.x = insetL + urlField.frame.size.width + 5
-      //button.frame.origin.y = insetT + 10 + urlField.frame.size.height
       button.frame.origin.y = insetT + 5
       button.frame.size.width = 80
       button.frame.size.height = 30
@@ -153,27 +165,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       adjustLabel()
     }
     
-    
-    //override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    
-    //super.viewWillTransition(to: size, with: coordinator)
-    //coordinator.animate(alongsideTransition: nil) { [unowned self] _ in
-    
-        //if UIDevice.current.orientation.isLandscape {
-            //lb.text = "log: ls"
-            
-            //urlField.leftAnchor.constraint.isActive = false
-            //urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 0.0).isActive = true
-            //self.view.layoutIfNeeded()
-        //} else {
-            //lb.text = "log: pt"
-            
-            //urlField.leftAnchor.constraint.isActive = false
-            //urlField.leftAnchor.constraint(equalTo: view.safeLeftAnchor, constant: 5.0).isActive = true
-            //self.view.layoutIfNeeded()
-        //}
-    //}
-    //}
     
     override func viewDidLoad() {
         super.viewDidLoad()
