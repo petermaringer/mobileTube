@@ -166,10 +166,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
         shouldHideHomeIndicator = true
-        //self.setNeedsUpdateOfHomeIndicatorAutoHidden()
+        setNeedsUpdateOfHomeIndicatorAutoHidden()
         lb.text = lb.text! + " ls"
       } else {
         shouldHideHomeIndicator = false
+        setNeedsUpdateOfHomeIndicatorAutoHidden()
         lb.text = lb.text! + " pt"
       }
       adjustLabel()
