@@ -12,12 +12,15 @@ import WebKit
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
-class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
   
   var webview: WKWebView!
   var urlField: UITextField!
   var button: UIButton!
   var lb: UILabel!
+  
+  var tableView: UITableView!
+  let array: NSArray = ["First","Second","Third"]
   
   var url: URL!
   var defaultUserAgent: String = "default"
@@ -64,12 +67,33 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         //alertToUseIOS11()
-        break
+        //break
+        if !(tableView.isDescendant(of: self.view)) {
+          view.addSubview(tableView)
+        }
       default:
         break
     }
     return true
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //print("Num: \(indexPath.row)")
+    //print("Value: \(array[indexPath.row])")
+    lb.text = lb.text! + " \(array[indexPath.row])"
+    adjustLabel()
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return array.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+    cell.textLabel!.text = "\(array[indexPath.row])"
+    return cell
+  }
+  
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
     switch textField {
@@ -194,6 +218,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         button.frame.origin.x += 5
       }
       
+      tableView.frame.origin.x = insetL
+      tableView.frame.origin.y = insetT + urlField.frame.size.height + 10
+      tableView.frame.size.width = self.view.frame.width - insetL - insetR
+      tableView.frame.size.height = 200
+      
       webview.frame.origin.x = insetL
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
       webview.frame.size.width = self.view.frame.width - insetL - insetR
@@ -302,6 +331,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(buttonPressed(gesture:)))
         longPress.minimumPressDuration = 3
         button.addGestureRecognizer(longPress)
+        
+        tableView = UITableView(frame: CGRect.zero)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
         
