@@ -27,6 +27,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var insetL: CGFloat = 0
   var insetR: CGFloat = 0
   
+  var lastDeviceOrientation: String = "initial"
+  
   var counter: Int = 0
   
   var shouldHideHomeIndicator = false
@@ -131,8 +133,28 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   
-    override func viewDidLayoutSubviews() {
-      super.viewDidLayoutSubviews()
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    
+    var deviceOrientation = "pt"
+    if (view.frame.width > view.frame.height) {
+      deviceOrientation = "ls"
+    }
+    
+    if !deviceOrientation == lastDeviceOrientation {
+      
+      if !lastDeviceOrientation == "initial" {
+        if deviceOrientation == "pt" {
+          shouldHideHomeIndicator = false
+        } else {
+          shouldHideHomeIndicator = true
+        }
+        
+        if #available(iOS 11, *) {
+          setNeedsUpdateOfHomeIndicatorAutoHidden()
+        }
+        
+      }
       
       urlField.frame.origin.x = insetL
       urlField.frame.origin.y = insetT + 5
@@ -165,22 +187,27 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       
       lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
-        shouldHideHomeIndicator = true
-        if #available(iOS 11, *) {
-          setNeedsUpdateOfHomeIndicatorAutoHidden()
-        }
+        //shouldHideHomeIndicator = true
+        //if #available(iOS 11, *) {
+          //setNeedsUpdateOfHomeIndicatorAutoHidden()
+        //}
         lb.text = lb.text! + " ls"
+        lastDeviceOrientation = "ls"
       } else {
-        shouldHideHomeIndicator = false
-        if #available(iOS 11, *) {
-          setNeedsUpdateOfHomeIndicatorAutoHidden()
-        }
+        //shouldHideHomeIndicator = false
+        //if #available(iOS 11, *) {
+          //setNeedsUpdateOfHomeIndicatorAutoHidden()
+        //}
         lb.text = lb.text! + " pt"
+        lastDeviceOrientation = "pt"
       }
       adjustLabel()
+      
     }
     
-    
+  }
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
