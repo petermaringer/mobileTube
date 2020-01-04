@@ -141,9 +141,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       deviceOrientation = "ls"
     }
     
-    if !deviceOrientation == lastDeviceOrientation {
+    if !(deviceOrientation == lastDeviceOrientation) {
       
-      if !lastDeviceOrientation == "initial" {
+      if !(lastDeviceOrientation == "initial") {
         if deviceOrientation == "pt" {
           shouldHideHomeIndicator = false
         } else {
