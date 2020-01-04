@@ -29,10 +29,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   var counter: Int = 0
   
-  //var shouldHideHomeIndicator = false
+  var shouldHideHomeIndicator = false
   override func prefersHomeIndicatorAutoHidden() -> Bool {
-    //return shouldHideHomeIndicator
-    return true
+    return shouldHideHomeIndicator
+    //return true
   }
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -118,26 +118,19 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         lb.frame.origin.y = self.view.frame.height - insetB
         lb.textAlignment = .center
     }
-    
-    
-    @available(iOS 11.0, *)
-    override func viewSafeAreaInsetsDidChange() {
-        //if #available(iOS 11.0, *) {
-        insetT = self.view.safeAreaInsets.top
-        insetB = self.view.safeAreaInsets.bottom
-        insetL = self.view.safeAreaInsets.left
-        insetR = self.view.safeAreaInsets.right
-        //}
-        
-        //lb.text = lb.text! + "_dc_"
-        //lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
-        //adjustLabel()
-        
-        //self.shouldHideHomeIndicator = true
-        //self.setNeedsUpdateOfHomeIndicatorAutoHidden()
-    }
-    
-    
+  
+  
+  @available(iOS 11.0, *)
+  override func viewSafeAreaInsetsDidChange() {
+    insetT = self.view.safeAreaInsets.top
+    insetB = self.view.safeAreaInsets.bottom
+    insetL = self.view.safeAreaInsets.left
+    insetR = self.view.safeAreaInsets.right
+    //lb.text = lb.text! + "_dc_"
+    //adjustLabel()
+  }
+  
+  
     override func viewDidLayoutSubviews() {
       super.viewDidLayoutSubviews()
       
@@ -172,8 +165,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       
       lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
+        shouldHideHomeIndicator = true
+        //self.setNeedsUpdateOfHomeIndicatorAutoHidden()
         lb.text = lb.text! + " ls"
       } else {
+        shouldHideHomeIndicator = false
         lb.text = lb.text! + " pt"
       }
       adjustLabel()
