@@ -42,6 +42,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       case urlField:
         view.addSubview(button)
         textField.selectAll(nil)
+        
+        urlField.frame.size.width -= 85
+        button.frame.origin.x -= 85
+        
       default:
         break
     }
@@ -74,6 +78,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       case urlField:
         button.removeFromSuperview()
         textField.selectedTextRange = nil
+        
+        urlField.frame.size.width += 85
+        button.frame.origin.x += 85
+        
       default:
         break
     }
@@ -204,6 +212,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       adjustLabel()
       
     }
+    
+    //if button.isDescendant(of: self.view) {
+      //urlField.frame.size.width -= 85
+      //button.frame.origin.x -= 85
+    //}
     
   }
   
