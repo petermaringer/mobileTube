@@ -75,6 +75,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         lb.text = "log:"
+        adjustLabel()
       default:
         break
     }
