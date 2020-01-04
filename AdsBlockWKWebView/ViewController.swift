@@ -138,8 +138,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     insetB = self.view.safeAreaInsets.bottom
     insetL = self.view.safeAreaInsets.left
     insetR = self.view.safeAreaInsets.right
-    //lb.text = lb.text! + "_dc_"
-    //adjustLabel()
+    lb.text = lb.text! + "_dc_"
+    adjustLabel()
   }
   
   
@@ -195,7 +195,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      lb.text = "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
+      lb.text = lb.text! + "log: \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
         //shouldHideHomeIndicator = true
         //if #available(iOS 11, *) {
@@ -245,6 +245,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         counter += 1
         
         lb = UILabel(frame: CGRect.zero)
+        lb.text = "log1: "
         //lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .gray
