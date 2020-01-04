@@ -40,12 +40,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func textFieldDidBeginEditing(_ textField: UITextField) {
     switch textField {
       case urlField:
-        view.addSubview(button)
-        textField.selectAll(nil)
         
-        urlField.frame.size.width -= 85
+        textField.frame.size.width -= 85
         button.frame.origin.x -= 85
         
+        view.addSubview(button)
+        textField.selectAll(nil)
       default:
         break
     }
@@ -76,11 +76,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func textFieldDidEndEditing(_ textField: UITextField) {
     switch textField {
       case urlField:
-        button.removeFromSuperview()
+        
         textField.selectedTextRange = nil
         
-        urlField.frame.size.width += 85
+        button.removeFromSuperview()
+        
         button.frame.origin.x += 85
+        textField.frame.size.width += 85
         
       default:
         break
