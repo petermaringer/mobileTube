@@ -40,8 +40,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       case urlField:
         view.addSubview(button)
         textField.selectAll(nil)
-        //textField.selectAll(self)
-        //textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
       default:
         break
     }
@@ -49,13 +47,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   @objc func buttonClicked() {
     urlField.endEditing(true)
-    //button.removeFromSuperview()
-    //urlField.resignFirstResponder()
-    //changeUserAgent()
   }
   
   @objc func buttonPressed(gesture: UILongPressGestureRecognizer) {
-    if gesture.state == UIGestureRecognizerState.ended {
+    if gesture.state == .began {
       urlField.endEditing(true)
       changeUserAgent()
     }
@@ -86,13 +81,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         textField.endEditing(true)
-        //button.removeFromSuperview()
-        //textField.resignFirstResponder()
-        
-        //let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
-        //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        //self.present(alert, animated: true, completion: nil)
-        
         if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://") || textField.text!.isEmpty) {
           textField.text = "https://" + textField.text!
         }
@@ -260,11 +248,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
         
-        //let tapGesture = UITapGestureRecognizer(target: self, #selector (buttonClicked))
+        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonClicked))
         //tapGesture.numberOfTapsRequired = 1
         //button.addGestureRecognizer(tapGesture)
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(buttonPressed(gesture:)))
-        button.addGestureRecognizer(longGesture)
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(buttonPressed(gesture:)))
+        longPress.minimumPressDuration = 3
+        button.addGestureRecognizer(longPress)
         
         url = URL(string: "https://www.google.com")
         
@@ -312,12 +301,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
+    urlField.text = webview.url!.absoluteString
     
-    //let alert = UIAlertController(title: "Alert", message: defaultUserAgent + " " + webview.url!.absoluteString, preferredStyle: .alert)
+    //let alert = UIAlertController(title: "Alert", message: defaultUserAgent, preferredStyle: .alert)
     //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     //self.present(alert, animated: true, completion: nil)
     
-    urlField.text = webview.url!.absoluteString
   }
   
   
