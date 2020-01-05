@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var tableView: UITableView!
-  let array: NSArray = ["https://google.com","https://orf.at","https://derstandard.at","https://welt.de","https://willhaben.at","https://www.aktienfahrplan.com/plugins/rippletrading/rippletest.cgi"]
+  let array: NSArray = ["https://google.com","https://orf.at","https://derstandard.at","https://welt.de","https://willhaben.at","https://www.aktienfahrplan.com/plugins/rippletools/ripplenode.cgi"]
   
   var url: URL!
   var defaultUserAgent: String = "default"
@@ -358,7 +358,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //}
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20)
         //tableView.clipsToBounds = false
-        //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -40)
+        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, -10, 0, -40)
         tableView.separatorColor = .gray
         //tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         //view.addSubview(tableView)
