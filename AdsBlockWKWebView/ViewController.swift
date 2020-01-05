@@ -95,7 +95,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
     cell.backgroundColor = .clear
-    if (cell.selected) {
+    if (cell.isSelected) {
       cell.backgroundColor = .gray
     }
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
@@ -355,7 +355,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         } else {
           automaticallyAdjustsScrollViewInsets = false
         }
-        tableView.contentOffset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         tableView.separatorColor = .gray
         //tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         //view.addSubview(tableView)
