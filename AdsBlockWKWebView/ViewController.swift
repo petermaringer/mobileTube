@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var tableView: UITableView!
-  let array: NSArray = ["https://orf.at","https://derstandard.at","https://google.com"]
+  let array: NSArray = ["https://google.com","https://orf.at","https://derstandard.at","https://welt.de","https://willhaben.at","https://www.aktienfahrplan.com"]
   
   var url: URL!
   var defaultUserAgent: String = "default"
@@ -69,6 +69,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //alertToUseIOS11()
         //break
         if !(tableView.isDescendant(of: self.view)) {
+          tableView.selectRow(at: nil)
           view.addSubview(tableView)
         }
       default:
@@ -78,7 +79,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.removeFromSuperview()
+    //tableView.deselectRow(at: indexPath, animated: true)
     urlField.endEditing(true)
     urlField.text = "\(array[indexPath.row])"
     url = URL(string: urlField.text!)
@@ -112,6 +113,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func textFieldDidEndEditing(_ textField: UITextField) {
     switch textField {
       case urlField:
+        if tableView.isDescendant(of: self.view) {
+          tableView.removeFromSuperview()
+        }
         textField.selectedTextRange = nil
         button.removeFromSuperview()
         button.frame.origin.x += 85
