@@ -101,7 +101,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     } else {
       cell.backgroundColor = .clear
     }
-    cell.selectionStyle = .gray
+    cell.selectionStyle = .blue
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
@@ -363,7 +363,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: -20)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -20)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
