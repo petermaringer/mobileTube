@@ -20,7 +20,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var tableView: UITableView!
-  //var array: NSArray = 
   var array: Array<String> = ["https://google.com","https://orf.at","https://derstandard.at","https://welt.de","https://willhaben.at","https://www.aktienfahrplan.com/plugins/rippletools/ripplenode.cgi"]
   
   var url: URL!
@@ -68,7 +67,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         //alertToUseIOS11()
-        //break
         if !(tableView.isDescendant(of: self.view)) {
           tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
           view.addSubview(tableView)
@@ -95,7 +93,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-    if (cell.isSelected) {
+    if (cell.isHighlighted) {
       cell.backgroundColor = .gray
     } else {
       cell.backgroundColor = .clear
@@ -361,11 +359,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: -20)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -50)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 20)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
