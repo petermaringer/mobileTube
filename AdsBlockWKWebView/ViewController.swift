@@ -74,7 +74,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //array = origArray
         array.removeAll()
         origArray.forEach { item in
-          if item.contains(updatedString) {
+          if item.contains(updatedText) {
             array.append(item)
           }
         }
@@ -394,7 +394,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -40)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -50)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
