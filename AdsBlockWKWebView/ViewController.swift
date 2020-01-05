@@ -99,7 +99,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     } else {
       cell.backgroundColor = .clear
     }
-    //cell.leftInset = 20
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
@@ -361,7 +360,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -40)
         tableView.separatorColor = .gray
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        //tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
