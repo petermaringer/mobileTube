@@ -95,6 +95,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
     cell.backgroundColor = .clear
+    if (cell.selected) {
+      cell.backgroundColor = .gray
+    }
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
@@ -230,7 +233,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       tableView.frame.origin.x = insetL
       tableView.frame.origin.y = insetT + urlField.frame.size.height + 10
       tableView.frame.size.width = self.view.frame.width - insetL - insetR
-      tableView.frame.size.height = 200
+      tableView.frame.size.height = 150
       
       webview.frame.origin.x = insetL
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
@@ -352,9 +355,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         } else {
           automaticallyAdjustsScrollViewInsets = false
         }
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        tableView.contentOffset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         tableView.separatorColor = .gray
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        //tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
