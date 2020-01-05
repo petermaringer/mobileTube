@@ -69,7 +69,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //alertToUseIOS11()
         //break
         if !(tableView.isDescendant(of: self.view)) {
-          tableView.selectRow(at: nil, animated: false, scrollPosition: .none)
+          tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
           view.addSubview(tableView)
         }
       default:
@@ -94,6 +94,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+    //cell.backgroundColor = .clear
+    cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
   }
@@ -343,6 +345,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = .lightGray
+        tableView.rowHeight = 20.0
+        tableView.separatorColor = .gray
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
