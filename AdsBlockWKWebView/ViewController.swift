@@ -69,8 +69,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       case urlField:
         //alertToUseIOS11()
         if !(tableView.isDescendant(of: self.view)) {
-          tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
+          //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
           array = origArray
+          tableView.reloadData()
           view.addSubview(tableView)
         }
       default:
@@ -100,6 +101,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     } else {
       cell.backgroundColor = .clear
     }
+    cell.selectionStyle = .gray
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
@@ -141,8 +143,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         }
         if !(textField.text!.isEmpty) {
           if !(array.contains(textField.text!)) {
-            array.append(textField.text!)
-            tableView.reloadData()
+            origArray.append(textField.text!)
+            //tableView.reloadData()
           }
           url = URL(string: textField.text!)
           startLoading()
@@ -365,7 +367,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
