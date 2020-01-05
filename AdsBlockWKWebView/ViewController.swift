@@ -80,7 +80,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           if updatedText.isEmpty {
             array = origArray
           }
-          array = array.sorted(by: >)
+          //array = array.sorted(by: >)
+          array = array.reversed()
           tableView.reloadData()
         }
         if !(tableView.isDescendant(of: self.view)) {
@@ -382,7 +383,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -15)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -30)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
