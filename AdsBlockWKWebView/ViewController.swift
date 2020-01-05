@@ -72,9 +72,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
           //array = origArray
           origArray.forEach { item in
-            if item.contains(textField.text!) {
+            //if item.contains(textField.text!) {
               array.append(item)
-            }
+            //}
           }
           tableView.reloadData()
           view.addSubview(tableView)
