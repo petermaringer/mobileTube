@@ -68,7 +68,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         //alertToUseIOS11()
-        let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        //let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        if let text = textField.text, let textRange = Range(range, in: text) {
+          let updatedText = text.replacingCharacters(in: textRange, with: string)
         //array = origArray
         array.removeAll()
         origArray.forEach { item in
@@ -77,6 +79,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           }
         }
         tableView.reloadData()
+        }
+        
         if !(tableView.isDescendant(of: self.view)) {
           //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
           view.addSubview(tableView)
