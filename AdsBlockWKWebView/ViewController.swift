@@ -350,12 +350,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.delegate = self
         tableView.backgroundColor = .lightGray
         tableView.rowHeight = 30.0
-        if #available(iOS 11.0, *) {
-          tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-          automaticallyAdjustsScrollViewInsets = false
-        }
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        //if #available(iOS 11.0, *) {
+          //tableView.contentInsetAdjustmentBehavior = .never
+        //} else {
+          //automaticallyAdjustsScrollViewInsets = false
+        //}
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 30)
+        //tableView.clipsToBounds = false
+        //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -40)
         tableView.separatorColor = .gray
         //tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         //view.addSubview(tableView)
