@@ -69,7 +69,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //alertToUseIOS11()
         //break
         if !(tableView.isDescendant(of: self.view)) {
-          tableView.selectRow(at: nil)
+          tableView.selectRow(at: nil, animated: false)
           view.addSubview(tableView)
         }
       default:
