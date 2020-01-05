@@ -68,15 +68,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         //alertToUseIOS11()
+        //array = origArray
+        array.removeAll()
+        origArray.forEach { item in
+          if item.contains(textField.text!) {
+            array.append(item)
+          }
+        }
+        tableView.reloadData()
         if !(tableView.isDescendant(of: self.view)) {
           //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
-          //array = origArray
-          origArray.forEach { item in
-            //if item.contains(textField.text!) {
-              array.append(item)
-            //}
-          }
-          tableView.reloadData()
           view.addSubview(tableView)
         }
       default:
@@ -368,7 +369,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -30)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -35)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
