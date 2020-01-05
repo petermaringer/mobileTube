@@ -68,19 +68,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         //alertToUseIOS11()
-        //let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
         if let text = textField.text, let textRange = Range(range, in: text) {
           let updatedText = text.replacingCharacters(in: textRange, with: string)
-        //array = origArray
-        array.removeAll()
-        origArray.forEach { item in
-          if item.contains(updatedText) {
-            array.append(item)
+          //array = origArray
+          array.removeAll()
+          origArray.forEach { item in
+            if item.contains(updatedText) {
+              array.append(item)
+            }
           }
+          if updatedText.isEmpty {
+            array = origArray
+          }
+          tableView.reloadData()
         }
-        tableView.reloadData()
-        }
-        
         if !(tableView.isDescendant(of: self.view)) {
           //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
           view.addSubview(tableView)
@@ -89,23 +90,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         break
     }
     return true
-  }
-  
-  func textFieldDidChange(_ textField: UITextField) {
-    switch textField {
-      case urlField:
-        //alertToUseIOS11()
-        //array = origArray
-        array.removeAll()
-        origArray.forEach { item in
-          if item.contains(textField.text!) {
-            array.append(item)
-          }
-        }
-        tableView.reloadData()
-      default:
-        break
-    }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -134,7 +118,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
   }
-  
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
     switch textField {
@@ -172,7 +155,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         if !(textField.text!.isEmpty) {
           if !(array.contains(textField.text!)) {
             origArray.append(textField.text!)
-            //tableView.reloadData()
           }
           url = URL(string: textField.text!)
           startLoading()
@@ -335,9 +317,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         urlField = UITextField(frame: CGRect.zero)
         //urlField = UITextField()
-        
-        //urlField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
         urlField.placeholder = "Type your Address"
         urlField.font = UIFont.systemFont(ofSize: 15)
         urlField.backgroundColor = .white
@@ -394,7 +373,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -50)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
