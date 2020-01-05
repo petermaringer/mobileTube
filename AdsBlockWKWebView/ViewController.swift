@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var tableView: UITableView!
-  let array: NSArray = ["First","Second","Third"]
+  let array: NSArray = ["https://orf.at","https://derstandard.at","https://google.com"]
   
   var url: URL!
   var defaultUserAgent: String = "default"
@@ -78,9 +78,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //print("Num: \(indexPath.row)")
-    //print("Value: \(array[indexPath.row])")
-    lb.text = lb.text! + " \(array[indexPath.row])"
+    tableView.removeFromSuperview()
+    urlField.endEditing(true)
+    urlField.text = array[indexPath.row]
+    url = URL(string: urlField.text!)
+    startLoading()
+    lb.text = lb.text! + " " + urlField.text!
     adjustLabel()
   }
   
