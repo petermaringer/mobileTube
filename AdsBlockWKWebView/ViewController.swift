@@ -70,7 +70,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //alertToUseIOS11()
         if !(tableView.isDescendant(of: self.view)) {
           //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
-          array = origArray
+          //array = origArray
+          origArray.forEach { item in
+            if item.contains(textField.text!) {
+              array.append(item)
+            }
+          }
           tableView.reloadData()
           view.addSubview(tableView)
         }
@@ -363,7 +368,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -20)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -30)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
