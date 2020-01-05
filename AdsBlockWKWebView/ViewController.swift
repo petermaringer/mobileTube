@@ -94,7 +94,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-    //cell.backgroundColor = .clear
+    cell.backgroundColor = .clear
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
@@ -346,8 +346,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .lightGray
-        tableView.rowHeight = 20.0
+        tableView.rowHeight = 30.0
+        if #available(iOS 11.0, *) {
+          scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+          automaticallyAdjustsScrollViewInsets = false
+        }
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         tableView.separatorColor = .gray
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
