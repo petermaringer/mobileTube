@@ -80,7 +80,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           if updatedText.isEmpty {
             array = origArray
           }
-          array = array.sorted()
+          array = array.sorted(by: >)
           tableView.reloadData()
         }
         if !(tableView.isDescendant(of: self.view)) {
@@ -154,9 +154,17 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           textField.text = "https://" + textField.text!
         }
         if !(textField.text!.isEmpty) {
-          if !(array.contains(textField.text!)) {
+          
+          //origArray.forEach { item in
+            //if item == textField.text! {
+              //array.remove(item)
+            //}
+          //}
+          origArray = origArray.filter{$0 != textField.text!}
+          
+          //if !(array.contains(textField.text!)) {
             origArray.append(textField.text!)
-          }
+          //}
           url = URL(string: textField.text!)
           startLoading()
         }
@@ -374,11 +382,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -5)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -15)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -5)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -15)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
