@@ -68,14 +68,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         //alertToUseIOS11()
+        let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
         //array = origArray
-        //array.removeAll()
-        //origArray.forEach { item in
-          //if item.contains(textField.text!) {
-            //array.append(item)
-          //}
-        //}
-        //tableView.reloadData()
+        array.removeAll()
+        origArray.forEach { item in
+          if item.contains(updatedString) {
+            array.append(item)
+          }
+        }
+        tableView.reloadData()
         if !(tableView.isDescendant(of: self.view)) {
           //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
           view.addSubview(tableView)
@@ -331,7 +332,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         urlField = UITextField(frame: CGRect.zero)
         //urlField = UITextField()
         
-        urlField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        //urlField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         urlField.placeholder = "Type your Address"
         urlField.font = UIFont.systemFont(ofSize: 15)
