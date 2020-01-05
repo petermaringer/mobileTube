@@ -348,7 +348,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.backgroundColor = .lightGray
         tableView.rowHeight = 30.0
         if #available(iOS 11.0, *) {
-          scrollView.contentInsetAdjustmentBehavior = .never
+          tableView.contentInsetAdjustmentBehavior = .never
         } else {
           automaticallyAdjustsScrollViewInsets = false
         }
