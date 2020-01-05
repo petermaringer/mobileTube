@@ -98,6 +98,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //tableView.deselectRow(at: indexPath, animated: true)
     urlField.endEditing(true)
     urlField.text = "\(array[indexPath.row])"
+    
+    origArray = origArray.filter{$0 != urlField.text!}
+    origArray.append(urlField.text!)
+    
     url = URL(string: urlField.text!)
     startLoading()
     lb.text = lb.text! + " " + urlField.text!
@@ -383,11 +387,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -30)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -15)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -15)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -30)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
