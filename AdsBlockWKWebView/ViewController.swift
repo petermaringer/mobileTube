@@ -69,13 +69,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       case urlField:
         //alertToUseIOS11()
         //array = origArray
-        array.removeAll()
-        origArray.forEach { item in
-          if item.contains(textField.text!) {
-            array.append(item)
-          }
-        }
-        tableView.reloadData()
+        //array.removeAll()
+        //origArray.forEach { item in
+          //if item.contains(textField.text!) {
+            //array.append(item)
+          //}
+        //}
+        //tableView.reloadData()
         if !(tableView.isDescendant(of: self.view)) {
           //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
           view.addSubview(tableView)
@@ -84,6 +84,23 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         break
     }
     return true
+  }
+  
+  func textFieldDidChange(_ textField: UITextField) {
+    switch textField {
+      case urlField:
+        //alertToUseIOS11()
+        //array = origArray
+        array.removeAll()
+        origArray.forEach { item in
+          if item.contains(textField.text!) {
+            array.append(item)
+          }
+        }
+        tableView.reloadData()
+      default:
+        break
+    }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -313,6 +330,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         urlField = UITextField(frame: CGRect.zero)
         //urlField = UITextField()
+        
+        urlField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
         urlField.placeholder = "Type your Address"
         urlField.font = UIFont.systemFont(ofSize: 15)
         urlField.backgroundColor = .white
@@ -369,7 +389,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -35)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -40)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
