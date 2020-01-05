@@ -358,9 +358,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //}
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20)
         //tableView.clipsToBounds = false
-        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, -10, 0, -40)
+        //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
-        //tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -30)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
