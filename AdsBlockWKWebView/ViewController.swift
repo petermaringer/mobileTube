@@ -80,7 +80,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.removeFromSuperview()
     urlField.endEditing(true)
-    urlField.text = array[indexPath.row]
+    urlField.text = "\(array[indexPath.row])"
     url = URL(string: urlField.text!)
     startLoading()
     lb.text = lb.text! + " " + urlField.text!
