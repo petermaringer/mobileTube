@@ -139,6 +139,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           textField.text = "https://" + textField.text!
         }
         if !(textField.text!.isEmpty) {
+          if !(array.contains(textField.text!)) {
+            array.append(textField.text!)
+            tableView.reloadData()
+          }
           url = URL(string: textField.text!)
           startLoading()
         }
@@ -360,7 +364,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -30)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -50)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
