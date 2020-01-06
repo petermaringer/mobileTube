@@ -115,8 +115,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
     if (cell.isHighlighted) {
-    lb.text = lb.text! + " hl"
-    adjustLabel()
+      //lb.text = lb.text! + " hl"
+      //adjustLabel()
+      alertToUseIOS11()
       cell.textLabel!.backgroundColor = .gray
       cell.textLabel!.layer.backgroundColor = UIColor.gray.cgColor
       //cell.backgroundColor = .gray
@@ -399,12 +400,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           //automaticallyAdjustsScrollViewInsets = false
         //}
         //tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -15)
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -10)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
         //tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -15)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
