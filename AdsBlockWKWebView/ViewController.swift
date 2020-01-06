@@ -20,7 +20,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var tableView: UITableView!
+  
   var origArray: Array<String> = ["https://google.com","https://orf.at","https://derstandard.at","https://welt.de","https://willhaben.at","https://www.aktienfahrplan.com/plugins/rippletools/ripplenode.cgi"]
+  if UserDefaults.standard.object(forKey: "origArray") != nil {
+    origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
+  }
+  
   var array: Array<String> = []
   
   var url: URL!
@@ -163,9 +168,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           origArray.append(textField.text!)
           
           UserDefaults.standard.set(origArray, forKey: "origArray")
-          origArray.removeAll()
+          //origArray.removeAll()
           //UserDefaults.standard.arrayForKey("origArray")!
-          origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
+          //origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
           
           //if !(array.contains(textField.text!)) {}
           
@@ -301,6 +306,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         self.view.backgroundColor = .lightGray
         
         UserDefaults.standard.register(defaults: [
@@ -386,7 +394,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -15)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -20)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
@@ -413,6 +421,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             startLoading()
         }
     }
+  
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    UIApplication.shared.isIdleTimerDisabled = false
+  }
+  
   
   private func changeUserAgent() {
     if defaultUserAgent == "default" {
