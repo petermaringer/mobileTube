@@ -131,6 +131,17 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     return cell
   }
   
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if (editingStyle == .delete) {
+      array = array.filter{$0 != array[indexPath.row]}
+      tableView.reloadData()
+    }
+  }
+  
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
     switch textField {
       case urlField:
@@ -165,14 +176,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           textField.text = "https://" + textField.text!
         }
         if !(textField.text!.isEmpty) {
-          
           origArray = origArray.filter{$0 != textField.text!}
           origArray.append(textField.text!)
-          
           UserDefaults.standard.set(origArray, forKey: "origArray")
-          //origArray.removeAll()
-          //UserDefaults.standard.arrayForKey("origArray")!
-          //origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
           
           //if !(array.contains(textField.text!)) {}
           
@@ -273,7 +279,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       tableView.frame.size.width = self.view.frame.width - insetL - insetR
       tableView.frame.size.height = 150
       
-      tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+      //tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
       
       webview.frame.origin.x = insetL
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
@@ -409,7 +415,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
         //tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
