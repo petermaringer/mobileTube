@@ -115,8 +115,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
     if (cell.isHighlighted) {
-      cell.textLabel.backgroundColor = .clear
-      cell.textLabel.layer.backgroundColor = .gray.cgColor
+      cell.textLabel!.backgroundColor = .clear
+      cell.textLabel!.layer.backgroundColor = .gray.cgColor
       //cell.backgroundColor = .gray
     } else {
       cell.backgroundColor = .clear
