@@ -20,12 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var tableView: UITableView!
-  
   var origArray: Array<String> = ["https://google.com","https://orf.at","https://derstandard.at","https://welt.de","https://willhaben.at","https://www.aktienfahrplan.com/plugins/rippletools/ripplenode.cgi"]
-  if (UserDefaults.standard.object(forKey: "origArray") != nil) {
-    origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
-  }
-  
   var array: Array<String> = []
   
   var url: URL!
@@ -309,6 +304,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         super.viewDidLoad()
         
         UIApplication.shared.isIdleTimerDisabled = true
+        
+        if (UserDefaults.standard.object(forKey: "origArray") != nil) {
+          origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
+        }
         
         self.view.backgroundColor = .lightGray
         
