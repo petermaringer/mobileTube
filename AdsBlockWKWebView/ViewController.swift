@@ -70,7 +70,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //alertToUseIOS11()
         if let text = textField.text, let textRange = Range(range, in: text) {
           let updatedText = text.replacingCharacters(in: textRange, with: string)
-          //array = origArray
           array.removeAll()
           origArray.forEach { item in
             if item.contains(updatedText) {
@@ -160,16 +159,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         }
         if !(textField.text!.isEmpty) {
           
-          //origArray.forEach { item in
-            //if item == textField.text! {
-              //array.remove(item)
-            //}
-          //}
           origArray = origArray.filter{$0 != textField.text!}
+          origArray.append(textField.text!)
           
-          //if !(array.contains(textField.text!)) {
-            origArray.append(textField.text!)
-          //}
+          UserDefaults.standard.set(origArray, forKey: "origArray")
+          origArray.removeAll()
+          //UserDefaults.standard.arrayForKey("origArray")!
+          origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
+          
+          //if !(array.contains(textField.text!)) {}
+          
           url = URL(string: textField.text!)
           startLoading()
         }
@@ -391,7 +390,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -30)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
