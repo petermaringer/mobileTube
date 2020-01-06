@@ -126,7 +126,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       cell.backgroundColor = .clear
     }
     //cell.selectionStyle = .blue
-    cell.frame.size.width -= 10
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
@@ -403,6 +402,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //}
         //tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -15)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -10)
+        tableView.contentSize.width = 100
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
