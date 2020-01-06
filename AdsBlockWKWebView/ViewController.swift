@@ -117,14 +117,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     if (cell.isHighlighted) {
       //lb.text = lb.text! + " hl"
       //adjustLabel()
-      alertToUseIOS11()
+      //alertToUseIOS11()
       cell.textLabel!.backgroundColor = .gray
       cell.textLabel!.layer.backgroundColor = UIColor.gray.cgColor
+      cell.layer.backgroundColor = .gray
       //cell.backgroundColor = .gray
     } else {
       cell.backgroundColor = .clear
     }
     //cell.selectionStyle = .blue
+    cell.frame.size.width -= 10
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
