@@ -22,7 +22,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var tableView: UITableView!
   
   var origArray: Array<String> = ["https://google.com","https://orf.at","https://derstandard.at","https://welt.de","https://willhaben.at","https://www.aktienfahrplan.com/plugins/rippletools/ripplenode.cgi"]
-  if UserDefaults.standard.object(forKey: "origArray") != nil {
+  if (UserDefaults.standard.object(forKey: "origArray") != nil) {
     origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
   }
   
@@ -105,6 +105,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     origArray = origArray.filter{$0 != urlField.text!}
     origArray.append(urlField.text!)
+    UserDefaults.standard.set(origArray, forKey: "origArray")
     
     url = URL(string: urlField.text!)
     startLoading()
