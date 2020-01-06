@@ -120,7 +120,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //alertToUseIOS11()
       cell.textLabel!.backgroundColor = .gray
       cell.textLabel!.layer.backgroundColor = UIColor.gray.cgColor
-      cell.layer.backgroundColor = .gray
+      cell.layer.backgroundColor = UIColor.gray.cgColor
       //cell.backgroundColor = .gray
     } else {
       cell.backgroundColor = .clear
