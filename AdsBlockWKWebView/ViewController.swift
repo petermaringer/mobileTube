@@ -115,11 +115,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
     if (cell.isHighlighted) {
-      cell.backgroundColor = .gray
+      cell.textLabel.backgroundColor = .clear
+      cell.textLabel.layer.backgroundColor = .gray.cgColor
+      //cell.backgroundColor = .gray
     } else {
       cell.backgroundColor = .clear
     }
-    cell.selectionStyle = .blue
+    //cell.selectionStyle = .blue
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
@@ -394,7 +396,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //} else {
           //automaticallyAdjustsScrollViewInsets = false
         //}
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -20)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 15)
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         tableView.separatorColor = .gray
