@@ -141,9 +141,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     if (editingStyle == .delete) {
       //array = array.filter{$0 != array[indexPath.row]}
       //tableView.reloadData()
-      array.remove(at: indexPath.row)
+      //array.remove(at: indexPath.row)
       //origArray.remove(at: indexPath.row)
-      origArray.remove(at: origArray.index(of: indexPath.row)!)
+      //origArray.remove(at: origArray.index(of: indexPath.row)!)
+      array = array.filter{$0 != array[indexPath.row]}
+      origArray = origArray.filter{$0 != array[indexPath.row]}
       UserDefaults.standard.set(origArray, forKey: "origArray")
       
       tableView.beginUpdates()
