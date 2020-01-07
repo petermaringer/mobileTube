@@ -76,8 +76,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             }
           }
           if !(array.isEmpty) {
-            tableView.reloadData()
+            
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            tableView.reloadData()
             if !(tableView.isDescendant(of: view)) {
               view.addSubview(tableView)
             }
@@ -133,21 +134,27 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-    if (cell.isHighlighted) {
+    //if (cell.isHighlighted) {
       //lb.text = lb.text! + " hl"
       //adjustLabel()
       //alertToUseIOS11()
-      cell.textLabel!.backgroundColor = .gray
-      cell.textLabel!.layer.backgroundColor = UIColor.gray.cgColor
-      cell.layer.backgroundColor = UIColor.gray.cgColor
+      //cell.textLabel!.backgroundColor = .gray
+      //cell.textLabel!.layer.backgroundColor = UIColor.gray.cgColor
+      //cell.layer.backgroundColor = UIColor.gray.cgColor
       //cell.backgroundColor = .gray
-    } else {
-      cell.backgroundColor = .clear
-    }
+    //} else {
+      //cell.backgroundColor = .clear
+    //}
     //cell.selectionStyle = .blue
     cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
     cell.textLabel!.text = "\(array[indexPath.row])"
     return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+    let cell = tableView.cellForRow(at: indexPath)
+    cell?.contentView.backgroundColor = UIColor.orange
+    cell?.backgroundColor = UIColor.orange
   }
   
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -345,7 +352,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         }
         
         //self.view.backgroundColor = .lightGray
-        view.backgroundColor = UIColor(white: 0.30, alpha: 1)
+        view.backgroundColor = UIColor(white: 0.80, alpha: 1)
         
         UserDefaults.standard.register(defaults: [
             ruleId1 : false,
