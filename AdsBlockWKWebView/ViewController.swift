@@ -137,8 +137,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if (editingStyle == .delete) {
-      array = array.filter{$0 != array[indexPath.row]}
-      tableView.reloadData()
+      //array = array.filter{$0 != array[indexPath.row]}
+      //tableView.reloadData()
+      tableView.beginUpdates()
+      //array.removeAtIndex(indexPath!.row)
+      //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+      origArray.remove(at: indexPath.row)
+      
+      tableView.deleteRows(at: indexPath, with: .automatic)
+      tableView.endUpdates()
     }
   }
   
