@@ -102,6 +102,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //origArray.remove(at: origArray.index(of: indexPath.row)!)
   //origArray.append(textField.text!)
   //if !(array.contains(textField.text!)) {}
+  //tableView.beginUpdates()
+  //tableView.endUpdates()
   
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -145,19 +147,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if (editingStyle == .delete) {
-      //tableView.beginUpdates()
       origArray = origArray.filter{$0 != array[indexPath.row]}
       UserDefaults.standard.set(origArray, forKey: "origArray")
       array = array.filter{$0 != array[indexPath.row]}
-      //tableView.reloadData()
-      tableView.deleteRows(at: [indexPath], with: .automatic)
-      //tableView.endUpdates()
+      tableView.reloadData()
+      //tableView.deleteRows(at: [indexPath], with: .automatic)
     }
   }
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
     switch textField {
       case urlField:
+        if tableView.isDescendant(of: view) && textField.text!.isEmpty {
+          tableView.removeFromSuperview()
+        }
         lb.text = "log:"
         adjustLabel()
       default:
@@ -413,9 +416,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.delegate = self
         tableView.backgroundColor = .lightGray
         tableView.rowHeight = 30
-        tableView.estimatedRowHeight = 0
-        tableView.estimatedSectionHeaderHeight = 0
-        tableView.estimatedSectionFooterHeight = 0
+        //tableView.estimatedRowHeight = 0
+        //tableView.estimatedSectionHeaderHeight = 0
+        //tableView.estimatedSectionFooterHeight = 0
         //if #available(iOS 11.0, *) {
           //tableView.contentInsetAdjustmentBehavior = .never
         //} else {
@@ -429,7 +432,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.separatorColor = .gray
         //tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        //view.addSubview(tableView)
         
         url = URL(string: "https://www.google.com")
         
