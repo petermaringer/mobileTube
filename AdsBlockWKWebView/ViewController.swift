@@ -413,7 +413,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.delegate = self
         tableView.backgroundColor = .lightGray
         tableView.rowHeight = 30
-        tableView.estimatedRowHeight = 1000
+        tableView.estimatedRowHeight = 0
+        tableView.estimatedSectionHeaderHeight = 0
+        tableView.estimatedSectionFooterHeight = 0
         //if #available(iOS 11.0, *) {
           //tableView.contentInsetAdjustmentBehavior = .never
         //} else {
