@@ -144,13 +144,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //array.remove(at: indexPath.row)
       //origArray.remove(at: indexPath.row)
       //origArray.remove(at: origArray.index(of: indexPath.row)!)
-      array = array.filter{$0 != array[indexPath.row]}
       origArray = origArray.filter{$0 != array[indexPath.row]}
       UserDefaults.standard.set(origArray, forKey: "origArray")
       
-      tableView.beginUpdates()
+      
+      //tableView.beginUpdates()
       tableView.deleteRows(at: [indexPath], with: .automatic)
-      tableView.endUpdates()
+      array = array.filter{$0 != array[indexPath.row]}
+      //tableView.endUpdates()
     }
   }
   
