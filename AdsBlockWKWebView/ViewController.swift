@@ -73,8 +73,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           array.removeAll()
           origArray.forEach { item in
             if item.contains(updatedText) {
-              //array.append(item)
-              array.insert(item, at: 0)
+              array.append(item)
+              //array.insert(item, at: 0)
             }
           }
           if updatedText.isEmpty {
@@ -146,6 +146,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
       array.remove(at: indexPath.row)
       origArray.remove(at: indexPath.row)
+      UserDefaults.standard.set(origArray, forKey: "origArray")
       //origArray.remove(at: origArray.index(of: indexPath.row)!)
       
       tableView.deleteRows(at: [indexPath], with: .automatic)
