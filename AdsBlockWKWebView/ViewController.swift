@@ -142,7 +142,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //tableView.beginUpdates()
       //array.removeAtIndex(indexPath!.row)
       //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-      //origArray.remove(at: indexPath.row)
+      array.remove(at: indexPath.row)
+      origArray.remove(at: indexPath.row)
       //origArray.remove(at: origArray.index(of: indexPath.row)!)
       
       tableView.deleteRows(at: [indexPath], with: .automatic)
