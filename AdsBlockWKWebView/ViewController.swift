@@ -75,28 +75,19 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
               array.append(item)
             }
           }
-          
-          //if updatedText.isEmpty {
-            //array = origArray
-          //}
-          
           if !(array.isEmpty) {
             tableView.reloadData()
-            if !(tableView.isDescendant(of: self.view)) {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            if !(tableView.isDescendant(of: view)) {
               view.addSubview(tableView)
             }
           }
-          
           if array.isEmpty {
-            if tableView.isDescendant(of: self.view) {
+            if tableView.isDescendant(of: view) {
               tableView.removeFromSuperview()
             }
           }
-          
         }
-        //if !(tableView.isDescendant(of: self.view)) {
-          //view.addSubview(tableView)
-        //}
       default:
         break
     }
@@ -119,6 +110,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //tableView.beginUpdates()
   //tableView.endUpdates()
   //tableView.deleteRows(at: [indexPath], with: .automatic)
+  //if updatedText.isEmpty {
+  //array = origArray
+  //}
   
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -186,7 +180,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func textFieldDidEndEditing(_ textField: UITextField) {
     switch textField {
       case urlField:
-        if tableView.isDescendant(of: self.view) {
+        if tableView.isDescendant(of: view) {
           tableView.removeFromSuperview()
         }
         textField.selectedTextRange = nil
@@ -350,7 +344,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
         }
         
-        self.view.backgroundColor = .lightGray
+        //self.view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(white: 0.30, alpha: 1)
         
         UserDefaults.standard.register(defaults: [
             ruleId1 : false,
@@ -428,7 +423,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .lightGray
+        tableView.backgroundColor = .systemGray
         tableView.rowHeight = 30
         //tableView.estimatedRowHeight = 0
         //tableView.estimatedSectionHeaderHeight = 0
