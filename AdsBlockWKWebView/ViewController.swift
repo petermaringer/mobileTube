@@ -144,7 +144,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
       origArray.remove(at: indexPath.row)
       
-      tableView.deleteRows(at: indexPath, with: .automatic)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
       tableView.endUpdates()
     }
   }
