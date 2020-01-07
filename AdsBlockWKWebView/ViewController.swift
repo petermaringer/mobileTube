@@ -73,14 +73,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           array.removeAll()
           origArray.forEach { item in
             if item.contains(updatedText) {
-              array.append(item)
+              //array.append(item)
+              array.insert(item, at: 0)
             }
           }
           if updatedText.isEmpty {
             array = origArray
           }
           //array = array.sorted(by: >)
-          array = array.reversed()
+          //array = array.reversed()
           tableView.reloadData()
         }
         if !(tableView.isDescendant(of: self.view)) {
@@ -99,7 +100,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urlField.text = "\(array[indexPath.row])"
     
     origArray = origArray.filter{$0 != urlField.text!}
-    origArray.append(urlField.text!)
+    //origArray.append(urlField.text!)
+    origArray.insert(urlField.text!, at: 0)
     UserDefaults.standard.set(origArray, forKey: "origArray")
     
     url = URL(string: urlField.text!)
@@ -186,7 +188,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         }
         if !(textField.text!.isEmpty) {
           origArray = origArray.filter{$0 != textField.text!}
-          origArray.append(textField.text!)
+          //origArray.append(textField.text!)
+          origArray.insert(textField.text!, at: 0)
           UserDefaults.standard.set(origArray, forKey: "origArray")
           
           //if !(array.contains(textField.text!)) {}
