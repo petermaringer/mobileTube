@@ -78,7 +78,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           if !(array.isEmpty) {
             tableView.reloadData()
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-            
             if !(tableView.isDescendant(of: view)) {
               view.addSubview(tableView)
             }
@@ -153,8 +152,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath)
-    //cell?.contentView.backgroundColor = UIColor.orange
-    cell?.backgroundColor = .gray
+    cell?.contentView.backgroundColor = .gray
+    //cell?.backgroundColor = .gray
   }
   
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -430,7 +429,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .lightGray
+        //tableView.backgroundColor = .lightGray
+        tableView.backgroundColor = UIColor(white: 0.85, alpha: 1)
         tableView.rowHeight = 30
         //tableView.estimatedRowHeight = 0
         //tableView.estimatedSectionHeaderHeight = 0
