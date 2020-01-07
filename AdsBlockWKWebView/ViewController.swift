@@ -146,12 +146,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //array.remove(at: indexPath.row)
       //origArray.remove(at: indexPath.row)
       //origArray.remove(at: origArray.index(of: indexPath.row)!)
-      tableView.beginUpdates()
+      //tableView.beginUpdates()
       origArray = origArray.filter{$0 != array[indexPath.row]}
       UserDefaults.standard.set(origArray, forKey: "origArray")
       array = array.filter{$0 != array[indexPath.row]}
-      tableView.deleteRows(at: [indexPath], with: .fade)
-      tableView.endUpdates()
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+      //tableView.endUpdates()
     }
   }
   
@@ -416,7 +416,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .lightGray
-        tableView.rowHeight = 30.0
+        tableView.rowHeight = 30
+        tableView.estimatedRowHeight = 30
         //if #available(iOS 11.0, *) {
           //tableView.contentInsetAdjustmentBehavior = .never
         //} else {
