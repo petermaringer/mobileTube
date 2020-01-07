@@ -67,25 +67,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     switch textField {
       case urlField:
-        //alertToUseIOS11()
         if let text = textField.text, let textRange = Range(range, in: text) {
           let updatedText = text.replacingCharacters(in: textRange, with: string)
           array.removeAll()
           origArray.forEach { item in
             if item.contains(updatedText) {
               array.append(item)
-              //array.insert(item, at: 0)
             }
           }
           if updatedText.isEmpty {
             array = origArray
           }
-          //array = array.sorted(by: >)
-          //array = array.reversed()
           tableView.reloadData()
         }
         if !(tableView.isDescendant(of: self.view)) {
-          //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
           view.addSubview(tableView)
         }
       default:
@@ -93,6 +88,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     return true
   }
+  
+  //alertToUseIOS11()
+  //array.insert(item, at: 0)
+  //array = array.sorted(by: >)
+  //array = array.reversed()
+  //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
+  
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //tableView.deselectRow(at: indexPath, animated: true)
@@ -146,11 +148,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //origArray.remove(at: origArray.index(of: indexPath.row)!)
       origArray = origArray.filter{$0 != array[indexPath.row]}
       UserDefaults.standard.set(origArray, forKey: "origArray")
-      
+      array = array.filter{$0 != array[indexPath.row]}
       
       //tableView.beginUpdates()
-      tableView.deleteRows(at: [indexPath], with: .automatic)
-      array = array.filter{$0 != array[indexPath.row]}
+      tableView.deleteRows(at: [indexPath], with: .fade)
       //tableView.endUpdates()
     }
   }
