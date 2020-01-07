@@ -151,7 +151,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     return cell
   }
   
-  override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath)
     cell?.contentView.backgroundColor = UIColor.orange
     cell?.backgroundColor = UIColor.orange
