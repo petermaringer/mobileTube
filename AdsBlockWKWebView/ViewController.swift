@@ -139,13 +139,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     if (editingStyle == .delete) {
       //array = array.filter{$0 != array[indexPath.row]}
       //tableView.reloadData()
-      tableView.beginUpdates()
+      //tableView.beginUpdates()
       //array.removeAtIndex(indexPath!.row)
       //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-      origArray.remove(at: indexPath.row)
+      //origArray.remove(at: indexPath.row)
+      //origArray.remove(at: origArray.index(of: indexPath.row)!)
       
       tableView.deleteRows(at: [indexPath], with: .automatic)
-      tableView.endUpdates()
+      //tableView.endUpdates()
     }
   }
   
