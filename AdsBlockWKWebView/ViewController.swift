@@ -75,14 +75,28 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
               array.append(item)
             }
           }
-          if updatedText.isEmpty {
-            array = origArray
+          
+          //if updatedText.isEmpty {
+            //array = origArray
+          //}
+          
+          if !(array.isEmpty) {
+            tableView.reloadData()
+            if !(tableView.isDescendant(of: self.view)) {
+              view.addSubview(tableView)
+            }
           }
-          tableView.reloadData()
+          
+          if array.isEmpty {
+            if tableView.isDescendant(of: self.view) {
+              tableView.removeFromSuperview()
+            }
+          }
+          
         }
-        if !(tableView.isDescendant(of: self.view)) {
-          view.addSubview(tableView)
-        }
+        //if !(tableView.isDescendant(of: self.view)) {
+          //view.addSubview(tableView)
+        //}
       default:
         break
     }
@@ -104,6 +118,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //if !(array.contains(textField.text!)) {}
   //tableView.beginUpdates()
   //tableView.endUpdates()
+  //tableView.deleteRows(at: [indexPath], with: .automatic)
   
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -151,14 +166,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       UserDefaults.standard.set(origArray, forKey: "origArray")
       array = array.filter{$0 != array[indexPath.row]}
       tableView.reloadData()
-      //tableView.deleteRows(at: [indexPath], with: .automatic)
     }
   }
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
     switch textField {
       case urlField:
-        if tableView.isDescendant(of: view) && textField.text!.isEmpty {
+        if tableView.isDescendant(of: view) {
           tableView.removeFromSuperview()
         }
         lb.text = "log:"
