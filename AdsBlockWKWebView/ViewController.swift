@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var lb: UILabel!
   
   var tableView: UITableView!
-  var origArray: Array<String> = ["https://google.com","https://orf.at","https://derstandard.at","https://welt.de","https://willhaben.at","https://www.aktienfahrplan.com/plugins/rippletools/ripplenode.cgi"]
+  var origArray: Array<String> = ["https://google.com"]
   var array: Array<String> = []
   
   var url: URL!
@@ -90,26 +90,30 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   //alertToUseIOS11()
+  //var origArray: Array<String> = ["https://google.com","https://orf.at","https://derstandard.at","https://welt.de","https://willhaben.at","https://www.aktienfahrplan.com/plugins/rippletools/ripplenode.cgi"]
   //array.insert(item, at: 0)
   //array = array.sorted(by: >)
   //array = array.reversed()
   //tableView.selectRow(at: nil, animated: false, scrollPosition: .top)
+  //tableView.deselectRow(at: indexPath, animated: true)
+  //origArray.append(urlField.text!)
+  //array.remove(at: indexPath.row)
+  //origArray.remove(at: indexPath.row)
+  //origArray.remove(at: origArray.index(of: indexPath.row)!)
+  //origArray.append(textField.text!)
+  //if !(array.contains(textField.text!)) {}
   
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //tableView.deselectRow(at: indexPath, animated: true)
     urlField.endEditing(true)
     urlField.text = "\(array[indexPath.row])"
-    
     origArray = origArray.filter{$0 != urlField.text!}
-    //origArray.append(urlField.text!)
     origArray.insert(urlField.text!, at: 0)
     UserDefaults.standard.set(origArray, forKey: "origArray")
-    
     url = URL(string: urlField.text!)
     startLoading()
-    lb.text = lb.text! + " " + urlField.text!
-    adjustLabel()
+    //lb.text = lb.text! + " " + urlField.text!
+    //adjustLabel()
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -141,15 +145,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if (editingStyle == .delete) {
-      //array = array.filter{$0 != array[indexPath.row]}
-      //tableView.reloadData()
-      //array.remove(at: indexPath.row)
-      //origArray.remove(at: indexPath.row)
-      //origArray.remove(at: origArray.index(of: indexPath.row)!)
       //tableView.beginUpdates()
       origArray = origArray.filter{$0 != array[indexPath.row]}
       UserDefaults.standard.set(origArray, forKey: "origArray")
       array = array.filter{$0 != array[indexPath.row]}
+      //tableView.reloadData()
       tableView.deleteRows(at: [indexPath], with: .automatic)
       //tableView.endUpdates()
     }
@@ -190,12 +190,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         }
         if !(textField.text!.isEmpty) {
           origArray = origArray.filter{$0 != textField.text!}
-          //origArray.append(textField.text!)
           origArray.insert(textField.text!, at: 0)
           UserDefaults.standard.set(origArray, forKey: "origArray")
-          
-          //if !(array.contains(textField.text!)) {}
-          
           url = URL(string: textField.text!)
           startLoading()
         }
@@ -417,7 +413,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.delegate = self
         tableView.backgroundColor = .lightGray
         tableView.rowHeight = 30
-        tableView.estimatedRowHeight = 30
+        tableView.estimatedRowHeight = 1000
         //if #available(iOS 11.0, *) {
           //tableView.contentInsetAdjustmentBehavior = .never
         //} else {
