@@ -113,7 +113,31 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //if updatedText.isEmpty {
   //array = origArray
   //}
+  //if (cell.isHighlighted) {}
+  //cell.textLabel!.backgroundColor = .gray
+  //cell.textLabel!.layer.backgroundColor = UIColor.gray.cgColor
+  //cell.layer.backgroundColor = UIColor.gray.cgColor
+  //cell.selectionStyle = .blue
   
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+    cell.backgroundColor = .clear
+    cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
+    cell.textLabel!.text = "\(array[indexPath.row])"
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    tableView.frame.size.height = array.count * 30
+    return array.count
+  }
+  
+  func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+    let cell = tableView.cellForRow(at: indexPath)
+    cell?.contentView.backgroundColor = .gray
+    //cell?.backgroundColor = .gray
+  }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     urlField.endEditing(true)
@@ -123,37 +147,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     UserDefaults.standard.set(origArray, forKey: "origArray")
     url = URL(string: urlField.text!)
     startLoading()
-    //lb.text = lb.text! + " " + urlField.text!
-    //adjustLabel()
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return array.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-    //if (cell.isHighlighted) {
-      //lb.text = lb.text! + " hl"
-      //adjustLabel()
-      //alertToUseIOS11()
-      //cell.textLabel!.backgroundColor = .gray
-      //cell.textLabel!.layer.backgroundColor = UIColor.gray.cgColor
-      //cell.layer.backgroundColor = UIColor.gray.cgColor
-      //cell.backgroundColor = .gray
-    //} else {
-      cell.backgroundColor = .clear
-    //}
-    //cell.selectionStyle = .blue
-    cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
-    cell.textLabel!.text = "\(array[indexPath.row])"
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-    let cell = tableView.cellForRow(at: indexPath)
-    cell?.contentView.backgroundColor = .gray
-    //cell?.backgroundColor = .gray
   }
   
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -212,8 +205,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           url = URL(string: textField.text!)
           startLoading()
         }
-        lb.text = lb.text! + " " + textField.text!
-        adjustLabel()
+        //lb.text = lb.text! + " " + textField.text!
+        //adjustLabel()
       default:
         break
     }
@@ -430,7 +423,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.dataSource = self
         tableView.delegate = self
         //tableView.backgroundColor = .lightGray
-        tableView.backgroundColor = UIColor(white: 0.85, alpha: 1)
+        tableView.backgroundColor = UIColor(white: 0.9, alpha: 1)
         tableView.rowHeight = 30
         //tableView.estimatedRowHeight = 0
         //tableView.estimatedSectionHeaderHeight = 0
