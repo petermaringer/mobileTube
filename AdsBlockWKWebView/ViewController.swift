@@ -505,9 +505,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //case .resourceUnavailable:
         //case .timedOut:
         default:
+          break
           //lb.text = lb.text! + " " + String(describing: err.code) + " \(error)"
       }
-      for (key,value) in err {
+      for (key,value) in err.code {
         //lb.text = lb.text! + "\(key):\(value)"
         lb.text = lb.text! + " \(key)"
       }
