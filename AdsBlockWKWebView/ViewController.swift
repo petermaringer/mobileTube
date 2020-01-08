@@ -505,25 +505,32 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //case .resourceUnavailable:
         //case .timedOut:
         default:
-          break
-          //lb.text = lb.text! + " " + String(describing: err.code) + " \(error)"
+          //break
+          lb.text = lb.text! + " " + String(describing: err.code) + ""
+          adjustLabel()
       }
-      for (key,value) in err.code {
+      
+      //for (key,value) in err.code {
         //lb.text = lb.text! + "\(key):\(value)"
-        lb.text = lb.text! + " \(key)"
-      }
+        //lb.text = lb.text! + " \(key)"
+      //}
       //adjustLabel()
+      
     }
-    lb.text = lb.text! + " " + error.localizedDescription
-    adjustLabel()
+    //lb.text = lb.text! + " " + error.localizedDescription
+    //adjustLabel()
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
     urlField.text = webview.url!.absoluteString
     
-    //let alert = UIAlertController(title: "Alert", message: defaultUserAgent, preferredStyle: .alert)
-    //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    //self.present(alert, animated: true, completion: nil)
+    //showAlert(message: "Hi")
+    showAlert(message: defaultUserAgent)
+    func showAlert(message: String) {
+      let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      self.present(alert, animated: true, completion: nil)
+    }
     
   }
   
