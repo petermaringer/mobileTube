@@ -525,12 +525,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urlField.text = webview.url!.absoluteString
     
     //showAlert(message: "Hi")
-    showAlert(message: defaultUserAgent)
+    
     func showAlert(message: String) {
       let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(alert, animated: true, completion: nil)
     }
+    showAlert(message: defaultUserAgent)
     
   }
   
