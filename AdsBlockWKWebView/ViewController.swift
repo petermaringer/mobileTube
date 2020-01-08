@@ -129,7 +129,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    tableView.frame.size.height = array.count * 30
+    self.tableView.frame.size.height = array.count * 30
     return array.count
   }
   
