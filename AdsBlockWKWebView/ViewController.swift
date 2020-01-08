@@ -495,7 +495,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview.load(request)
   }
   
-  func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+  func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
     if let err = error as? URLError {
       switch err.code {
         //case .cancelled:
