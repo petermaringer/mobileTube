@@ -512,7 +512,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //case .timedOut:
         default:
           //break
-          showAlert(message: "\(err)")
+          showAlert(message: "\(type(of: self)) \(err)" + String(describing: err.code))
           lb.text = lb.text! + " " + String(describing: err.code) + " \(err.code)"
           adjustLabel()
       }
