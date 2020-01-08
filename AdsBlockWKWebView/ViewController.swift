@@ -506,7 +506,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //case .timedOut:
         default:
           //break
-          lb.text = lb.text! + " " + String(describing: err.code) + ""
+          lb.text = lb.text! + " " + String(describing: err.code) + err.code
           adjustLabel()
       }
       
@@ -523,8 +523,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
     urlField.text = webview.url!.absoluteString
-    
-    //showAlert(message: "Hi")
     
     func showAlert(message: String) {
       let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
