@@ -499,12 +499,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     if let err = error as? URLError {
       switch err.code {
         //case .cancelled:
-        //case .cannotFindHost:
+        case .cannotFindHost:
+          lb.text = lb.text! + " NH"
         //case .notConnectedToInternet:
         //case .resourceUnavailable:
         //case .timedOut:
         default:
-          lb.text = lb.text! + " " + String(describing: err.code)
+          lb.text = lb.text! + " " + String(describing: err.code) + " \(err.code)"
       }
       //adjustLabel()
     }
