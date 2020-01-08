@@ -346,7 +346,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         }
         
         //self.view.backgroundColor = .lightGray
-        view.backgroundColor = UIColor(white: 0.80, alpha: 1)
+        view.backgroundColor = UIColor(white: 0.85, alpha: 1)
         
         UserDefaults.standard.register(defaults: [
             ruleId1 : false,
@@ -495,7 +495,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview.load(request)
   }
   
-  func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+  func webView(_ webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: Error) {
     if let err = error as? URLError {
       switch err.code {
         //case .cancelled:
