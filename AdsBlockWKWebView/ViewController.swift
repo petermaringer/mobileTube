@@ -129,7 +129,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    tableView.frame.size.height = CGFloat(array.count * 30)
+    tableView.frame.size.height = CGFloat(min(array.count * 30, 200))
     return array.count
   }
   
@@ -298,6 +298,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       tableView.frame.origin.y = insetT + urlField.frame.size.height + 10
       tableView.frame.size.width = self.view.frame.width - insetL - insetR
       tableView.frame.size.height = 150
+      
+      tableView.reloadData()
       
       //tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
       
