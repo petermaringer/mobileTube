@@ -512,11 +512,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //case .timedOut:
         default:
           //break
-          showAlert(message: "\(type(of: self)) \(err)" + String(describing: err._code))
-          lb.text = lb.text! + " " + String(describing: err.code) + " \(err.code)"
+          showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
+          lb.text = lb.text! + " Error: \(err._code)"
           adjustLabel()
       }
       
+      //String(describing: err.code)
       //for (key,value) in err.code {
         //lb.text = lb.text! + "\(key):\(value)"
         //lb.text = lb.text! + " \(key)"
