@@ -346,7 +346,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         }
         
         //self.view.backgroundColor = .lightGray
-        view.backgroundColor = UIColor(white: 0.85, alpha: 1)
+        view.backgroundColor = UIColor(white: 0.90, alpha: 1)
         
         UserDefaults.standard.register(defaults: [
             ruleId1 : false,
@@ -506,8 +506,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         default:
           lb.text = lb.text! + " " + String(describing: err.code)
       }
-      adjustLabel()
+      //adjustLabel()
     }
+    lb.text = lb.text! + " " + String(describing: error)
+    adjustLabel()
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
