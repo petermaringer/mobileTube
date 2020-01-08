@@ -129,7 +129,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    tableView.frame.size.height = CGFloat(min(array.count * 30, 200))
+    tableView.frame.size.height = CGFloat(min(array.count * 30, 185))
     return array.count
   }
   
@@ -297,7 +297,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       tableView.frame.origin.x = insetL
       tableView.frame.origin.y = insetT + urlField.frame.size.height + 10
       tableView.frame.size.width = self.view.frame.width - insetL - insetR
-      tableView.frame.size.height = 150
+      tableView.frame.size.height = 185
       
       tableView.reloadData()
       
@@ -417,7 +417,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //tapGesture.numberOfTapsRequired = 1
         //button.addGestureRecognizer(tapGesture)
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(buttonPressed(gesture:)))
-        longPress.minimumPressDuration = 3
+        //longPress.minimumPressDuration = 3
         button.addGestureRecognizer(longPress)
         
         tableView = UITableView(frame: CGRect.zero)
@@ -425,7 +425,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         tableView.dataSource = self
         tableView.delegate = self
         //tableView.backgroundColor = .lightGray
-        tableView.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         tableView.rowHeight = 30
         //tableView.estimatedRowHeight = 0
         //tableView.estimatedSectionHeaderHeight = 0
@@ -493,6 +493,21 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
     
     webview.load(request)
+  }
+  
+  func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+    if let err = error as? URLError {
+      switch err.code {
+        //case .cancelled:
+        //case .cannotFindHost:
+        //case .notConnectedToInternet:
+        //case .resourceUnavailable:
+        //case .timedOut:
+        default:
+          lb.text = lb.text! + " " + String(describing: err.code)
+      }
+      adjustLabel()
+    }
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
