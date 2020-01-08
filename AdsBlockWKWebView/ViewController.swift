@@ -213,6 +213,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     return true
   }
   
+  private func showAlert(message: String) {
+    let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+  }
+  
   
     private func adjustLabel() {
         //if insetL + insetR > 42 {
@@ -506,6 +512,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //case .timedOut:
         default:
           //break
+          showAlert(message: String(reflecting: err.code))
           lb.text = lb.text! + " " + String(describing: err.code) + " \(err)" + String(reflecting: err.code)
           adjustLabel()
       }
@@ -523,14 +530,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
     urlField.text = webview.url!.absoluteString
-    
-    func showAlert(message: String) {
-      let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-      self.present(alert, animated: true, completion: nil)
-    }
     showAlert(message: defaultUserAgent)
-    
   }
   
   
