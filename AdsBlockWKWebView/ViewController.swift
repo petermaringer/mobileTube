@@ -508,7 +508,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       }
       //adjustLabel()
     }
-    lb.text = lb.text! + " " + String(describing: error)
+    lb.text = lb.text! + " " + error.localizedDescription
     adjustLabel()
   }
   
