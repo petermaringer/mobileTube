@@ -504,18 +504,21 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
     if let err = error as? URLError {
       switch err.code {
-        //case .cancelled:
-        //case .cannotFindHost:
-          //lb.text = lb.text! + " NH"
+        case .cancelled: break
+        case .cannotFindHost:
+          var oldurl = (url.absoluteString).replacingOccurrences(of: " ", with: "+")
+          url = URL(string: "https://www.google.com/search?q=" + oldurl)
+          startLoading()
         //case .notConnectedToInternet:
         //case .resourceUnavailable:
         //case .timedOut:
         default:
           //break
           showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
-          lb.text = lb.text! + " Error: \(err._code)"
-          adjustLabel()
       }
+      
+      lb.text = lb.text! + " err: \(err._code)"
+      adjustLabel()
       
       //String(describing: err.code)
       //for (key,value) in err.code {
@@ -523,10 +526,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //lb.text = lb.text! + " \(key)"
       //}
       //adjustLabel()
-      
     }
-    //lb.text = lb.text! + " " + error.localizedDescription
-    //adjustLabel()
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
