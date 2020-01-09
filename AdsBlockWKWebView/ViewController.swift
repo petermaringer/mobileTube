@@ -498,6 +498,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   private func verifyUrl() {
     
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+    return
+    
     //let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
     //var characterset = CharacterSet.urlPathAllowed
     //characterset.insert(charactersIn: "-._~")
