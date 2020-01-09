@@ -23,7 +23,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var origArray: Array<String> = ["https://google.com"]
   var array: Array<String> = []
   
-  var url: URL!
+  //var url: URL!
+  var url: String!
   var defaultUserAgent: String = "default"
   
   var insetT: CGFloat = 0
@@ -145,7 +146,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     origArray = origArray.filter{$0 != urlField.text!}
     origArray.insert(urlField.text!, at: 0)
     UserDefaults.standard.set(origArray, forKey: "origArray")
-    url = URL(string: urlField.text!)
+    //url = URL(string: urlField.text!)
+    url = urlField.text!
     startLoading()
   }
   
@@ -202,7 +204,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           origArray = origArray.filter{$0 != textField.text!}
           origArray.insert(textField.text!, at: 0)
           UserDefaults.standard.set(origArray, forKey: "origArray")
-          url = URL(string: textField.text!)
+          //url = URL(string: textField.text!)
+          url = textField.text!
           startLoading()
         }
         //lb.text = lb.text! + " " + textField.text!
@@ -450,7 +453,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
-        url = URL(string: "https://www.google.com")
+        //url = URL(string: "https://www.google.com")
+        url = "https://www.google.com"
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
@@ -495,7 +499,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func verifyUrl() {
     let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
     let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
-    if !predicate.evaluate(with: url.absoluteString) {
+    //if !predicate.evaluate(with: url.absoluteString) {
+    if !predicate.evaluate(with: url) {
       switchToWebsearch()
     }
   }
@@ -503,8 +508,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func switchToWebsearch() {
     var allowed = CharacterSet.alphanumerics
     allowed.insert(charactersIn: "-._~")
-    let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
-    url = URL(string: "https://www.google.com/search?q=\(encoded!)")
+    //let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
+    let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
+    //url = URL(string: "https://www.google.com/search?q=\(encoded!)")
+    url = "https://www.google.com/search?q=\(encoded!)"
   }
   
   private func startLoading() {
@@ -512,7 +519,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //if !UIApplication.shared.canOpenURL(url) {}
     verifyUrl()
     
-    let request = URLRequest(url: url)
+    //let request = URLRequest(url: url)
+    let request = URLRequest(url: URL(string: url))
     
     //request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
     //request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
@@ -530,7 +538,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           var allowed = CharacterSet.alphanumerics
           allowed.insert(charactersIn: "-._~")
           let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
-          url = URL(string: "https://www.google.com/search?q=\(encoded!)")
+          //url = URL(string: "https://www.google.com/search?q=\(encoded!)")
+          url = "https://www.google.com/search?q=\(encoded!)"
           startLoading()
         //case .notConnectedToInternet:
         //case .resourceUnavailable:
