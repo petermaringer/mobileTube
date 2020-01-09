@@ -492,9 +492,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   }
   
+  //func canOpenURL(string: String) -> Bool {
+    //if !UIApplication.sharedApplication().canOpenURL(url) {
+    //return false
+    //}
+  //}
+  
   private func startLoading() {
     
-    if (UIApplication.sharedApplication().canOpenURL(url) == false) {
+    if !UIApplication.shared.canOpenURL(url) {
       var allowed = CharacterSet.alphanumerics
       allowed.insert(charactersIn: "-._~")
       let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
