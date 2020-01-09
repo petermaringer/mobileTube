@@ -492,23 +492,25 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   }
   
-  private func checkForWebsearch() {
-    
+  private func verifyUrl() {
     let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
     let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
     if !predicate.evaluate(with: url.absoluteString) {
-      var allowed = CharacterSet.alphanumerics
-      allowed.insert(charactersIn: "-._~")
-      let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
-      url = URL(string: "https://www.google.com/search?q=\(encoded!)")
+      switchToWebsearch()
     }
-    
+  }
+  
+  private func switchToWebsearch() {
+    var allowed = CharacterSet.alphanumerics
+    allowed.insert(charactersIn: "-._~")
+    let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
+    url = URL(string: "https://www.google.com/search?q=\(encoded!)")
   }
   
   private func startLoading() {
     
     //if !UIApplication.shared.canOpenURL(url) {}
-    checkForWebsearch()
+    verifyUrl()
     
     let request = URLRequest(url: url)
     
