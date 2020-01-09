@@ -499,7 +499,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func verifyUrl() {
     
     var allowed = CharacterSet.alphanumerics
-    allowed.insert(charactersIn: "-._~:/?#[]@!$&'()*+,;=") //%
+    allowed.insert(charactersIn: "-._~:/?#[]@!$&'()*+,;=%") //%
     let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
     url = encoded
     showAlert(message: url)
@@ -579,6 +579,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     lb.text = lb.text! + " err: \((error as? NSError)!.code)"
     adjustLabel()
+    url = "https://www.google.com/search?q=\(url)"
+    startLoading()
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
