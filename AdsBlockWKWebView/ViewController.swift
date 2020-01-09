@@ -494,7 +494,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   private func startLoading() {
     
-    if !(UIApplication.sharedApplication().canOpenURL(url)) {
+    if UIApplication.sharedApplication().canOpenURL(url) == false {
       var allowed = CharacterSet.alphanumerics
       allowed.insert(charactersIn: "-._~")
       let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
