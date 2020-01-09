@@ -497,6 +497,17 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   private func verifyUrl() {
+    
+    //let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+    let characterset = CharacterSet.URLPathAllowedCharacterSet
+    //characterset.insert(charactersIn: "-._~")
+    if url.rangeOfCharacter(from: characterset.inverted) != nil {
+      showAlert(message: "has special chars")
+      switchToWebsearch()
+      return
+    }
+    return
+    
     //let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
     let regEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
     let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
