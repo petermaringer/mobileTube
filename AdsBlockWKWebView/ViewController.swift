@@ -533,7 +533,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
     
-    if let err = error as? NSerror {
+    if let err = error as? NSError {
       switch err.code {
         case -999: break
         case 101, -1003:
