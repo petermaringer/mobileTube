@@ -534,13 +534,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         case .cancelled: break
         case .cannotFindHost:
           //var oldurl = (url.absoluteString).replacingOccurrences(of: " ", with: "+")
-          
-          var allowed = CharacterSet.alphanumerics
-          allowed.insert(charactersIn: "-._~")
-          //let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
-          let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
-          //url = URL(string: "https://www.google.com/search?q=\(encoded!)")
-          url = "https://www.google.com/search?q=\(encoded!)"
+          switchToWebsearch()
           startLoading()
         //case .notConnectedToInternet:
         //case .resourceUnavailable:
