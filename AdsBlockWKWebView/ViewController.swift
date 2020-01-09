@@ -497,7 +497,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   private func verifyUrl() {
-    let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
+    //let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
+    let regEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
     let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
     //if !predicate.evaluate(with: url.absoluteString) {
     if !predicate.evaluate(with: url) {
