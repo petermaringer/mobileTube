@@ -547,7 +547,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     if let err = error as? URLError {
       switch err.code {
         case .cancelled: break
-        case .cannotFindHost:
+        //case .cannotFindHost:
           //var oldurl = (url.absoluteString).replacingOccurrences(of: " ", with: "+")
           //switchToWebsearch()
           //startLoading()
