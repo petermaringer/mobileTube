@@ -520,7 +520,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     verifyUrl()
     
     //let request = URLRequest(url: url)
-    let request = URLRequest(url: URL(string: url))
+    let request = URLRequest(url: URL(string: url)!)
     
     //request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
     //request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
@@ -537,7 +537,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           
           var allowed = CharacterSet.alphanumerics
           allowed.insert(charactersIn: "-._~")
-          let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
+          //let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
+          let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
           //url = URL(string: "https://www.google.com/search?q=\(encoded!)")
           url = "https://www.google.com/search?q=\(encoded!)"
           startLoading()
