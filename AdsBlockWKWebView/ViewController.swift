@@ -537,11 +537,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       switch err.code {
         case -999: break
         case 101, -1003:
-          break
+          showAlert(message: "2Error: \(err._code) \(err.localizedDescription)")
         default:
           showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
       }
-      lb.text = lb.text! + " err: \(err._code)"
+      lb.text = lb.text! + " err: \(err.code)"
       adjustLabel()
     }
     
