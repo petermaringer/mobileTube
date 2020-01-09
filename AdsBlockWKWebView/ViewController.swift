@@ -499,7 +499,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func verifyUrl() {
     
     var allowed = CharacterSet.alphanumerics
-    allowed.insert(charactersIn: ":/.-_~")
+    allowed.insert(charactersIn: "-._~:/?#[]@!$&'()*+,;=") //%
     let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
     url = encoded
     showAlert(message: url)
@@ -567,8 +567,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
       }
       
-      lb.text = lb.text! + " err: \(err._code)"
-      adjustLabel()
+      //lb.text = lb.text! + " err: \(err._code)"
+      //adjustLabel()
       
       //String(describing: err.code)
       //for (key,value) in err.code {
