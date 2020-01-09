@@ -577,7 +577,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //}
       //adjustLabel()
     }
-    lb.text = lb.text! + " err: \(error)"
+    lb.text = lb.text! + " err: \(error.code)"
     adjustLabel()
   }
   
