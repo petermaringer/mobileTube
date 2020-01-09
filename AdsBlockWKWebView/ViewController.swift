@@ -496,36 +496,29 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   }
   
-  private func verifyUrl() {
-    
+  //url = url.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+  //let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+  //var characterset = CharacterSet.urlPathAllowed
+  //characterset.insert(charactersIn: "-._~")
+  //if url.rangeOfCharacter(from: characterset.inverted) != nil {}
+  //let characterset = CharacterSet(charactersIn: " ")
+  //if url.rangeOfCharacter(from: characterset) != nil {
+  //showAlert(message: "has special chars")
+  //}
+  //let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
+  //let regEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
+  //let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
+  //if !predicate.evaluate(with: url) {
+  //switchToWebsearch()
+  //}
+  
+  
+  private func encodeUrl() {
     var allowed = CharacterSet.alphanumerics
-    allowed.insert(charactersIn: "-._~:/?#[]@!$&'()*+,;=%") //%
+    allowed.insert(charactersIn: "-._~:/?#[]@!$&'()*+,;=%")
     let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
     url = encoded
     showAlert(message: url)
-    //url = url.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-    return
-    
-    //let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-    //var characterset = CharacterSet.urlPathAllowed
-    //characterset.insert(charactersIn: "-._~")
-    //if url.rangeOfCharacter(from: characterset.inverted) != nil {
-    
-    let characterset = CharacterSet(charactersIn: " ")
-    if url.rangeOfCharacter(from: characterset) != nil {
-      showAlert(message: "has special chars")
-      switchToWebsearch()
-      return
-    }
-    return
-    
-    //let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
-    let regEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
-    let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
-    //if !predicate.evaluate(with: url.absoluteString) {
-    if !predicate.evaluate(with: url) {
-      switchToWebsearch()
-    }
   }
   
   private func switchToWebsearch() {
@@ -540,7 +533,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func startLoading() {
     
     //if !UIApplication.shared.canOpenURL(url) {}
-    verifyUrl()
+    encodeUrl()
     
     //let request = URLRequest(url: url)
     let request = URLRequest(url: URL(string: url)!)
@@ -577,9 +570,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //}
       //adjustLabel()
     }
-    lb.text = lb.text! + " err: \((error as? NSError)!.code)"
+    lb.text = lb.text! + " err: \((error as NSError)!.code)"
     adjustLabel()
-    url = "https://www.google.com/search?q=\(url)"
+    url = "https://www.google.com/search?q=\(url!)"
     startLoading()
   }
   
