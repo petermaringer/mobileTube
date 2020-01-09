@@ -493,6 +493,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   private func startLoading() {
+    
+    if !(UIApplication.sharedApplication().canOpenURL(url)) {
+      var allowed = CharacterSet.alphanumerics
+      allowed.insert(charactersIn: "-._~")
+      let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
+      url = URL(string: "https://www.google.com/search?q=\(encoded!)")
+    }
+    
     let request = URLRequest(url: url)
     
     //request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
@@ -506,8 +514,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       switch err.code {
         case .cancelled: break
         case .cannotFindHost:
-          var oldurl = (url.absoluteString).replacingOccurrences(of: " ", with: "+")
-          url = URL(string: "https://www.google.com/search?q=" + oldurl)
+          //var oldurl = (url.absoluteString).replacingOccurrences(of: " ", with: "+")
+          
+          var allowed = CharacterSet.alphanumerics
+          allowed.insert(charactersIn: "-._~")
+          let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
+          url = URL(string: "https://www.google.com/search?q=\(encoded!)")
           startLoading()
         //case .notConnectedToInternet:
         //case .resourceUnavailable:
