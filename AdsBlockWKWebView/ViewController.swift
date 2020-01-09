@@ -577,6 +577,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //}
       //adjustLabel()
     }
+    lb.text = lb.text! + " err: \(error)"
+    adjustLabel()
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
