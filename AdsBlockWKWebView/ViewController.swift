@@ -499,7 +499,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func verifyUrl() {
     
     //let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-    let characterset = CharacterSet.URLPathAllowedCharacterSet
+    let characterset = CharacterSet.urlPathAllowed
     //characterset.insert(charactersIn: "-._~")
     if url.rangeOfCharacter(from: characterset.inverted) != nil {
       showAlert(message: "has special chars")
