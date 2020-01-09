@@ -499,9 +499,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func verifyUrl() {
     
     //let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-    let characterset = CharacterSet.urlPathAllowed
+    //var characterset = CharacterSet.urlPathAllowed
     //characterset.insert(charactersIn: "-._~")
-    if url.rangeOfCharacter(from: characterset.inverted) != nil {
+    //if url.rangeOfCharacter(from: characterset.inverted) != nil {
+    
+    let characterset = CharacterSet(charactersIn: " ")
+    if url.rangeOfCharacter(from: characterset) != nil {
       showAlert(message: "has special chars")
       switchToWebsearch()
       return
@@ -546,8 +549,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         case .cancelled: break
         case .cannotFindHost:
           //var oldurl = (url.absoluteString).replacingOccurrences(of: " ", with: "+")
-          switchToWebsearch()
-          startLoading()
+          //switchToWebsearch()
+          //startLoading()
         //case .notConnectedToInternet:
         //case .resourceUnavailable:
         //case .timedOut:
