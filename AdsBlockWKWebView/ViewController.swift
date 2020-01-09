@@ -511,6 +511,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //if !predicate.evaluate(with: url) {
   //switchToWebsearch()
   //}
+  //if !UIApplication.shared.canOpenURL(url) {}
+  //let request = URLRequest(url: url)
+  //request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
+  //request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
   
   
   private func encodeUrl() {
@@ -518,36 +522,32 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     allowed.insert(charactersIn: "-._~:/?#[]@!$&'()*+,;=%")
     let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
     url = encoded
-    showAlert(message: url)
-  }
-  
-  private func switchToWebsearch() {
-    var allowed = CharacterSet.alphanumerics
-    allowed.insert(charactersIn: "-._~")
-    //let encoded = (url.absoluteString).addingPercentEncoding(withAllowedCharacters: allowed)
-    let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
-    //url = URL(string: "https://www.google.com/search?q=\(encoded!)")
-    url = "https://www.google.com/search?q=\(encoded!)"
+    //showAlert(message: url)
   }
   
   private func startLoading() {
-    
-    //if !UIApplication.shared.canOpenURL(url) {}
     encodeUrl()
-    
-    //let request = URLRequest(url: url)
     let request = URLRequest(url: URL(string: url)!)
-    
-    //request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
-    //request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-    
     webview.load(request)
   }
   
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-    if let err = error as? URLError {
+    
+    if let err = error as? NSerror {
       switch err.code {
-        case .cancelled: break
+        case -999: break
+        case 101, -1003:
+          break
+        default:
+          showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
+      }
+      lb.text = lb.text! + " err: \(err._code)"
+      adjustLabel()
+    }
+    
+    //if let err = error as? URLError {
+      //switch err.code {
+        //case .cancelled: break
         //case .cannotFindHost:
           //var oldurl = (url.absoluteString).replacingOccurrences(of: " ", with: "+")
           //switchToWebsearch()
@@ -555,10 +555,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //case .notConnectedToInternet:
         //case .resourceUnavailable:
         //case .timedOut:
-        default:
+        //default:
           //break
-          showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
-      }
+          //showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
+      //}
       
       //lb.text = lb.text! + " err: \(err._code)"
       //adjustLabel()
@@ -569,11 +569,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //lb.text = lb.text! + " \(key)"
       //}
       //adjustLabel()
-    }
-    lb.text = lb.text! + " err: \((error as NSError).code)"
-    adjustLabel()
-    url = "https://www.google.com/search?q=\(url!)"
-    startLoading()
+    //}
+    
+    //lb.text = lb.text! + " err: \((error as NSError).code)"
+    //adjustLabel()
+    //url = "https://www.google.com/search?q=\(url!)"
+    //startLoading()
+    
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
