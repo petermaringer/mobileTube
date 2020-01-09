@@ -570,7 +570,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //}
       //adjustLabel()
     }
-    lb.text = lb.text! + " err: \((error as NSError)!.code)"
+    lb.text = lb.text! + " err: \((error as NSError).code)"
     adjustLabel()
     url = "https://www.google.com/search?q=\(url!)"
     startLoading()
