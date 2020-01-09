@@ -492,7 +492,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   }
   
-  private func checkForWebsearch(url: url) {
+  private func checkForWebsearch() {
     
     let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
     let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
@@ -508,7 +508,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func startLoading() {
     
     //if !UIApplication.shared.canOpenURL(url) {}
-    checkForWebsearch(url: url)
+    checkForWebsearch()
     
     let request = URLRequest(url: url)
     
