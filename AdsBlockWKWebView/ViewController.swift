@@ -556,12 +556,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       lb.text = lb.text! + " err: \(err.code)"
       adjustLabel()
     }
-    
-      for (key,value) in error {
-        lb.text = lb.text! + "\(key):\(value)"
-      }
-      showAlert(message: lb.text!)
-    
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
