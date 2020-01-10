@@ -545,14 +545,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       urlobj = URL(string: "https://" + url)
     }
     
-    let request = URLRequest(url: urlobj)
+    let request = URLRequest(url: urlobj!)
     
     //let request = URLRequest(url: URL(string: url)!)
     webview.load(request)
   }
   
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-    if let err = error as NSError {
+    //if let err = error as NSError {
+      let err = error as NSError
       switch err.code {
         case -999: break
         case 101, -1003:
@@ -563,7 +564,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       }
       lb.text = lb.text! + " err: \(err.code)"
       adjustLabel()
-    }
+    //}
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
