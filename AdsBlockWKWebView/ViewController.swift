@@ -72,10 +72,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           let updatedText = text.replacingCharacters(in: textRange, with: string)
           array.removeAll()
           origArray.forEach { item in
-            //if item.contains(updatedText) {
             if item.lowercased().contains(updatedText.lowercased()) {
               array.append(item)
             }
+          }
+          if updatedText == "&showall" {
+            array = origArray
           }
           if !(array.isEmpty) {
             tableView.reloadData()
