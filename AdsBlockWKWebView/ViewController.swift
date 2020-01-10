@@ -197,9 +197,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     switch textField {
       case urlField:
         textField.endEditing(true)
-        if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://") || textField.text!.isEmpty) {
-          textField.text = "https://" + textField.text!
-        }
+        //if !(textField.text!.hasPrefix("https://") || textField.text!.hasPrefix("http://") || textField.text!.isEmpty) {
+          //textField.text = "https://" + textField.text!
+        //}
         if !(textField.text!.isEmpty) {
           origArray = origArray.filter{$0 != textField.text!}
           origArray.insert(textField.text!, at: 0)
@@ -529,22 +529,30 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //"err: \((error as NSError).code)"
   
   
-  private func encodeUrl() {
+  //private func encodeUrl() {}
+  
+  private func startLoading() {
+    //encodeUrl()
+    
     var allowed = CharacterSet.alphanumerics
     allowed.insert(charactersIn: "-._~:/?#[]@!$&'()*+,;=%")
     let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
     url = encoded
     //showAlert(message: url)
-  }
-  
-  private func startLoading() {
-    encodeUrl()
-    let request = URLRequest(url: URL(string: url)!)
+    
+    var urlobj = URL(string: url)
+    if !(url.hasPrefix("https://") || url.hasPrefix("http://")) {
+      urlobj = URL(string: "https://" + url)
+    }
+    
+    let request = URLRequest(url: urlobj)
+    
+    //let request = URLRequest(url: URL(string: url)!)
     webview.load(request)
   }
   
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-    if let err = error as? NSError {
+    if let err = error as NSError {
       switch err.code {
         case -999: break
         case 101, -1003:
