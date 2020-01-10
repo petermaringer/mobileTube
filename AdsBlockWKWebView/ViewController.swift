@@ -72,7 +72,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
           let updatedText = text.replacingCharacters(in: textRange, with: string)
           array.removeAll()
           origArray.forEach { item in
-            if item.contains(updatedText) {
+            //if item.contains(updatedText) {
+            if item.lowercased().contains(updatedText.lowercased()) {
               array.append(item)
             }
           }
@@ -534,8 +535,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func startLoading() {
     var allowed = CharacterSet.alphanumerics
     allowed.insert(charactersIn: "-._~:/?#[]@!$&'()*+,;=%")
-    //let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
-    //url = encoded
     url = url.addingPercentEncoding(withAllowedCharacters: allowed)
     //showAlert(message: url)
     var urlobj = URL(string: url)
