@@ -515,6 +515,18 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //let request = URLRequest(url: url)
   //request.addValue(userAgent, forHTTPHeaderField: "User-Agent")
   //request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+  //var oldurl = url.replacingOccurrences(of: " ", with: "+")
+  //String(describing: err.code)
+  //if let err = error as? URLError {
+  //lb.text = lb.text! + "err: \(err._code)"
+  //switch err.code {
+  //case .cancelled:
+  //case .cannotFindHost:
+  //case .notConnectedToInternet:
+  //case .resourceUnavailable:
+  //case .timedOut:
+  //}}
+  //"err: \((error as NSError).code)"
   
   
   private func encodeUrl() {
@@ -532,51 +544,23 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }
   
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-    
     if let err = error as? NSError {
       switch err.code {
         case -999: break
         case 101, -1003:
-          showAlert(message: "2Error: \(err.code) \(err.localizedDescription)")
           url = "https://www.google.com/search?q=\(url!)"
           startLoading()
         default:
-          showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
+          showAlert(message: "Error: \(err.code) \(err.localizedDescription)")
       }
       lb.text = lb.text! + " err: \(err.code)"
       adjustLabel()
     }
     
-    //if let err = error as? URLError {
-      //switch err.code {
-        //case .cancelled: break
-        //case .cannotFindHost:
-          //var oldurl = (url.absoluteString).replacingOccurrences(of: " ", with: "+")
-          //switchToWebsearch()
-          //startLoading()
-        //case .notConnectedToInternet:
-        //case .resourceUnavailable:
-        //case .timedOut:
-        //default:
-          //break
-          //showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
-      //}
-      
-      //lb.text = lb.text! + " err: \(err._code)"
-      //adjustLabel()
-      
-      //String(describing: err.code)
-      //for (key,value) in err.code {
-        //lb.text = lb.text! + "\(key):\(value)"
-        //lb.text = lb.text! + " \(key)"
-      //}
-      //adjustLabel()
-    //}
-    
-    //lb.text = lb.text! + " err: \((error as NSError).code)"
-    //adjustLabel()
-    //url = "https://www.google.com/search?q=\(url!)"
-    //startLoading()
+      for (key,value) in error {
+        lb.text = lb.text! + "\(key):\(value)"
+      }
+      showAlert(message: lb.text!)
     
   }
   
