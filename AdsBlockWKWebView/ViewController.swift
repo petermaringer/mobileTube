@@ -537,7 +537,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       switch err.code {
         case -999: break
         case 101, -1003:
-          showAlert(message: "2Error: \(err._code) \(err.localizedDescription)")
+          showAlert(message: "2Error: \(err.code) \(err.localizedDescription)")
+          url = "https://www.google.com/search?q=\(url!)"
+          startLoading()
         default:
           showAlert(message: "Error: \(err._code) \(err.localizedDescription)")
       }
