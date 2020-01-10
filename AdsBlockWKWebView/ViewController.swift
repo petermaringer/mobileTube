@@ -541,13 +541,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //showAlert(message: url)
     var urlobj = URL(string: url)
     if !(url.hasPrefix("https://") || url.hasPrefix("http://")) {
-      urlobj = URL(string: "https://" + url)
+      urlobj = URL(string: "http://" + url)
     }
     let request = URLRequest(url: urlobj!)
     webview.load(request)
   }
   
-  func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+  func webView(_ webview: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
     let err = error as NSError
     switch err.code {
       case -999: break
@@ -564,6 +564,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
     urlField.text = webview.url!.absoluteString
     //showAlert(message: defaultUserAgent)
+    
+    let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes');document.getElementsByTagName('head')[0].appendChild(meta);"
+    webview.evaluateJavaScript(javascript, completionHandler: nil)
+    
   }
   
   
