@@ -527,44 +527,37 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //case .timedOut:
   //}}
   //"err: \((error as NSError).code)"
-  
-  
+  //if let err = error as NSError {}
   //private func encodeUrl() {}
   
+  
   private func startLoading() {
-    //encodeUrl()
-    
     var allowed = CharacterSet.alphanumerics
     allowed.insert(charactersIn: "-._~:/?#[]@!$&'()*+,;=%")
-    let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
-    url = encoded
+    //let encoded = url.addingPercentEncoding(withAllowedCharacters: allowed)
+    //url = encoded
+    url = url.addingPercentEncoding(withAllowedCharacters: allowed)
     //showAlert(message: url)
-    
     var urlobj = URL(string: url)
     if !(url.hasPrefix("https://") || url.hasPrefix("http://")) {
       urlobj = URL(string: "https://" + url)
     }
-    
     let request = URLRequest(url: urlobj!)
-    
-    //let request = URLRequest(url: URL(string: url)!)
     webview.load(request)
   }
   
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-    //if let err = error as NSError {
-      let err = error as NSError
-      switch err.code {
-        case -999: break
-        case 101, -1003:
-          url = "https://www.google.com/search?q=\(url!)"
-          startLoading()
-        default:
-          showAlert(message: "Error: \(err.code) \(err.localizedDescription)")
-      }
-      lb.text = lb.text! + " err: \(err.code)"
-      adjustLabel()
-    //}
+    let err = error as NSError
+    switch err.code {
+      case -999: break
+      case 101, -1003:
+        url = "https://www.google.com/search?q=\(url!)"
+        startLoading()
+      default:
+        showAlert(message: "Error: \(err.code) \(err.localizedDescription)")
+    }
+    lb.text = lb.text! + " err: \(err.code)"
+    adjustLabel()
   }
   
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
