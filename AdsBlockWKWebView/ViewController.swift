@@ -597,7 +597,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     let urls = (self.webview.backForwardList.backList + [currentItem] + self.webview.backForwardList.forwardList).compactMap { $0.url }
     let currentIndexButLast = self.webview.backForwardList.forwardList.count
-    //let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
     
     bflist = "bflist:"
     urls.forEach { url in
@@ -606,6 +605,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     bflist = bflist + " \(currentIndexButLast)"
     showAlert(message: "\(bflist)")
+    
+    class BackforwardHistory {
+      var urls: Array!
+      var currentIndexButLast: Int32!
+    }
+    
+    let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
     //NSKeyedArchiver.archiveRootObject(backforwardHistory, toFile: filePath)
     
   }
