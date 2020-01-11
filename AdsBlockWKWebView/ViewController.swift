@@ -607,7 +607,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     showAlert(message: "\(bflist)")
     
     class BackforwardHistory {
-      var urls: Array!
+      var urls: Array<URL> = []
       var currentIndexButLast: Int32!
     }
     
