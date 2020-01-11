@@ -575,8 +575,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //let firstItem = webview.backForwardList.item(at: -historySize)
     //webview.go(to: firstItem!)
     
-    //var bflist = "bflist:"
+    var bflist = "bflist:"
     let historySize = webview.backForwardList.backList.count
+    if historySize != 0 {
+      for index in -historySize..<0 {
+        bflist = bflist + " \(index)/\(historySize)"
+      }
+    }
+    
     //for index in 1...historySize {
       //bflist = bflist + " " + webview.backForwardList.item(at: -index)!.url.absoluteString
       //bflist = bflist + " \(index)/\(historySize)"
@@ -587,8 +593,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //bfarray.forEach { item in
       //bflist = bflist + " \(item)"
     //}
-    //showAlert(message: bflist)
-    showAlert(message: "\(historySize)")
+    showAlert(message: bflist)
+    //showAlert(message: "\(historySize)")
     
   }
   
