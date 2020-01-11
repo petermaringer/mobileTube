@@ -607,13 +607,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     showAlert(message: "\(bflist)")
     
     struct BackforwardHistory {
-      //let urlss: Array<URL> = []
-      var urlss: [URL] = []
-      var currentIndexButLast: Int32
+      let urls: [URL] = []
+      let currentIndexButLast: Int32
     }
     
-    let backforwardHistory = BackforwardHistory(urlss: urls, currentIndexButLast: Int32(currentIndexButLast))
-    //NSKeyedArchiver.archiveRootObject(backforwardHistory, toFile: filePath)
+    let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
+    
+    let appSupportDir = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    let filePath = appSupportDir.appendingPathComponent("bfhist.txt").path
+    NSKeyedArchiver.archiveRootObject(backforwardHistory, toFile: filePath)
     
   }
   
