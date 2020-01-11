@@ -569,8 +569,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview.evaluateJavaScript(javascript, completionHandler: nil)
     
     var bflist = "bflist: "
-    webview.backForwardList.forEach { item in
-      bflist = bflist + item.title
+    //webview.backForwardList.forEach { item in
+    for (key, value) in webview.backForwardList {
+      bflist = bflist + "\(key)"
     }
     showAlert(message: bflist)
     
