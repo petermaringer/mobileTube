@@ -571,6 +571,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview.evaluateJavaScript(javascript, completionHandler: nil)
     
     //for item in webview.backForwardList {}
+    //for (item: WKBackForwardListItem) in webview.backForwardList.backList {}
+    
     //let historySize = webview.backForwardList.backList.count
     //let firstItem = webview.backForwardList.item(at: -historySize)
     //webview.go(to: firstItem!)
@@ -581,25 +583,23 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       for index in -historySize..<0 {
         bflist = bflist + " \(index)/\(historySize)/" + webview.backForwardList.item(at: index)!.url.absoluteString
       }
-      
-      for (item: WKBackForwardListItem) in webview.backForwardList.backList {
-        bflist = bflist + " hi"
-      }
-      
     }
-    
-    //for index in 1...historySize {
-      //bflist = bflist + " " + webview.backForwardList.item(at: -index)!.url.absoluteString
-      //bflist = bflist + " \(index)/\(historySize)"
-    //}
     
     //var bflist = "bflist:"
     bfarray.append(webview.url!.absoluteString)
     //bfarray.forEach { item in
       //bflist = bflist + " \(item)"
     //}
-    showAlert(message: bflist)
-    //showAlert(message: "\(historySize)")
+    //showAlert(message: bflist)
+    
+    guard let currentItem = self.webview.backForwardList.currentItem else {
+    return
+    }
+    let urls = (self.webview.backForwardList.backList + [currentItem] + self.webview.backForwardList.forwardList).compactMap { $0.url }
+    let currentIndexButLast = self.webview.backForwardList.forwardList.count
+    let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
+    showAlert(message: "\(urls)")
+    //NSKeyedArchiver.archiveRootObject(backforwardHistory, toFile: filePath)
     
   }
   
