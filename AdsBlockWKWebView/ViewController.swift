@@ -604,6 +604,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //self.webview.load(URLRequest(url: url))
       bflist = bflist + " \(url.absoluteString)" 
     }
+    bflist = bflist + " \(currentIndexButLast)"
     showAlert(message: "\(bflist)")
     //NSKeyedArchiver.archiveRootObject(backforwardHistory, toFile: filePath)
     
