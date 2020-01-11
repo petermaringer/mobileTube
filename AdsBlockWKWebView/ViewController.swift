@@ -608,7 +608,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     struct BackforwardHistory {
       //let urlss: Array<URL> = []
-      var urlss: Array<AnyObject> = []
+      var urlss: [URL] = []
       var currentIndexButLast: Int
     }
     
