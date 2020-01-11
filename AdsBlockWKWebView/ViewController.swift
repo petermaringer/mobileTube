@@ -571,11 +571,21 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview.evaluateJavaScript(javascript, completionHandler: nil)
     
     //for item in webview.backForwardList {}
+    //let historySize = webview.backForwardList.backList.count
+    //let firstItem = webview.backForwardList.item(at: -historySize)
+    //webview.go(to: firstItem!)
+    
     var bflist = "bflist:"
-    bfarray.append(webview.url!.absoluteString)
-    bfarray.forEach { item in
-      bflist = bflist + " \(item)"
+    let historySize = webview.backForwardList.backList.count
+    for index in 1...historySize {
+      bflist = bflist + " " + webview.backForwardList.item(at: -index).url.absoluteString
     }
+    
+    //var bflist = "bflist:"
+    bfarray.append(webview.url!.absoluteString)
+    //bfarray.forEach { item in
+      //bflist = bflist + " \(item)"
+    //}
     showAlert(message: bflist)
     
   }
