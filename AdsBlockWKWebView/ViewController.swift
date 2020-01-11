@@ -578,7 +578,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     var bflist = "bflist:"
     let historySize = webview.backForwardList.backList.count
     for index in 1...historySize {
-      bflist = bflist + " " + webview.backForwardList.item(at: -index)!.url.absoluteString
+      //bflist = bflist + " " + webview.backForwardList.item(at: -index)!.url.absoluteString
+      bflist = bflist + " \(index)/\(historySize)"
     }
     
     //var bflist = "bflist:"
