@@ -607,11 +607,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     showAlert(message: "\(bflist)")
     
     struct BackforwardHistory {
-      let urls: Array<URL> = []
-      let currentIndexButLast: Int32!
+      let urlss: Array<URL>()
+      let currentIndexButLast: Int32
     }
     
-    let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
+    let backforwardHistory = BackforwardHistory(urlss: urls, currentIndexButLast: Int32(currentIndexButLast))
     //NSKeyedArchiver.archiveRootObject(backforwardHistory, toFile: filePath)
     
   }
