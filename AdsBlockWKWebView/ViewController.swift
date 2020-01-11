@@ -613,9 +613,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
     
-    let appSupportDir = FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    do {
+    let appSupportDir = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     let filePath = appSupportDir.appendingPathComponent("bfhist.txt").path
     NSKeyedArchiver.archiveRootObject(backforwardHistory, toFile: filePath)
+    }
+    catch {}
     
   }
   
