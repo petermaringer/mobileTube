@@ -27,6 +27,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var url: String!
   var defaultUserAgent: String = "default"
   
+  var bfarray: Array<String> = []
+  
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
   var insetL: CGFloat = 0
@@ -568,10 +570,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes');document.getElementsByTagName('head')[0].appendChild(meta);"
     webview.evaluateJavaScript(javascript, completionHandler: nil)
     
-    var bflist = "bflist: "
-    //webview.backForwardList.forEach { item in
-    for item in webview.backForwardList {
-      bflist = bflist + "\(item)"
+    //for item in webview.backForwardList {}
+    var bflist = "bflist:"
+    bfarray.append(webview.url!.absoluteString)
+    bfarray.forEach { item in
+      bflist = bflist + " \(item)"
     }
     showAlert(message: bflist)
     
