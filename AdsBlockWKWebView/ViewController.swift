@@ -609,7 +609,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     struct BackforwardHistory {
       //let urlss: Array<URL> = []
       var urlss: [URL] = []
-      var currentIndexButLast: Int
+      var currentIndexButLast: Int32
     }
     
     let backforwardHistory = BackforwardHistory(urlss: urls, currentIndexButLast: Int32(currentIndexButLast))
