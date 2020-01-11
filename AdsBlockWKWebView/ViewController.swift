@@ -606,9 +606,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     bflist = bflist + " \(currentIndexButLast)"
     showAlert(message: "\(bflist)")
     
-    class BackforwardHistory {
-      var urls: Array<URL> = []
-      var currentIndexButLast: Int32!
+    struct BackforwardHistory {
+      let urls: Array<URL> = []
+      let currentIndexButLast: Int32!
     }
     
     let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
