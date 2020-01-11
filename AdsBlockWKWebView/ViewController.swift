@@ -570,8 +570,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     var bflist = "bflist: "
     //webview.backForwardList.forEach { item in
-    for (key, value) in webview.backForwardList {
-      bflist = bflist + "\(key)"
+    for item in webview.backForwardList {
+      bflist = bflist + "\(item)"
     }
     showAlert(message: bflist)
     
