@@ -579,7 +579,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     let historySize = webview.backForwardList.backList.count
     if historySize != 0 {
       for index in -historySize..<0 {
-        bflist = bflist + " \(index)/\(historySize)"
+        bflist = bflist + " \(index)/\(historySize)/" + webview.backForwardList.item(at: index)!.url.absoluteString
       }
     }
     
