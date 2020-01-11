@@ -582,7 +582,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         bflist = bflist + " \(index)/\(historySize)/" + webview.backForwardList.item(at: index)!.url.absoluteString
       }
       
-      for webview.backForwardList.backList { item in
+      for (item: WKBackForwardListItem) in webview.backForwardList.backList {
         bflist = bflist + " hi"
       }
       
