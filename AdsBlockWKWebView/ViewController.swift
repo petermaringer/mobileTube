@@ -568,6 +568,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes');document.getElementsByTagName('head')[0].appendChild(meta);"
     webview.evaluateJavaScript(javascript, completionHandler: nil)
     
+    var bflist = "bflist: "
+    webview.backForwardList.forEach { item in
+      bflist = bflist + item.title
+    }
+    showAlert(message: bflist)
+    
   }
   
   
