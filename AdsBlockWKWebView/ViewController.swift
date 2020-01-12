@@ -465,7 +465,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     var bflist = "bflist:"
     urls.forEach { url in
       //self.webview.load(URLRequest(url: url))
-      webview.load(URLRequest(url: URL(string: url)!))
+      self.webview.load(URLRequest(url: URL(string: url)!))
       bflist = bflist + " " + url
     }
     bflist = bflist + " \(currentIndexButLast)"
