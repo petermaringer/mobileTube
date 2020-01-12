@@ -468,7 +468,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       bflist = bflist + " " + url
     }
     bflist = bflist + " \(currentIndexButLast)"
-    showAlert(message: "\(bflist)")
+    //showAlert(message: "\(bflist)")
+    lb.text = lb.text! + bflist
     }
     
     
