@@ -602,8 +602,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     UserDefaults.standard.set(urls, forKey: "urls")
     UserDefaults.standard.set(currentIndexButLast, forKey: "currentIndexButLast")
     
-    var urlss: [URL] = []
-    urlss = UserDefaults.standard.array(forKey: "urls") ?? [URL]()
+    //var urlss: [URL] = []
+    //urlss = UserDefaults.standard.array(forKey: "urls") ?? [URL]()
     //let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
     //.stringArray(forKey: "urls") ?? [URL]()
     //let currentIndexButLasts = UserDefaults.standard.array(forKey: "currentIndexButLast") as? [Int] ?? [Int]()
