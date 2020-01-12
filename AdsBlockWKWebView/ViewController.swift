@@ -465,9 +465,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     var bflist = "bflist:"
     urls.forEach { url in
       //self.webview.load(URLRequest(url: url))
-      DispatchQueue.main.async {
+      //DispatchQueue.main.async {
       self.webview.load(URLRequest(url: URL(string: url)!))
-      }
+      //}
       bflist = bflist + " " + url
     }
     bflist = bflist + " \(currentIndexButLast)"
@@ -618,14 +618,18 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     let urls = (self.webview.backForwardList.backList + [currentItem] + self.webview.backForwardList.forwardList).compactMap { $0.url.absoluteString }
     let currentIndexButLast = self.webview.backForwardList.forwardList.count
     
-    
     UserDefaults.standard.set(urls, forKey: "urls")
     UserDefaults.standard.set(currentIndexButLast, forKey: "currentIndexButLast")
     
+    bflist = "bflist:"
+    urls.forEach { url in
+      bflist = bflist + " " + url
+    }
+    bflist = bflist + " \(currentIndexButLast)"
+    showAlert(message: "\(bflist)")
+    
     //let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
     //let currentIndexButLasts = UserDefaults.standard.array(forKey: "currentIndexButLast") as? [Int] ?? [Int]()
-    
-    
     
     //struct BackforwardHistory {
       //var urls: [URL] = []
