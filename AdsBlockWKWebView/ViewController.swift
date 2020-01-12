@@ -602,20 +602,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     UserDefaults.standard.set(urls, forKey: "urls")
     UserDefaults.standard.set(currentIndexButLast, forKey: "currentIndexButLast")
     
-    //var urlss: [URL] = []
-    //urlss = UserDefaults.standard.array(forKey: "urls") ?? [URL]()
     //let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
-    //.stringArray(forKey: "urls") ?? [URL]()
     //let currentIndexButLasts = UserDefaults.standard.array(forKey: "currentIndexButLast") as? [Int] ?? [Int]()
+    
+    let urlss = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
+    let currentIndexButLasts = UserDefaults.standard.integer(forKey: "currentIndexButLast")
     
     
     bflist = "bflist:"
-    urls.forEach { url in
+    urlss.forEach { url in
       //self.webview.load(URLRequest(url: url))
       //bflist = bflist + " \(url.absoluteString)"
-      bflist = bflist + url
+      bflist = bflist + " " + url
     }
-    bflist = bflist + " \(currentIndexButLast)"
+    bflist = bflist + " \(currentIndexButLasts)"
     showAlert(message: "\(bflist)")
     
     
