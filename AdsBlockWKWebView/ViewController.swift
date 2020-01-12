@@ -595,11 +595,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     guard let currentItem = self.webview.backForwardList.currentItem else {
     return
     }
-    let urls = (self.webview.backForwardList.backList + [currentItem] + self.webview.backForwardList.forwardList).compactMap { $0.url }
+    let urls = (self.webview.backForwardList.backList + [currentItem] + self.webview.backForwardList.forwardList).compactMap { $0.url.absoluteString }
     let currentIndexButLast = self.webview.backForwardList.forwardList.count
     
     
-    //UserDefaults.standard.set(urls, forKey: "urls")
+    UserDefaults.standard.set(urls, forKey: "urls")
     UserDefaults.standard.set(currentIndexButLast, forKey: "currentIndexButLast")
     
     //var urlss: [URL] = []
@@ -612,17 +612,18 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     bflist = "bflist:"
     urls.forEach { url in
       //self.webview.load(URLRequest(url: url))
-      bflist = bflist + " \(url.absoluteString)" 
+      //bflist = bflist + " \(url.absoluteString)"
+      bflist = bflist + url
     }
     bflist = bflist + " \(currentIndexButLast)"
     showAlert(message: "\(bflist)")
     
     
-    struct BackforwardHistory {
-      var urls: [URL] = []
-      var currentIndexButLast: Int32
-    }
-    let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
+    //struct BackforwardHistory {
+      //var urls: [URL] = []
+      //var currentIndexButLast: Int32
+    //}
+    //let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
     
     //do {
     //let appSupportDir = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
