@@ -465,12 +465,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     var bflist = "bflist:"
     urls.forEach { url in
       //self.webview.load(URLRequest(url: url))
-      webview.load(URLRequest(url: URL(string: url)))
+      webview.load(URLRequest(url: URL(string: url)!))
       bflist = bflist + " " + url
     }
     bflist = bflist + " \(currentIndexButLast)"
     DispatchQueue.main.async {
-      showAlert(message: "\(bflist)")
+      self.showAlert(message: "\(bflist)")
     }
     lb.text = lb.text! + bflist
     }
