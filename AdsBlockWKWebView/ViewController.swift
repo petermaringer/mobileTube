@@ -458,6 +458,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         //tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
+        
+        if (UserDefaults.standard.object(forKey: "urls") != nil) {
+        let urls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
+    let currentIndexButLast = UserDefaults.standard.integer(forKey: "currentIndexButLast")
+    var bflist = "bflist:"
+    urls.forEach { url in
+      //self.webview.load(URLRequest(url: url))
+      bflist = bflist + " " + url
+    }
+    bflist = bflist + " \(currentIndexButLast)"
+    showAlert(message: "\(bflist)")
+    }
+    
+    
         //url = URL(string: "https://www.google.com")
         url = "https://www.google.com"
         
@@ -605,18 +619,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
     //let currentIndexButLasts = UserDefaults.standard.array(forKey: "currentIndexButLast") as? [Int] ?? [Int]()
     
-    let urlss = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
-    let currentIndexButLasts = UserDefaults.standard.integer(forKey: "currentIndexButLast")
-    
-    
-    bflist = "bflist:"
-    urlss.forEach { url in
-      //self.webview.load(URLRequest(url: url))
-      //bflist = bflist + " \(url.absoluteString)"
-      bflist = bflist + " " + url
-    }
-    bflist = bflist + " \(currentIndexButLasts)"
-    showAlert(message: "\(bflist)")
     
     
     //struct BackforwardHistory {
