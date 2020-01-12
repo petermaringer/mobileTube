@@ -598,27 +598,36 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     let urls = (self.webview.backForwardList.backList + [currentItem] + self.webview.backForwardList.forwardList).compactMap { $0.url }
     let currentIndexButLast = self.webview.backForwardList.forwardList.count
     
+    
+    UserDefaults.standard.set(urls, forKey: "urls")
+    UserDefaults.standard.set(currentIndexButLast, forKey: "currentIndexButLast")
+    
+    let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
+    //.stringArray(forKey: "urls") ?? [URL]()
+    let currentIndexButLasts = UserDefaults.standard.array(forKey: "currentIndexButLast") as? [Int] ?? [Int]()
+    
+    
     bflist = "bflist:"
-    urls.forEach { url in
+    urlss.forEach { url in
       //self.webview.load(URLRequest(url: url))
       bflist = bflist + " \(url.absoluteString)" 
     }
-    bflist = bflist + " \(currentIndexButLast)"
+    bflist = bflist + " \(currentIndexButLasts)"
     showAlert(message: "\(bflist)")
+    
     
     struct BackforwardHistory {
       var urls: [URL] = []
       var currentIndexButLast: Int32
     }
-    
     let backforwardHistory = BackforwardHistory(urls: urls, currentIndexButLast: Int32(currentIndexButLast))
     
-    do {
-    let appSupportDir = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    let filePath = appSupportDir.appendingPathComponent("bfhist.txt").path
+    //do {
+    //let appSupportDir = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    //let filePath = appSupportDir.appendingPathComponent("bfhist.txt").path
     //NSKeyedArchiver.archiveRootObject(backforwardHistory, toFile: filePath)
-    }
-    catch {}
+    //}
+    //catch {}
     
   }
   
