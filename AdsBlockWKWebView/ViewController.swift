@@ -599,7 +599,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     let currentIndexButLast = self.webview.backForwardList.forwardList.count
     
     
-    UserDefaults.standard.set(urls, forKey: "urls")
+    //UserDefaults.standard.set(urls, forKey: "urls")
     UserDefaults.standard.set(currentIndexButLast, forKey: "currentIndexButLast")
     
     //var urlss: [URL] = []
