@@ -466,7 +466,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urls.forEach { url in
       //self.webview.load(URLRequest(url: url))
       DispatchQueue.main.async {
-      webview.load(URLRequest(url: URL(string: url)!))
+      self.webview.load(URLRequest(url: URL(string: url)!))
       }
       bflist = bflist + " " + url
     }
