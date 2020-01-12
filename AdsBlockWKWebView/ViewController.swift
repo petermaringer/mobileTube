@@ -490,7 +490,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
                 group.leave()
             }
             group.notify(queue: .main, execute: { [weak self] in
-                self?.startLoading()
+                //self?.startLoading()
             })
         } else {
             alertToUseIOS11()
