@@ -47,11 +47,7 @@ class WebView: WKWebView {
 
     var history: WebViewHistory
 
-    override var backForwardList: WebViewHistory {
-        return history
-    }
-
-    override init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
+    init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
         self.history = history
         super.init(frame: frame, configuration: configuration)
     }
@@ -59,11 +55,16 @@ class WebView: WKWebView {
     /* Not sure about the best way to handle this part, it was just required for the code to compile... */
     
     required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+        self.history = WebViewHistory()
+        super.init(coder: coder)
     }
     
-    //convenience init!(coder: NSCoder!) {
-        //super.init(coder:coder)
+    override var backForwardList: WebViewHistory {
+        return history
+    }
+    
+    //required init?(coder: NSCoder) {
+    //fatalError("init(coder:) has not been implemented")
     //}
     
     /*required init?(coder: NSCoder) {
