@@ -29,7 +29,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   var restoreIndex: Int = 0
   var restoreIndexLast: Int = 0
-  var restoreUrls: Array<String> = []
+  var restoreUrls: Array<String> = ["https://google.com"]
   var restorePosition: Int = 0
   //var bfarray: Array<String> = []
   
@@ -378,8 +378,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         webview.navigationDelegate = self
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = true
-        //view.addSubview(webview)
+        view.addSubview(webview)
         webview.frame = view.bounds
+        
+        webview.isHidden = true
         
         counter += 1
         
@@ -465,7 +467,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         if (UserDefaults.standard.object(forKey: "urls") != nil) {
         restoreUrls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
+        }
+        
+        if (UserDefaults.standard.object(forKey: "currentIndexButLast") != nil) {
         restorePosition = UserDefaults.standard.integer(forKey: "currentIndexButLast")
+        }
         
         restoreIndexLast = restoreUrls.count - 1
         
@@ -484,7 +490,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       self.showAlert(message: "\(bflist)")
     }
     lb.text = lb.text! + bflist
-    }
     
     
         //url = URL(string: "https://www.google.com")
@@ -640,7 +645,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     if restoreIndex == restoreIndexLast {
       restoreIndex += 1
       webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
-      view.addSubview(webview)
+      //view.addSubview(webview)
+      webview.isHidden = false
     }
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
