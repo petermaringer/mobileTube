@@ -51,16 +51,20 @@ class WebView: WKWebView {
         return history
     }
 
-    override init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
+    init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
         self.history = history
         super.init(frame: frame, configuration: configuration)
     }
     
     /* Not sure about the best way to handle this part, it was just required for the code to compile... */
     
-    convenience init!(coder: NSCoder!) {
-        super.init(coder:coder)
+    required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
     }
+    
+    //convenience init!(coder: NSCoder!) {
+        //super.init(coder:coder)
+    //}
     
     /*required init?(coder: NSCoder) {
 
