@@ -79,7 +79,7 @@ class WebView: WKWebView {
 
 class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
   
-  var webview: WKWebView!
+  var webview: WebView!
   var urlField: UITextField!
   var button: UIButton!
   var lb: UILabel!
@@ -439,7 +439,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             ])
         UserDefaults.standard.synchronize()
         
-        webview = WKWebView(frame: CGRect.zero)
+        webview = WebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
         
         webview.navigationDelegate = self
