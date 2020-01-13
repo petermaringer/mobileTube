@@ -55,10 +55,14 @@ class WebView: WKWebView {
         self.history = history
         super.init(frame: frame, configuration: configuration)
     }
-
+    
     /* Not sure about the best way to handle this part, it was just required for the code to compile... */
-
-    required init?(coder: NSCoder) {
+    
+    convenience init!(coder: NSCoder!) {
+        super.init(coder:coder)
+    }
+    
+    /*required init?(coder: NSCoder) {
 
         if let history = coder.decodeObject(forKey: "history") as? WebViewHistory {
             self.history = history
@@ -74,6 +78,7 @@ class WebView: WKWebView {
         super.encode(with: aCoder)
         aCoder.encode(history, forKey: "history")
     }
+    */
 }
 
 
