@@ -439,7 +439,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             ])
         UserDefaults.standard.synchronize()
         
-        webview = WebView(frame: CGRect.zero)
+        //webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
         
         webview.navigationDelegate = self
