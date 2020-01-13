@@ -51,7 +51,7 @@ class WebView: WKWebView {
         return history
     }
 
-    init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
+    override init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
         self.history = history
         super.init(frame: frame, configuration: configuration)
     }
