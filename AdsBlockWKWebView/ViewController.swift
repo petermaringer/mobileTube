@@ -28,6 +28,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var defaultUserAgent: String = "default"
   
   var restoreIndex: Int = 0
+  var restoreIndexLast: Int = 0
+  var restoreUrls: Array<String> = []
+  var restorePosition: Int = 0
   //var bfarray: Array<String> = []
   
   var insetT: CGFloat = 0
@@ -461,20 +464,22 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         
         if (UserDefaults.standard.object(forKey: "urls") != nil) {
-        let urls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
-    let currentIndexButLast = UserDefaults.standard.integer(forKey: "currentIndexButLast")
-    
-    webview.load(URLRequest(url: URL(string: urls[restoreIndex])!))
+        restoreUrls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
+        restorePosition = UserDefaults.standard.integer(forKey: "currentIndexButLast")
+        
+        restoreIndexLast = restoreUrls.count - 1
+        
+    webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
     
     var bflist = "LASTbflist:"
-    urls.forEach { url in
+    restoreUrls.forEach { url in
       //self.webview.load(URLRequest(url: url))
       //DispatchQueue.main.async {
       //self.webview.load(URLRequest(url: URL(string: url)!))
       //}
       bflist = bflist + " " + url
     }
-    bflist = bflist + " \(currentIndexButLast)"
+    bflist = bflist + " \(restorePosition)"
     DispatchQueue.main.async {
       self.showAlert(message: "\(bflist)")
     }
@@ -630,7 +635,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       bflist = bflist + " " + url
     }
     bflist = bflist + " \(currentIndexButLast)"
-    showAlert(message: "\(bflist)")
+    //showAlert(message: "\(bflist)")
+    
+    if restoreIndex < restoreIndexLast {
+      restoreIndex += 1
+      webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
+    }
     
     //let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
     //let currentIndexButLasts = UserDefaults.standard.array(forKey: "currentIndexButLast") as? [Int] ?? [Int]()
