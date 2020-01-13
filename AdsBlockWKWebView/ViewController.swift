@@ -326,6 +326,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
+      webview.frame.origin.y = 1000
+      
       lb.text = lb.text! + " \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
         //shouldHideHomeIndicator = true
@@ -381,7 +383,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         view.addSubview(webview)
         webview.frame = view.bounds
         
-        webview.isHidden = true
+        //webview.isHidden = true
         
         counter += 1
         
@@ -646,7 +648,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       restoreIndex += 1
       webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
       //view.addSubview(webview)
-      webview.isHidden = false
+      //webview.isHidden = false
+      webview.frame.origin.y = insetT + urlField.frame.size.height + 10
     }
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
