@@ -12,6 +12,71 @@ import WebKit
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
+
+class WebViewHistory: WKBackForwardList {
+
+    /* Solution 1: return nil, discarding what is in backList & forwardList */
+
+    override var backItem: WKBackForwardListItem? {
+        return nil
+    }
+
+    override var forwardItem: WKBackForwardListItem? {
+        return nil
+    }
+
+    /* Solution 2: override backList and forwardList to add a setter */
+
+    var myBackList = [WKBackForwardListItem]()
+
+    override var backList: [WKBackForwardListItem] {
+        get {
+            return myBackList
+        }
+        set(list) {
+            myBackList = list
+        }
+    }
+
+    func clearBackList() {
+        backList.removeAll()
+    }
+}
+
+class WebView: WKWebView {
+
+    var history: WebViewHistory
+
+    override var backForwardList: WebViewHistory {
+        return history
+    }
+
+    init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
+        self.history = history
+        super.init(frame: frame, configuration: configuration)
+    }
+
+    /* Not sure about the best way to handle this part, it was just required for the code to compile... */
+
+    required init?(coder: NSCoder) {
+
+        if let history = coder.decodeObject(forKey: "history") as? WebViewHistory {
+            self.history = history
+        }
+        else {
+            history = WebViewHistory()
+        }
+
+        super.init(coder: coder)
+    }
+
+    override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(history, forKey: "history")
+    }
+}
+
+
 class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
   
   var webview: WKWebView!
@@ -651,13 +716,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //webview.isHidden = false
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
       
-      var myBackList = [WKBackForwardListItem]()
-      myBackList.append(webview.backForwardList.item(at: 0)!)
-        override var webview.backForwardList.backList: [WKBackForwardListItem] {
-        return myBackList
-        }
+      //var myBackList = [WKBackForwardListItem]()
+      //myBackList.append(webview.backForwardList.item(at: 0)!)
+        //override var webview.backForwardList.backList: [WKBackForwardListItem] {
+        //return myBackList
+        //}
         
-      
     }
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
