@@ -45,10 +45,13 @@ class WebViewHistory: WKBackForwardList {
 
 
 class WebView: WKWebView {
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         let conf = WKWebViewConfiguration()
         super.init(frame: frame, configuration: conf)
     }
+    required init?(coder decoder: NSCoder) {
+        fatalError()
+    }  
 }
 
 
