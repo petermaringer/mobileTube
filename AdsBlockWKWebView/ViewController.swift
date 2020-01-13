@@ -79,7 +79,7 @@ class WebView: WKWebView {
 
 class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
   
-  var webview: WebView!
+  var webview: WKWebView!
   var urlField: UITextField!
   var button: UIButton!
   var lb: UILabel!
@@ -391,7 +391,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      //webview.frame.origin.y = 1000
+      webview.frame.origin.y = 1000
       
       lb.text = lb.text! + " \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
@@ -439,7 +439,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             ])
         UserDefaults.standard.synchronize()
         
-        //webview = WKWebView(frame: CGRect.zero)
+        webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
         
         webview.navigationDelegate = self
@@ -542,7 +542,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         restoreIndexLast = restoreUrls.count - 1
         
-    //webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
+    webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
     
     var bflist = "LASTbflist:"
     restoreUrls.forEach { url in
@@ -711,7 +711,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     if restoreIndex == restoreIndexLast {
       restoreIndex += 1
-      //webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
+      webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
       //view.addSubview(webview)
       //webview.isHidden = false
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
@@ -725,7 +725,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
-      //webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
+      webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
     }
     
     //let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
