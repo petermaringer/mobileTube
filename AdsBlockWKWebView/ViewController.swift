@@ -27,7 +27,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var url: String!
   var defaultUserAgent: String = "default"
   
-  var bfarray: Array<String> = []
+  var restoreIndex: Int = 0
+  //var bfarray: Array<String> = []
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
@@ -462,11 +463,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         if (UserDefaults.standard.object(forKey: "urls") != nil) {
         let urls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
     let currentIndexButLast = UserDefaults.standard.integer(forKey: "currentIndexButLast")
-    var bflist = "bflist:"
+    
+    webview.load(URLRequest(url: URL(string: urls[restoreIndex])!))
+    
+    var bflist = "LASTbflist:"
     urls.forEach { url in
       //self.webview.load(URLRequest(url: url))
       //DispatchQueue.main.async {
-      self.webview.load(URLRequest(url: URL(string: url)!))
+      //self.webview.load(URLRequest(url: URL(string: url)!))
       //}
       bflist = bflist + " " + url
     }
@@ -606,7 +610,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     
     //var bflist = "bflist:"
-    bfarray.append(webview.url!.absoluteString)
+    //bfarray.append(webview.url!.absoluteString)
     //bfarray.forEach { item in
       //bflist = bflist + " \(item)"
     //}
