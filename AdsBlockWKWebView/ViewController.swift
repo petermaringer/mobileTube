@@ -43,7 +43,16 @@ class WebViewHistory: WKBackForwardList {
     }
 }
 
+
 class WebView: WKWebView {
+    init(frame: CGRect) {
+        let conf = WKWebViewConfiguration()
+        super.init(frame: frame, configuration: conf)
+    }
+}
+
+
+class WebView2: WKWebView {
 
     var history: WebViewHistory
 
@@ -62,10 +71,6 @@ class WebView: WKWebView {
     override var backForwardList: WebViewHistory {
         return history
     }
-    
-    //required init?(coder: NSCoder) {
-    //fatalError("init(coder:) has not been implemented")
-    //}
     
     /*required init?(coder: NSCoder) {
 
