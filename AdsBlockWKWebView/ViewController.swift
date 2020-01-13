@@ -639,7 +639,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     if restoreIndex == restoreIndexLast {
       restoreIndex += 1
-      webview.go(to: webview.backForwardList.item(at: restorePosition * -1))
+      webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
     }
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
