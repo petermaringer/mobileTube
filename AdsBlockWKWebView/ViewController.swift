@@ -378,7 +378,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         webview.navigationDelegate = self
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = true
-        view.addSubview(webview)
+        //view.addSubview(webview)
         webview.frame = view.bounds
         
         counter += 1
@@ -635,11 +635,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       bflist = bflist + " " + url
     }
     bflist = bflist + " \(currentIndexButLast)"
-    showAlert(message: "\(bflist)")
+    //showAlert(message: "\(bflist)")
     
     if restoreIndex == restoreIndexLast {
       restoreIndex += 1
       webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
+      view.addSubview(webview)
     }
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
