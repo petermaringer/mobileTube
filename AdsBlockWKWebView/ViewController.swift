@@ -559,7 +559,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     lb.text = lb.text! + bflist
     
-    webview2 = WebView(frame: .zero)
+    webview2 = WebView(coder: NSCoder)
     //webview2.navigationDelegate = self
     view.addSubview(webview2)
     webview2.frame = CGRect(x: 15, y: 50, width: 100, height: 200)
