@@ -97,6 +97,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var restoreUrls: Array<String> = ["https://google.com"]
   var restorePosition: Int = 0
   //var bfarray: Array<String> = []
+  var webview2: WebView!
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
@@ -557,6 +558,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       self.showAlert(message: "\(bflist)")
     }
     lb.text = lb.text! + bflist
+    
+    webview2 = WebView()
+    //webview2.navigationDelegate = self
+    view.addSubview(webview2)
+    webview2.frame = CGRectMake(15, 50, 100, 200)
+    webview2.load(URLRequest(url: URL(string: "https://www.hackingwithswift.com")!))
     
     
         //url = URL(string: "https://www.google.com")
