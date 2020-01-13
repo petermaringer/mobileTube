@@ -635,8 +635,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       bflist = bflist + " " + url
     }
     bflist = bflist + " \(currentIndexButLast)"
-    //showAlert(message: "\(bflist)")
+    showAlert(message: "\(bflist)")
     
+    if restoreIndex == restoreIndexLast {
+      restoreIndex += 1
+      webview.go(to: webview.backForwardList.item(at: restorePosition * -1))
+    }
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
       webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
