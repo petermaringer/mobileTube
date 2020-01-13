@@ -650,6 +650,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //view.addSubview(webview)
       //webview.isHidden = false
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
+      
+      var myBackList = [WKBackForwardListItem]()
+      myBackList.append(webview.backForwardList.item(at: 0)!)
+        override var webview.backForwardList.backList: [WKBackForwardListItem] {
+        return myBackList
+        }
+        
+      
     }
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
