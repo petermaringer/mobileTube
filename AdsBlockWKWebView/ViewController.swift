@@ -48,7 +48,7 @@ class WebView: WKWebView {
   
   //init(frame: CGRect) {
   //init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
-  init(frame: CGRect, history: WebViewHistory) {
+  init(frame: CGRect) {
     let conf = WKWebViewConfiguration()
     self.history = history
     super.init(frame: frame, configuration: conf)
