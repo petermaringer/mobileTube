@@ -581,12 +581,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     lb.text = lb.text! + bflist
     
-    webview2 = WebView(frame: CGRect.zero, history: "hi")
-    //webview2.navigationDelegate = self
-    view.addSubview(webview2)
-    webview2.frame = CGRect(x: 15, y: 84, width: 200, height: 300)
-    webview2.load(URLRequest(url: URL(string: "https://www.hackingwithswift.com")!))
-    
     
         //url = URL(string: "https://www.google.com")
         url = "https://www.google.com"
@@ -744,6 +738,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //view.addSubview(webview)
       //webview.isHidden = false
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
+      
+      webview2 = WebView(frame: CGRect.zero, history: "hi")
+    //webview2.navigationDelegate = self
+    view.addSubview(webview2)
+    webview2.frame = CGRect(x: 15, y: 84, width: 200, height: 300)
+    webview2.load(URLRequest(url: URL(string: "https://www.hackingwithswift.com")!))
       
       //var myBackList = [WKBackForwardListItem]()
       //myBackList.append(webview.backForwardList.item(at: 0)!)
