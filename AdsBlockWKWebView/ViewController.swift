@@ -150,6 +150,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   @objc func buttonClicked() {
     urlField.endEditing(true)
+    
+    webview2.backForwardList.backList.removeAll()
+    
   }
   
   @objc func buttonPressed(gesture: UILongPressGestureRecognizer) {
