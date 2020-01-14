@@ -120,6 +120,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var restorePosition: Int = 0
   //var bfarray: Array<String> = []
   var webview2: WebView!
+  var webview3: WebView!
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
@@ -422,6 +423,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
+      webview3.frame = webview.frame
       webview.frame.origin.y = 1000
       
       lb.text = lb.text! + " \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
@@ -588,6 +590,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       self.showAlert(message: "\(bflist)")
     }
     lb.text = lb.text! + bflist
+    
+    webview3 = WebView(frame: CGRect.zero, history: WebViewHistory())
+    webview3.loadHTMLString("<h1>Loading last Session...</h1>", baseURL: nil)
+    view.addSubview(webview3)
     
     
         //url = URL(string: "https://www.google.com")
