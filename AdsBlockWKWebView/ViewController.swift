@@ -739,7 +739,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //webview.isHidden = false
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
       
-      let newlist = webview.backForwardList as WebViewHistory
+      let newlist = webview.backForwardList as! WebViewHistory
       
       webview2 = WebView(frame: CGRect.zero, history: newlist)
     //webview2.navigationDelegate = self
