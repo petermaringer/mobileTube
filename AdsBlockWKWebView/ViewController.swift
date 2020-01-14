@@ -593,10 +593,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     lb.text = lb.text! + bflist
     
     webview3 = WebView(frame: CGRect.zero, history: WebViewHistory())
-    webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex)/\(restoreIndexLast)</h1></body>", baseURL: nil)
+    webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1></body>", baseURL: nil)
     webview3.isOpaque = false
     webview3.backgroundColor = .orange
-    webview3.scrollView.backgroundColor = .black
+    //webview3.scrollView.backgroundColor = .orange
     webview3.scrollView.isScrollEnabled = false
     //webview3.scrollView.bounces = false
     view.addSubview(webview3)
@@ -775,7 +775,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
       webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
-      webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex)/\(restoreIndexLast)</h1></body>", baseURL: nil)
+      webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1></body>", baseURL: nil)
       //webview3.backgroundColor = .lightGray
       //webview3.scrollView.backgroundColor = .orange
     }
