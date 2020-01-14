@@ -762,6 +762,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview2.frame = CGRect(x: 0, y: 84, width: webview.frame.size.width, height: 250)
     webview2.load(URLRequest(url: URL(string: "https://orf.at")!))
     webview2.loadHTMLString("<strong>So long and thanks for all the fish!</strong><br><a href='https://orf.at'>hoho</a>", baseURL: nil)
+    webview3.removeFromSuperview()
     
       //var myBackList = [WKBackForwardListItem]()
       //myBackList.append(webview.backForwardList.item(at: 0)!)
