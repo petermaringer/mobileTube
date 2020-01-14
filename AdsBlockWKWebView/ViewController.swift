@@ -14,57 +14,46 @@ fileprivate let ruleId2 = "MyRuleID 002"
 
 
 class WebViewHistory: WKBackForwardList {
-
-    /* Solution 1: return nil, discarding what is in backList & forwardList */
-
-    override var backItem: WKBackForwardListItem? {
-        return nil
+  /* Solution 1: return nil, discarding what is in backList & forwardList */
+  override var backItem: WKBackForwardListItem? {
+    return nil
+  }
+  override var forwardItem: WKBackForwardListItem? {
+    return nil
+  }
+  /* Solution 2: override backList and forwardList to add a setter */
+  var myBackList = [WKBackForwardListItem]()
+  override var backList: [WKBackForwardListItem] {
+    get {
+      return myBackList
     }
-
-    override var forwardItem: WKBackForwardListItem? {
-        return nil
+    set(list) {
+      myBackList = list
     }
-
-    /* Solution 2: override backList and forwardList to add a setter */
-
-    var myBackList = [WKBackForwardListItem]()
-
-    override var backList: [WKBackForwardListItem] {
-        get {
-            return myBackList
-        }
-        set(list) {
-            myBackList = list
-        }
-    }
-
-    func clearBackList() {
-        backList.removeAll()
-    }
+  }
+  func clearBackList() {
+    backList.removeAll()
+  }
 }
 
 
 class WebView: WKWebView {
   
-  var history: String
+  var history: WebViewHistory
+  override var backForwardList: WebViewHistory {
+    return history
+  }
+  //var history: String
   
   //init(frame: CGRect) {
-  //init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
-  init(frame: CGRect, history: String) {
+  init(frame: CGRect, history: WebViewHistory) {
     let conf = WKWebViewConfiguration()
     self.history = history
     super.init(frame: frame, configuration: conf)
-    //super.init(frame: frame, configuration: configuration)
   }
   required init?(coder decoder: NSCoder) {
     fatalError()
   }
-  
-  //var history: WebViewHistory
-  //override var backForwardList: WebViewHistory {
-    //return history
-  //}
-  
 }
 
 
