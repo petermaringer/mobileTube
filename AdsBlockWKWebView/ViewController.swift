@@ -50,11 +50,12 @@ class WebView: WKWebView {
     return history
   }
   //init(frame: CGRect) {
-  init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
-    //let conf = WKWebViewConfiguration()
+  //init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
+  init(frame: CGRect, history: WebViewHistory) {
+    let conf = WKWebViewConfiguration()
     self.history = history
-    //super.init(frame: frame, configuration: conf)
-    super.init(frame: frame, configuration: configuration)
+    super.init(frame: frame, configuration: conf)
+    //super.init(frame: frame, configuration: configuration)
   }
   required init?(coder decoder: NSCoder) {
     fatalError()
