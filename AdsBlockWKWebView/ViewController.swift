@@ -152,7 +152,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urlField.endEditing(true)
     
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
-    let blitem = webview2.backForwardList.count
+    let blitem = webview2.backForwardList.forwardList.count
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
