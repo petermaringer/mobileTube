@@ -14,13 +14,13 @@ fileprivate let ruleId2 = "MyRuleID 002"
 
 
 class WebViewHistory: WKBackForwardList {
-  /* Solution 1: return nil, discarding what is in backList & forwardList */
+  /* Solution 1: return nil, discarding what is in backList & forwardList 
   override var backItem: WKBackForwardListItem? {
     return nil
   }
   override var forwardItem: WKBackForwardListItem? {
     return nil
-  }
+  }*/
   /* Solution 2: override backList and forwardList to add a setter */
   var myBackList = [WKBackForwardListItem]()
   override var backList: [WKBackForwardListItem] {
@@ -151,7 +151,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
-    let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
+    //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
+    let blitem = webview2.backForwardList.count
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
@@ -754,7 +755,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     view.addSubview(webview2)
     webview2.frame = CGRect(x: 0, y: 84, width: webview.frame.size.width, height: 250)
     webview2.load(URLRequest(url: URL(string: "https://orf.at")!))
-      
+    webview2.loadHTMLString("<strong>So long and thanks for all the fish!</strong><br><a href='https://orf.at'>hoho</a>", baseURL: nil)
+    
       //var myBackList = [WKBackForwardListItem]()
       //myBackList.append(webview.backForwardList.item(at: 0)!)
         //override var webview.backForwardList.backList: [WKBackForwardListItem] {
