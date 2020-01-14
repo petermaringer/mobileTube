@@ -152,6 +152,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urlField.endEditing(true)
     
     webview2.backForwardList.backList.removeAll()
+    let blcount = webview2.backForwardList.backList.count
+    showAlert(message: "\(blcount)")
     
   }
   
