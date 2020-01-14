@@ -151,9 +151,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
+    let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
-    let blcount = webview2.backForwardList.backList.count
-    showAlert(message: "\(blcount)")
+    let blcount2 = webview2.backForwardList.backList.count
+    showAlert(message: "\(blcount1)/\(blcount2)")
     
   }
   
