@@ -46,9 +46,11 @@ class WebViewHistory: WKBackForwardList {
 
 class WebView: WKWebView {
   
+  var history: String
+  
   //init(frame: CGRect) {
   //init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
-  init(frame: CGRect) {
+  init(frame: CGRect, history: String) {
     let conf = WKWebViewConfiguration()
     self.history = history
     super.init(frame: frame, configuration: conf)
@@ -58,10 +60,10 @@ class WebView: WKWebView {
     fatalError()
   }
   
-  var history: WebViewHistory
-  override var backForwardList: WebViewHistory {
-    return history
-  }
+  //var history: WebViewHistory
+  //override var backForwardList: WebViewHistory {
+    //return history
+  //}
   
 }
 
