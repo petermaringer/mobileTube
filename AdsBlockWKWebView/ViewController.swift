@@ -594,6 +594,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     webview3 = WebView(frame: CGRect.zero, history: WebViewHistory())
     webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex)/\(restoreIndexLast)</h1></body>", baseURL: nil)
+    webview3.isOpaque = false
     webview3.backgroundColor = .lightGray
     webview3.scrollView.backgroundColor = .orange
     view.addSubview(webview3)
