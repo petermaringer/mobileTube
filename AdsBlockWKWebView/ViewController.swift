@@ -425,6 +425,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       
       webview3.frame = webview.frame
       webview.frame.origin.y += 200
+      webview.frame.size.height -= 200
       
       lb.text = lb.text! + " \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
@@ -587,14 +588,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
     bflist = bflist + " \(restorePosition)"
     DispatchQueue.main.async {
-      self.showAlert(message: "\(bflist)")
+      //self.showAlert(message: "\(bflist)")
     }
     lb.text = lb.text! + bflist
     
     webview3 = WebView(frame: CGRect.zero, history: WebViewHistory())
+    webview3.loadHTMLString("<h1>Loading last Session... \(restoreIndex)/\(restoreIndexLast)</h1>", baseURL: nil)
     webview3.backgroundColor = .lightGray
     webview3.scrollView.backgroundColor = .orange
-    webview3.loadHTMLString("<h1>Loading last Session... \(restoreIndex)/\(restoreIndexLast)</h1>", baseURL: nil)
     view.addSubview(webview3)
     
     
@@ -751,9 +752,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     if restoreIndex == restoreIndexLast {
       restoreIndex += 1
       webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
-      //view.addSubview(webview)
-      //webview.isHidden = false
-      //webview.frame.origin.y = insetT + urlField.frame.size.height + 10 + 250
       
       webview2 = WebView(frame: CGRect.zero, history: WebViewHistory())
     //webview2.navigationDelegate = self
@@ -775,6 +773,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       restoreIndex += 1
       webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
       webview3.loadHTMLString("<h1>Loading last Session... \(restoreIndex)/\(restoreIndexLast)</h1>", baseURL: nil)
+      webview3.backgroundColor = .lightGray
+      webview3.scrollView.backgroundColor = .orange
     }
     
     //let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
