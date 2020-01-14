@@ -737,17 +737,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
       //view.addSubview(webview)
       //webview.isHidden = false
-      webview.frame.origin.y = insetT + urlField.frame.size.height + 10
+      webview.frame.origin.y = insetT + urlField.frame.size.height + 10 + 250
       
-      //let newlist = webview.backForwardList as! WebViewHistory
-      //let newlist = WebViewHistory(backList: webview.backForwardList.backList)
-      let newlist = WebViewHistory()
+      //let newlist = WebViewHistory()
       
-      webview2 = WebView(frame: CGRect.zero, history: newlist)
+      webview2 = WebView(frame: CGRect.zero, history: WebViewHistory())
     //webview2.navigationDelegate = self
+    webview2.allowsBackForwardNavigationGestures = true
     view.addSubview(webview2)
-    webview2.frame = CGRect(x: 15, y: 84, width: 200, height: 300)
-    webview2.load(URLRequest(url: URL(string: "https://www.hackingwithswift.com")!))
+    webview2.frame = CGRect(x: 0, y: 84, width: webview.frame.size.width, height: 250)
+    webview2.load(URLRequest(url: URL(string: "https://orf.at")!))
       
       //var myBackList = [WKBackForwardListItem]()
       //myBackList.append(webview.backForwardList.item(at: 0)!)
