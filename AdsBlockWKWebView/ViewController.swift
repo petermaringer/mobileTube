@@ -739,7 +739,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //webview.isHidden = false
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
       
-      webview2 = WebView(frame: CGRect.zero, history: "hi")
+      webview2 = WebView(frame: CGRect.zero, history: webview.backForwardList)
     //webview2.navigationDelegate = self
     view.addSubview(webview2)
     webview2.frame = CGRect(x: 15, y: 84, width: 200, height: 300)
