@@ -423,9 +423,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      webview3.frame = webview.frame
       webview.frame.origin.y += 200
       webview.frame.size.height -= 200
+      
+      webview3.frame.origin.x = insetL
+      webview3.frame.origin.y = insetT + 5
+      webview3.frame.size.width = self.view.frame.width - insetL - insetR
+      webview3.frame.size.height = self.view.frame.height - insetT - insetB - 5
       
       lb.text = lb.text! + " \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
@@ -596,7 +600,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1></body>", baseURL: nil)
     webview3.isOpaque = false
     webview3.backgroundColor = .orange
-    //webview3.scrollView.backgroundColor = .orange
+    webview3.scrollView.backgroundColor = .orange
     webview3.scrollView.isScrollEnabled = false
     //webview3.scrollView.bounces = false
     view.addSubview(webview3)
@@ -776,8 +780,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       restoreIndex += 1
       webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
       webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1></body>", baseURL: nil)
-      //webview3.backgroundColor = .lightGray
-      //webview3.scrollView.backgroundColor = .orange
     }
     
     //let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
