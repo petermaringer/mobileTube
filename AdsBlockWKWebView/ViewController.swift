@@ -45,16 +45,24 @@ class WebViewHistory: WKBackForwardList {
 
 
 class WebView: WKWebView {
-    init(frame: CGRect) {
-        let conf = WKWebViewConfiguration()
-        super.init(frame: frame, configuration: conf)
-    }
-    required init?(coder decoder: NSCoder) {
-        fatalError()
-    }  
+  var history: WebViewHistory
+  override var backForwardList: WebViewHistory {
+    return history
+  }
+  //init(frame: CGRect) {
+  init(frame: CGRect, configuration: WKWebViewConfiguration, history: WebViewHistory) {
+    //let conf = WKWebViewConfiguration()
+    self.history = history
+    //super.init(frame: frame, configuration: conf)
+    super.init(frame: frame, configuration: configuration)
+  }
+  required init?(coder decoder: NSCoder) {
+    fatalError()
+  }
 }
 
 
+/*
 class WebView2: WKWebView {
 
     var history: WebViewHistory
@@ -64,18 +72,18 @@ class WebView2: WKWebView {
         super.init(frame: frame, configuration: configuration)
     }
     
-    /* Not sure about the best way to handle this part, it was just required for the code to compile... */
+    //Not sure about the best way to handle this part, it was just required for the code to compile...
     
-    required init?(coder: NSCoder) {
-        self.history = WebViewHistory()
-        super.init(coder: coder)
-    }
+    //required init?(coder: NSCoder) {
+        //self.history = WebViewHistory()
+        //super.init(coder: coder)
+    //}
     
     override var backForwardList: WebViewHistory {
         return history
     }
     
-    /*required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
 
         if let history = coder.decodeObject(forKey: "history") as? WebViewHistory {
             self.history = history
@@ -91,8 +99,9 @@ class WebView2: WKWebView {
         super.encode(with: aCoder)
         aCoder.encode(history, forKey: "history")
     }
-    */
+    
 }
+*/
 
 
 class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
@@ -580,7 +589,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview2 = WebView(frame: CGRect.zero)
     //webview2.navigationDelegate = self
     view.addSubview(webview2)
-    webview2.frame = CGRect(x: 15, y: 50, width: 100, height: 200)
+    webview2.frame = CGRect(x: 15, y: 84, width: 200, height: 300)
     webview2.load(URLRequest(url: URL(string: "https://www.hackingwithswift.com")!))
     
     
