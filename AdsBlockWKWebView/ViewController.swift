@@ -596,7 +596,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     DispatchQueue.main.async {
       //self.showAlert(message: "\(bflist)")
     }
-    lb.text = lb.text! + bflist
+    //lb.text = lb.text! + bflist
     
     webview3 = WebView(frame: CGRect.zero, history: WebViewHistory())
     webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1></body>", baseURL: nil)
@@ -612,7 +612,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
       //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
       lb.text = lb.text! + " Pb OK"
-      //try AVAudioSession.sharedInstance().setActive(true)
+      try AVAudioSession.sharedInstance().setActive(true)
       lb.text = lb.text! + " Active"
     } catch {
       lb.text = lb.text! + " \(error)"
