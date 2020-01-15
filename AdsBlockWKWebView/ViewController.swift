@@ -9,6 +9,8 @@
 import UIKit
 import WebKit
 
+import AVFoundation
+
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
