@@ -609,7 +609,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     
     do {
-      try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowAirPlay])
+      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
+      //try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowAirPlay])
       lb.text = lb.text! + " Pb OK"
       try AVAudioSession.sharedInstance().setActive(true)
       lb.text = lb.text! + " Active"
