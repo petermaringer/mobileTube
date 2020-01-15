@@ -606,6 +606,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     view.addSubview(webview3)
     
     
+    do {
+      try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .allowAirPlay])
+      lb.text = lb.text! + " Pb OK"
+      try AVAudioSession.sharedInstance().setActive(true)
+      lb.text = lb.text! + " Active"
+    } catch {
+      lb.text = lb.text! + " \(error)"
+    }
+    
+    
         //url = URL(string: "https://www.google.com")
         url = "https://www.google.com"
         
