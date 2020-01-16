@@ -155,12 +155,18 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
+    //let file = NSString(string:"~/Desktop/HCCQR.txt").expandingTildeInPath
+    let file = Bundle.main.path(forResource: "Info", ofType: "plist")!
+    let p = URL(fileURLWithPath: file)
+    let text = try? String(contentsOf: p)
+    //Swift.print("text:  \(text)")
+    
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
     let blitem = webview2.backForwardList.forwardList.count
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    showAlert(message: "\(blitem) \(blcount1)/\(blcount2)")
+    showAlert(message: "\(blitem) \(blcount1)/\(blcount2) \(text)")
     
   }
   
@@ -465,15 +471,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    /*do {
+    do {
       try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
       //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
-      lb.text = lb.text! + " Pb OK"
+      //lb.text = lb.text! + " Pb OK"
       try AVAudioSession.sharedInstance().setActive(true)
-      lb.text = lb.text! + " Active"
+      //lb.text = lb.text! + " Active"
     } catch {
-      lb.text = lb.text! + " \(error)"
-    }*/
+      //lb.text = lb.text! + " \(error)"
+    }
         
         UIApplication.shared.isIdleTimerDisabled = true
         
@@ -941,7 +947,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     // Just for invalidating target="_blank"
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         
-        //lb.text = lb.text! + " cwv"
+        lb.text = lb.text! + " cwv"
         
         guard let url = navigationAction.request.url else {
             return nil
