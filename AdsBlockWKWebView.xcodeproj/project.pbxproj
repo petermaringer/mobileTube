@@ -99,6 +99,11 @@
 						DevelopmentTeam = NG9KE3E3Q3;
 						DevelopmentTeamName = "Wolfgang Weinmann";
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
