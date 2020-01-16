@@ -155,9 +155,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
-    let appVersion: String? {
-      return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-    }
+    let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     
     let file = Bundle.main.path(forResource: "Info", ofType: "plist")!
     let p = URL(fileURLWithPath: file)
