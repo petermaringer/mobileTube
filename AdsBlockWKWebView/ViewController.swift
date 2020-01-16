@@ -465,6 +465,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    do {
+      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+      //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
+      lb.text = lb.text! + " Pb OK"
+      try AVAudioSession.sharedInstance().setActive(true)
+      lb.text = lb.text! + " Active"
+    } catch {
+      lb.text = lb.text! + " \(error)"
+    }
+        
         UIApplication.shared.isIdleTimerDisabled = true
         
         if (UserDefaults.standard.object(forKey: "origArray") != nil) {
@@ -612,17 +622,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview3.scrollView.isScrollEnabled = false
     //webview3.scrollView.bounces = false
     view.addSubview(webview3)
-    
-    
-    do {
-      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-      //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
-      lb.text = lb.text! + " Pb OK"
-      try AVAudioSession.sharedInstance().setActive(true)
-      lb.text = lb.text! + " Active"
-    } catch {
-      lb.text = lb.text! + " \(error)"
-    }
     
     
         //url = URL(string: "https://www.google.com")
@@ -941,6 +940,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     // Just for invalidating target="_blank"
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        
+        lb.text = lb.text! + " cwv"
+        
         guard let url = navigationAction.request.url else {
             return nil
         }
