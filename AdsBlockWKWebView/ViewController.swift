@@ -155,18 +155,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
-    //let file = NSString(string:"~/Desktop/HCCQR.txt").expandingTildeInPath
+    static var appVersion: String? {
+      return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    }
+    
     let file = Bundle.main.path(forResource: "Info", ofType: "plist")!
     let p = URL(fileURLWithPath: file)
-    let text = try? String(contentsOf: p)
-    //Swift.print("text:  \(text)")
+    let text = try? String(contentsOf: p)!
     
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
     let blitem = webview2.backForwardList.forwardList.count
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    showAlert(message: "\(blitem) \(blcount1)/\(blcount2) \(text)")
+    showAlert(message: "\(blitem) \(blcount1)/\(blcount2) \(appVersion) \(text)")
     
   }
   
@@ -472,13 +474,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         super.viewDidLoad()
         
     do {
-      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-      //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
+      //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
       //lb.text = lb.text! + " Pb OK"
+      //adjustLabel()
       try AVAudioSession.sharedInstance().setActive(true)
       //lb.text = lb.text! + " Active"
+      //adjustLabel()
     } catch {
       //lb.text = lb.text! + " \(error)"
+      //adjustLabel()
     }
         
         UIApplication.shared.isIdleTimerDisabled = true
@@ -619,6 +624,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       //self.showAlert(message: "\(bflist)")
     }
     //lb.text = lb.text! + bflist
+    //adjustLabel()
     
     webview3 = WebView(frame: CGRect.zero, history: WebViewHistory())
     webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1></body>", baseURL: nil)
@@ -948,6 +954,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         
         lb.text = lb.text! + " cwv"
+        adjustLabel()
         
         guard let url = navigationAction.request.url else {
             return nil
