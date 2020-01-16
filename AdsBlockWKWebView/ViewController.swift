@@ -155,20 +155,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
-    static var appVersion: String? {
+    let appVersion: String? {
       return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
     
     let file = Bundle.main.path(forResource: "Info", ofType: "plist")!
     let p = URL(fileURLWithPath: file)
-    let text = try? String(contentsOf: p)!
+    let text = try? String(contentsOf: p)
     
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
     let blitem = webview2.backForwardList.forwardList.count
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    showAlert(message: "\(blitem) \(blcount1)/\(blcount2) \(appVersion) \(text)")
+    showAlert(message: "\(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     
   }
   
