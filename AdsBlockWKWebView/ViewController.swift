@@ -465,7 +465,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    do {
+    /*do {
       try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
       //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
       lb.text = lb.text! + " Pb OK"
@@ -473,7 +473,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       lb.text = lb.text! + " Active"
     } catch {
       lb.text = lb.text! + " \(error)"
-    }
+    }*/
         
         UIApplication.shared.isIdleTimerDisabled = true
         
@@ -941,7 +941,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     // Just for invalidating target="_blank"
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         
-        lb.text = lb.text! + " cwv"
+        //lb.text = lb.text! + " cwv"
         
         guard let url = navigationAction.request.url else {
             return nil
