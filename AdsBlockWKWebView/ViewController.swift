@@ -123,6 +123,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //var bfarray: Array<String> = []
   var webview2: WebView!
   var webview3: WebView!
+  var webviewConfig: WKWebViewConfiguration!
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
@@ -479,7 +480,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             ])
         UserDefaults.standard.synchronize()
         
-        webview = WKWebView(frame: CGRect.zero)
+        webviewConfig = WKWebViewConfiguration()
+        webviewConfig.allowsInlineMediaPlayback = true
+        webviewConfig.mediaTypesRequiringUserActionForPlayback = []
+        
+        webview = WKWebView(frame: CGRect.zero, configuration: webviewConfig)
+        //webview = WKWebView(frame: CGRect.zero)
         //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
         
         webview.navigationDelegate = self
