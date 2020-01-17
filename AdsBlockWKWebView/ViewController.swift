@@ -466,10 +466,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    do {
-      try AVAudioSession.sharedInstance().setActive(true)
-    } catch {}
-        
         UIApplication.shared.isIdleTimerDisabled = true
         
         if (UserDefaults.standard.object(forKey: "origArray") != nil) {
