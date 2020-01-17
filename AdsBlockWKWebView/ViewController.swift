@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-import AVFoundation
+//import AVFoundation
 
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
@@ -471,7 +471,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    do {
+    /*do {
       //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
       try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
       //lb.text = lb.text! + " Pb OK"
@@ -482,7 +482,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     } catch {
       //lb.text = lb.text! + " \(error)"
       //adjustLabel()
-    }
+    }*/
         
         UIApplication.shared.isIdleTimerDisabled = true
         

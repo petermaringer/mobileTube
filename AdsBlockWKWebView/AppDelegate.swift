@@ -8,11 +8,12 @@
 
 import UIKit
 
+import AVFoundation
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,6 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = viewController
             window.backgroundColor = UIColor.white
             window.makeKeyAndVisible()
+        }
+        
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setActive(true)
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+            print(error.localizedDescription)
         }
         
         return true
