@@ -615,7 +615,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     //webview3.scrollView.bounces = false
     view.addSubview(webview3)
     
-    let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     let deviceToken = delegate.sesscat
     lb.text = lb.text! + " \(deviceToken)"
     adjustLabel()
