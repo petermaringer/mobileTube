@@ -150,6 +150,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    let deviceToken = delegate.sesscat
+    lb.text = lb.text! + " \(deviceToken)"
+    adjustLabel()
+    
     let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     
     let file = Bundle.main.path(forResource: "Info", ofType: "plist")!
@@ -614,11 +619,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview3.scrollView.isScrollEnabled = false
     //webview3.scrollView.bounces = false
     view.addSubview(webview3)
-    
-    let delegate = UIApplication.shared.delegate as! AppDelegate
-    let deviceToken = delegate.sesscat
-    lb.text = lb.text! + " \(deviceToken)"
-    adjustLabel()
     
     
         //url = URL(string: "https://www.google.com")
