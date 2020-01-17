@@ -1,14 +1,13 @@
-//
-//  AppDelegate.swift
-//  AdsBlockWKWebView
-//
-//  Created by Shingo Fukuyama on 2017/08/19.
-//  Copyright © 2017 Shingo Fukuyama. All rights reserved.
-//
+// AppDelegate.swift
+// AdsBlockWKWebView
+// Created by Wolfgang Weinmann on 2019/12/31.
+// Copyright © 2019 Wolfgang Weinmann.
 
 import UIKit
 
+//BackgroundAudioBegin
 import AVFoundation
+//BackgroundAudioEnd
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,13 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.makeKeyAndVisible()
         }
         
+        //BackgroundAudioBegin
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setActive(true)
-            try session.setCategory(AVAudioSessionCategoryPlayback)
+            //try session.setCategory(AVAudioSessionCategoryPlayback)
+            try session.setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
         } catch {
             print(error.localizedDescription)
         }
+        //BackgroundAudioEnd
         
         return true
     }

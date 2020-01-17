@@ -1,15 +1,10 @@
-//
 // ViewController.swift
 // AdsBlockWKWebView
-//
 // Created by Wolfgang Weinmann on 2019/12/31.
 // Copyright © 2019 Wolfgang Weinmann.
-//
 
 import UIKit
 import WebKit
-
-//import AVFoundation
 
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
@@ -471,18 +466,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    /*do {
-      //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
-      //lb.text = lb.text! + " Pb OK"
-      //adjustLabel()
-      try AVAudioSession.sharedInstance().setActive(true)
-      //lb.text = lb.text! + " Active"
-      //adjustLabel()
-    } catch {
-      //lb.text = lb.text! + " \(error)"
-      //adjustLabel()
-    }*/
+    do {
+      try session.setActive(true)
+    } catch {}
         
         UIApplication.shared.isIdleTimerDisabled = true
         
