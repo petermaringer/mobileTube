@@ -467,7 +467,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         super.viewDidLoad()
         
     do {
-      try session.setActive(true)
+      try AVAudioSession.sharedInstance().setActive(true)
     } catch {}
         
         UIApplication.shared.isIdleTimerDisabled = true
