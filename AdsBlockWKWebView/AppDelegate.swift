@@ -7,6 +7,7 @@ import UIKit
 
 //BackgroundAudioBegin
 import AVFoundation
+import AVKit
 //BackgroundAudioEnd
 
 @UIApplicationMain
@@ -14,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var sesscat: String = "hi"
+    let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")
+    let player = AVPlayer(url: videoURL!)
+    let playerViewController = AVPlayerViewController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

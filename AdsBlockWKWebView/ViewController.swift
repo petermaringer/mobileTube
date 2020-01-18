@@ -13,9 +13,9 @@ fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
 
-let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")
-let player = AVPlayer(url: videoURL!)
-let playerViewController = AVPlayerViewController()
+//let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")
+//let player = AVPlayer(url: videoURL!)
+//let playerViewController = AVPlayerViewController()
 
 
 class WebViewHistory: WKBackForwardList {
@@ -158,13 +158,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
-    playerViewController.player = player
-    self.present(playerViewController, animated: true) {
-    playerViewController.player!.play()
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+    delegate.playerViewController.player = player
+    self.present(delegate.playerViewController, animated: true) {
+    delegate.playerViewController.player!.play()
 }
     //playerViewController.player = nil
     
-    let delegate = UIApplication.shared.delegate as! AppDelegate
     let deviceToken = delegate.sesscat
     lb.text = lb.text! + " \(deviceToken)"
     adjustLabel()
