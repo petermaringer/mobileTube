@@ -600,14 +600,20 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         
         if (UserDefaults.standard.object(forKey: "urls") != nil) {
-        restoreUrls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
+        //restoreUrls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
         }
         
         if (UserDefaults.standard.object(forKey: "currentIndexButLast") != nil) {
         restorePosition = UserDefaults.standard.integer(forKey: "currentIndexButLast")
         }
         
+        restorePosition = 0
+        
         restoreIndexLast = restoreUrls.count - 1
+        
+        if restoreIndexLast > 0 {
+          askRestore()
+        }
         
     webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
     
@@ -657,6 +663,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
             startLoading()
         }
     }
+  
+  
+  private func askRestore() {
+    //alert with cancel if ok >>
+    showAlert(message: "Hi")
+  }
   
   
   override func viewWillDisappear(_ animated: Bool) {
