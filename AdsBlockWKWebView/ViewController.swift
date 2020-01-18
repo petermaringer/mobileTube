@@ -666,7 +666,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   private func askRestore() {
     let alert = UIAlertController(title: "Alert", message: "Restore last Session?", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-      showAlert(message: "Handle Ok logic here")
+      self.showAlert(message: "Ok logic here")
     }))
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     self.present(alert, animated: true, completion: nil)
