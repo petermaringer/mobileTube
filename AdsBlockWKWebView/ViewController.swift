@@ -18,7 +18,7 @@ class playerViewController: AVPlayerViewController {
     //private let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!
     //let videoPlayer = AVPlayer(url: videoURL)
     
-    let player = AVPlayer(url: URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!)
+    player = AVPlayer(url: URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!)
     
     @IBAction func playVideo() {
      //let videoPlayerController = AVPlayerViewController()
