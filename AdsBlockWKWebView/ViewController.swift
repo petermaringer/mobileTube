@@ -377,6 +377,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   @available(iOS 11.0, *)
   override func viewSafeAreaInsetsDidChange() {
+    super.viewSafeAreaInsetsDidChange()
     insetT = self.view.safeAreaInsets.top
     insetB = self.view.safeAreaInsets.bottom
     insetL = self.view.safeAreaInsets.left
@@ -610,7 +611,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         restoreIndexLast = restoreUrls.count - 1
         
         if restoreIndexLast > 0 {
-          askRestore()
+          DispatchQueue.main.async {
+            self.askRestore()
+          }
         }
         
     webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
@@ -637,7 +640,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview3.scrollView.backgroundColor = .orange
     webview3.scrollView.isScrollEnabled = false
     //webview3.scrollView.bounces = false
-    //view.addSubview(webview3)
+    view.addSubview(webview3)
     
     
         //url = URL(string: "https://www.google.com")
@@ -674,6 +677,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   
   override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     UIApplication.shared.isIdleTimerDisabled = false
   }
   
