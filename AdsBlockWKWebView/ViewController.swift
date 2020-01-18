@@ -600,14 +600,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         
         
         if (UserDefaults.standard.object(forKey: "urls") != nil) {
-        //restoreUrls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
+        restoreUrls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
         }
         
         if (UserDefaults.standard.object(forKey: "currentIndexButLast") != nil) {
         restorePosition = UserDefaults.standard.integer(forKey: "currentIndexButLast")
         }
-        
-        restorePosition = 0
         
         restoreIndexLast = restoreUrls.count - 1
         
@@ -666,8 +664,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   
   private func askRestore() {
-    //alert with cancel if ok >>
-    showAlert(message: "Hi")
+    let alert = UIAlertController(title: "Alert", message: "Restore last Session?", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+      showAlert(message: "Handle Ok logic here")
+    }))
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    self.present(alert, animated: true, completion: nil)
   }
   
   
@@ -798,9 +800,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     bflist = bflist + " \(currentIndexButLast)"
     //showAlert(message: "\(bflist)")
     
-    if restoreIndex == 25 {
-    restoreIndexLast = 25
-    }
+    //if restoreIndex == 25 {
+    //restoreIndexLast = 25
+    //}
     
     if restoreIndex == restoreIndexLast {
       restoreIndex += 1
