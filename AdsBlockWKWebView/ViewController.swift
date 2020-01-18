@@ -667,7 +667,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   
   private func askRestore() {
-    let alert = UIAlertController(title: "Alert", message: "Restore last Session?", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Alert", message: "Restore last session?\n\nThe last session contains \(restoreIndexLast+1) pages.", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
       self.showAlert(message: "Ok logic here")
     }))
