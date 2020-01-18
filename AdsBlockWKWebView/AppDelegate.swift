@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print(error.localizedDescription)
         }
-        sesscat = "\(AVAudioSession.sharedInstance().category)"
+        sesscat = "\(session.category)"
         //BackgroundAudioEnd
         
         return true

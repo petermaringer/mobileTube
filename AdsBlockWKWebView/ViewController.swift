@@ -6,6 +6,9 @@
 import UIKit
 import WebKit
 
+import AVFoundation
+import AVKit
+
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
@@ -149,6 +152,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   @objc func buttonClicked() {
     urlField.endEditing(true)
+    
+    private let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!
+    let videoPlayerController = AVPlayerViewController()
+    let videoPlayer = AVPlayer(url: videoURL)
+    videoPlayerController.player = videoPlayer
+    present(videoPlayerController, animated: true) {
+      videoPlayer.play()
+    }
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let deviceToken = delegate.sesscat
