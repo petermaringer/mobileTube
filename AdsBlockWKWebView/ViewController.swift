@@ -15,16 +15,16 @@ fileprivate let ruleId2 = "MyRuleID 002"
 
 class playerViewController: AVPlayerViewController {
     
-    private let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!
+    //private let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!
+    //let videoPlayer = AVPlayer(url: videoURL)
     
-    let videoPlayer = AVPlayer(url: videoURL)
-        self.player = videoPlayer
+    let player = AVPlayer(url: URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!)
     
     @IBAction func playVideo() {
      //let videoPlayerController = AVPlayerViewController()
         
         present(self, animated: true) {
-            videoPlayer.play()
+            player.play()
         }
     }
     
