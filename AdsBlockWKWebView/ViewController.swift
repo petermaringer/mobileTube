@@ -786,8 +786,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     bflist = bflist + " \(currentIndexButLast)"
     //showAlert(message: "\(bflist)")
     
-    if restoreIndex == 50 {
-    restoreIndexLast = 50
+    if restoreIndex == 45 {
+    restoreIndexLast = 45
     }
     
     if restoreIndex == restoreIndexLast {
