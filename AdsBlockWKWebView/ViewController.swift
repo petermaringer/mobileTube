@@ -17,10 +17,11 @@ class playerViewController: UIViewController {
     
     private let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!
     
-    @IBAction func playVideo() {
-        let videoPlayerController = AVPlayerViewController()
+    let videoPlayerController = AVPlayerViewController()
         let videoPlayer = AVPlayer(url: videoURL)
         videoPlayerController.player = videoPlayer
+    
+    @IBAction func playVideo() {
         present(videoPlayerController, animated: true) {
             videoPlayer.play()
         }
@@ -170,7 +171,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urlField.endEditing(true)
     
     playerViewController().playVideo()
-    videoPlayerController.player = nil
+    playerViewController.videoPlayerController.player = nil
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let deviceToken = delegate.sesscat
