@@ -160,7 +160,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
-    delegate.playerViewController.player = player
+    delegate.playerViewController.player = delegate.player
     self.present(delegate.playerViewController, animated: true) {
     delegate.playerViewController.player!.play()
 }
