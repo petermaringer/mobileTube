@@ -786,6 +786,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     bflist = bflist + " \(currentIndexButLast)"
     //showAlert(message: "\(bflist)")
     
+    if restoreIndex == 50 {
+    restoreIndexLast = 50
+    }
+    
     if restoreIndex == restoreIndexLast {
       restoreIndex += 1
       webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
