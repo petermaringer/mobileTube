@@ -170,6 +170,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     urlField.endEditing(true)
     
     playerViewController().playVideo()
+    playerViewController.player = nil
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let deviceToken = delegate.sesscat
