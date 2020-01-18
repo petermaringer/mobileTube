@@ -637,7 +637,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     webview3.scrollView.backgroundColor = .orange
     webview3.scrollView.isScrollEnabled = false
     //webview3.scrollView.bounces = false
-    view.addSubview(webview3)
+    //view.addSubview(webview3)
     
     
         //url = URL(string: "https://www.google.com")
