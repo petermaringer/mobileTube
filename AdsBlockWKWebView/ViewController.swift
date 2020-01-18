@@ -13,10 +13,9 @@ fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
 
 
-let videoURL = URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
+let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")
 let player = AVPlayer(url: videoURL!)
 let playerViewController = AVPlayerViewController()
-//private let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!
 
 
 class WebViewHistory: WKBackForwardList {
@@ -163,7 +162,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     self.present(playerViewController, animated: true) {
     playerViewController.player!.play()
 }
-    playerViewController.player = nil
+    //playerViewController.player = nil
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let deviceToken = delegate.sesscat
