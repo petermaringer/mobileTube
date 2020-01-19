@@ -196,6 +196,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   }*/
     
+    var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
     if view.layer is AVPlayerLayer {
         lb.text = lb.text! + " a1"
@@ -203,8 +204,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         return view
     }
     for v in view.subviews {
-        lb.text = lb.text! + " a2"
-        adjustLabel()
+        viewlist = viewlist + " a2 \(v!)"
         if let found = findViewWithAVPlayerLayer(view: v) {
             lb.text = lb.text! + " a3"
             adjustLabel()
@@ -218,6 +218,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
       lb.text = lb.text! + " aX"
       adjustLabel()
     }
+    showAlert(message: viewlist)
     
     
     let deviceToken = delegate.sesscat
