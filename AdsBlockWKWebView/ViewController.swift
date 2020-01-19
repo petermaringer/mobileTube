@@ -577,8 +577,8 @@ player.play()*/
         UserDefaults.standard.synchronize()
         
         webviewConfig = WKWebViewConfiguration()
-        webviewConfig.allowsInlineMediaPlayback = true
-        webviewConfig.mediaTypesRequiringUserActionForPlayback = []
+        //webviewConfig.allowsInlineMediaPlayback = true
+        //webviewConfig.mediaTypesRequiringUserActionForPlayback = []
         
         webview = WKWebView(frame: CGRect.zero, configuration: webviewConfig)
         //webview = WKWebView(frame: CGRect.zero)
