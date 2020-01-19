@@ -158,6 +158,29 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
+    
+    func findAVPlayerViewController(controller: UIViewController) -> AVPlayerViewController? {
+  if controller is AVPlayerViewController {
+    return controller as? AVPlayerViewController
+  } else {
+    for subcontroller in controller.children {
+      if let result = findAVPlayerViewController(controller: subcontroller) {
+        return result
+      }
+    }
+  }
+  return nil
+}
+    
+    if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+    if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
+      //print(avPlayerViewController.player!)
+      lb.text = lb.text! + " \(avPlayerViewController.player!)"
+      adjustLabel()
+    }
+  }
+    
+    
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
     delegate.playerViewController.player = delegate.player
