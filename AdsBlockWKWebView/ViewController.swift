@@ -183,7 +183,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
 }
     
     if let rootController = UIApplication.shared.keyWindow?.rootViewController {
-    lb.text = lb.text! + " a1 \(UIApplication.shared.keyWindow?.rootViewController)"
+    lb.text = lb.text! + " a1 \((UIApplication.shared.keyWindow?.rootViewController)!)"
     adjustLabel()
     if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
       lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
