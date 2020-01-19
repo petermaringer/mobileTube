@@ -161,10 +161,18 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     func findAVPlayerViewController(controller: UIViewController) -> AVPlayerViewController? {
   if controller is AVPlayerViewController {
+    lb.text = lb.text! + " a2"
+    adjustLabel()
     return controller as? AVPlayerViewController
   } else {
+    lb.text = lb.text! + " a3"
+    adjustLabel()
     for subcontroller in controller.childViewControllers {
+      lb.text = lb.text! + " a4"
+      adjustLabel()
       if let result = findAVPlayerViewController(controller: subcontroller) {
+        lb.text = lb.text! + " a5"
+        adjustLabel()
         return result
       }
     }
@@ -173,10 +181,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
 }
     
     if let rootController = UIApplication.shared.keyWindow?.rootViewController {
-    lb.text = lb.text! + "ho"
+    lb.text = lb.text! + " a1"
     adjustLabel()
     if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
-      lb.text = lb.text! + " \(avPlayerViewController.player!)"
+      lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
       adjustLabel()
     }
   }
