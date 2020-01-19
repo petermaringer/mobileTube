@@ -163,7 +163,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   if controller is AVPlayerViewController {
     return controller as? AVPlayerViewController
   } else {
-    for subcontroller in controller.children {
+    for subcontroller in controller.childViewControllers {
       if let result = findAVPlayerViewController(controller: subcontroller) {
         return result
       }
