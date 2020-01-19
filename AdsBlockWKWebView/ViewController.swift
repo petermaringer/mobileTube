@@ -207,12 +207,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     if let sublayers = view.layer.sublayers {
     for layer in sublayers {
+    if !(layer is CALayer) {
         viewlist = viewlist + " a2:\(layer)"
+        }
     }
 }
     
     for v in view.subviews {
+    if !(layer is CALayer) {
         viewlist = viewlist + " a3:\(v.layer)"
+        }
         if let found = findViewWithAVPlayerLayer(view: v) {
             lb.text = lb.text! + " a4"
             adjustLabel()
