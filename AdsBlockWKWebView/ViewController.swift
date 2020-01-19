@@ -158,6 +158,13 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   @objc func buttonClicked() {
     urlField.endEditing(true)
     
+    /*let videoURL = URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
+let player = AVPlayer(url: videoURL!)
+let playerLayer = AVPlayerLayer(player: player)
+playerLayer.frame = self.view.bounds
+self.view.layer.addSublayer(playerLayer)
+player.play()*/
+    
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
     /*delegate.playerViewController.player = delegate.player
@@ -811,6 +818,19 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     let request = URLRequest(url: urlobj!)
     webview.load(request)
   }
+  
+  
+  func webView(_ webview: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+    if let mimeType = navigationResponse.response.mimeType {
+      //do some thing with the MIME type
+      lb.text = lb.text! + " \(mimeType)"
+      adjustLabel()
+    } else {
+      //no MIME type, special handling
+    }
+    decisionHandler(.allow)
+  }
+  
   
   func webView(_ webview: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
     let err = error as NSError
