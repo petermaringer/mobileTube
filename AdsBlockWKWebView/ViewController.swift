@@ -716,6 +716,8 @@ player.play()*/
     //webview3.scrollView.bounces = false
     view.addSubview(webview3)
     
+    NotificationCenter.default.addObserver(self, selector: #selector(focusNewWindow), name: .UIWindowDidResignKey, object: nil)
+    
     
         //url = URL(string: "https://www.google.com")
         url = "https://www.google.com"
@@ -738,6 +740,15 @@ player.play()*/
             startLoading()
         }
     }
+  
+  
+  @objc private func focusNewWindow() {
+    if UIApplication.shared.windows.count > 1 && UIApplication.shared.windows[1].isHidden == false {
+      lb.text = lb.text! + " fNW"
+      adjustLabel()
+      //UIApplication.shared.windows[0].makeKeyAndVisible()
+    }
+  }
   
   
   private func askRestore() {
