@@ -214,7 +214,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
 }
     
     for v in view.subviews {
-    if !(layer is CALayer) {
+    if !(v.layer is CALayer) {
         viewlist = viewlist + " a3:\(v.layer)"
         }
         if let found = findViewWithAVPlayerLayer(view: v) {
