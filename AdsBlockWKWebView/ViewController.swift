@@ -204,7 +204,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
         return view
     }
     for v in view.subviews {
-        viewlist = viewlist + " a2 \(v!)"
+        viewlist = viewlist + " a2 \(v)"
         if let found = findViewWithAVPlayerLayer(view: v) {
             lb.text = lb.text! + " a3"
             adjustLabel()
