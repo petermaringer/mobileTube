@@ -160,6 +160,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
+    delegate.playerViewController.player = delegate.player
+    self.present(delegate.playerViewController, animated: true) {
+    delegate.playerViewController.player!.play()
+}
+    
     
     func findAVPlayerViewController(controller: UIViewController) -> AVPlayerViewController? {
   if controller is AVPlayerViewController {
@@ -191,12 +196,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   }
     
-    
-    /*delegate.playerViewController.player = delegate.player
-    self.present(delegate.playerViewController, animated: true) {
-    delegate.playerViewController.player!.play()
-}
-    //playerViewController.player = nil*/
     
     let deviceToken = delegate.sesscat
     lb.text = lb.text! + " \(deviceToken)"
