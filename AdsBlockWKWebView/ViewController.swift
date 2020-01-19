@@ -196,17 +196,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     }
   }*/
     
-    guard let view = findPlayerView() else {
-        return
-    }
-    
-    private func findPlayerView() -> UIView? {
-    lb.text = lb.text! + " a1"
-    adjustLabel()
-    return findViewWithAVPlayerLayer(self.view)
-}
-
-private func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
+    func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
     if view.layer.isKindOfClass(AVPlayerLayer) {
         return view
     }
@@ -217,6 +207,16 @@ private func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
     }
     return nil
 }
+    
+    func findPlayerView() -> UIView? {
+    lb.text = lb.text! + " a1"
+    adjustLabel()
+    return findViewWithAVPlayerLayer(self.view)
+}
+    
+    guard let view = findPlayerView() else {
+        return
+    }
     
     
     let deviceToken = delegate.sesscat
