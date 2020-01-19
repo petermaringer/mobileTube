@@ -826,7 +826,8 @@ player.play()*/
       lb.text = lb.text! + " \(mimeType)"
       adjustLabel()
     } else {
-      //no MIME type, special handling
+      lb.text = lb.text! + " noMime"
+      adjustLabel()
     }
     decisionHandler(.allow)
   }
