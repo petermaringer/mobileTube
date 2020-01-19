@@ -208,14 +208,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     return nil
 }
     
-    func findPlayerView() -> UIView? {
-    lb.text = lb.text! + " a1"
-    adjustLabel()
-    return findViewWithAVPlayerLayer(self.view)
-}
-    
-    guard let view = findPlayerView() else {
-        return
+    if let viewWithAVPlayerLayer = findViewWithAVPlayerLayer(view: self.view) {
+      lb.text = lb.text! + " aX"
+      adjustLabel()
     }
     
     
