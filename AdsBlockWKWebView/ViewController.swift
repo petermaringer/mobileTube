@@ -173,8 +173,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
 }
     
     if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+    lb.text = lb.text! + "ho"
+    adjustLabel()
     if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
-      //print(avPlayerViewController.player!)
       lb.text = lb.text! + " \(avPlayerViewController.player!)"
       adjustLabel()
     }
@@ -183,11 +184,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
-    delegate.playerViewController.player = delegate.player
+    /*delegate.playerViewController.player = delegate.player
     self.present(delegate.playerViewController, animated: true) {
     delegate.playerViewController.player!.play()
 }
-    //playerViewController.player = nil
+    //playerViewController.player = nil*/
     
     let deviceToken = delegate.sesscat
     lb.text = lb.text! + " \(deviceToken)"
