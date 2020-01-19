@@ -198,7 +198,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
-    if view.layer is AVPlayerLayer {
+    //if view.layer is AVPlayerLayer {
+    if view.layer is CALayerHost {
         lb.text = lb.text! + " a1"
         adjustLabel()
         return view
