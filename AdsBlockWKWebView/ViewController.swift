@@ -170,7 +170,7 @@ player.play()*/
     /*delegate.playerViewController.player = delegate.player
     self.present(delegate.playerViewController, animated: true) {
     delegate.playerViewController.player!.play()
-}
+}*/
     
     
     func findAVPlayerViewController(controller: UIViewController) -> AVPlayerViewController? {
@@ -201,9 +201,9 @@ player.play()*/
       lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
       adjustLabel()
     }
-  }*/
+  }
     
-    var viewlist = "list:"
+    /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
     //if view.layer is AVPlayerLayer {
     if view.layer.isKind(of:AVPlayerLayer.self) {
@@ -237,7 +237,7 @@ player.play()*/
       lb.text = lb.text! + " aX"
       adjustLabel()
     }
-    showAlert(message: viewlist)
+    showAlert(message: viewlist)*/
     
     
     let deviceToken = delegate.sesscat
