@@ -747,7 +747,7 @@ player.play()*/
   
   @objc private func focusNewWindow() {
     if UIApplication.shared.windows.count > 1 && UIApplication.shared.windows[1].isHidden == false {
-      lb.text = lb.text! + " fNW"
+      lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count)"
       adjustLabel()
       //UIApplication.shared.windows[0].makeKeyAndVisible()
     }
