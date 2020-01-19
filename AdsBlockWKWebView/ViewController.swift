@@ -198,10 +198,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
     if view.layer is AVPlayerLayer {
+        lb.text = lb.text! + " a1"
+        adjustLabel()
         return view
     }
     for v in view.subviews {
+        lb.text = lb.text! + " a2"
+        adjustLabel()
         if let found = findViewWithAVPlayerLayer(view: v) {
+            lb.text = lb.text! + " a3"
+            adjustLabel()
             return found
         }
     }
