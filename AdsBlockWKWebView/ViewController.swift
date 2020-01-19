@@ -197,11 +197,11 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   }*/
     
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
-    if view.layer.isKindOfClass(AVPlayerLayer) {
+    if view.layer is AVPlayerLayer {
         return view
     }
     for v in view.subviews {
-        if let found = findViewWithAVPlayerLayer(v) {
+        if let found = findViewWithAVPlayerLayer(view: v) {
             return found
         }
     }
