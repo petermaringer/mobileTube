@@ -214,11 +214,12 @@ player.play()*/
   }*/
   
   var avPVC: AVPlayerViewController!
+  avPVC = AVPlayerViewController()
   let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController })
   if targetSC != nil {
-  avPVC = targetSC as? AVPlayerViewController
-  lb.text = lb.text! + " tSC:\(avPVC)"
-  lb.text = lb.text! + " tSCP:\(avPVC.player!)"
+  avPVC = targetSC as AVPlayerViewController
+  lb.text = lb.text! + " VC:\(avPVC!)"
+  lb.text = lb.text! + " VCP:\(avPVC.player!)"
   adjustLabel()
   }
     
