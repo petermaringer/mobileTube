@@ -201,20 +201,22 @@ player.play()*/
   return nil
 }
     
-    //if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+    /*//if let rootController = UIApplication.shared.keyWindow?.rootViewController {
     if let rootController = UIApplication.shared.windows[2].rootViewController {
     //lb.text = lb.text! + " a1 \((UIApplication.shared.keyWindow?.rootViewController)!)"
-    //lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
-    //adjustLabel()
-    //findAVPlayerViewController(controller: rootController)
+    lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
+    adjustLabel()
+    findAVPlayerViewController(controller: rootController)
     //if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
       //lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
       //adjustLabel()
     //}
-  }
+  }*/
   
   let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController })
-  lb.text = lb.text! + " tSC:\(targetSC)"
+  
+  lb.text = lb.text! + " tSC:\(targetSC!)"
+  lb.text = lb.text! + " tSCP:\(targetSC!.player)"
   adjustLabel()
     
     /*var viewlist = "list:"
