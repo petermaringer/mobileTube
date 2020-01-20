@@ -198,9 +198,9 @@ player.play()*/
 }
     
     //if let rootController = UIApplication.shared.keyWindow?.rootViewController {
-    if let rootController = UIApplication.shared.windows[2].rootViewController {
+    if let rootController = UIApplication.shared.windows[3].rootViewController {
     //lb.text = lb.text! + " a1 \((UIApplication.shared.keyWindow?.rootViewController)!)"
-    lb.text = lb.text! + " a1 \((UIApplication.shared.windows[2].rootViewController)!)"
+    lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
     adjustLabel()
     if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
       lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
@@ -749,7 +749,7 @@ player.play()*/
   
   @objc private func focusNewWindow() {
     if UIApplication.shared.windows.count > 1 && UIApplication.shared.windows[1].isHidden == false {
-      UIApplication.shared.windows[2].isHidden = false
+      UIApplication.shared.windows[2].isHidden = true
       //lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count) \(UIApplication.shared.windows[0].isHidden) \(UIApplication.shared.windows[1].isHidden) \(UIApplication.shared.windows[2].isHidden) \(UIApplication.shared.windows[3].isHidden)"
       lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count)\(UIApplication.shared.windows[2].isHidden)"
       adjustLabel()
