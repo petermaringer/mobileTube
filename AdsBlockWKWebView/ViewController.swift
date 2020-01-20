@@ -127,6 +127,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var webview2: WebView!
   var webview3: WebView!
   var webviewConfig: WKWebViewConfiguration!
+  var avPVC: AVPlayerViewController!
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
@@ -220,8 +221,6 @@ player.play()*/
   //adjustLabel()
   //}
   
-  var avPVC: AVPlayerViewController!
-  avPVC = AVPlayerViewController()
   if let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController }) as? AVPlayerViewController {
   avPVC = targetSC
   lb.text = lb.text! + " VC:\(avPVC!)"
@@ -745,8 +744,8 @@ player.play()*/
     //webview3.scrollView.bounces = false
     view.addSubview(webview3)
     
+    avPVC = AVPlayerViewController()
     NotificationCenter.default.addObserver(self, selector: #selector(focusNewWindow), name: .UIWindowDidResignKey, object: nil)
-    
     NotificationCenter.default.addObserver(self, selector: #selector(setBgVideo), name: .UIApplicationDidEnterBackground, object: nil)
     //UIApplicationDidEnterBackgroundNotification
     
