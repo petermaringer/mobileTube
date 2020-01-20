@@ -201,28 +201,33 @@ player.play()*/
   return nil
 }
     
-    /*//if let rootController = UIApplication.shared.keyWindow?.rootViewController {
-    if let rootController = UIApplication.shared.windows[2].rootViewController {
+    //if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+    //if let rootController = UIApplication.shared.windows[2].rootViewController {
     //lb.text = lb.text! + " a1 \((UIApplication.shared.keyWindow?.rootViewController)!)"
-    lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
-    adjustLabel()
-    findAVPlayerViewController(controller: rootController)
+    //lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
+    //adjustLabel()
+    //findAVPlayerViewController(controller: rootController)
     //if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
       //lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
       //adjustLabel()
     //}
-  }*/
+  //}
   
-  var avPVC: AVPlayerViewController!
-  avPVC = AVPlayerViewController()
-  
-  if let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController }) as? AVPlayerViewController {
-  //if targetSC != nil {
-  //avPVC = targetSC!
-  lb.text = lb.text! + " VC:\(targetSC)"
-  lb.text = lb.text! + " VCP:\(targetSC.player!)"
+  if UIApplication.shared.windows.count > 4 {
+  lb.text = lb.text! + " a1 \((UIApplication.shared.windows[4].rootViewController)!)"
   adjustLabel()
   }
+  
+  //var avPVC: AVPlayerViewController!
+  //avPVC = AVPlayerViewController()
+  
+  let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController }) as? AVPlayerViewController
+  //if targetSC != nil {
+  //avPVC = targetSC!
+  lb.text = lb.text! + " VC:\(targetSC!)"
+  lb.text = lb.text! + " VCP:\(targetSC!.player!)"
+  adjustLabel()
+  //}
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
