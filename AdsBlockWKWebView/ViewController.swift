@@ -16,6 +16,7 @@ fileprivate let ruleId2 = "MyRuleID 002"
 //let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")
 //let player = AVPlayer(url: videoURL!)
 //let playerViewController = AVPlayerViewController()
+let player = AVPlayer(url: URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8")!)
 
 
 class WebViewHistory: WKBackForwardList {
@@ -230,6 +231,9 @@ player.play()*/
   }
   adjustLabel()
   }
+  
+  avPVC.player = player
+  avPVC.player!.play()
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
@@ -790,7 +794,7 @@ player.play()*/
   }
   
   @objc private func setFgVideo() {
-    //avPVC.player = player
+    avPVC.player = player
     lb.text = lb.text! + " FgV"
     adjustLabel()
   }
