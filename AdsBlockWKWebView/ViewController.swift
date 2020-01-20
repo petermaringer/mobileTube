@@ -223,13 +223,13 @@ player.play()*/
   //var avPVC: AVPlayerViewController!
   //avPVC = AVPlayerViewController()
   
-  let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController })
-  //if targetSC != nil {
+  let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController }) as? AVPlayerViewController
+  if targetSC != nil {
   //avPVC = targetSC!
   lb.text = lb.text! + " VC:\(targetSC)"
   //lb.text = lb.text! + " VCP:\(targetSC!.player!)"
   adjustLabel()
-  //}
+  }
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
