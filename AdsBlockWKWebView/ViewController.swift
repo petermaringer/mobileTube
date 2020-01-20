@@ -182,10 +182,10 @@ player.play()*/
     adjustLabel()
     //return controller as? AVPlayerViewController
   } else {
-    lb.text = lb.text! + " a3"
-    adjustLabel()
+    //lb.text = lb.text! + " a3"
+    //adjustLabel()
     for subcontroller in controller.childViewControllers {
-      lb.text = lb.text! + " a4"
+      lb.text = lb.text! + " a4 \(subcontroller)"
       adjustLabel()
       //if let result = findAVPlayerViewController(controller: subcontroller) {
         //lb.text = lb.text! + " a5"
