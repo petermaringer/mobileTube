@@ -201,22 +201,24 @@ player.play()*/
   return nil
 }
     
+    if UIApplication.shared.windows.count > 4 {
     //if let rootController = UIApplication.shared.keyWindow?.rootViewController {
-    //if let rootController = UIApplication.shared.windows[2].rootViewController {
+    if let rootController = UIApplication.shared.windows[4].rootViewController {
     //lb.text = lb.text! + " a1 \((UIApplication.shared.keyWindow?.rootViewController)!)"
-    //lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
-    //adjustLabel()
-    //findAVPlayerViewController(controller: rootController)
+    lb.text = lb.text! + " a1 \((UIApplication.shared.windows[4].rootViewController)!)"
+    adjustLabel()
+    findAVPlayerViewController(controller: rootController)
     //if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
       //lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
       //adjustLabel()
     //}
-  //}
-  
-  if UIApplication.shared.windows.count > 4 {
-  lb.text = lb.text! + " a1 \((UIApplication.shared.windows[4].rootViewController)!)"
-  adjustLabel()
   }
+  }
+  
+  //if UIApplication.shared.windows.count > 4 {
+  //lb.text = lb.text! + " a1 \((UIApplication.shared.windows[4].rootViewController)!)"
+  //adjustLabel()
+  //}
   
   //var avPVC: AVPlayerViewController!
   //avPVC = AVPlayerViewController()
