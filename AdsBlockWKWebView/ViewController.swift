@@ -213,11 +213,11 @@ player.play()*/
     //}
   }*/
   
-  let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController }) as? AVPlayerViewController
-  
+  if let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController }) as? AVPlayerViewController {
   lb.text = lb.text! + " tSC:\(targetSC!)"
-  lb.text = lb.text! + " tSCP:\(targetSC!.player)"
+  lb.text = lb.text! + " tSCP:\(targetSC!.player!)"
   adjustLabel()
+  }
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
