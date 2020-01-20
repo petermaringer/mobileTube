@@ -201,7 +201,7 @@ player.play()*/
   return nil
 }
     
-    if UIApplication.shared.windows.count > 4 {
+    if UIApplication.shared.windows.count > 99 {
     //if let rootController = UIApplication.shared.keyWindow?.rootViewController {
     if let rootController = UIApplication.shared.windows[4].rootViewController {
     //lb.text = lb.text! + " a1 \((UIApplication.shared.keyWindow?.rootViewController)!)"
@@ -223,12 +223,12 @@ player.play()*/
   //var avPVC: AVPlayerViewController!
   //avPVC = AVPlayerViewController()
   
-  //let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController }) as? AVPlayerViewController
+  let targetSC = UIApplication.shared.windows[2].rootViewController!.childViewControllers.first(where: { $0 is AVPlayerViewController })
   //if targetSC != nil {
   //avPVC = targetSC!
-  //lb.text = lb.text! + " VC:\(targetSC!)"
+  lb.text = lb.text! + " VC:\(targetSC!)"
   //lb.text = lb.text! + " VCP:\(targetSC!.player!)"
-  //adjustLabel()
+  adjustLabel()
   //}
     
     /*var viewlist = "list:"
