@@ -180,18 +180,18 @@ player.play()*/
   if controller is AVPlayerViewController {
     lb.text = lb.text! + " a2"
     adjustLabel()
-    return controller as? AVPlayerViewController
+    //return controller as? AVPlayerViewController
   } else {
     lb.text = lb.text! + " a3"
     adjustLabel()
     for subcontroller in controller.childViewControllers {
       lb.text = lb.text! + " a4"
       adjustLabel()
-      if let result = findAVPlayerViewController(controller: subcontroller) {
-        lb.text = lb.text! + " a5"
-        adjustLabel()
-        return result
-      }
+      //if let result = findAVPlayerViewController(controller: subcontroller) {
+        //lb.text = lb.text! + " a5"
+        //adjustLabel()
+        //return result
+      //}
     }
   }
   return nil
@@ -202,10 +202,11 @@ player.play()*/
     //lb.text = lb.text! + " a1 \((UIApplication.shared.keyWindow?.rootViewController)!)"
     lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
     adjustLabel()
-    if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
-      lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
-      adjustLabel()
-    }
+    findAVPlayerViewController(controller: rootController)
+    //if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
+      //lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
+      //adjustLabel()
+    //}
   }
     
     /*var viewlist = "list:"
