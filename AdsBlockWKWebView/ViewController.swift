@@ -169,10 +169,10 @@ player.play()*/
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
-    /*delegate.playerViewController.player = delegate.player
+    delegate.playerViewController.player = delegate.player
     self.present(delegate.playerViewController, animated: true) {
     delegate.playerViewController.player!.play()
-}*/
+    }
     
     
     lb.text = lb.text! + " \(UIApplication.shared.windows.count)"
@@ -232,8 +232,8 @@ player.play()*/
   adjustLabel()
   }
   
-  avPVC.player = player
-  avPVC.player!.play()
+  //avPVC.player = player
+  //avPVC.player!.play()
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
