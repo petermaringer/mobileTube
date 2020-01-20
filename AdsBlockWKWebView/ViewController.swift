@@ -187,6 +187,10 @@ player.play()*/
     for subcontroller in controller.childViewControllers {
       lb.text = lb.text! + " a4 \(subcontroller)"
       adjustLabel()
+      //if subcontroller is AVPlayerViewController {
+      //return subcontroller as? AVPlayerViewController
+      //}
+      
       //if let result = findAVPlayerViewController(controller: subcontroller) {
         //lb.text = lb.text! + " a5"
         //adjustLabel()
@@ -200,14 +204,18 @@ player.play()*/
     //if let rootController = UIApplication.shared.keyWindow?.rootViewController {
     if let rootController = UIApplication.shared.windows[2].rootViewController {
     //lb.text = lb.text! + " a1 \((UIApplication.shared.keyWindow?.rootViewController)!)"
-    lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
-    adjustLabel()
-    findAVPlayerViewController(controller: rootController)
+    //lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
+    //adjustLabel()
+    //findAVPlayerViewController(controller: rootController)
     //if let avPlayerViewController = findAVPlayerViewController(controller: rootController) {
       //lb.text = lb.text! + " aX \(avPlayerViewController.player!)"
       //adjustLabel()
     //}
   }
+  
+  let targetSC = UIApplication.shared.windows[2].rootViewController.childViewControllers.first(where: { $0 is AVPlayerViewController })
+  lb.text = lb.text! + " tSC:\(targetSC)"
+  adjustLabel()
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
