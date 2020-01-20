@@ -747,7 +747,7 @@ player.play()*/
     avPVC = AVPlayerViewController()
     NotificationCenter.default.addObserver(self, selector: #selector(focusNewWindow), name: .UIWindowDidResignKey, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(setBgVideo), name: .UIApplicationDidEnterBackground, object: nil)
-    //UIApplicationDidEnterBackgroundNotification
+    NotificationCenter.default.addObserver(self, selector: #selector(setFgVideo), name: .UIApplicationWillEnterForeground, object: nil)
     
     
         //url = URL(string: "https://www.google.com")
@@ -784,7 +784,14 @@ player.play()*/
   }
   
   @objc private func setBgVideo() {
+    avPVC.player = nil
     lb.text = lb.text! + " BgV"
+    adjustLabel()
+  }
+  
+  @objc private func setFgVideo() {
+    //avPVC.player = player
+    lb.text = lb.text! + " FgV"
     adjustLabel()
   }
   
