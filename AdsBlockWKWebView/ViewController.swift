@@ -198,7 +198,7 @@ player.play()*/
 }
     
     //if let rootController = UIApplication.shared.keyWindow?.rootViewController {
-    if let rootController = UIApplication.shared.windows[3].rootViewController {
+    if let rootController = UIApplication.shared.windows[2].rootViewController {
     //lb.text = lb.text! + " a1 \((UIApplication.shared.keyWindow?.rootViewController)!)"
     lb.text = lb.text! + " a1 \((UIApplication.shared.windows[3].rootViewController)!)"
     adjustLabel()
