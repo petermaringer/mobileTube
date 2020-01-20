@@ -747,6 +747,9 @@ player.play()*/
     
     NotificationCenter.default.addObserver(self, selector: #selector(focusNewWindow), name: .UIWindowDidResignKey, object: nil)
     
+    NotificationCenter.default.addObserver(self, selector: #selector(setBgVideo), name: .UIApplicationDidEnterBackground, object: nil)
+    //UIApplicationDidEnterBackgroundNotification
+    
     
         //url = URL(string: "https://www.google.com")
         url = "https://www.google.com"
@@ -779,6 +782,11 @@ player.play()*/
       adjustLabel()
       //UIApplication.shared.windows[0].makeKeyAndVisible()
     }
+  }
+  
+  @objc private func setBgVideo() {
+    lb.text = lb.text! + " BgV"
+    adjustLabel()
   }
   
   
