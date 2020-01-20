@@ -226,10 +226,9 @@ player.play()*/
   avPVC = targetSC
   lb.text = lb.text! + " VC:\(avPVC!)"
   //lb.text = lb.text! + " VCP:\(avPVC!.player)"
-  adjustLabel()
-  }
   if avPVC.player != nil {
-  lb.text = lb.text! + " VCP:\(avPVC!.player)"
+  lb.text = lb.text! + " VCP:\(avPVC!.player!)"
+  }
   adjustLabel()
   }
     
