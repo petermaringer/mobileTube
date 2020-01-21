@@ -234,8 +234,8 @@ player.play()*/
   adjustLabel()
   }
   
-  avPVC.player = player
-  avPVC.player!.play()
+  //avPVC.player = player
+  //avPVC.player!.play()
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
