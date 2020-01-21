@@ -181,7 +181,8 @@ player.play()*/
     lb.text = lb.text! + " \(UIApplication.shared.windows.count)"
     adjustLabel()
     
-    func findAVPlayerViewController(controller: UIViewController) -> AVPlayerViewController? {
+    //func findAVPlayerViewController(controller: UIViewController) -> AVPlayerViewController? {
+    func findAVPlayerViewController(controller: UIViewController) {
   if controller is AVPlayerViewController {
     lb.text = lb.text! + " a2"
     adjustLabel()
