@@ -129,6 +129,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var webview3: WebView!
   var webviewConfig: WKWebViewConfiguration!
   var avPVC: AVPlayerViewController!
+  var navUrl: String!
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
@@ -781,7 +782,7 @@ player.play()*/
     if UIApplication.shared.windows.count > 1 && UIApplication.shared.windows[1].isHidden == false {
       UIApplication.shared.windows[2].isHidden = true
       //lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count) \(UIApplication.shared.windows[0].isHidden) \(UIApplication.shared.windows[1].isHidden) \(UIApplication.shared.windows[2].isHidden) \(UIApplication.shared.windows[3].isHidden)"
-      lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count)\(UIApplication.shared.windows[2].isHidden)"
+      lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count)\(UIApplication.shared.windows[2].isHidden) \(navUrl)"
       adjustLabel()
       //UIApplication.shared.windows[0].makeKeyAndVisible()
     }
@@ -879,6 +880,15 @@ player.play()*/
     webview.load(request)
   }
   
+  
+  func webView(_ webview: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    if let urlStr = navigationAction.request.url?.absoluteString {
+      //Save presented URL
+      //Full path self.webview.url
+      navUrl = urlStr
+    }
+    decisionHandler(.allow)
+  }
   
   func webView(_ webview: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
     if let mimeType = navigationResponse.response.mimeType {
