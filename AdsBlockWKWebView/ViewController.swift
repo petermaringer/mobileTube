@@ -128,6 +128,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   //var bfarray: Array<String> = []
   var webview2: WebView!
   var webview3: WebView!
+  var webviewPrefs: WKPreferences!
   var webviewConfig: WKWebViewConfiguration!
   var avPVC: AVPlayerViewController!
   var navUrl: String!
@@ -617,7 +618,12 @@ player.play()*/
             ])
         UserDefaults.standard.synchronize()
         
+        webviewPrefs = WKPreferences()
+        webviewPrefs.javaScriptEnabled = true
+        webviewPrefs.javaScriptCanOpenWindowsAutomatically = true
+        
         webviewConfig = WKWebViewConfiguration()
+        webviewConfig.preferences = webviewPrefs
         //webviewConfig.allowsInlineMediaPlayback = true
         //webviewConfig.mediaTypesRequiringUserActionForPlayback = []
         
