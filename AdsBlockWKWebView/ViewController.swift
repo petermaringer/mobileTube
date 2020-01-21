@@ -1153,7 +1153,7 @@ player.play()*/
         guard let targetFrame = navigationAction.targetFrame, targetFrame.isMainFrame else {
             webView.load(URLRequest(url: url))
             
-            navUrlArray.append(url?.absoluteString)
+            navUrlArray.append(url.absoluteString)
             
             return nil
         }
