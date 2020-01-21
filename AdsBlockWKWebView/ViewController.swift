@@ -895,8 +895,12 @@ player.play()*/
     if let urlStr = navigationAction.request.url?.absoluteString {
       //Full path self.webview.url
       navUrl = urlStr
-      //navUrlArray.append(navUrl)
       navUrlArray.insert(navUrl, at: 0)
+      
+      if navUrl == "about:blank" {
+        navUrlArray.insert(self.webview.url!.absoluteString, at: 0)
+      }
+      
     }
     decisionHandler(.allow)
   }
@@ -1151,11 +1155,10 @@ player.play()*/
             return nil
         }
         guard let targetFrame = navigationAction.targetFrame, targetFrame.isMainFrame else {
-            webView.load(URLRequest(url: url))
             
-            //navUrlArray.append("NW:" + url.absoluteString)
             navUrlArray.insert("NW:" + url.absoluteString, at: 0)
             
+            webView.load(URLRequest(url: url))
             return nil
         }
         return nil
