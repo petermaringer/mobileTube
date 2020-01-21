@@ -1141,7 +1141,7 @@ player.play()*/
         }
     }
     
-    // Just for invalidating target="_blank"
+    //Just for invalidating target="_blank"
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         
         lb.text = lb.text! + " cwv"
@@ -1152,6 +1152,9 @@ player.play()*/
         }
         guard let targetFrame = navigationAction.targetFrame, targetFrame.isMainFrame else {
             webView.load(URLRequest(url: url))
+            
+            navUrlArray.append(url?.absoluteString)
+            
             return nil
         }
         return nil
