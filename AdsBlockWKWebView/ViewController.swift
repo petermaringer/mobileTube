@@ -241,7 +241,7 @@ player.play()*/
   
   var navlist = "navlist:"
   navUrlArray.forEach { url in
-    navlist = navlist + " " + url
+    navlist = navlist + "\n\n" + url
   }
     
     /*var viewlist = "list:"
@@ -296,7 +296,7 @@ player.play()*/
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    showAlert(message: "\(navUrl!) \(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
+    showAlert(message: "\(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     
   }
   
