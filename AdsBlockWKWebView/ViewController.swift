@@ -793,7 +793,7 @@ player.play()*/
       lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count)\(UIApplication.shared.windows[2].isHidden) \(navUrl!)"
       adjustLabel()
       showAlert(message: "navUrl: \(navUrl!)")
-      navUrlArray.removeAll()
+      //navUrlArray.removeAll()
       //UIApplication.shared.windows[0].makeKeyAndVisible()
     }
   }
@@ -1153,7 +1153,7 @@ player.play()*/
         guard let targetFrame = navigationAction.targetFrame, targetFrame.isMainFrame else {
             webView.load(URLRequest(url: url))
             
-            navUrlArray.append(url.absoluteString)
+            navUrlArray.append("NW:" + url.absoluteString)
             
             return nil
         }
