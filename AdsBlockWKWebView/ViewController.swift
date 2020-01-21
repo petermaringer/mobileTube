@@ -131,6 +131,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var webviewConfig: WKWebViewConfiguration!
   var avPVC: AVPlayerViewController!
   var navUrl: String!
+  var navUrlArray: Array<String> = []
   
   var insetT: CGFloat = 0
   var insetB: CGFloat = 0
@@ -202,7 +203,7 @@ player.play()*/
       //}
     }
   }
-  return nil
+  //return nil
 }
     
     if UIApplication.shared.windows.count > 99 {
@@ -236,6 +237,11 @@ player.play()*/
   
   //avPVC.player = player
   //avPVC.player!.play()
+  
+  var navlist = "navlist:"
+  navUrlArray.forEach { url in
+    navlist = navlist + " " + url
+  }
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
@@ -289,7 +295,7 @@ player.play()*/
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    showAlert(message: "\(navUrl!) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
+    showAlert(message: "\(navUrl!) \(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     
   }
   
@@ -786,6 +792,7 @@ player.play()*/
       lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count)\(UIApplication.shared.windows[2].isHidden) \(navUrl!)"
       adjustLabel()
       showAlert(message: "navUrl: \(navUrl!)")
+      navUrlArray.removeAll()
       //UIApplication.shared.windows[0].makeKeyAndVisible()
     }
   }
@@ -888,6 +895,7 @@ player.play()*/
       //Save presented URL
       //Full path self.webview.url
       navUrl = urlStr
+      navUrlArray.append(navUrl)
     }
     decisionHandler(.allow)
   }
