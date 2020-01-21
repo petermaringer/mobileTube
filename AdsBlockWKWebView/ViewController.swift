@@ -893,10 +893,10 @@ player.play()*/
   
   func webView(_ webview: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
     if let urlStr = navigationAction.request.url?.absoluteString {
-      //Save presented URL
       //Full path self.webview.url
       navUrl = urlStr
-      navUrlArray.append(navUrl)
+      //navUrlArray.append(navUrl)
+      navUrlArray.insert(navUrl, at: 0)
     }
     decisionHandler(.allow)
   }
@@ -1153,7 +1153,8 @@ player.play()*/
         guard let targetFrame = navigationAction.targetFrame, targetFrame.isMainFrame else {
             webView.load(URLRequest(url: url))
             
-            navUrlArray.append("NW:" + url.absoluteString)
+            //navUrlArray.append("NW:" + url.absoluteString)
+            navUrlArray.insert("NW:" + url.absoluteString, at: 0)
             
             return nil
         }
