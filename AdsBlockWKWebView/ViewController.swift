@@ -304,8 +304,16 @@ player.play()*/
       webview.configuration.userContentController.removeAllContentRuleLists()
       WKContentRuleListStore.default().removeContentRuleList(forIdentifier: ruleId2, completionHandler: nil)
       UserDefaults.standard.set(false, forKey: ruleId2)
-      setupContentBlockFromStringLiteral()
-      setupContentBlockFromFile()
+      
+      let group = DispatchGroup()
+      group.enter()
+      setupContentBlockFromStringLiteral {
+        group.leave()
+      }
+      group.enter()
+      setupContentBlockFromFile {
+        group.leave()
+      }
       
       UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
       lb.text = lb.text! + " UPD"
