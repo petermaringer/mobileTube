@@ -299,7 +299,7 @@ player.play()*/
     if (UserDefaults.standard.object(forKey: "ruleId2FileDateLast") != nil) {
       ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as? Date
     }
-    if ruleId2FileDate > ruleId2FileDateLast {
+    if ruleId2FileDate > ruleId2FileDateLast! {
       lb.text = lb.text! + " UPD"
       adjustLabel()
       UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
