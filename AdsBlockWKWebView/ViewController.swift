@@ -904,7 +904,7 @@ player.play()*/
       navUrlArray.insert(navUrl, at: 0)
       
       if navUrl == "about:blank" {
-        navUrlArray.insert(self.webview.url!.absoluteString, at: 0)
+        navUrlArray.insert(self.webview.request.url!.absoluteString, at: 0)
       }
       
     }
@@ -912,6 +912,12 @@ player.play()*/
   }
   
   func webView(_ webview: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+    
+    if let urlStr = navigationResponse.response.url?.absoluteString {
+      navUrl = urlStr
+      navUrlArray.insert("RE:" + navUrl, at: 0)
+    }
+    
     if let mimeType = navigationResponse.response.mimeType {
       //do some thing with the MIME type
       lb.text = lb.text! + " \(mimeType)"
