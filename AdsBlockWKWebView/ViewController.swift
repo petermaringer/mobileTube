@@ -295,19 +295,22 @@ player.play()*/
     let ruleId2File = Bundle.main.url(forResource: "adaway", withExtension: "json")!
     let resourceValues = try! ruleId2File.resourceValues(forKeys: [.contentModificationDateKey])
     let ruleId2FileDate = resourceValues.contentModificationDate!
-    
     var ruleId2FileDateLast = Calendar.current.date(byAdding: .year, value: -1, to: ruleId2FileDate)
     if (UserDefaults.standard.object(forKey: "ruleId2FileDateLast") != nil) {
       ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as? Date
     }
-    
+    if ruleId2FileDate > ruleId2FileDateLast {
+      lb.text = lb.text! + " UPD"
+      adjustLabel()
+      UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
+    }
     
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
     let blitem = webview2.backForwardList.forwardList.count
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    showAlert(message: "\(ruleId2FileDate) \(ruleId2FileDateLast) \(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
+    showAlert(message: "\(ruleId2FileDate) \(ruleId2FileDateLast!) \(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     
   }
   
