@@ -292,16 +292,22 @@ player.play()*/
     let p = URL(fileURLWithPath: file)
     let text = try? String(contentsOf: p)
     
-    let file2 = Bundle.main.url(forResource: "adaway", withExtension: "json")!
-    let resourceValues = try! file2.resourceValues(forKeys: [.contentModificationDateKey])
-    let crdate = resourceValues.contentModificationDate!
+    let ruleId2File = Bundle.main.url(forResource: "adaway", withExtension: "json")!
+    let resourceValues = try! ruleId2File.resourceValues(forKeys: [.contentModificationDateKey])
+    let ruleId2FileDate = resourceValues.contentModificationDate!
+    
+    var ruleId2FileDateLast = ruleId2FileDate.date(byAdding: .year, value: -1, to: Date())
+    if (UserDefaults.standard.object(forKey: "ruleId2FileDateLast") != nil) {
+      ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as! Date
+    }
+    
     
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
     let blitem = webview2.backForwardList.forwardList.count
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    showAlert(message: "\(crdate) \(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
+    showAlert(message: "\(ruleId2FileDate) \(ruleId2FileDateLast) \(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     
   }
   
