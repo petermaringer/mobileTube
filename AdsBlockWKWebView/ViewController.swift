@@ -237,8 +237,8 @@ player.play()*/
   adjustLabel()
   }
   
-  //avPVC.player = player
-  //avPVC.player!.play()
+  avPVC.player = player
+  avPVC.player!.play()
   
   var navlist = "navlist:"
   navUrlArray.forEach { url in
@@ -292,12 +292,16 @@ player.play()*/
     let p = URL(fileURLWithPath: file)
     let text = try? String(contentsOf: p)
     
+    let file2 = Bundle.main.url(forResource: "adaway", withExtension: "json")!
+    let resourceValues = try! file2.resourceValues(forKeys: [.creationDateKey])
+    let crdate = resourceValues.creationDate!
+    
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
     let blitem = webview2.backForwardList.forwardList.count
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    showAlert(message: "\(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
+    showAlert(message: "\(crdate) \(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     
   }
   
