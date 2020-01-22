@@ -620,7 +620,7 @@ player.play()*/
         
         webviewPrefs = WKPreferences()
         webviewPrefs.javaScriptEnabled = true
-        webviewPrefs.javaScriptCanOpenWindowsAutomatically = true
+        webviewPrefs.javaScriptCanOpenWindowsAutomatically = false
         
         webviewConfig = WKWebViewConfiguration()
         webviewConfig.preferences = webviewPrefs
