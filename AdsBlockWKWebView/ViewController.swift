@@ -302,10 +302,10 @@ player.play()*/
     if ruleId2FileDate > ruleId2FileDateLast! {
       if #available(iOS 11.0, *) {
       webview.configuration.userContentController.removeAllContentRuleLists()
-      WKContentRuleListStore.default().removeContentRuleList(forIdentifier: ruleId2)
+      WKContentRuleListStore.default().removeContentRuleList(forIdentifier: ruleId2, completionHandler: nil)
       UserDefaults.standard.set(false, forKey: ruleId2)
-      setupContentBlockFromStringLiteral(completion)
-      setupContentBlockFromFile(completion)
+      setupContentBlockFromStringLiteral()
+      setupContentBlockFromFile()
       
       UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
       lb.text = lb.text! + " UPD"
