@@ -293,8 +293,8 @@ player.play()*/
     let text = try? String(contentsOf: p)
     
     let file2 = Bundle.main.url(forResource: "adaway", withExtension: "json")!
-    let resourceValues = try! file2.resourceValues(forKeys: [.creationDateKey])
-    let crdate = resourceValues.creationDate!
+    let resourceValues = try! file2.resourceValues(forKeys: [.contentModificationDateKey])
+    let crdate = resourceValues.contentModificationDate!
     
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
     let blitem = webview2.backForwardList.forwardList.count
