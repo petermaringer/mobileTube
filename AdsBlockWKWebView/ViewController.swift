@@ -626,6 +626,7 @@ player.play()*/
         webviewConfig.preferences = webviewPrefs
         //webviewConfig.allowsInlineMediaPlayback = true
         //webviewConfig.mediaTypesRequiringUserActionForPlayback = []
+        webviewConfig.ignoresViewportScaleLimits = true
         
         webview = WKWebView(frame: CGRect.zero, configuration: webviewConfig)
         //webview = WKWebView(frame: CGRect.zero)
@@ -948,8 +949,8 @@ player.play()*/
     urlField.text = webview.url!.absoluteString
     //showAlert(message: defaultUserAgent)
     
-    let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes');document.getElementsByTagName('head')[0].appendChild(meta);"
-    webview.evaluateJavaScript(javascript, completionHandler: nil)
+    //let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes');document.getElementsByTagName('head')[0].appendChild(meta);"
+    //webview.evaluateJavaScript(javascript, completionHandler: nil)
     
     //for item in webview.backForwardList {}
     //for (item: WKBackForwardListItem) in webview.backForwardList.backList {}
