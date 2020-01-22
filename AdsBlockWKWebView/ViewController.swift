@@ -298,7 +298,7 @@ player.play()*/
     
     var ruleId2FileDateLast = Calendar.current.date(byAdding: .year, value: -1, to: ruleId2FileDate)
     if (UserDefaults.standard.object(forKey: "ruleId2FileDateLast") != nil) {
-      ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as Date
+      ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as? Date
     }
     
     
