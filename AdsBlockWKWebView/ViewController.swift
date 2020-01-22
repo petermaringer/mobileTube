@@ -300,9 +300,17 @@ player.play()*/
       ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as? Date
     }
     if ruleId2FileDate > ruleId2FileDateLast! {
+      if #available(iOS 11.0, *) {
+      webview.configuration.userContentController.removeAllContentRuleLists()
+      WKContentRuleListStore.default().removeContentRuleList(forIdentifier: ruleId2)
+      UserDefaults.standard.set(false, forKey: ruleId2)
+      setupContentBlockFromStringLiteral(completion)
+      setupContentBlockFromFile(completion)
+      
+      UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
       lb.text = lb.text! + " UPD"
       adjustLabel()
-      UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
+      }
     }
     
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
