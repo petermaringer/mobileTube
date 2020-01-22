@@ -296,7 +296,7 @@ player.play()*/
     let resourceValues = try! ruleId2File.resourceValues(forKeys: [.contentModificationDateKey])
     let ruleId2FileDate = resourceValues.contentModificationDate!
     
-    var ruleId2FileDateLast = ruleId2FileDate.date(byAdding: .year, value: -1, to: Date())
+    var ruleId2FileDateLast = Calendar.current.date(byAdding: .year, value: -1, to: ruleId2FileDate)
     if (UserDefaults.standard.object(forKey: "ruleId2FileDateLast") != nil) {
       ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as! Date
     }
