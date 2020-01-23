@@ -1101,14 +1101,13 @@ player.play()*/
     if (UserDefaults.standard.object(forKey: "ruleId2FileDateLast") != nil) {
       ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as? Date
     }
-    lb.text = lb.text! + " \(ruleId2FileDate) \(ruleId2FileDateLast!)"
-    adjustLabel()
+    self.lb.text = self.lb.text! + " \(ruleId2FileDate) \(ruleId2FileDateLast!)"
+    self.adjustLabel()
     if ruleId2FileDate > ruleId2FileDateLast! {
       //if #available(iOS 11.0, *) {
       //webview.configuration.userContentController.removeAllContentRuleLists()
       WKContentRuleListStore.default().removeContentRuleList(forIdentifier: ruleId2, completionHandler: nil)
       UserDefaults.standard.set(false, forKey: ruleId2)
-      
       //let group = DispatchGroup()
       //group.enter()
       //setupContentBlockFromStringLiteral {
@@ -1118,14 +1117,11 @@ player.play()*/
       //setupContentBlockFromFile {
         //group.leave()
       //}
-      
       UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
-      lb.text = lb.text! + " UPD"
-      adjustLabel()
-      
+      self.lb.text = self.lb.text! + " UPD"
+      self.adjustLabel()
       self?.setupContentBlockFromFile(completion)
       return
-      
       //}
     }
                     
