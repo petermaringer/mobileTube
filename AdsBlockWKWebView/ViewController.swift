@@ -1101,7 +1101,7 @@ player.play()*/
     if (UserDefaults.standard.object(forKey: "ruleId2FileDateLast") != nil) {
       ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as? Date
     }
-    self?.lb.text = self?.lb.text! + " \(ruleId2FileDate) \(ruleId2FileDateLast!)"
+    self?.lb.text = self?.lb.text? + " \(ruleId2FileDate) \(ruleId2FileDateLast!)"
     self?.adjustLabel()
     if ruleId2FileDate > ruleId2FileDateLast! {
       //if #available(iOS 11.0, *) {
@@ -1118,7 +1118,7 @@ player.play()*/
         //group.leave()
       //}
       UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
-      self?.lb.text = self?.lb.text! + " UPD"
+      self?.lb.text = self?.lb.text? + " UPD"
       self?.adjustLabel()
       self?.setupContentBlockFromFile(completion)
       return
