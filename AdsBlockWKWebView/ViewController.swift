@@ -905,7 +905,7 @@ player.play()*/
       navUrlArray.insert(navUrl, at: 0)
       
       if navUrl == "about:blank" {
-        navUrlArray.insert(self.webview.url!.absoluteString, at: 0)
+        navUrlArray.insert("AB:" + self.webview.url!.absoluteString, at: 0)
       }
       
     }
