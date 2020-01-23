@@ -292,41 +292,12 @@ player.play()*/
     let p = URL(fileURLWithPath: file)
     let text = try? String(contentsOf: p)
     
-    let ruleId2File = Bundle.main.url(forResource: "adaway", withExtension: "json")!
-    let resourceValues = try! ruleId2File.resourceValues(forKeys: [.contentModificationDateKey])
-    let ruleId2FileDate = resourceValues.contentModificationDate!
-    var ruleId2FileDateLast = Calendar.current.date(byAdding: .year, value: -1, to: ruleId2FileDate)
-    if (UserDefaults.standard.object(forKey: "ruleId2FileDateLast") != nil) {
-      ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as? Date
-    }
-    if ruleId2FileDate > ruleId2FileDateLast! {
-      if #available(iOS 11.0, *) {
-      webview.configuration.userContentController.removeAllContentRuleLists()
-      WKContentRuleListStore.default().removeContentRuleList(forIdentifier: ruleId2, completionHandler: nil)
-      UserDefaults.standard.set(false, forKey: ruleId2)
-      
-      let group = DispatchGroup()
-      group.enter()
-      setupContentBlockFromStringLiteral {
-        group.leave()
-      }
-      group.enter()
-      setupContentBlockFromFile {
-        group.leave()
-      }
-      
-      UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
-      lb.text = lb.text! + " UPD"
-      adjustLabel()
-      }
-    }
-    
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
     let blitem = webview2.backForwardList.forwardList.count
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    showAlert(message: "\(ruleId2FileDate) \(ruleId2FileDateLast!) \(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
+    showAlert(message: "\(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     
   }
   
@@ -1122,6 +1093,42 @@ player.play()*/
                     return
                 }
                 if let list = contentRuleList {
+                    
+    let ruleId2File = Bundle.main.url(forResource: "adaway", withExtension: "json")!
+    let resourceValues = try! ruleId2File.resourceValues(forKeys: [.contentModificationDateKey])
+    let ruleId2FileDate = resourceValues.contentModificationDate!
+    var ruleId2FileDateLast = Calendar.current.date(byAdding: .year, value: -1, to: ruleId2FileDate)
+    if (UserDefaults.standard.object(forKey: "ruleId2FileDateLast") != nil) {
+      ruleId2FileDateLast = UserDefaults.standard.object(forKey: "ruleId2FileDateLast") as? Date
+    }
+    lb.text = lb.text! + " \(ruleId2FileDate) \(ruleId2FileDateLast!)"
+    adjustLabel()
+    if ruleId2FileDate > ruleId2FileDateLast! {
+      //if #available(iOS 11.0, *) {
+      //webview.configuration.userContentController.removeAllContentRuleLists()
+      WKContentRuleListStore.default().removeContentRuleList(forIdentifier: ruleId2, completionHandler: nil)
+      UserDefaults.standard.set(false, forKey: ruleId2)
+      
+      //let group = DispatchGroup()
+      //group.enter()
+      //setupContentBlockFromStringLiteral {
+        //group.leave()
+      //}
+      //group.enter()
+      //setupContentBlockFromFile {
+        //group.leave()
+      //}
+      
+      UserDefaults.standard.set(ruleId2FileDate, forKey: "ruleId2FileDateLast")
+      lb.text = lb.text! + " UPD"
+      adjustLabel()
+      
+      self?.setupContentBlockFromFile(completion)
+      return
+      
+      //}
+    }
+                    
                     self?.webview.configuration.userContentController.add(list)
                     completion?()
                 }
