@@ -1106,7 +1106,7 @@ player.play()*/
     if ruleId2FileDate > ruleId2FileDateLast! {
       //if #available(iOS 11.0, *) {
       //webview.configuration.userContentController.removeAllContentRuleLists()
-      WKContentRuleListStore.default().removeContentRuleList(forIdentifier: ruleId2, completionHandler: nil)
+      //WKContentRuleListStore.default().removeContentRuleList(forIdentifier: ruleId2, completionHandler: nil)
       UserDefaults.standard.set(false, forKey: ruleId2)
       //let group = DispatchGroup()
       //group.enter()
