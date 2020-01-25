@@ -769,17 +769,17 @@ player.play()*/
     NotificationCenter.default.addObserver(self, selector: #selector(focusNewWindow), name: .UIWindowDidResignKey, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(setBgVideo), name: .UIApplicationDidEnterBackground, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(setFgVideo), name: .UIApplicationWillEnterForeground, object: nil)
-    
     let commandCenter = MPRemoteCommandCenter.shared()
     commandCenter.togglePlayPauseCommand.addTarget { [unowned self] event in
       if self.avPVC.player!.rate == 0.0 {
         self.avPVC.player!.play()
         return .success
-      } else {
+      } //else {
+      if self.avPVC.player!.rate == 1.0 {
         self.avPVC.player!.pause()
         return .success
       }
-      //return .commandFailed
+      return .commandFailed
     }
     
     
