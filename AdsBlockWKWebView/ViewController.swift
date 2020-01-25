@@ -815,11 +815,13 @@ player.play()*/
   
   @objc private func focusNewWindow() {
     if UIApplication.shared.windows.count > 1 && UIApplication.shared.windows[1].isHidden == false {
-      UIApplication.shared.windows[2].isHidden = true
+      ////
+      //UIApplication.shared.windows[2].isHidden = true
+      ////
       //lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count) \(UIApplication.shared.windows[0].isHidden) \(UIApplication.shared.windows[1].isHidden) \(UIApplication.shared.windows[2].isHidden) \(UIApplication.shared.windows[3].isHidden)"
       lb.text = lb.text! + " fNW\(UIApplication.shared.windows.count)\(UIApplication.shared.windows[2].isHidden) \(navUrl!)"
       adjustLabel()
-      showAlert(message: "navUrl: \(navUrl!)")
+      //showAlert(message: "navUrl: \(navUrl!)")
       //navUrlArray.removeAll()
       //UIApplication.shared.windows[0].makeKeyAndVisible()
     }
@@ -1017,11 +1019,8 @@ player.play()*/
     if restoreIndex == restoreIndexLast {
       restoreIndex += 1
       webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
+      webview3.removeFromSuperview()
       
-      
-    
-    webview3.removeFromSuperview()
-    
       //var myBackList = [WKBackForwardListItem]()
       //myBackList.append(webview.backForwardList.item(at: 0)!)
         //override var webview.backForwardList.backList: [WKBackForwardListItem] {
