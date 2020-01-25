@@ -565,10 +565,10 @@ player.play()*/
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      //if webview2.isDescendant(of: view) {
+      if webview2.isDescendant(of: view) {
         webview.frame.origin.y += 200
         webview.frame.size.height -= 200
-      //}
+      }
       
       webview3.frame.origin.x = insetL
       webview3.frame.origin.y = insetT + 5
@@ -757,6 +757,14 @@ player.play()*/
     }
     //lb.text = lb.text! + bflist
     //adjustLabel()
+    
+    webview2 = WebView(frame: CGRect.zero, history: WebViewHistory())
+    //webview2.navigationDelegate = self
+    webview2.allowsBackForwardNavigationGestures = true
+    view.addSubview(webview2)
+    webview2.frame = CGRect(x: 0, y: 84, width: webview.frame.size.width, height: 200)
+    webview2.load(URLRequest(url: URL(string: "https://orf.at")!))
+    //webview2.loadHTMLString("<strong>So long and thanks for all the fish!</strong><br><a href='https://orf.at'>hoho</a>", baseURL: nil)
     
     webview3 = WebView(frame: CGRect.zero, history: WebViewHistory())
     webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1></body>", baseURL: nil)
@@ -1010,13 +1018,8 @@ player.play()*/
       restoreIndex += 1
       webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
       
-      webview2 = WebView(frame: CGRect.zero, history: WebViewHistory())
-    //webview2.navigationDelegate = self
-    webview2.allowsBackForwardNavigationGestures = true
-    //view.addSubview(webview2)
-    webview2.frame = CGRect(x: 0, y: 84, width: webview.frame.size.width, height: 200)
-    webview2.load(URLRequest(url: URL(string: "https://orf.at")!))
-    //webview2.loadHTMLString("<strong>So long and thanks for all the fish!</strong><br><a href='https://orf.at'>hoho</a>", baseURL: nil)
+      
+    
     webview3.removeFromSuperview()
     
       //var myBackList = [WKBackForwardListItem]()
