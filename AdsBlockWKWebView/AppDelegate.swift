@@ -33,9 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //BackgroundAudioBegin
         let session = AVAudioSession.sharedInstance()
         do {
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+            //try session.setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
             try session.setActive(true)
-            //try session.setCategory(AVAudioSessionCategoryPlayback)
-            try session.setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
         } catch {
             print(error.localizedDescription)
         }
