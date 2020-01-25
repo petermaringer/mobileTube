@@ -772,11 +772,11 @@ player.play()*/
     
     let commandCenter = MPRemoteCommandCenter.shared()
     commandCenter.togglePlayPauseCommand.addTarget { [unowned self] event in
-      if self.player.rate == 0.0 {
-        self.player.play()
+      if self.avPVC.player.rate == 0.0 {
+        self.avPVC.player.play()
         return .success
       } else {
-        self.player.pause()
+        self.avPVC.player.pause()
         return .success
       }
       //return .commandFailed
