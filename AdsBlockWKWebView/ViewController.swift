@@ -565,8 +565,10 @@ player.play()*/
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      webview.frame.origin.y += 200
-      webview.frame.size.height -= 200
+      if webview2.isDescendant(of: view) {
+        webview.frame.origin.y += 200
+        webview.frame.size.height -= 200
+      }
       
       webview3.frame.origin.x = insetL
       webview3.frame.origin.y = insetT + 5
@@ -1011,7 +1013,7 @@ player.play()*/
       webview2 = WebView(frame: CGRect.zero, history: WebViewHistory())
     //webview2.navigationDelegate = self
     webview2.allowsBackForwardNavigationGestures = true
-    view.addSubview(webview2)
+    //view.addSubview(webview2)
     webview2.frame = CGRect(x: 0, y: 84, width: webview.frame.size.width, height: 200)
     webview2.load(URLRequest(url: URL(string: "https://orf.at")!))
     //webview2.loadHTMLString("<strong>So long and thanks for all the fish!</strong><br><a href='https://orf.at'>hoho</a>", baseURL: nil)
