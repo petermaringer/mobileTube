@@ -8,6 +8,7 @@ import WebKit
 
 import AVFoundation
 import AVKit
+import MediaPlayer
 
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
@@ -768,6 +769,18 @@ player.play()*/
     NotificationCenter.default.addObserver(self, selector: #selector(focusNewWindow), name: .UIWindowDidResignKey, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(setBgVideo), name: .UIApplicationDidEnterBackground, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(setFgVideo), name: .UIApplicationWillEnterForeground, object: nil)
+    
+    let commandCenter = MPRemoteCommandCenter.shared()
+    commandCenter.togglePlayPauseCommand.addTarget { [unowned self] event in
+      if self.player.rate == 0.0 {
+        self.player.play()
+        return .success
+      } else {
+        self.player.pause()
+        return .success
+      }
+      //return .commandFailed
+    }
     
     
         //url = URL(string: "https://www.google.com")
