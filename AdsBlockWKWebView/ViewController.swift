@@ -773,13 +773,10 @@ player.play()*/
     commandCenter.togglePlayPauseCommand.addTarget { [unowned self] event in
       if self.avPVC.player!.rate == 0.0 {
         self.avPVC.player!.play()
-        return .success
-      } //else {
-      if self.avPVC.player!.rate == 1.0 {
+      } else {
         self.avPVC.player!.pause()
-        return .success
       }
-      return .commandFailed
+      return .success
     }
     
     
