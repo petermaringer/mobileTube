@@ -940,9 +940,11 @@ player.play()*/
     
     if navigationAction.navigationType == .linkActivated {
     //&& navigationAction.targetFrame == nil {
-    webview.load(navigationAction.request)
+      webview.load(navigationAction.request)
       lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
       adjustLabel()
+      decisionHandler(.cancel)
+      return
     }
     
     //if navigationAction.request.url?.scheme == "https" && UIApplication.shared.canOpenURL(navigationAction.request.url!) {
