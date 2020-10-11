@@ -941,9 +941,9 @@ player.play()*/
     if navigationAction.request.url?.scheme == "tel" {
       UIApplication.shared.open(navigationAction.request.url!, options: [:], completionHandler: nil)
       decisionHandler(.cancel)
-    } //else {
+    } else {
       decisionHandler(.allow)
-    //}
+    }
     
   }
   
