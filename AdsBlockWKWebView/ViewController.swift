@@ -938,7 +938,8 @@ player.play()*/
     }
     //decisionHandler(.allow)
     
-    if navigationAction.navigationType == .linkActivated && navigationAction.targetFrame == nil {
+    if navigationAction.navigationType == .linkActivated {
+    //&& navigationAction.targetFrame == nil {
       //self.webview?.loadRequest(navigationAction.request)
       lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
       adjustLabel()
