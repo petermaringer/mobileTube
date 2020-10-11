@@ -932,13 +932,19 @@ player.play()*/
       //Full path self.webview.url
       navUrl = urlStr
       navUrlArray.insert(navUrl, at: 0)
-      
       if navUrl == "about:blank" {
         navUrlArray.insert("AB:" + self.webview.url!.absoluteString, at: 0)
       }
-      
     }
-    decisionHandler(.allow)
+    //decisionHandler(.allow)
+    
+    if navigationAction.request.url?.scheme == "tel" {
+      UIApplication.shared.openURL(navigationAction.request.url!)
+      decisionHandler(.cancel)
+    } //else {
+      decisionHandler(.allow)
+    //}
+    
   }
   
   func webView(_ webview: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
