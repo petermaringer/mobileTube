@@ -940,7 +940,7 @@ player.play()*/
     
     if navigationAction.navigationType == .linkActivated {
     //&& navigationAction.targetFrame == nil {
-    webview.loadRequest(navigationAction.request)
+    webview.load(navigationAction.request)
       lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
       adjustLabel()
     }
