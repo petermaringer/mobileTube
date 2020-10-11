@@ -938,12 +938,20 @@ player.play()*/
     }
     //decisionHandler(.allow)
     
+    if navigationAction.request.url?.scheme == "https" && UIApplication.shared.canOpenURL(navigationAction.request.url!) {
+      lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
+      adjustLabel()
+      //decisionHandler(.cancel)
+      //return
+    }
+    
     if navigationAction.request.url?.scheme == "tel" {
       UIApplication.shared.open(navigationAction.request.url!, options: [:], completionHandler: nil)
       decisionHandler(.cancel)
-    } else {
+      return
+    } //else {
       decisionHandler(.allow)
-    }
+    //}
     
   }
   
