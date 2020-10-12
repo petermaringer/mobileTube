@@ -945,7 +945,6 @@ player.play()*/
       unilinkUrls.forEach { item in
         if urlStr.lowercased().hasPrefix(item.lowercased()) {
           unilinkStop = true
-          break
         }
       }
       
