@@ -940,11 +940,13 @@ player.play()*/
     if navigationAction.navigationType == .linkActivated {
     //&& navigationAction.targetFrame == nil {
       let urlStr = navigationAction.request.url!.absoluteString
-      let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at"]
+      let unilinkUrls: Array<String> = ["https://open.spotify.cok", "https://www.amazon.de", "https://mobile.willhaben.at"]
       var unilinkStop = false
       unilinkUrls.forEach { item in
         if urlStr.lowercased().hasPrefix(item.lowercased()) {
-          unilinkStop = true
+          if !webview.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
+            unilinkStop = true
+          }
         }
       }
       
