@@ -941,15 +941,22 @@ player.play()*/
     //&& navigationAction.targetFrame == nil {
       let urlStr = navigationAction.request.url!.absoluteString
       let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at"]
+      var unilinkStop = false
       unilinkUrls.forEach { item in
         if urlStr.lowercased().hasPrefix(item.lowercased()) {
-          webview.load(navigationAction.request)
-          lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
-          adjustLabel()
-          decisionHandler(.cancel)
-          return
+          unilinkStop = true
+          break
         }
       }
+      
+      if unilinkStop == true {
+        webview.load(navigationAction.request)
+        lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
+        adjustLabel()
+        decisionHandler(.cancel)
+        return
+      }
+      
     }
     
     //if navigationAction.request.url?.scheme == "https" && UIApplication.shared.canOpenURL(navigationAction.request.url!) {
