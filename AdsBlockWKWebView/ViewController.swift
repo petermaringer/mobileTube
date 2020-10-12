@@ -936,15 +936,20 @@ player.play()*/
         navUrlArray.insert("AB:" + self.webview.url!.absoluteString, at: 0)
       }
     }
-    //decisionHandler(.allow)
     
     if navigationAction.navigationType == .linkActivated {
     //&& navigationAction.targetFrame == nil {
-      webview.load(navigationAction.request)
-      lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
-      adjustLabel()
-      decisionHandler(.cancel)
-      return
+      let urlStr = navigationAction.request.url!.absoluteString
+      let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at"]
+      unilinkUrls.forEach { item in
+        if urlStr.lowercased().hasPrefix(item.lowercased()) {
+          webview.load(navigationAction.request)
+          lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
+          adjustLabel()
+          decisionHandler(.cancel)
+          return
+        }
+      }
     }
     
     //if navigationAction.request.url?.scheme == "https" && UIApplication.shared.canOpenURL(navigationAction.request.url!) {
@@ -956,10 +961,8 @@ player.play()*/
       UIApplication.shared.open(navigationAction.request.url!, options: [:], completionHandler: nil)
       decisionHandler(.cancel)
       return
-    } //else {
-      decisionHandler(.allow)
-    //}
-    
+    }
+    decisionHandler(.allow)
   }
   
   func webView(_ webview: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
