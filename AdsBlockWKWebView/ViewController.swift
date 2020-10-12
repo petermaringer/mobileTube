@@ -938,18 +938,15 @@ player.play()*/
     }
     
     if navigationAction.navigationType == .linkActivated {
-    //&& navigationAction.targetFrame == nil {
-      let urlStr = navigationAction.request.url!.absoluteString
-      let unilinkUrls: Array<String> = ["https://open.spotify.cok", "https://www.amazon.de", "https://mobile.willhaben.at"]
+      let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at"]
       var unilinkStop = false
       unilinkUrls.forEach { item in
-        if urlStr.lowercased().hasPrefix(item.lowercased()) {
+        if navigationAction.request.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
           if !webview.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
             unilinkStop = true
           }
         }
       }
-      
       if unilinkStop == true {
         webview.load(navigationAction.request)
         lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
@@ -957,13 +954,13 @@ player.play()*/
         decisionHandler(.cancel)
         return
       }
-      
     }
     
     //if navigationAction.request.url?.scheme == "https" && UIApplication.shared.canOpenURL(navigationAction.request.url!) {
       //decisionHandler(.cancel)
       //return
     //}
+    //&& navigationAction.targetFrame == nil {
     
     if navigationAction.request.url?.scheme == "tel" {
       UIApplication.shared.open(navigationAction.request.url!, options: [:], completionHandler: nil)
