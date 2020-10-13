@@ -962,7 +962,7 @@ player.play()*/
     //}
     //&& navigationAction.targetFrame == nil {
     
-    if navigationAction.request.url?.scheme == "itms-apps" {
+    if navigationAction.request.url?.scheme == "itms-appss" {
       UIApplication.shared.open(navigationAction.request.url!, options: [:], completionHandler: nil)
       decisionHandler(.cancel)
       return
