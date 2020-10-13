@@ -972,7 +972,7 @@ player.play()*/
       //webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
       let newUrlStr = navigationAction.request.url!.absoluteString.replacingOccurrences(of: "itms-appss", with: "https")
       //let newUrl = URL(string: newUrlStr)
-      let newUrl = URLRequest(url: URL(string: newUrlStr)!)
+      var newUrl = URLRequest(url: URL(string: newUrlStr)!)
       newUrl.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
       if counter < 3 {
       counter += 1
