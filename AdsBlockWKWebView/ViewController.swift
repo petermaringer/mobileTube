@@ -948,6 +948,7 @@ player.play()*/
         }
       }
       if unilinkStop == true {
+        webview.customUserAgent = nil
         webview.load(navigationAction.request)
         lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
         adjustLabel()
