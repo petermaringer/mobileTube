@@ -866,7 +866,7 @@ player.play()*/
   private func changeUserAgent() {
     
     let desktopUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
-    if !webview.customUserAgent == desktopUserAgent {
+    if webview.customUserAgent != desktopUserAgent {
     
     //if defaultUserAgent == "default" {
       webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
