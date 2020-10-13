@@ -971,7 +971,7 @@ player.play()*/
       counter += 1
       webview.load(URLRequest(url: newUrl!))
       }
-      webview.customUserAgent = nil
+      //webview.customUserAgent = nil
       //UIApplication.shared.open(navigationAction.request.url!, options: [:], completionHandler: nil)
       decisionHandler(.cancel)
       return
