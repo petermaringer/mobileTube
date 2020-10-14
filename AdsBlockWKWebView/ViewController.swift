@@ -1005,6 +1005,13 @@ player.play()*/
     
     if let mimeType = navigationResponse.response.mimeType {
       //do some thing with the MIME type
+      
+      if mimeType == "application/application/pdf" {
+        if let data = try? Data(contentsOf: navigationResponse.response.url!) {
+          webview.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: navigationResponse.response.url!)
+        }
+      }
+      
       lb.text = lb.text! + " \(mimeType)"
       adjustLabel()
     } else {
