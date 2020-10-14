@@ -1008,7 +1008,10 @@ player.play()*/
       
       if mimeType == "application/application/pdf" {
         if let data = try? Data(contentsOf: navigationResponse.response.url!) {
+          webview.stopLoading()
           webview.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: navigationResponse.response.url!)
+          decisionHandler(.cancel)
+          return
         }
       }
       
