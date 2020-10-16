@@ -402,6 +402,18 @@ player.play()*/
     return true
   }
   
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+      // delete item at indexPath
+    }
+    
+    let share = UITableViewRowAction(style: .normal, title: "Share") { (action, indexPath) in
+      // share item at indexPath
+    }
+    share.backgroundColor = .blue
+    return [delete, share]
+  }
+  
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if (editingStyle == .delete) {
       origArray = origArray.filter{$0 != array[indexPath.row]}
