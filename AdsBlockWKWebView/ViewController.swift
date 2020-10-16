@@ -406,7 +406,6 @@ player.play()*/
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
       // delete item at indexPath
     }
-    
     let share = UITableViewRowAction(style: .normal, title: "Share") { (action, indexPath) in
       // share item at indexPath
     }
