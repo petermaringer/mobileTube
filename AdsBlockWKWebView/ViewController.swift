@@ -418,22 +418,17 @@ player.play()*/
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-      
       self.origArray = self.origArray.filter{$0 != self.array[indexPath.row]}
-      
-      UserDefaults.standard.set(origArray, forKey: "origArray")
-      
+      UserDefaults.standard.set(self.origArray, forKey: "origArray")
       self.array = self.array.filter{$0 != self.array[indexPath.row]}
       tableView.reloadData()
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-      //edit item at indexPath
       self.lb.text = self.lb.text! + " E"
       self.adjustLabel()
     }
     edit.backgroundColor = .editButtonBgColor
     let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
-      //dev item at indexPath
       self.lb.text = self.lb.text! + " D"
       self.adjustLabel()
     }
@@ -442,12 +437,12 @@ player.play()*/
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if (editingStyle == .delete2) {
+    //if (editingStyle == .delete) {
       //origArray = origArray.filter{$0 != array[indexPath.row]}
       //UserDefaults.standard.set(origArray, forKey: "origArray")
       //array = array.filter{$0 != array[indexPath.row]}
       //tableView.reloadData()
-    }
+    //}
   }
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
@@ -621,6 +616,7 @@ player.play()*/
       blurView.frame.size.height = insetT + urlField.frame.size.height + 10
       
       //webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
+      webview.scrollView.contentInset = UIEdgeInsets(top: insetT, left: 0, bottom: insetB, right: 0)
       //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       
       webview3.frame.origin.x = insetL
