@@ -686,8 +686,8 @@ player.play()*/
         
         counter += 1
         
-        blurView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
-        blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.75)
+        blurView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 120))
+        blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.90)
         view.addSubview(blurView)
         
         lb = UILabel(frame: CGRect.zero)
