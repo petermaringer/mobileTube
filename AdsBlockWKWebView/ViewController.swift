@@ -417,8 +417,11 @@ player.play()*/
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-    let delete2 = UITableViewRowAction(style: .destructive, title: "Delete2") { (action, indexPath) in
-      //delete2 item at indexPath
+    let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+      
+      self.origArray = self.origArray.filter{$0 != self.array[indexPath.row]}
+      
+      UserDefaults.standard.set(origArray, forKey: "origArray")
       
       self.array = self.array.filter{$0 != self.array[indexPath.row]}
       tableView.reloadData()
@@ -435,15 +438,15 @@ player.play()*/
       self.adjustLabel()
     }
     dev.backgroundColor = .gray
-    return [delete2, edit, dev]
+    return [delete, edit, dev]
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if (editingStyle == .delete) {
-      origArray = origArray.filter{$0 != array[indexPath.row]}
-      UserDefaults.standard.set(origArray, forKey: "origArray")
-      array = array.filter{$0 != array[indexPath.row]}
-      tableView.reloadData()
+    if (editingStyle == .delete2) {
+      //origArray = origArray.filter{$0 != array[indexPath.row]}
+      //UserDefaults.standard.set(origArray, forKey: "origArray")
+      //array = array.filter{$0 != array[indexPath.row]}
+      //tableView.reloadData()
     }
   }
   
