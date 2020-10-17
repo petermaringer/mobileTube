@@ -120,6 +120,9 @@ class WebView2: WKWebView {
 class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
   
   var webview: WKWebView!
+  
+  var blurView: UIView!
+  
   var urlField: UITextField!
   var button: UIButton!
   var lb: UILabel!
@@ -602,8 +605,6 @@ player.play()*/
         webview.frame.size.height -= 200
       }
       
-      //webview.scrollView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
-      //webview.scrollView.contentInset = UIEdgeInsets insets = { .left = 0, .top = insetT + urlField.frame.size.height + 10, .right = 0, .bottom = 50 }
       webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
       webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       
@@ -684,6 +685,10 @@ player.play()*/
         //webview.isHidden = true
         
         counter += 1
+        
+        blurView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: 200))
+        blurView.backgroundColor = .viewBgColor.withAlphaComponent(0.75)
+        view.addSubview(blurView)
         
         lb = UILabel(frame: CGRect.zero)
         lb.text = "log:"
