@@ -22,7 +22,7 @@ let player = AVPlayer(url: URL(string: "http://statslive.infomaniak.ch/playlist/
 
 
 extension UIColor {
-  static let editColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
+  static let appColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
 }
 
 
@@ -413,8 +413,10 @@ player.play()*/
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
       //edit item at indexPath
+      lb.text = " E"
+      adjustLabel()
     }
-    edit.backgroundColor = .editColor
+    edit.backgroundColor = .appColor
     return [delete2, edit]
   }
   
