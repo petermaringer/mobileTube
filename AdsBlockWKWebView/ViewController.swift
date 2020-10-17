@@ -413,8 +413,8 @@ player.play()*/
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
       //edit item at indexPath
-      lb.text = " E"
-      adjustLabel()
+      self.lb.text = " E"
+      self.adjustLabel()
     }
     edit.backgroundColor = .appColor
     return [delete2, edit]
