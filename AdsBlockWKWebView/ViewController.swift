@@ -604,7 +604,7 @@ player.play()*/
       
       //webview.scrollView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
       //webview.scrollView.contentInset = UIEdgeInsets insets = { .left = 0, .top = insetT + urlField.frame.size.height + 10, .right = 0, .bottom = 50 }
-      webview.scrollView.contentInset = UIEdgeInsets(left: 0, top: insetT + urlField.frame.size.height + 10, right: 0, bottom: 50)
+      webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: 50, right: 0)
       webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       
       webview3.frame.origin.x = insetL
