@@ -26,9 +26,10 @@ extension UIColor {
     self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
   }
   
-  //static let appColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
-  static let appColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
+  //static let viewBackgroundColor: UIColor = UIColor.white.withAlphaComponent(0.75)
+  static let viewBackgroundColor: UIColor = UIColor(white: 0.90, alpha: 0.75)
   
+  static let editButtonColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
 }
 
 
@@ -422,15 +423,13 @@ player.play()*/
       self.lb.text = self.lb.text! + " E"
       self.adjustLabel()
     }
-    edit.backgroundColor = .appColor
-    
+    edit.backgroundColor = .editButtonColor
     let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
       //dev item at indexPath
       self.lb.text = self.lb.text! + " D"
       self.adjustLabel()
     }
     dev.backgroundColor = .gray
-    
     return [delete2, edit, dev]
   }
   
@@ -650,7 +649,8 @@ player.play()*/
         }
         
         //self.view.backgroundColor = .lightGray
-        view.backgroundColor = UIColor(white: 0.90, alpha: 1)
+        //view.backgroundColor = UIColor(white: 0.90, alpha: 1)
+        view.backgroundColor = viewBackgroundColor
         
         UserDefaults.standard.register(defaults: [
             ruleId1 : false,
