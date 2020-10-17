@@ -21,6 +21,11 @@ fileprivate let ruleId2 = "MyRuleID 002"
 let player = AVPlayer(url: URL(string: "http://statslive.infomaniak.ch/playlist/tsfjazz/tsfjazz-high.mp3/playlist.m3u")!)
 
 
+extension UIColor {
+  static let editColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
+}
+
+
 class WebViewHistory: WKBackForwardList {
   /* Solution 1: return nil, discarding what is in backList & forwardList 
   override var backItem: WKBackForwardListItem? {
@@ -409,9 +414,6 @@ player.play()*/
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
       //edit item at indexPath
     }
-    
-    static let editColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
-    
     edit.backgroundColor = .editColor
     return [delete2, edit]
   }
