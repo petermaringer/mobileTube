@@ -409,7 +409,12 @@ player.play()*/
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
       //edit item at indexPath
     }
-    edit.backgroundColor = UIColor(red: 66.0/255, green: 46.0/255, blue: 151.0/255, alpha: 1.0)
+    
+    extension UIColor {
+      static let editColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
+    }
+    
+    edit.backgroundColor = .editColor
     return [delete2, edit]
   }
   
