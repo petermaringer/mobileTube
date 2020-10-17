@@ -597,6 +597,9 @@ player.play()*/
       
       webview.frame.origin.x = insetL
       webview.frame.origin.y = insetT + urlField.frame.size.height + 10
+      
+      webview.frame.origin.y = 20
+      
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
@@ -604,6 +607,11 @@ player.play()*/
         webview.frame.origin.y += 200
         webview.frame.size.height -= 200
       }
+      
+      blurView.frame.origin.x = insetL
+      blurView.frame.origin.y = 0
+      blurView.frame.size.width = self.view.frame.width - insetL - insetR
+      blurView.frame.size.height = insetT + urlField.frame.size.height + 10
       
       webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
       webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
@@ -686,8 +694,8 @@ player.play()*/
         
         counter += 1
         
-        blurView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 120))
-        blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.90)
+        blurView = UIView(frame: CGRect.zero)
+        blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
         view.addSubview(blurView)
         
         lb = UILabel(frame: CGRect.zero)
