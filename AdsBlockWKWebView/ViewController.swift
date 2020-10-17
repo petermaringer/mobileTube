@@ -25,10 +25,8 @@ extension UIColor {
   public convenience init(r: Int, g: Int, b: Int, a: Int) {
     self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
   }
-  
-  //static let viewBgColor: UIColor = UIColor.white.withAlphaComponent(0.75)
-  static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 0.10)
-  
+  //static let colorName: UIColor = UIColor.gray.withAlphaComponent(0.75)
+  static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 1)
   static let editButtonBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
 }
 
@@ -603,6 +601,9 @@ player.play()*/
         webview.frame.origin.y += 200
         webview.frame.size.height -= 200
       }
+      
+      webview.scrollView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
+      webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       
       webview3.frame.origin.x = insetL
       //webview3.frame.origin.y = insetT + 5
