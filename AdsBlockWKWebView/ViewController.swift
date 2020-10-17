@@ -412,10 +412,9 @@ player.play()*/
     startLoading()
   }
   
-  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+  //func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     //return true
-    return false
-  }
+  //}
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
@@ -618,7 +617,7 @@ player.play()*/
       
       //webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
       webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
-      //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
+      webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       
       webview3.frame.origin.x = insetL
       //webview3.frame.origin.y = insetT + 5
