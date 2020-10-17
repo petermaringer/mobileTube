@@ -420,7 +420,7 @@ player.play()*/
     let delete2 = UITableViewRowAction(style: .destructive, title: "Delete2") { (action, indexPath) in
       //delete2 item at indexPath
       
-      array = array.filter{$0 != array[indexPath.row]}
+      self.array = self.array.filter{$0 != self.array[indexPath.row]}
       tableView.reloadData()
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
