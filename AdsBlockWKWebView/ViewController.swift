@@ -27,7 +27,7 @@ extension UIColor {
   }
   
   //static let viewBgColor: UIColor = UIColor.white.withAlphaComponent(0.75)
-  static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 0.75)
+  static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 0.10)
   
   static let editButtonBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
 }
