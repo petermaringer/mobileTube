@@ -22,7 +22,13 @@ let player = AVPlayer(url: URL(string: "http://statslive.infomaniak.ch/playlist/
 
 
 extension UIColor {
-  static let appColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
+  public convenience init(r: Int, g: Int, b: Int, a: Int) {
+    self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
+  }
+  
+  //static let appColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
+  static let appColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
+  
 }
 
 
@@ -417,6 +423,14 @@ player.play()*/
       self.adjustLabel()
     }
     edit.backgroundColor = .appColor
+    
+    let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
+      //dev item at indexPath
+      self.lb.text = self.lb.text! + " D"
+      self.adjustLabel()
+    }
+    dev.backgroundColor = .gray
+    
     return [delete2, edit]
   }
   
