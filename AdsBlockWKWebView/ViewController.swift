@@ -431,7 +431,7 @@ player.play()*/
     }
     dev.backgroundColor = .gray
     
-    return [delete2, edit]
+    return [delete2, edit, dev]
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
