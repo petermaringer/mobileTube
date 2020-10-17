@@ -410,9 +410,7 @@ player.play()*/
       //edit item at indexPath
     }
     
-    extension UIColor {
-      static let editColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
-    }
+    static let editColor: UIColor = UIColor(red: 66/255.0, green: 46/255.0, blue: 151/255.0, alpha: 1.0)
     
     edit.backgroundColor = .editColor
     return [delete2, edit]
