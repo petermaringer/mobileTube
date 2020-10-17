@@ -121,7 +121,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   
   var webview: WKWebView!
   
-  var blurView: UIView!
+  //var blurView: UIView!
+  var blurView: UIVisualEffectView!
   
   var urlField: UITextField!
   var button: UIButton!
@@ -694,8 +695,13 @@ player.play()*/
         
         counter += 1
         
-        blurView = UIView(frame: CGRect.zero)
-        blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
+        //blurView = UIView(frame: CGRect.zero)
+        //blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = CGRect.zero
+        //blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurView)
         
         lb = UILabel(frame: CGRect.zero)
