@@ -413,7 +413,7 @@ player.play()*/
   }
   
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    return true
+    //return true
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -436,14 +436,14 @@ player.play()*/
     return [delete, edit, dev]
   }
   
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+  //func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     //if (editingStyle == .delete) {
       //origArray = origArray.filter{$0 != array[indexPath.row]}
       //UserDefaults.standard.set(origArray, forKey: "origArray")
       //array = array.filter{$0 != array[indexPath.row]}
       //tableView.reloadData()
     //}
-  }
+  //}
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
     switch textField {
@@ -616,7 +616,7 @@ player.play()*/
       blurView.frame.size.height = insetT + urlField.frame.size.height + 10
       
       //webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
-      webview.scrollView.contentInset = UIEdgeInsets(top: insetT, left: 0, bottom: insetB, right: 0)
+      webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
       //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       
       webview3.frame.origin.x = insetL
