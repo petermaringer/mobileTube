@@ -698,7 +698,7 @@ player.play()*/
         //blurView = UIView(frame: CGRect.zero)
         //blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
         
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = CGRect.zero
         //blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
