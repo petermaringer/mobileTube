@@ -1,6 +1,6 @@
 [
 
-
+{"trigger":{"url-filter":".*","load-type":["third-party"],"if-domain":["adfarm1.adition.com","googlesyndication.com"]},"action":{"type":"block"}},
 
 {"trigger":{"url-filter":"adfarm1\\.adition\\.comXXX","load-type":["third-party"]},"action":{"type":"block"}},
 
