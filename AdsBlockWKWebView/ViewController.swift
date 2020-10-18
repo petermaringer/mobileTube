@@ -259,7 +259,6 @@ player.play()*/
   navUrlArray.forEach { url in
     navlist = navlist + "\n\n" + url
   }
-  return
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
@@ -307,6 +306,7 @@ player.play()*/
     let file = Bundle.main.path(forResource: "Info", ofType: "plist")!
     let p = URL(fileURLWithPath: file)
     let text = try? String(contentsOf: p)
+    return
     
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
     let blitem = webview2.backForwardList.forwardList.count
