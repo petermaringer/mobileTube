@@ -316,7 +316,7 @@ player.play()*/
     showAlert(message: "\(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     */
     
-    showAlert(message: "\(appVersion!) \(navlist)")
+    showAlert(message: "\(navlist)")
     
   }
   
