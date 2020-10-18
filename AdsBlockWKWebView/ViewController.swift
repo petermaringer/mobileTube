@@ -236,7 +236,6 @@ player.play()*/
     //}
   }
   }
-  return
   
   //if UIApplication.shared.windows.count > 4 {
   //lb.text = lb.text! + " a1 \((UIApplication.shared.windows[4].rootViewController)!)"
@@ -260,6 +259,7 @@ player.play()*/
   navUrlArray.forEach { url in
     navlist = navlist + "\n\n" + url
   }
+  return
     
     /*var viewlist = "list:"
     func findViewWithAVPlayerLayer(view: UIView) -> UIView? {
