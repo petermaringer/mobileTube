@@ -196,7 +196,6 @@ player.play()*/
     
     lb.text = lb.text! + " \(UIApplication.shared.windows.count)"
     adjustLabel()
-    return
     
     //func findAVPlayerViewController(controller: UIViewController) -> AVPlayerViewController? {
     func findAVPlayerViewController(controller: UIViewController) {
@@ -223,6 +222,7 @@ player.play()*/
   }
   //return nil
 }
+return
     
     if UIApplication.shared.windows.count > 99 {
     //if let rootController = UIApplication.shared.keyWindow?.rootViewController {
