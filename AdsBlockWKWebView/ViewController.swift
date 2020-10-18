@@ -313,10 +313,10 @@ player.play()*/
     let blcount1 = webview2.backForwardList.backList.count
     webview2.backForwardList.backList.removeAll()
     let blcount2 = webview2.backForwardList.backList.count
-    */
-    return
-    
     showAlert(message: "\(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
+    */
+    
+    showAlert(message: "\(navlist) \(appVersion!) \(text!)")
     
   }
   
