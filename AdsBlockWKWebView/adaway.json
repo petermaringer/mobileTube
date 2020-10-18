@@ -1,6 +1,6 @@
 [
 
-{"trigger":{"url-filter":".*","load-type":["first-party"],"if-domain":["adfarm1.adition.com","gum.criteo.com"]},"action":{"type":"block"}},
+{"trigger":{"url-filter":"gum\\.criteo\\.com","load-type":["third-party"]},"action":{"type":"block"}},
 
 {"trigger":{"url-filter":"adfarm1\\.adition\\.comXXX","load-type":["third-party"]},"action":{"type":"block"}},
 
