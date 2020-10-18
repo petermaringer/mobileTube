@@ -222,7 +222,6 @@ player.play()*/
   }
   //return nil
 }
-return
     
     if UIApplication.shared.windows.count > 99 {
     //if let rootController = UIApplication.shared.keyWindow?.rootViewController {
@@ -237,6 +236,7 @@ return
     //}
   }
   }
+  return
   
   //if UIApplication.shared.windows.count > 4 {
   //lb.text = lb.text! + " a1 \((UIApplication.shared.windows[4].rootViewController)!)"
