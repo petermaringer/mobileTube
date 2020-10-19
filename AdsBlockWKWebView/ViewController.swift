@@ -648,7 +648,9 @@ player.play()*/
       
       webview.setValue(UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0), forKey: "_obscuredInsets")
       webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
-      webview.scrollView.contentInsetAdjustmentBehavior = .never
+      if #available(iOS 11, *) {
+        webview.scrollView.contentInsetAdjustmentBehavior = .never
+      }
       //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       
       webview3.frame.origin.x = insetL
