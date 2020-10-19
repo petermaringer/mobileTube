@@ -443,7 +443,7 @@ player.play()*/
     }
     edit.backgroundColor = .editButtonBgColor
     let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
-      self.devButtonClicked()
+      self.devButtonClicked(element: self.array[indexPath.row])
     }
     dev.backgroundColor = .gray
     return [delete, edit, dev]
@@ -458,8 +458,8 @@ player.play()*/
     //}
   //}
   
-  @objc func devButtonClicked() {
-    showAlert(message: "Hallo DEV :-)")
+  @objc func devButtonClicked(element: String) {
+    showAlert(message: "Hallo DEV :-) \(element)")
     lb.text = lb.text! + " DEV"
     adjustLabel()
   }
@@ -669,6 +669,9 @@ player.play()*/
       //urlField.frame.size.width -= 85
       //button.frame.origin.x -= 85
     //}
+    
+    webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
+    webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
     
   }
   
