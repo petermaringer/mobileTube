@@ -311,7 +311,17 @@ player.play()*/
     //var text = String(contentsOfFile: file!, encoding: NSUTF8StringEncoding, error: nil)!
     
     var text = "hallo "
-    text += String(contentsOfFile: Bundle.main.path(forResource: "Info", ofType: "plist")!)
+    //text += String(contentsOfFile: Bundle.main.path(forResource: "Info", ofType: "plist")!)
+    
+    if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+      do {
+        text = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+      } catch {
+        printError("Failed1")
+      }
+    } else {
+      printError("Failed2")
+    }
     
     /*VerursachtError
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
