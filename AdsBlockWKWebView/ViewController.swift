@@ -307,8 +307,10 @@ player.play()*/
     //let p = URL(fileURLWithPath: file)
     //let text = try? String(contentsOf: p)
     
-    let file = Bundle.main.path(forResource: "Info", ofType: "plist")
-    var text = String(contentsOfFile: file!, encoding: NSUTF8StringEncoding, error: nil)!
+    //let file = Bundle.main.path(forResource: "Info", ofType: "plist")
+    //var text = String(contentsOfFile: file!, encoding: NSUTF8StringEncoding, error: nil)!
+    
+    let text = try String(contentsOfFile: Bundle.main.path(forResource: "Info", ofType: "plist")!)
     
     /*VerursachtError
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
