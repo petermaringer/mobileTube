@@ -438,12 +438,11 @@ player.play()*/
       tableView.reloadData()
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-      self.lb.text = self.lb.text! + " E"
-      self.adjustLabel()
+      self.editButtonClicked(url: self.array[indexPath.row])
     }
     edit.backgroundColor = .editButtonBgColor
     let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
-      self.devButtonClicked(element: self.array[indexPath.row])
+      self.devButtonClicked(url: self.array[indexPath.row])
     }
     dev.backgroundColor = .gray
     return [delete, edit, dev]
@@ -458,8 +457,14 @@ player.play()*/
     //}
   //}
   
-  @objc func devButtonClicked(element: String) {
-    showAlert(message: "Hallo DEV :-) \(element)")
+  @objc func editButtonClicked(url: String) {
+    showAlert(message: "Hallo E :-) \(url)")
+    lb.text = lb.text! + " E"
+    adjustLabel()
+  }
+  
+  @objc func devButtonClicked(url: String) {
+    showAlert(message: "Hallo DEV :-) \(url)")
     lb.text = lb.text! + " DEV"
     adjustLabel()
   }
@@ -634,7 +639,7 @@ player.play()*/
       blurView.frame.size.width = self.view.frame.width - insetL - insetR
       blurView.frame.size.height = insetT + urlField.frame.size.height + 10
       
-      //webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
+      webview.setValue(UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0), forKey: "_obscuredInsets")
       webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
       webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       
@@ -670,8 +675,8 @@ player.play()*/
       //button.frame.origin.x -= 85
     //}
     
-    webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
-    webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
+    //webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
+    //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
     
   }
   
