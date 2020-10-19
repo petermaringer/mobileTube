@@ -311,7 +311,8 @@ player.play()*/
     if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
       do {
         //text = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-        text = try String(contentsOfFile: path)
+        //text = try String(contentsOfFile: path)
+        text = try String(contentsOf: URL(fileURLWithPath: path))
       } catch {}
     }
     //if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {}
@@ -443,8 +444,6 @@ player.play()*/
     edit.backgroundColor = .editButtonBgColor
     let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
       self.devButtonClicked()
-      self.lb.text = self.lb.text! + " D"
-      self.adjustLabel()
     }
     dev.backgroundColor = .gray
     return [delete, edit, dev]
@@ -460,8 +459,9 @@ player.play()*/
   //}
   
   @objc func devButtonClicked() {
-    self.lb.text = self.lb.text! + " DEV"
-    self.adjustLabel()
+    showAlert(message: "Hallo DEV :-)")
+    lb.text = lb.text! + " DEV"
+    adjustLabel()
   }
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
