@@ -316,7 +316,7 @@ player.play()*/
     showAlert(message: "\(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     */
     
-    showAlert(message: "\(navlist)")
+    showAlert(message: "\(navlist) \(appVersion!)")
     
   }
   
@@ -811,12 +811,13 @@ player.play()*/
     webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
     
     var bflist = "LASTbflist:"
-    restoreUrls.enumerate().forEach { url in
+    //restoreUrls.forEach { url in
+    for (index, url) in restoreUrls.enumerated() {
       //self.webview.load(URLRequest(url: url))
       //DispatchQueue.main.async {
       //self.webview.load(URLRequest(url: URL(string: url)!))
       //}
-      bflist = bflist + "<br><br>\(url.index): " + url.element
+      bflist = bflist + "<br><br>\(index): " + url
     }
     bflist = bflist + "<br><br>RestorePosition: \(restorePosition)"
     DispatchQueue.main.async {
