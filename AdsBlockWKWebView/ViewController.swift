@@ -442,7 +442,7 @@ player.play()*/
     }
     edit.backgroundColor = .editButtonBgColor
     let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
-      devButtonClicked()
+      self.devButtonClicked()
       self.lb.text = self.lb.text! + " D"
       self.adjustLabel()
     }
