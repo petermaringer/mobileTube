@@ -310,7 +310,8 @@ player.play()*/
     //let file = Bundle.main.path(forResource: "Info", ofType: "plist")
     //var text = String(contentsOfFile: file!, encoding: NSUTF8StringEncoding, error: nil)!
     
-    let text = try! String(contentsOfFile: Bundle.main.path(forResource: "Info", ofType: "plist")!)
+    var text = "hallo "
+    text += try! String(contentsOfFile: Bundle.main.path(forResource: "Info", ofType: "plist")!)
     
     /*VerursachtError
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
