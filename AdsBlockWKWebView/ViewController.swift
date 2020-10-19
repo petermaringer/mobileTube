@@ -481,7 +481,7 @@ player.play()*/
     //guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
     
     SecAddSharedWebCredential(server as CFString, account as CFString, "test12" as CFString) { (error) in
-      showAlert(message: "fail \(error)")
+      self.showAlert(message: "fail \(error)")
     }
     
     showAlert(message: "D:\(url)")
