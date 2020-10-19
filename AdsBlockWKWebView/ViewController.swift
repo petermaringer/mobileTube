@@ -811,14 +811,14 @@ player.play()*/
     webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
     
     var bflist = "LASTbflist:"
-    restoreUrls.forEach { url in
+    restoreUrls.enumerate().forEach { url in
       //self.webview.load(URLRequest(url: url))
       //DispatchQueue.main.async {
       //self.webview.load(URLRequest(url: URL(string: url)!))
       //}
-      bflist = bflist + " " + url
+      bflist = bflist + "<br><br>\(url.index): " + url.element
     }
-    bflist = bflist + " \(restorePosition)"
+    bflist = bflist + "<br><br>RestorePosition: \(restorePosition)"
     DispatchQueue.main.async {
       //self.showAlert(message: "\(bflist)")
     }
@@ -840,8 +840,7 @@ player.play()*/
     //webview3.backgroundColor = .orange
     //webview3.scrollView.backgroundColor = .orange
     webview3.backgroundColor = .editButtonBgColor
-    webview3.scrollView.backgroundColor = .orange
-    
+    webview3.scrollView.backgroundColor = .editButtonBgColor
     webview3.scrollView.isScrollEnabled = true
     //webview3.scrollView.bounces = false
     view.addSubview(webview3)
