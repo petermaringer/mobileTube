@@ -473,7 +473,7 @@ player.play()*/
     let password = ("test12").data(using: String.Encoding.utf8)!
     var query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecValueData as String: password]
     let status = SecItemAdd(query as CFDictionary, nil)
-    guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
+    //guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
     
     showAlert(message: "D:\(url)")
     //lb.text = lb.text! + " D"
