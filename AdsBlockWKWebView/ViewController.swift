@@ -716,7 +716,7 @@ player.play()*/
         view.addSubview(webview)
         webview.frame = view.bounds
         
-        webview.clipsToBounds = false
+        //webview.clipsToBounds = false
         
         //webview.isHidden = true
         
