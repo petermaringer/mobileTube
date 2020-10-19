@@ -317,10 +317,10 @@ player.play()*/
       do {
         text = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
       } catch {
-        printError("Failed1")
+        print("Failed1")
       }
     } else {
-      printError("Failed2")
+      print("Failed2")
     }
     
     /*VerursachtError
