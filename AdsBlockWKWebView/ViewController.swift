@@ -426,16 +426,8 @@ player.play()*/
     startLoading()
   }
   
-  //func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    //return true
-  //}
-  
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-      //self.origArray = self.origArray.filter{$0 != self.array[indexPath.row]}
-      //UserDefaults.standard.set(self.origArray, forKey: "origArray")
-      //self.array = self.array.filter{$0 != self.array[indexPath.row]}
-      //tableView.reloadData()
       self.deleteButtonClicked(url: self.array[indexPath.row])
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
@@ -448,10 +440,6 @@ player.play()*/
     dev.backgroundColor = .gray
     return [delete, edit, dev]
   }
-  
-  //func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //if (editingStyle == .delete) {}
-  //}
   
   @objc func deleteButtonClicked(url: String) {
     origArray = origArray.filter{$0 != url}
@@ -642,12 +630,13 @@ player.play()*/
       blurView.frame.size.width = self.view.frame.width - insetL - insetR
       blurView.frame.size.height = insetT + urlField.frame.size.height + 10
       
+      webview.setValue(true, forKey: "_haveSetObscuredInsets")
       webview.setValue(UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0), forKey: "_obscuredInsets")
       webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
       if #available(iOS 11, *) {
         webview.scrollView.contentInsetAdjustmentBehavior = .never
       }
-      //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
+      webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset - insetT
       
       webview3.frame.origin.x = insetL
       //webview3.frame.origin.y = insetT + 5
@@ -725,6 +714,8 @@ player.play()*/
         webview.allowsBackForwardNavigationGestures = true
         view.addSubview(webview)
         webview.frame = view.bounds
+        
+        webview.clipsToBounds = false
         
         //webview.isHidden = true
         
