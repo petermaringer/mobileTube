@@ -455,10 +455,9 @@ player.play()*/
   
   @objc func deleteButtonClicked(url: String) {
     origArray = origArray.filter{$0 != url}
-    //UserDefaults.standard.set(origArray, forKey: "origArray")
+    UserDefaults.standard.set(origArray, forKey: "origArray")
     array = array.filter{$0 != url}
     tableView.reloadData()
-    //showAlert(message: "X:\(url)")
   }
   
   @objc func editButtonClicked(url: String) {
