@@ -3,6 +3,18 @@
 {"trigger":{"url-filter":"^https?://.*adnxs\\.comXXX","load-type":["third-party"]},"action":{"type":"block"}},
 
 
+{"trigger":{"url-filter":"facebook\\.com/v.*/plugins/like","load-type":["third-party"]},"action":{"type":"block"}},
+
+{"trigger":{"url-filter":"platform\\.twitter\\.com/widgets/widget_iframe","load-type":["third-party"]},"action":{"type":"block"}},
+
+{"trigger":{"url-filter":"platform\\.twitter\\.com/widgets/tweet_button","load-type":["third-party"]},"action":{"type":"block"}},
+
+{"trigger":{"url-filter":"bawagpsk\\.demdex\\.net","load-type":["third-party"]},"action":{"type":"block"}},
+
+{"trigger":{"url-filter":"assets\\.adobedtm\\.com","load-type":["third-party"]},"action":{"type":"block"}},
+
+{"trigger":{"url-filter":"track\\.adform\\.net","load-type":["third-party"]},"action":{"type":"block"}},
+
 {"trigger":{"url-filter":"adsrvr\\.org","load-type":["third-party"]},"action":{"type":"block"}},
 
 {"trigger":{"url-filter":"static\\.pinpoll\\.com","load-type":["third-party"]},"action":{"type":"block"}},
