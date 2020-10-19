@@ -303,9 +303,12 @@ player.play()*/
     
     let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     
-    let file = Bundle.main.path(forResource: "Info", ofType: "plist")!
-    let p = URL(fileURLWithPath: file)
-    let text = try? String(contentsOf: p)
+    //let file = Bundle.main.path(forResource: "Info", ofType: "plist")!
+    //let p = URL(fileURLWithPath: file)
+    //let text = try? String(contentsOf: p)
+    
+    let file = Bundle.main.path(forResource: "Info", ofType: "plist")
+    var text = String(contentsOfFile: file!, encoding: NSUTF8StringEncoding, error: nil)!
     
     /*VerursachtError
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
@@ -316,7 +319,7 @@ player.play()*/
     showAlert(message: "\(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     */
     
-    showAlert(message: "\(navlist) \(appVersion!)")
+    showAlert(message: "\(text!) \(navlist) \(appVersion!)")
     
   }
   
@@ -811,20 +814,17 @@ player.play()*/
     webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
     
     var bflist = "LASTbflist:"
-    //restoreUrls.forEach { url in
     for (index, url) in restoreUrls.enumerated() {
       //self.webview.load(URLRequest(url: url))
       //DispatchQueue.main.async {
       //self.webview.load(URLRequest(url: URL(string: url)!))
       //}
-      bflist = bflist + "<br><br>\(index): " + url
+      bflist += "<br><br>\(index+1): \(url)"
     }
-    bflist = bflist + "<br><br>RestorePosition: \(restorePosition)"
-    DispatchQueue.main.async {
+    bflist += "<br><br>RestorePosition: \(restorePosition)"
+    //DispatchQueue.main.async {
       //self.showAlert(message: "\(bflist)")
-    }
-    //lb.text = lb.text! + bflist
-    //adjustLabel()
+    //}
     
     webview2 = WebView(frame: CGRect.zero, history: WebViewHistory())
     //webview2.navigationDelegate = self
@@ -1167,7 +1167,8 @@ player.play()*/
     if restoreIndex < restoreIndexLast {
       restoreIndex += 1
       webview.load(URLRequest(url: URL(string: restoreUrls[restoreIndex])!))
-      let restoreUrlsList = "LASTbflist: " + restoreUrls.joined(separator:" ")
+      
+      //let restoreUrlsList = "LASTbflist: " + restoreUrls.joined(separator:" ")
       //webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1><br><br>\(restoreUrlsList)</body>", baseURL: nil)
       
 webview3.evaluateJavaScript("document.getElementById('a').innerHTML = 'Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)';", completionHandler: nil)
