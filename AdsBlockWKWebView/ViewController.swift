@@ -9,6 +9,7 @@ import WebKit
 import AVFoundation
 import AVKit
 import MediaPlayer
+import Security
 
 fileprivate let ruleId1 = "MyRuleID 001"
 fileprivate let ruleId2 = "MyRuleID 002"
@@ -455,6 +456,24 @@ player.play()*/
   }
   
   @objc func devButtonClicked(url: String) {
+    
+    struct credentials {
+      var username: String = "tester"
+      var password: String = "test12"
+    }
+    enum KeychainError: Error {
+      case noPassword
+      case unexpectedPasswordData
+      case unhandledError(status: OSStatus)
+    }
+    static let server = "www.example.com"
+    let account = credentials.username
+    let password = credentials.password.data(using: String.Encoding.utf8)!
+    var query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecValueData as String: password]
+    
+    let status = SecItemAdd(query as CFDictionary, nil)
+    guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
+    
     showAlert(message: "D:\(url)")
     //lb.text = lb.text! + " D"
     //adjustLabel()

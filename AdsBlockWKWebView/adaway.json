@@ -5,7 +5,7 @@
 
 {"trigger":{"url-filter":"facebook\\.com/v.*/plugins/like","load-type":["third-party"]},"action":{"type":"block"}},
 
-{"trigger":{"url-filter":"platform\\.twitter\\.com/widgets/widget_iframe","load-type":["third-party"]},"action":{"type":"block"}},
+{"trigger":{"url-filter":"platform\\.twitter\\.com/widgets/widget_iframeXXX","load-type":["third-party"]},"action":{"type":"block"}},
 
 {"trigger":{"url-filter":"platform\\.twitter\\.com/widgets/tweet_button","load-type":["third-party"]},"action":{"type":"block"}},
 
