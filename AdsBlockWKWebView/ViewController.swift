@@ -450,18 +450,15 @@ player.play()*/
   }
   
   //func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //if (editingStyle == .delete) {
-      //origArray = origArray.filter{$0 != array[indexPath.row]}
-      //UserDefaults.standard.set(origArray, forKey: "origArray")
-      //array = array.filter{$0 != array[indexPath.row]}
-      //tableView.reloadData()
-    //}
+    //if (editingStyle == .delete) {}
   //}
   
   @objc func deleteButtonClicked(url: String) {
+    origArray = origArray.filter{$0 != url}
+    //UserDefaults.standard.set(origArray, forKey: "origArray")
     array = array.filter{$0 != url}
     tableView.reloadData()
-    showAlert(message: "X:\(url)")
+    //showAlert(message: "X:\(url)")
   }
   
   @objc func editButtonClicked(url: String) {
