@@ -636,7 +636,8 @@ player.play()*/
       if #available(iOS 11, *) {
         webview.scrollView.contentInsetAdjustmentBehavior = .never
       }
-      webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset - insetT
+      //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
+      webview.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
       
       webview3.frame.origin.x = insetL
       //webview3.frame.origin.y = insetT + 5
