@@ -474,17 +474,17 @@ player.play()*/
     var query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecValueData as String: password]
     let status = SecItemAdd(query as CFDictionary, nil)
     if status == errSecSuccess {
-      showAlert(message: "success")
+      //showAlert(message: "success")
     } else {
-      showAlert(message: "fail \(status)")
+      //showAlert(message: "fail1 \(status)")
     }
     //guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
     
     SecAddSharedWebCredential(server as CFString, account as CFString, "test12" as CFString) { (error) in
-      self.showAlert(message: "fail \(error)")
+      self.showAlert(message: "fail2 \(error)")
     }
     
-    showAlert(message: "D:\(url)")
+    //showAlert(message: "D:\(url)")
     //lb.text = lb.text! + " D"
     //adjustLabel()
   }
