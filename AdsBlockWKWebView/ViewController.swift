@@ -432,10 +432,11 @@ player.play()*/
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-      self.origArray = self.origArray.filter{$0 != self.array[indexPath.row]}
-      UserDefaults.standard.set(self.origArray, forKey: "origArray")
-      self.array = self.array.filter{$0 != self.array[indexPath.row]}
-      tableView.reloadData()
+      //self.origArray = self.origArray.filter{$0 != self.array[indexPath.row]}
+      //UserDefaults.standard.set(self.origArray, forKey: "origArray")
+      //self.array = self.array.filter{$0 != self.array[indexPath.row]}
+      //tableView.reloadData()
+      self.deleteButtonClicked(url: self.array[indexPath.row])
     }
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
       self.editButtonClicked(url: self.array[indexPath.row])
@@ -457,16 +458,22 @@ player.play()*/
     //}
   //}
   
+  @objc func deleteButtonClicked(url: String) {
+    array = array.filter{$0 != url}
+    tableView.reloadData()
+    showAlert(message: "X:\(url)")
+  }
+  
   @objc func editButtonClicked(url: String) {
-    showAlert(message: "Hallo E :-) \(url)")
-    lb.text = lb.text! + " E"
-    adjustLabel()
+    showAlert(message: "E:\(url)")
+    //lb.text = lb.text! + " E"
+    //adjustLabel()
   }
   
   @objc func devButtonClicked(url: String) {
-    showAlert(message: "Hallo DEV :-) \(url)")
-    lb.text = lb.text! + " DEV"
-    adjustLabel()
+    showAlert(message: "D:\(url)")
+    //lb.text = lb.text! + " D"
+    //adjustLabel()
   }
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
@@ -641,7 +648,8 @@ player.play()*/
       
       webview.setValue(UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0), forKey: "_obscuredInsets")
       webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
-      webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
+      webview.scrollView.contentInsetAdjustmentBehavior = .never
+      //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       
       webview3.frame.origin.x = insetL
       //webview3.frame.origin.y = insetT + 5
