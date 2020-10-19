@@ -307,20 +307,18 @@ player.play()*/
     //let p = URL(fileURLWithPath: file)
     //let text = try? String(contentsOf: p)
     
-    //let file = Bundle.main.path(forResource: "Info", ofType: "plist")
-    //var text = String(contentsOfFile: file!, encoding: NSUTF8StringEncoding, error: nil)!
+    var text = "hallo:"
+    //if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+      //do {
+        //text = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+      //} catch {}
+    //}
     
-    var text = "hallo "
-    //text += String(contentsOfFile: Bundle.main.path(forResource: "Info", ofType: "plist")!)
-    
-    if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
-      do {
-        text = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-      } catch {
-        print("Failed1")
-      }
-    } else {
-      print("Failed2")
+    if let path = Bundle.main.path(forResource: "fileName", ofType: "plist") {
+    if let array = String(contentsOfFile: path) as? String {
+    text = array
+    }
+    //if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {}
     }
     
     /*VerursachtError
