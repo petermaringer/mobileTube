@@ -1005,7 +1005,7 @@ player.play()*/
     }
     
     if navigationAction.navigationType == .linkActivated {
-      let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at"]
+      let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at", "https://www.willhaben.at", "https://maps.google.com"]
       var unilinkStop = false
       unilinkUrls.forEach { item in
         if navigationAction.request.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
