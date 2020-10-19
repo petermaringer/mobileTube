@@ -308,18 +308,13 @@ player.play()*/
     //let text = try? String(contentsOf: p)
     
     var text = "hallo:"
-    //if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
-      //do {
+    if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+      do {
         //text = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-      //} catch {}
-    //}
-    
-    if let path = Bundle.main.path(forResource: "fileName", ofType: "plist") {
-    if let array = String(contentsOfFile: path) as? String {
-    text = array
+        text = try String(contentsOfFile: path)
+      } catch {}
     }
     //if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {}
-    }
     
     /*VerursachtError
     //let blitem = webview2.backForwardList.item(at: 0)!.url.absoluteString
@@ -447,6 +442,7 @@ player.play()*/
     }
     edit.backgroundColor = .editButtonBgColor
     let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
+      devButtonClicked()
       self.lb.text = self.lb.text! + " D"
       self.adjustLabel()
     }
@@ -462,6 +458,11 @@ player.play()*/
       //tableView.reloadData()
     //}
   //}
+  
+  @objc func devButtonClicked() {
+    self.lb.text = self.lb.text! + " DEV"
+    self.adjustLabel()
+  }
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
     switch textField {
