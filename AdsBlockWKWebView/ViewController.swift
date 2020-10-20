@@ -432,6 +432,7 @@ player.play()*/
     if array[indexPath.row] == "&showall" {
       array = origArray
       tableView.reloadData()
+      tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
     
     //url = urlField.text!
@@ -661,7 +662,7 @@ player.play()*/
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
       webview.frame.origin.y = 0
-      webview.frame.size.height = self.view.frame.height
+      webview.frame.size.height = self.view.frame.height - 20
       
       if webview2.isDescendant(of: view) {
         webview.frame.origin.y += 200
