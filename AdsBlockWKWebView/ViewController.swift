@@ -467,7 +467,8 @@ player.play()*/
     let account = "tester2"
     let password = ("test123").data(using: String.Encoding.utf8)!
     var query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecValueData as String: password]
-    //var status = SecItemAdd(query as CFDictionary, nil)
+    var status = SecItemAdd(query as CFDictionary, nil)
+    var message = "step1: \(status)\n\n"
     //if status == errSecSuccess {
       //showAlert(message: "success")
     //} else {
@@ -476,13 +477,16 @@ player.play()*/
     
     query = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecReturnData as String: kCFBooleanTrue!]
     var dataTypeRef: AnyObject? = nil
-    var status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
+    status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
     if status == noErr {
       let result = String(data: (dataTypeRef as! Data?)!, encoding: .utf8)
-      showAlert(message: "success \(result!)")
+      //showAlert(message: "success \(result!)")
+      message += "step2: \(result!)"
     } else {
-      showAlert(message: "fail2 \(status)")
+      //showAlert(message: "fail2 \(status)")
+      message += "step2: \(status)"
     }
+    showAlert(message: message)
     
     //SecAddSharedWebCredential(server as CFString, account as CFString, "test12" as CFString) { (error) in
       //self.showAlert(message: "fail2 \(error)")
