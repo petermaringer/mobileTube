@@ -500,6 +500,7 @@ player.play()*/
         if webview3.isDescendant(of: view) {
           webview3.removeFromSuperview()
         }
+        navUrlArray = []
         lb.text = "log:"
         adjustLabel()
       default:
@@ -768,6 +769,7 @@ player.play()*/
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .gray
         lb.numberOfLines = 0
+        lb.isHidden = true
         view.addSubview(lb)
         
         urlField = UITextField(frame: CGRect.zero)
