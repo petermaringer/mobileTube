@@ -492,7 +492,7 @@ player.play()*/
     if status == noErr {
       let recData = dataTypeRef as! Data?
       //let result = recData.to(type: String.self)
-      let result = String(data: recData, encoding: .utf8)
+      let result = String(data: recData!, encoding: .utf8)
       showAlert(message: "success \(result)")
     } else {
       showAlert(message: "fail2 \(status)")
