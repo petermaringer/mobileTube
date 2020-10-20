@@ -498,7 +498,7 @@ player.play()*/
       //self.showAlert(message: "fail2 \(error)")
     //}
     
-    webview.addObserver(self, forKeyPath: "canGoBack", options: .new, context: nil)
+    webview.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
     
     //showAlert(message: "D:\(url)")
     //lb.text = lb.text! + " D"
