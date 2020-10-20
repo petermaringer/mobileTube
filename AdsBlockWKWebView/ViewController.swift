@@ -302,18 +302,18 @@ player.play()*/
     lb.text = lb.text! + " \(deviceToken)"
     adjustLabel()
     
-    let appVersion = "appversion: " + Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     
     //let file = Bundle.main.path(forResource: "Info", ofType: "plist")!
     //let p = URL(fileURLWithPath: file)
     //let text = try? String(contentsOf: p)
     
-    var text = "filecontent: "
+    var text = "error"
     if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
       do {
-        //text += try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-        //text += try String(contentsOfFile: path)
-        text += try String(contentsOf: URL(fileURLWithPath: path))
+        //text = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+        //text = try String(contentsOfFile: path)
+        text = try String(contentsOf: URL(fileURLWithPath: path))
       } catch {}
     }
     //if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {}
@@ -327,7 +327,7 @@ player.play()*/
     showAlert(message: "\(navlist) \(blitem) \(blcount1)/\(blcount2) \(appVersion!) \(text!)")
     */
     
-    showAlert(message: "\(navlist)\n\n\(text)\n\n\(appVersion!)")
+    showAlert(message: "\(navlist)\n\nfilecontent: \(text)\n\nappversion: \(appVersion!)")
     
   }
   
