@@ -477,14 +477,25 @@ player.play()*/
     //let password = credentials.password.data(using: String.Encoding.utf8)!
     let account = "tester1"
     let password = ("tester1").data(using: String.Encoding.utf8)!
-    let query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecValueData as String: password]
-    let status = SecItemAdd(query as CFDictionary, nil)
-    if status == errSecSuccess {
-      showAlert(message: "success")
-    } else {
-      showAlert(message: "fail1 \(status)")
-    }
+    var query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecValueData as String: password]
+    var status = SecItemAdd(query as CFDictionary, nil)
+    //if status == errSecSuccess {
+      //showAlert(message: "success")
+    //} else {
+      //showAlert(message: "fail1 \(status)")
+    //}
     //guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
+    
+    query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecReturnData as String: kCFBooleanTrue!]
+    var dataTypeRef: AnyObject? = nil
+    status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
+    if status == noErr {
+      let recData = dataTypeRef as! Data?
+      let result = recData.to(type: String.self)
+      showAlert(message: "success \(result)")
+    } else {
+      showAlert(message: "fail2 \(status)")
+    }
     
     //SecAddSharedWebCredential(server as CFString, account as CFString, "test12" as CFString) { (error) in
       //self.showAlert(message: "fail2 \(error)")
