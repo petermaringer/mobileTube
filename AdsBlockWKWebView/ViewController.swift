@@ -464,10 +464,10 @@ player.play()*/
     }
     
     let server = "www.example.com"
-    let account = "tester1"
+    let account = "tester2"
     let password = ("test123").data(using: String.Encoding.utf8)!
     var query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecValueData as String: password]
-    var status = SecItemAdd(query as CFDictionary, nil)
+    //var status = SecItemAdd(query as CFDictionary, nil)
     //if status == errSecSuccess {
       //showAlert(message: "success")
     //} else {
@@ -478,8 +478,6 @@ player.play()*/
     var dataTypeRef: AnyObject? = nil
     status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
     if status == noErr {
-      //let recData = dataTypeRef as! Data?
-      //let result = String(data: recData!, encoding: .utf8)
       let result = String(data: (dataTypeRef as! Data?)!, encoding: .utf8)
       showAlert(message: "success \(result!)")
     } else {
