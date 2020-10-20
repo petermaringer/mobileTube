@@ -748,9 +748,14 @@ player.play()*/
         
         webviewConfig = WKWebViewConfiguration()
         webviewConfig.preferences = webviewPrefs
-        //webviewConfig.allowsInlineMediaPlayback = true
+        webviewConfig.allowsInlineMediaPlayback = true
         //webviewConfig.mediaTypesRequiringUserActionForPlayback = []
         //webviewConfig.ignoresViewportScaleLimits = true
+        
+        let source = "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c!'); })"
+        let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+        webviewConfig.userContentController.addUserScript(script)
+        webviewConfig.userContentController.add(self, name: "iosListener")
         
         webview = WKWebView(frame: CGRect.zero, configuration: webviewConfig)
         //webview = WKWebView(frame: CGRect.zero)
@@ -951,9 +956,13 @@ player.play()*/
     }
   
   
+  func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    lb.text = lb.text! + "m:\(message.body)"
+    adjustLabel()
+  }
+  
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if let key = change?[NSKeyValueChangeKey.newKey] {
-      //print("observeValue \(key)")
       lb.text = lb.text! + "oV:\(key)"
       adjustLabel()
     }
