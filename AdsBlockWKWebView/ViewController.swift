@@ -420,7 +420,7 @@ player.play()*/
     
     if array[indexPath.row] != "&showall" {
       urlField.endEditing(true)
-      url = urlField.text!
+      url = array[indexPath.row]
       startLoading()
     }
     
@@ -428,6 +428,12 @@ player.play()*/
     origArray = origArray.filter{$0 != urlField.text!}
     origArray.insert(urlField.text!, at: 0)
     UserDefaults.standard.set(origArray, forKey: "origArray")
+    
+    if array[indexPath.row] == "&showall" {
+      array = origArray
+      tableView.reloadData()
+    }
+    
     //url = urlField.text!
     //startLoading()
   }
