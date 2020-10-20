@@ -467,8 +467,10 @@ player.play()*/
     let account = "tester2"
     let password = ("test123").data(using: String.Encoding.utf8)!
     var query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecValueData as String: password]
-    var status = SecItemAdd(query as CFDictionary, nil)
-    var message = "step1: \(status)\n\n"
+    var status: OSStatus = SecItemDelete(query as CFDictionary)
+    var message = "1-del: \(status)\n\n"
+    status = SecItemAdd(query as CFDictionary, nil)
+    message += "2-add: \(status)\n\n"
     //if status == errSecSuccess {
       //showAlert(message: "success")
     //} else {
@@ -481,10 +483,10 @@ player.play()*/
     if status == noErr {
       let result = String(data: (dataTypeRef as! Data?)!, encoding: .utf8)
       //showAlert(message: "success \(result!)")
-      message += "step2: \(result!)"
+      message += "3-load: \(result!)"
     } else {
       //showAlert(message: "fail2 \(status)")
-      message += "step2: \(status)"
+      message += "3-load: \(status)"
     }
     showAlert(message: message)
     
