@@ -476,7 +476,7 @@ player.play()*/
     
     query = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecReturnData as String: kCFBooleanTrue!]
     var dataTypeRef: AnyObject? = nil
-    status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
+    var status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
     if status == noErr {
       let result = String(data: (dataTypeRef as! Data?)!, encoding: .utf8)
       showAlert(message: "success \(result!)")
