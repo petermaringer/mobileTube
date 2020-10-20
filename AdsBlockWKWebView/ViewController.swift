@@ -1174,7 +1174,7 @@ player.play()*/
     let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0, maximum-scale=10.0, user-scalable=yes');document.getElementsByTagName('head')[0].appendChild(meta);"
     //webview.evaluateJavaScript(javascript, completionHandler: nil)
     
-    webview.evaluateJavaScript("var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'minimum-scale=0,maximum-scale=10, user-scalable=yes'); }", completionHandler: nil)
+    webview.evaluateJavaScript("var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, minimum-scale=0, maximum-scale=10, user-scalable=yes'); }", completionHandler: nil)
     
     //for item in webview.backForwardList {}
     //for (item: WKBackForwardListItem) in webview.backForwardList.backList {}
