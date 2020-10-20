@@ -133,7 +133,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
   var origArray: Array<String> = ["https://google.com"]
   var array: Array<String> = []
   
-  //var url: URL!
   var url: String!
   var defaultUserAgent: String = "default"
   
@@ -417,14 +416,20 @@ player.play()*/
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    urlField.endEditing(true)
+    //urlField.endEditing(true)
+    
+    if array[indexPath.row] != "&showall" {
+      urlField.endEditing(true)
+      url = urlField.text!
+      startLoading()
+    }
+    
     urlField.text = "\(array[indexPath.row])"
     origArray = origArray.filter{$0 != urlField.text!}
     origArray.insert(urlField.text!, at: 0)
     UserDefaults.standard.set(origArray, forKey: "origArray")
-    //url = URL(string: urlField.text!)
-    url = urlField.text!
-    startLoading()
+    //url = urlField.text!
+    //startLoading()
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
