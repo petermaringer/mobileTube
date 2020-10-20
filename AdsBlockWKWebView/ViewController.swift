@@ -486,12 +486,13 @@ player.play()*/
     //}
     //guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
     
-    query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecReturnData as String: kCFBooleanTrue!]
+    query = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecReturnData as String: kCFBooleanTrue!]
     var dataTypeRef: AnyObject? = nil
     status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
     if status == noErr {
       let recData = dataTypeRef as! Data?
-      let result = recData.to(type: String.self)
+      //let result = recData.to(type: String.self)
+      let result = String(data: recData, encoding: .utf8)
       showAlert(message: "success \(result)")
     } else {
       showAlert(message: "fail2 \(status)")
