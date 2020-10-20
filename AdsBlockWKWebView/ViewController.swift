@@ -463,20 +463,9 @@ player.play()*/
       lb.isHidden = true
     }
     
-    //struct credentials {
-      //var username: String = "tester"
-      //var password: String = "test12"
-    //}
-    //enum KeychainError: Error {
-      //case noPassword
-      //case unexpectedPasswordData
-      //case unhandledError(status: OSStatus)
-    //}
     let server = "www.example.com"
-    //let account = credentials.username
-    //let password = credentials.password.data(using: String.Encoding.utf8)!
     let account = "tester1"
-    let password = ("tester1").data(using: String.Encoding.utf8)!
+    let password = ("test123").data(using: String.Encoding.utf8)!
     var query: [String: Any] = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecValueData as String: password]
     var status = SecItemAdd(query as CFDictionary, nil)
     //if status == errSecSuccess {
@@ -484,16 +473,15 @@ player.play()*/
     //} else {
       //showAlert(message: "fail1 \(status)")
     //}
-    //guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
     
     query = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecReturnData as String: kCFBooleanTrue!]
     var dataTypeRef: AnyObject? = nil
     status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
     if status == noErr {
-      let recData = dataTypeRef as! Data?
-      //let result = recData.to(type: String.self)
-      let result = String(data: recData!, encoding: .utf8)
-      showAlert(message: "success \(result)")
+      //let recData = dataTypeRef as! Data?
+      //let result = String(data: recData!, encoding: .utf8)
+      let result = String(data: dataTypeRef as! Data?, encoding: .utf8)
+      showAlert(message: "success \(result!)")
     } else {
       showAlert(message: "fail2 \(status)")
     }
