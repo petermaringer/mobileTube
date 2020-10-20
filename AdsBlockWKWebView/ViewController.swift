@@ -764,6 +764,8 @@ player.play()*/
         
         //webview.isHidden = true
         
+        webview.addObserver(self, forKeyPath: "canGoBack", options: .new, context: nil)
+        
         counter += 1
         
         //blurView = UIView(frame: CGRect.zero)
@@ -946,6 +948,14 @@ player.play()*/
         }
     }
   
+  
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    if let key = change?[NSKeyValueChangeKey.newKey] {
+      //print("observeValue \(key)")
+      lb.text = lb.text! + "oV:\(key)"
+      adjustLabel()
+    }
+  }
   
   @objc private func focusNewWindow() {
     if UIApplication.shared.windows.count > 1 && UIApplication.shared.windows[1].isHidden == false {
