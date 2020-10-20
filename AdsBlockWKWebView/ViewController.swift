@@ -471,21 +471,13 @@ player.play()*/
     var message = "1-del: \(status)\n\n"
     status = SecItemAdd(query as CFDictionary, nil)
     message += "2-add: \(status)\n\n"
-    //if status == errSecSuccess {
-      //showAlert(message: "success")
-    //} else {
-      //showAlert(message: "fail1 \(status)")
-    //}
-    
     query = [kSecClass as String: kSecClassInternetPassword, kSecAttrAccount as String: account, kSecAttrServer as String: server, kSecReturnData as String: kCFBooleanTrue!]
     var dataTypeRef: AnyObject? = nil
     status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
     if status == noErr {
       let result = String(data: (dataTypeRef as! Data?)!, encoding: .utf8)
-      //showAlert(message: "success \(result!)")
       message += "3-load: \(result!)"
     } else {
-      //showAlert(message: "fail2 \(status)")
       message += "3-load: \(status)"
     }
     showAlert(message: message)
@@ -905,8 +897,8 @@ player.play()*/
     
     avPVC = AVPlayerViewController()
     NotificationCenter.default.addObserver(self, selector: #selector(focusNewWindow), name: .UIWindowDidResignKey, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(setBgVideo), name: .UIApplicationDidEnterBackground, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(setFgVideo), name: .UIApplicationWillEnterForeground, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(enterBackground), name: .UIApplicationDidEnterBackground, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(enterForeground), name: .UIApplicationWillEnterForeground, object: nil)
     let commandCenter = MPRemoteCommandCenter.shared()
     commandCenter.togglePlayPauseCommand.addTarget { [unowned self] event in
       if self.avPVC.player!.rate == 0.0 {
@@ -955,15 +947,16 @@ player.play()*/
     }
   }
   
-  @objc private func setBgVideo() {
+  @objc private func enterBackground() {
     avPVC.player = nil
-    lb.text = lb.text! + " BgV"
+    lb.text = lb.text! + " eBg"
     adjustLabel()
   }
   
-  @objc private func setFgVideo() {
+  @objc private func enterForeground() {
+    UIApplication.shared.isIdleTimerDisabled = true
     avPVC.player = player
-    lb.text = lb.text! + " FgV"
+    lb.text = lb.text! + " eFg"
     adjustLabel()
   }
   
