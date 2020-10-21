@@ -118,7 +118,7 @@ class WebView2: WKWebView {
 */
 
 
-class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
   
   var webview: WKWebView!
   
@@ -750,6 +750,7 @@ player.play()*/
         webviewConfig.preferences = webviewPrefs
         webviewConfig.allowsInlineMediaPlayback = true
         //webviewConfig.mediaTypesRequiringUserActionForPlayback = []
+        webviewConfig.mediaTypesRequiringUserActionForPlayback = .all
         //webviewConfig.ignoresViewportScaleLimits = true
         
         let source = "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c!'); })"
