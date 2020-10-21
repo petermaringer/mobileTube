@@ -964,7 +964,7 @@ player.play()*/
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if let key = change?[NSKeyValueChangeKey.newKey] {
-      lb.text = lb.text! + " oV:" + String(String(key).prefix(15))
+      lb.text = lb.text! + " oV:" + String(String(describing: key).prefix(15))
       adjustLabel()
     }
   }
