@@ -581,7 +581,7 @@ player.play()*/
         }
         
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
-        lb.frame.origin.y = self.view.frame.height - insetB - 200
+        lb.frame.origin.y = self.view.frame.height - insetB - lb.frame.size.height
         lb.textAlignment = .center
     }
   
