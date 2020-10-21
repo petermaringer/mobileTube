@@ -469,6 +469,7 @@ player.play()*/
       lb.isHidden = false
     } else {
       lb.isHidden = true
+      UIPasteboard.general.string = lb.text!
     }
     
     let server = "www.example.com"
@@ -581,7 +582,7 @@ player.play()*/
         }
         
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
-        lb.frame.origin.y = self.view.frame.height - insetB - lb.frame.size.height
+        lb.frame.origin.y = self.view.frame.height - insetB - lb.frame.size.height + 12
         lb.textAlignment = .center
     }
   
@@ -764,24 +765,23 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         
         counter += 1
         
-        //blurView = UIView(frame: CGRect.zero)
-        //blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
-        
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
-        blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.frame = CGRect.zero
-        //blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurView)
-        
         lb = UILabel(frame: CGRect.zero)
         lb.text = "log:"
         //lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .gray
         lb.numberOfLines = 0
-        lb.isUserInteractionEnabled = true
+        //lb.isUserInteractionEnabled = true
         lb.isHidden = true
         view.addSubview(lb)
+        
+        //blurView = UIView(frame: CGRect.zero)
+        //blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
+        blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = CGRect.zero
+        //blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurView)
         
         urlField = UITextField(frame: CGRect.zero)
         //urlField = UITextField()
