@@ -746,7 +746,7 @@ player.play()*/
         webviewConfig.preferences = webviewPrefs
         webviewConfig.allowsInlineMediaPlayback = true
         //webviewConfig.mediaTypesRequiringUserActionForPlayback = []
-        webviewConfig.mediaTypesRequiringUserActionForPlayback = .all
+        webviewConfig.mediaTypesRequiringUserActionForPlayback = .video
         //webviewConfig.ignoresViewportScaleLimits = true
         
 webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); } window.webkit.messageHandlers.iosListener.postMessage('dF');", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
@@ -757,6 +757,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         webview.navigationDelegate = self
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = true
+        webview.allowsLinkPreview = false
         //webview.clipsToBounds = false
         //webview.isHidden = true
         view.addSubview(webview)
