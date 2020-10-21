@@ -581,7 +581,7 @@ player.play()*/
         }
         
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
-        lb.frame.origin.y = self.view.frame.height - insetB - 80
+        lb.frame.origin.y = self.view.frame.height - insetB - 200
         lb.textAlignment = .center
     }
   
@@ -779,6 +779,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .gray
         lb.numberOfLines = 0
+        lb.isUserInteractionEnabled = true
         lb.isHidden = true
         view.addSubview(lb)
         
