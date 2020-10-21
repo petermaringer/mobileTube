@@ -417,24 +417,20 @@ player.play()*/
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //urlField.endEditing(true)
-    
     if array[indexPath.row] != "&showall" {
       urlField.endEditing(true)
       url = array[indexPath.row]
       startLoading()
     }
-    
     urlField.text = "\(array[indexPath.row])"
     origArray = origArray.filter{$0 != urlField.text!}
     origArray.insert(urlField.text!, at: 0)
     UserDefaults.standard.set(origArray, forKey: "origArray")
-    
     if array[indexPath.row] == "&showall" {
       array = origArray
       tableView.reloadData()
       tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
-    
     //url = urlField.text!
     //startLoading()
   }
@@ -732,7 +728,7 @@ player.play()*/
           origArray = UserDefaults.standard.stringArray(forKey: "origArray") ?? [String]()
         }
         
-        //self.view.backgroundColor = .lightGray
+        //view.backgroundColor = .lightGray
         //view.backgroundColor = UIColor(white: 0.90, alpha: 1)
         view.backgroundColor = .viewBgColor
         
@@ -753,26 +749,19 @@ player.play()*/
         webviewConfig.mediaTypesRequiringUserActionForPlayback = .all
         //webviewConfig.ignoresViewportScaleLimits = true
         
-        //let script = WKUserScript(source: "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c!'); })", injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-        webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); }", injectionTime: .atDocumentStart, forMainFrameOnly: false))
-        webviewConfig.userContentController.addUserScript(WKUserScript(source: "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c!'); })", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
+webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); }", injectionTime: .atDocumentStart, forMainFrameOnly: false))
+        webviewConfig.userContentController.addUserScript(WKUserScript(source: "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c'); })", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
         webviewConfig.userContentController.add(self, name: "iosListener")
         
-        webview = WKWebView(frame: CGRect.zero, configuration: webviewConfig)
-        //webview = WKWebView(frame: CGRect.zero)
-        //webview = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height - 200))
-        
+        //webview = WKWebView(frame: CGRect.zero, configuration: webviewConfig)
+        webview = WKWebView(frame: view.bounds, configuration: webviewConfig)
         webview.navigationDelegate = self
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = true
-        view.addSubview(webview)
-        webview.frame = view.bounds
-        
         //webview.clipsToBounds = false
-        
         //webview.isHidden = true
-        
-        //webview.addObserver(self, forKeyPath: "canGoBack", options: .new, context: nil)
+        view.addSubview(webview)
+        //webview.frame = view.bounds
         
         counter += 1
         
@@ -909,7 +898,7 @@ player.play()*/
     
     webview3 = WebView(frame: CGRect.zero, history: WebViewHistory())
     //webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1><br><br>\(bflist)</body>", baseURL: nil)
-    webview3.loadHTMLString("<body style='background-color:transparent;color:white;'><h1 id='a'>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1><br><br><div id='b' onclick='copy()'>\(bflist)</div><script>function copy() { var range = document.createRange(); range.selectNode(document.getElementById('b')); window.getSelection().removeAllRanges(); window.getSelection().addRange(range); document.execCommand('copy'); window.getSelection().removeAllRanges(); }</script></body>", baseURL: nil)
+    webview3.loadHTMLString("<body style='background-color:transparent;color:white;'><h1 id='a' style='position:fixed;background-color:transparent;color:white;'>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1><br><br><div id='b' onclick='copy()'>\(bflist)</div><script>function copy() { var range = document.createRange(); range.selectNode(document.getElementById('b')); window.getSelection().removeAllRanges(); window.getSelection().addRange(range); document.execCommand('copy'); window.getSelection().removeAllRanges(); }</script></body>", baseURL: nil)
     webview3.isOpaque = false
     //webview3.backgroundColor = .orange
     //webview3.scrollView.backgroundColor = .orange
@@ -1193,10 +1182,8 @@ player.play()*/
     urlField.text = webview.url!.absoluteString
     //showAlert(message: defaultUserAgent)
     
-    let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0, maximum-scale=10.0, user-scalable=yes');document.getElementsByTagName('head')[0].appendChild(meta);"
-    //webview.evaluateJavaScript(javascript, completionHandler: nil)
-    
-    webview.evaluateJavaScript("var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); }", completionHandler: nil)
+    //webview.evaluateJavaScript("var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0, maximum-scale=10.0, user-scalable=yes'); document.getElementsByTagName('head')[0].appendChild(meta);", completionHandler: nil)
+    //webview.evaluateJavaScript("var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); }", completionHandler: nil)
     
     //for item in webview.backForwardList {}
     //for (item: WKBackForwardListItem) in webview.backForwardList.backList {}
