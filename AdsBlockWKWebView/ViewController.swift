@@ -753,9 +753,9 @@ player.play()*/
         webviewConfig.mediaTypesRequiringUserActionForPlayback = .all
         //webviewConfig.ignoresViewportScaleLimits = true
         
-        let source = "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c!'); })"
-        let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-        webviewConfig.userContentController.addUserScript(script)
+        //let script = WKUserScript(source: "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c!'); })", injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+        webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); }", injectionTime: .atDocumentStart, forMainFrameOnly: false))
+        webviewConfig.userContentController.addUserScript(WKUserScript(source: "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c!'); })", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
         webviewConfig.userContentController.add(self, name: "iosListener")
         
         webview = WKWebView(frame: CGRect.zero, configuration: webviewConfig)
@@ -958,13 +958,13 @@ player.play()*/
   
   
   func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-    lb.text = lb.text! + "m:\(message.body)"
+    lb.text = lb.text! + " m:\(message.body)"
     adjustLabel()
   }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if let key = change?[NSKeyValueChangeKey.newKey] {
-      lb.text = lb.text! + "oV:\(key)"
+      lb.text = lb.text! + " oV:" + String(key.prefix(15))
       adjustLabel()
     }
   }
