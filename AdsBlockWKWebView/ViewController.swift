@@ -458,7 +458,8 @@ player.play()*/
   }
   
   @objc func editButtonClicked(url: String) {
-    webview.go(to: webview.backForwardList.item(at: webview.backForwardList.forwardList.count * -1 - 2)!)
+    //webview.go(to: webview.backForwardList.item(at: webview.backForwardList.forwardList.count * -1 - 2)!)
+    webview.go(to: webview.backForwardList.item(at: - 2)!)
     showAlert(message: "E:\(url)")
     //lb.text = lb.text! + " E"
     //adjustLabel()
