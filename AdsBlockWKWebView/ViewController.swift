@@ -458,6 +458,7 @@ player.play()*/
   }
   
   @objc func editButtonClicked(url: String) {
+    webview.go(to: webview.backForwardList.currentItem(at: -2)!)
     showAlert(message: "E:\(url)")
     //lb.text = lb.text! + " E"
     //adjustLabel()
@@ -582,7 +583,7 @@ player.play()*/
         }
         
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
-        lb.frame.origin.y = self.view.frame.height - insetB - lb.frame.size.height + 12
+        lb.frame.origin.y = self.view.frame.height - insetB - lb.frame.size.height + 13
         lb.textAlignment = .center
     }
   
