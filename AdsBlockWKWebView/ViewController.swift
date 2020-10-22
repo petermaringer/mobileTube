@@ -459,9 +459,9 @@ player.play()*/
   
   @objc func editButtonClicked(url: String) {
     
-    if webview.backForwardList.forwardList.count == 0 {
+    //if webview.backForwardList.forwardList.count == 0 {
       webview.go(to: webview.backForwardList.item(at: -2)!)
-    }
+    //}
     
     showAlert(message: "E:\(url)")
     //lb.text = lb.text! + " E"
@@ -587,7 +587,7 @@ player.play()*/
         }
         
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
-        lb.frame.origin.y = self.view.frame.height - insetB - lb.frame.size.height + 13
+        lb.frame.origin.y = self.view.frame.height - insetB - lb.frame.size.height + 14
         lb.textAlignment = .center
     }
   
@@ -755,7 +755,7 @@ player.play()*/
         webviewConfig.mediaTypesRequiringUserActionForPlayback = .all
         //webviewConfig.ignoresViewportScaleLimits = true
         
-webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); } window.webkit.messageHandlers.iosListener.postMessage('dF'); setTimeout(function() { var videos = document.getElementsByTagName('video'); for (var i = 0; i < videos.length; i++) { videos.item(i).pause(); window.webkit.messageHandlers.iosListener.postMessage('vs' + videos.item(i).src + 'vc' + videos.item(i).currentSrc); } }, 3000); var el = document.querySelector('input[type=file]'); if (el !== null) { el.removeAttribute('capture'); window.webkit.messageHandlers.iosListener.postMessage('iF'); }", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
+webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); } window.webkit.messageHandlers.iosListener.postMessage('dF'); setTimeout(function() { var videos = document.getElementsByTagName('video'); for (var i = 0; i < videos.length; i++) { videos.item(i).pause(); window.webkit.messageHandlers.iosListener.postMessage('vs' + videos.item(i).src + 'vc' + videos.item(i).currentSrc); } }, 3000); var el = document.querySelector('input[type=file]'); if (el !== null) { window.webkit.messageHandlers.iosListener.postMessage('iF'); el.removeAttribute('capture'); }", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
         webviewConfig.userContentController.addUserScript(WKUserScript(source: "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c'); })", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
         webviewConfig.userContentController.add(self, name: "iosListener")
         
@@ -958,6 +958,9 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if let key = change?[NSKeyValueChangeKey.newKey] {
+      
+      webview.evaluateJavaScript("var el = document.querySelector('input[type=file]'); if (el !== null) { window.webkit.messageHandlers.iosListener.postMessage('iF'); el.removeAttribute('capture'); }", completionHandler: nil)
+      
       lb.text = lb.text! + " oV:" + String(String(describing: key).prefix(15))
       adjustLabel()
     }
