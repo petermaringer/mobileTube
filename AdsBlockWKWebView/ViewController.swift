@@ -665,8 +665,8 @@ player.play()*/
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      webview.frame.origin.y = 0
-      webview.frame.size.height = self.view.frame.height
+      //webview.frame.origin.y = 0
+      //webview.frame.size.height = self.view.frame.height
       
       if webview2.isDescendant(of: view) {
         webview.frame.origin.y += 200
@@ -678,8 +678,8 @@ player.play()*/
       blurView.frame.size.width = self.view.frame.width - insetL - insetR
       blurView.frame.size.height = insetT + urlField.frame.size.height + 10
       
-      webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 10
-      webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
+      //webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 10
+      //webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
       
       /*
       webview.setValue(true, forKey: "_haveSetObscuredInsets")
@@ -769,7 +769,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = true
         webview.allowsLinkPreview = false
-        //webview.clipsToBounds = false
+        webview.clipsToBounds = false
         webview.scrollView.clipsToBounds = false
         //webview.isHidden = true
         view.addSubview(webview)
