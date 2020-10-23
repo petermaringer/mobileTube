@@ -767,6 +767,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         webview.allowsBackForwardNavigationGestures = true
         webview.allowsLinkPreview = false
         webview.clipsToBounds = false
+        webview.scrollView.clipsToBounds = false
         //webview.isHidden = true
         view.addSubview(webview)
         
