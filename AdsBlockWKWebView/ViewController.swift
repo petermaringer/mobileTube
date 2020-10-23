@@ -472,8 +472,10 @@ player.play()*/
     
     if lb.isHidden == true {
       lb.isHidden = false
+      webview.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
     } else {
       lb.isHidden = true
+      webview.removeObserver(self, forKeyPath: "URL")
       UIPasteboard.general.string = lb.text!
     }
     
@@ -499,8 +501,6 @@ player.play()*/
     //SecAddSharedWebCredential(server as CFString, account as CFString, "test12" as CFString) { (error) in
       //self.showAlert(message: "fail2 \(error)")
     //}
-    
-    webview.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
     
     //showAlert(message: "D:\(url)")
     //lb.text = lb.text! + " D"
