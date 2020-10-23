@@ -665,9 +665,6 @@ player.play()*/
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      webview.scrollView.frame = webview.frame
-      webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
-      
       webview.frame.origin.y = 0
       webview.frame.size.height = self.view.frame.height
       
@@ -680,6 +677,9 @@ player.play()*/
       blurView.frame.origin.y = 0
       blurView.frame.size.width = self.view.frame.width - insetL - insetR
       blurView.frame.size.height = insetT + urlField.frame.size.height + 10
+      
+      webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 10
+      webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
       
       /*
       webview.setValue(true, forKey: "_haveSetObscuredInsets")
