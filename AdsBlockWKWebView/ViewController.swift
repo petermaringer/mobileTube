@@ -959,7 +959,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if let key = change?[NSKeyValueChangeKey.newKey] {
       
-      webview.evaluateJavaScript("var el = document.querySelector('input[type=file]'); if (el !== null) { window.webkit.messageHandlers.iosListener.postMessage('iF' + el.getAttribute('accept')); el.removeAttribute('accept'); el.removeAttribute('capture'); }", completionHandler: nil)
+      webview.evaluateJavaScript("var el = document.querySelector('input[type=file]'); if (el !== null) { window.webkit.messageHandlers.iosListener.postMessage('iF' + el.getAttribute('accept')); el.removeAttribute('accept'); el.removeAttribute('capture'); el.removeAttribute('onclick'); el.click(); }", completionHandler: nil)
       
       lb.text = lb.text! + " oV:" + String(String(describing: key).prefix(15))
       adjustLabel()
