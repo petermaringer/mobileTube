@@ -474,7 +474,7 @@ player.play()*/
       lb.isHidden = false
       webview.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
     } else {
-      lb.isHidden = true
+      //lb.isHidden = true
       webview.removeObserver(self, forKeyPath: "URL")
       UIPasteboard.general.string = lb.text!
     }
