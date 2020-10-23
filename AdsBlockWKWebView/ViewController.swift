@@ -666,6 +666,8 @@ player.play()*/
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
       webview.scrollView.frame = webview.frame
+      webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
+      
       webview.frame.origin.y = 0
       webview.frame.size.height = self.view.frame.height
       
