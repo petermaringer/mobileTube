@@ -682,8 +682,8 @@ player.play()*/
       //webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
       //webview.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
       //webview.scrollView.contentSize.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
-      webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 10
-      webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
+      webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 100
+      webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 100
       
       /*
       webview.setValue(true, forKey: "_haveSetObscuredInsets")
