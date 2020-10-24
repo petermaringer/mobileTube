@@ -665,8 +665,8 @@ player.play()*/
       webview.frame.size.width = self.view.frame.width - insetL - insetR
       webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
       
-      //webview.frame.origin.y = 0
-      //webview.frame.size.height = self.view.frame.height
+      webview.frame.origin.y = 0
+      webview.frame.size.height = self.view.frame.height
       
       if webview2.isDescendant(of: view) {
         webview.frame.origin.y += 200
@@ -685,7 +685,7 @@ player.play()*/
       //webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 100
       //webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 100
       
-      /*
+      
       webview.setValue(true, forKey: "_haveSetObscuredInsets")
       webview.setValue(UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0), forKey: "_obscuredInsets")
       webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
@@ -694,7 +694,7 @@ player.play()*/
       }
       //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       webview.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
-      */
+      
       
       webview3.frame.origin.x = insetL
       //webview3.frame.origin.y = insetT + 5
@@ -773,8 +773,8 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         webview.uiDelegate = self
         webview.allowsBackForwardNavigationGestures = true
         webview.allowsLinkPreview = false
-        webview.clipsToBounds = false
-        webview.scrollView.clipsToBounds = false
+        //webview.clipsToBounds = false
+        //webview.scrollView.clipsToBounds = false
         //webview.isHidden = true
         view.addSubview(webview)
         
