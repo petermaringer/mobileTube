@@ -681,6 +681,7 @@ player.play()*/
       //webview.scrollView.contentSize.height = 
       webview.scrollView.contentSize = CGSize(width: self.view.frame.width - insetL - insetR, height: self.view.frame.height - insetT - urlField.frame.size.height - 10)
       webview.scrollView.contentInset = UIEdgeInsets(top: urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
+      webview.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
       //webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 10
       //webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
       
