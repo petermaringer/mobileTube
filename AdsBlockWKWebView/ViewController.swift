@@ -678,6 +678,8 @@ player.play()*/
       blurView.frame.size.width = self.view.frame.width - insetL - insetR
       blurView.frame.size.height = insetT + urlField.frame.size.height + 10
       
+      //webview.scrollView.contentSize.height = 
+      webview.scrollView.contentSize = CGSize(width: self.view.frame.width - insetL - insetR, height: self.view.frame.height - insetT - urlField.frame.size.height - 10)
       //webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 10
       //webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
       
