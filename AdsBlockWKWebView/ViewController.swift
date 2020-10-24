@@ -678,10 +678,10 @@ player.play()*/
       blurView.frame.size.width = self.view.frame.width - insetL - insetR
       blurView.frame.size.height = insetT + urlField.frame.size.height + 10
       
-      //webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 10
-      //webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
+      webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 10
+      webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
       
-      
+      /*
       webview.setValue(true, forKey: "_haveSetObscuredInsets")
       webview.setValue(UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0), forKey: "_obscuredInsets")
       webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0)
@@ -690,7 +690,7 @@ player.play()*/
       }
       //webview.scrollView.scrollIndicatorInsets = webview.scrollView.contentInset
       webview.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
-      
+      */
       
       webview3.frame.origin.x = insetL
       //webview3.frame.origin.y = insetT + 5
