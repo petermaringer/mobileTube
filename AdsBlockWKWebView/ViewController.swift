@@ -684,7 +684,7 @@ player.play()*/
       //webview.scrollView.contentSize.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
       //webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 100
       //webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 100
-      webview.scrollView.contentOffset.y = 200
+      webview.scrollView.contentOffset.y = -200
       
       webview.setValue(true, forKey: "_haveSetObscuredInsets")
       webview.setValue(UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0), forKey: "_obscuredInsets")
