@@ -678,13 +678,13 @@ player.play()*/
       blurView.frame.size.width = self.view.frame.width - insetL - insetR
       blurView.frame.size.height = insetT + urlField.frame.size.height + 10
       
-      webview.scrollView.contentSize = CGSize(width: self.view.frame.width - insetL - insetR, height: self.view.frame.height - insetT - urlField.frame.size.height - 10)
+      //webview.scrollView.contentSize = CGSize(width: self.view.frame.width - insetL - insetR, height: self.view.frame.height - insetT - urlField.frame.size.height - 10)
       //webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
       //webview.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
       //webview.scrollView.contentSize.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
       //webview.scrollView.frame.origin.y = insetT + urlField.frame.size.height + 100
       //webview.scrollView.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 100
-      
+      webview.scrollView.contentOffset.y = 200
       
       webview.setValue(true, forKey: "_haveSetObscuredInsets")
       webview.setValue(UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: insetB, right: 0), forKey: "_obscuredInsets")
@@ -774,7 +774,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         webview.allowsBackForwardNavigationGestures = true
         webview.allowsLinkPreview = false
         //webview.clipsToBounds = false
-        webview.scrollView.clipsToBounds = true
+        //webview.scrollView.clipsToBounds = false
         //webview.isHidden = true
         view.addSubview(webview)
         
