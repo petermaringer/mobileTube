@@ -630,7 +630,7 @@ player.play()*/
       
       urlField.frame.origin.x = insetL
       urlField.frame.origin.y = insetT
-      urlField.frame.size.width = self.view.frame.width - insetL - insetR
+      urlField.frame.size.width = view.frame.width - insetL - insetR
       urlField.frame.size.height = 30
       if insetT == 0 {
         urlField.frame.origin.y += 5
@@ -642,7 +642,7 @@ player.play()*/
       if insetR == 0 {
         urlField.frame.size.width -= 5
       }
-      if button.isDescendant(of: self.view) {
+      if button.isDescendant(of: view) {
         urlField.frame.size.width -= 85
       }
       
@@ -651,9 +651,6 @@ player.play()*/
       button.frame.origin.y = urlField.frame.origin.y
       button.frame.size.width = 80
       button.frame.size.height = urlField.frame.size.height
-      //if insetL == 0 {
-        //button.frame.origin.x += 5
-      //}
       
       topNavBgView.frame.origin.x = 0
       topNavBgView.frame.origin.y = 0
