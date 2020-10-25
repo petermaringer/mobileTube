@@ -662,15 +662,14 @@ player.play()*/
       tableView.frame.size.width = view.frame.width - insetL - insetR
       tableView.frame.size.height = 185
       tableView.reloadData()
-      
       //tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
       
       webview.frame.origin.x = insetL
-      webview.frame.origin.y = insetT + urlField.frame.size.height + 10
-      webview.frame.size.width = self.view.frame.width - insetL - insetR
-      webview.frame.size.height = self.view.frame.height - insetT - insetB - urlField.frame.size.height - 10
+      webview.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 5
+      webview.frame.size.width = view.frame.width - insetL - insetR
+      webview.frame.size.height = view.frame.height - urlField.frame.origin.y - urlField.frame.size.height - 5 - insetB
       
-      webview.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
+      //webview.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
       
       //webview.frame.origin.y = 0
       //webview.frame.size.height = self.view.frame.height
