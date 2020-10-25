@@ -790,8 +790,9 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         
         //topNavBgView = UIView(frame: CGRect.zero)
         //topNavBgView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
-        topNavBgView = UIVisualEffectView(frame: CGRect.zero, effect: UIBlurEffect(style: UIBlurEffect.Style.regular))
+        topNavBgView = UIVisualEffectView(frame: CGRect.zero)
         //topNavBgView.frame = CGRect.zero
+        topNavBgView.effect = UIBlurEffect(style: UIBlurEffect.Style.regular)
         //blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(topNavBgView)
         
