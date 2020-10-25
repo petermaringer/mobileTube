@@ -630,7 +630,7 @@ player.play()*/
       
       urlField.frame.origin.x = insetL
       urlField.frame.origin.y = insetT
-      urlField.frame.size.width = view.frame.width - insetL - insetR
+      urlField.frame.width = view.frame.width - insetL - insetR
       urlField.frame.size.height = 30
       if insetT == 0 {
         urlField.frame.origin.y += 5
@@ -654,7 +654,7 @@ player.play()*/
       
       topNavBgView.frame.origin.x = 0
       topNavBgView.frame.origin.y = 0
-      topNavBgView.frame.size.width = self.view.frame.width
+      topNavBgView.frame.size.width = view.frame.width
       topNavBgView.frame.size.height = urlField.frame.origin.y + urlField.frame.size.height + 5
       
       tableView.frame.origin.x = insetL
