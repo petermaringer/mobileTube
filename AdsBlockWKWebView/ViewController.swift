@@ -667,12 +667,11 @@ player.play()*/
       webview.frame.origin.x = insetL
       webview.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 5
       webview.frame.size.width = view.frame.width - insetL - insetR
-      webview.frame.size.height = view.frame.height - urlField.frame.origin.y - urlField.frame.size.height - 5 - insetB
-      
-      //webview.frame.size.height = self.view.frame.height - insetT - urlField.frame.size.height - 10
+      //webview.frame.size.height = view.frame.height - urlField.frame.origin.y - urlField.frame.size.height - 5 - insetB
+      webview.frame.size.height = view.frame.height - urlField.frame.origin.y - urlField.frame.size.height - 6
       
       //webview.frame.origin.y = 0
-      //webview.frame.size.height = self.view.frame.height
+      //webview.frame.size.height = view.frame.height
       
       if webview2.isDescendant(of: view) {
         webview.frame.origin.y += 200
