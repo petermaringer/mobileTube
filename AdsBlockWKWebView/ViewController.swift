@@ -789,7 +789,8 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         view.addSubview(lb)
         
         topNavBgView = UIView(frame: CGRect.zero)
-        topNavBgView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.85)
+        //topNavBgView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.85)
+        topNavBgView.backgroundColor = .viewBgColor
         //topNavBgView = UIVisualEffectView(frame: CGRect.zero)
         //topNavBgView.effect = UIBlurEffect(style: UIBlurEffect.Style.regular)
         //topNavBgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
