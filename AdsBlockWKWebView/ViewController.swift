@@ -616,16 +616,14 @@ player.play()*/
       
       if !(lastDeviceOrientation == "initial") {
         if deviceOrientation == "pt" {
-          //shouldHideHomeIndicator = false
-          shouldHideHomeIndicator = true
+          shouldHideHomeIndicator = false
+          //shouldHideHomeIndicator = true
         } else {
           shouldHideHomeIndicator = true
         }
-        
         if #available(iOS 11, *) {
           setNeedsUpdateOfHomeIndicatorAutoHidden()
         }
-        
       }
       
       urlField.frame.origin.x = insetL
@@ -646,7 +644,6 @@ player.play()*/
         urlField.frame.size.width -= 85
       }
       
-      //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
       button.frame.origin.x = urlField.frame.origin.x + urlField.frame.size.width + 5
       button.frame.origin.y = urlField.frame.origin.y
       button.frame.size.width = 80
@@ -662,7 +659,8 @@ player.play()*/
       tableView.frame.size.width = view.frame.width - insetL - insetR
       tableView.frame.size.height = 185
       tableView.reloadData()
-      //tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+      
+      tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
       
       webview.frame.origin.x = insetL
       webview.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 5
@@ -706,29 +704,8 @@ player.play()*/
       
       lastDeviceOrientation = deviceOrientation
       lb.text = lb.text! + " \(insetT) \(insetB) \(insetL) \(insetR) \(deviceOrientation)"
-      
-      /*
-      lb.text = lb.text! + " \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
-      if (view.frame.width > view.frame.height) {
-        //shouldHideHomeIndicator = true
-        //if #available(iOS 11, *) {
-          //setNeedsUpdateOfHomeIndicatorAutoHidden()
-        //}
-        lb.text = lb.text! + " ls"
-        lastDeviceOrientation = "ls"
-      } else {
-        //shouldHideHomeIndicator = false
-        //if #available(iOS 11, *) {
-          //setNeedsUpdateOfHomeIndicatorAutoHidden()
-        //}
-        lb.text = lb.text! + " pt"
-        lastDeviceOrientation = "pt"
-      }
-      */
       adjustLabel()
-      
     }
-    
   }
   
   
@@ -827,6 +804,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
     
         button = UIButton(frame: CGRect.zero)
         //button.frame = CGRectMake(15, -50, 300, 500)
+        //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
         button.backgroundColor = .gray
         
         button.layer.cornerRadius = 5
