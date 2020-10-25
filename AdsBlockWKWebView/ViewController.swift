@@ -698,11 +698,11 @@ player.play()*/
       */
       
       webview3.frame.origin.x = insetL
-      webview3.frame.origin.y = urlField.frame.origin.y
-      //webview3.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 5
+      //webview3.frame.origin.y = urlField.frame.origin.y
+      webview3.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 5
       webview3.frame.size.width = view.frame.width - insetL - insetR
-      webview3.frame.size.height = view.frame.height - urlField.frame.origin.y
-      //webview3.frame.size.height = view.frame.height - urlField.frame.origin.y - urlField.frame.size.height - 6
+      //webview3.frame.size.height = view.frame.height - urlField.frame.origin.y
+      webview3.frame.size.height = view.frame.height - urlField.frame.origin.y - urlField.frame.size.height - 6
       
       lb.text = lb.text! + " \(insetT) \(insetB) \(insetL) \(insetR) \(counter)"
       if (view.frame.width > view.frame.height) {
