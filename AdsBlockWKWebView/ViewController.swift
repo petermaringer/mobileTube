@@ -122,8 +122,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
   
   var webview: WKWebView!
   
-  //var blurView: UIView!
-  var blurView: UIVisualEffectView!
+  //var topNavBgView: UIView!
+  var topNavBgView: UIVisualEffectView!
   
   var urlField: UITextField!
   var button: UIButton!
@@ -673,10 +673,10 @@ player.play()*/
         webview.frame.size.height -= 200
       }
       
-      blurView.frame.origin.x = insetL
-      blurView.frame.origin.y = 0
-      blurView.frame.size.width = self.view.frame.width - insetL - insetR
-      blurView.frame.size.height = insetT + urlField.frame.size.height + 10
+      topNavBgView.frame.origin.x = 0
+      topNavBgView.frame.origin.y = 0
+      topNavBgView.frame.size.width = self.view.frame.width
+      topNavBgView.frame.size.height = insetT + urlField.frame.size.height + 10
       
       //webview.scrollView.contentSize = CGSize(width: self.view.frame.width - insetL - insetR, height: self.view.frame.height - insetT - urlField.frame.size.height - 10)
       //webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
@@ -788,13 +788,12 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         lb.isHidden = true
         view.addSubview(lb)
         
-        //blurView = UIView(frame: CGRect.zero)
-        //blurView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
-        blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.frame = CGRect.zero
+        //topNavBgView = UIView(frame: CGRect.zero)
+        //topNavBgView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
+        topNavBgView = UIVisualEffectView(frame: CGRect.zero, effect: UIBlurEffect(style: UIBlurEffect.Style.regular))
+        //topNavBgView.frame = CGRect.zero
         //blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurView)
+        view.addSubview(topNavBgView)
         
         urlField = UITextField(frame: CGRect.zero)
         //urlField = UITextField()
