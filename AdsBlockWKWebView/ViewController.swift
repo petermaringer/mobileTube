@@ -661,8 +661,7 @@ player.play()*/
       tableView.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 5
       tableView.frame.size.width = view.frame.width - insetL - insetR
       tableView.frame.size.height = 185
-      
-      //tableView.reloadData()
+      tableView.reloadData()
       
       //tableView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
       
