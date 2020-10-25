@@ -122,8 +122,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
   
   var webview: WKWebView!
   
-  //var topNavBgView: UIView!
-  var topNavBgView: UIVisualEffectView!
+  var topNavBgView: UIView!
+  //var topNavBgView: UIVisualEffectView!
   
   var urlField: UITextField!
   var button: UIButton!
@@ -788,11 +788,11 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         lb.isHidden = true
         view.addSubview(lb)
         
-        //topNavBgView = UIView(frame: CGRect.zero)
-        //topNavBgView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
-        topNavBgView = UIVisualEffectView(frame: CGRect.zero)
-        topNavBgView.effect = UIBlurEffect(style: UIBlurEffect.Style.regular)
-        topNavBgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        topNavBgView = UIView(frame: CGRect.zero)
+        topNavBgView.backgroundColor = UIColor.viewBgColor.withAlphaComponent(0.95)
+        //topNavBgView = UIVisualEffectView(frame: CGRect.zero)
+        //topNavBgView.effect = UIBlurEffect(style: UIBlurEffect.Style.regular)
+        //topNavBgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(topNavBgView)
         
         urlField = UITextField(frame: CGRect.zero)
