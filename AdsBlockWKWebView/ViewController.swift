@@ -616,7 +616,8 @@ player.play()*/
       
       if !(lastDeviceOrientation == "initial") {
         if deviceOrientation == "pt" {
-          shouldHideHomeIndicator = false
+          //shouldHideHomeIndicator = false
+          shouldHideHomeIndicator = true
         } else {
           shouldHideHomeIndicator = true
         }
