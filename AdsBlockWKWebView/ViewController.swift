@@ -629,11 +629,14 @@ player.play()*/
       }
       
       urlField.frame.origin.x = insetL
-      urlField.frame.origin.y = insetT + 5
+      urlField.frame.origin.y = insetT
       urlField.frame.size.width = self.view.frame.width - insetL - insetR
       urlField.frame.size.height = 30
+      if insetT == 0 {
+        urlField.frame.origin.y += 5
+      }
       if insetL == 0 {
-        urlField.frame.origin.x = 5
+        urlField.frame.origin.x += 5
         urlField.frame.size.width -= 5
       }
       if insetR == 0 {
@@ -644,13 +647,18 @@ player.play()*/
       }
       
       //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
-      button.frame.origin.x = insetL + urlField.frame.size.width + 5
-      button.frame.origin.y = insetT + 5
+      button.frame.origin.x = urlField.frame.origin.x + urlField.frame.size.width + 5
+      button.frame.origin.y = urlField.frame.origin.y
       button.frame.size.width = 80
-      button.frame.size.height = 30
-      if insetL == 0 {
-        button.frame.origin.x += 5
-      }
+      button.frame.size.height = urlField.frame.size.height
+      //if insetL == 0 {
+        //button.frame.origin.x += 5
+      //}
+      
+      topNavBgView.frame.origin.x = 0
+      topNavBgView.frame.origin.y = 0
+      topNavBgView.frame.size.width = self.view.frame.width
+      topNavBgView.frame.size.height = urlField.frame.origin.y + urlField.frame.size.height + 5
       
       tableView.frame.origin.x = insetL
       tableView.frame.origin.y = insetT + urlField.frame.size.height + 10
@@ -675,11 +683,6 @@ player.play()*/
         webview.frame.origin.y += 200
         webview.frame.size.height -= 200
       }
-      
-      topNavBgView.frame.origin.x = 0
-      topNavBgView.frame.origin.y = 0
-      topNavBgView.frame.size.width = self.view.frame.width
-      topNavBgView.frame.size.height = insetT + urlField.frame.size.height + 10
       
       //webview.scrollView.contentSize = CGSize(width: self.view.frame.width - insetL - insetR, height: self.view.frame.height - insetT - urlField.frame.size.height - 10)
       //webview.scrollView.contentInset = UIEdgeInsets(top: insetT + urlField.frame.size.height + 10, left: 0, bottom: 0, right: 0)
