@@ -517,9 +517,10 @@ player.play()*/
           webview3.removeFromSuperview()
         }
         navUrlArray = []
-        lb.text = "log:"
+        //lb.text = "log:"
         //adjustLabel()
-        addToDevLabel(text: "")
+        lb.text = ""
+        addToDevLabel(text: "log:")
       default:
         break
     }
