@@ -569,22 +569,18 @@ player.play()*/
     self.present(alert, animated: true, completion: nil)
   }
   
-  private func devLabel(add: String) {
-    
-    lb.text! += " " + add
-    
+  private func addToDevLabel(text: String) {
+    lb.text! += " " + text
     if insetL + insetR > 42 {
       lb.frame.size.width = view.frame.width - insetL - insetR
     } else {
       lb.frame.size.width = view.frame.width - 42
     }
     lb.frame.size.height = lb.sizeThatFits(CGSize(width: lb.frame.size.width, height: CGFloat.greatestFiniteMagnitude)).height
-    
     lb.frame.origin.x = (view.frame.width - lb.frame.size.width) / 2
+    lb.frame.origin.y = view.frame.height - lb.frame.size.height - insetB + 14
     
-    lb.frame.origin.y = view.frame.height - insetB - lb.frame.size.height + 14
-    
-    lb.textAlignment = .center
+    //lb.textAlignment = .center
   }
   
   
@@ -606,7 +602,7 @@ player.play()*/
         
         lb.frame.origin.x = (self.view.frame.width - lb.frame.width) / 2
         lb.frame.origin.y = self.view.frame.height - insetB - lb.frame.size.height + 14
-        lb.textAlignment = .center
+        //lb.textAlignment = .center
     }
   
   
@@ -773,7 +769,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         
         lb = UILabel(frame: CGRect.zero)
         lb.text = "log:"
-        //lb.textAlignment = .center
+        lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
         lb.backgroundColor = .gray
         lb.numberOfLines = 0
@@ -1194,7 +1190,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
     
     lb.text = lb.text! + " w:dF"
     adjustLabel()
-    devLabel(add: "hallo")
+    addToDevLabel(text: "hallo")
     //webview.evaluateJavaScript("var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0, maximum-scale=10.0, user-scalable=yes'); document.getElementsByTagName('head')[0].appendChild(meta);", completionHandler: nil)
     //webview.evaluateJavaScript("var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); }", completionHandler: nil)
     
