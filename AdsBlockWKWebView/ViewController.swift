@@ -518,7 +518,8 @@ player.play()*/
         }
         navUrlArray = []
         lb.text = "log:"
-        adjustLabel()
+        //adjustLabel()
+        addToDevLabel(text: "")
       default:
         break
     }
@@ -950,8 +951,9 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
   
   
   func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-    lb.text = lb.text! + " m:\(message.body)"
-    adjustLabel()
+    //lb.text = lb.text! + " m:\(message.body)"
+    //adjustLabel()
+    addToDevLabel(text: "m:\(message.body)")
   }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -1188,9 +1190,9 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
     urlField.text = webview.url!.absoluteString
     //showAlert(message: defaultUserAgent)
     
-    lb.text = lb.text! + " w:dF"
-    adjustLabel()
-    addToDevLabel(text: "hallo")
+    //lb.text = lb.text! + " w:dF"
+    //adjustLabel()
+    addToDevLabel(text: "w:dF")
     //webview.evaluateJavaScript("var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0, maximum-scale=10.0, user-scalable=yes'); document.getElementsByTagName('head')[0].appendChild(meta);", completionHandler: nil)
     //webview.evaluateJavaScript("var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); }", completionHandler: nil)
     
