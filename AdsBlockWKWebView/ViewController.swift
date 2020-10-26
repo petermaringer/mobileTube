@@ -965,7 +965,6 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
       
       lb.text = lb.text! + " oV:" + String(String(describing: key).prefix(15))
       adjustLabel()
-      devLabel(add: "hallo")
     }
   }
   
@@ -1195,6 +1194,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
     
     lb.text = lb.text! + " w:dF"
     adjustLabel()
+    devLabel(add: "hallo")
     //webview.evaluateJavaScript("var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0, maximum-scale=10.0, user-scalable=yes'); document.getElementsByTagName('head')[0].appendChild(meta);", completionHandler: nil)
     //webview.evaluateJavaScript("var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); }", completionHandler: nil)
     
