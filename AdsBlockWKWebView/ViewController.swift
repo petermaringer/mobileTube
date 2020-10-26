@@ -569,6 +569,24 @@ player.play()*/
     self.present(alert, animated: true, completion: nil)
   }
   
+  private func devLabel(add: String) {
+    
+    lb.text += " " + add
+    
+    if insetL + insetR > 42 {
+      lb.frame.size.width = view.frame.width - insetL - insetR
+    } else {
+      lb.frame.size.width = view.frame.width - 42
+    }
+    lb.frame.size.height = lb.sizeThatFits(CGSize(width: lb.frame.size.width, height: CGFloat.greatestFiniteMagnitude)).height
+    
+    lb.frame.origin.x = (view.frame.width - lb.frame.size.width) / 2
+    
+    lb.frame.origin.y = view.frame.height - insetB - lb.frame.size.height + 14
+    
+    lb.textAlignment = .center
+  }
+  
   
     private func adjustLabel() {
         //if insetL + insetR > 42 {
@@ -947,6 +965,7 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
       
       lb.text = lb.text! + " oV:" + String(String(describing: key).prefix(15))
       adjustLabel()
+      devLabel(add: "hallo")
     }
   }
   
