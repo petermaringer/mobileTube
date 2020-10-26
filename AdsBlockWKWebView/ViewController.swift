@@ -571,7 +571,7 @@ player.play()*/
   
   private func devLabel(add: String) {
     
-    lb.text += " " + add
+    lb.text += (" " + add)!
     
     if insetL + insetR > 42 {
       lb.frame.size.width = view.frame.width - insetL - insetR
