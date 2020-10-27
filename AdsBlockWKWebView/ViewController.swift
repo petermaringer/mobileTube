@@ -517,10 +517,10 @@ player.play()*/
           webview3.removeFromSuperview()
         }
         navUrlArray = []
-        //lb.text = "log:"
-        //adjustLabel()
-        lb.text = ""
-        addToDevLabel(text: "log:")
+        lb.text = "log:"
+        adjustLabel()
+        //lb.text = ""
+        //addToDevLabel(text: "log:")
       default:
         break
     }
@@ -571,25 +571,23 @@ player.play()*/
     self.present(alert, animated: true, completion: nil)
   }
   
-  private func addToDevLabel(text: String) {
-    lb.text! += "-" + text
-    //lb.text!.trimmingCharacters(in: CharacterSet.whitespaces)
-    lb.text = lb.text!.trimmingCharacters(in: CharacterSet(charactersIn: "-"))
+  private func adjustLabel() {
+    //lb.text! += " " + text
+    //lb.text = lb.text!.trimmingCharacters(in: CharacterSet(charactersIn: " "))
     
-    if insetL + insetR > 42 {
-      lb.frame.size.width = view.frame.width - insetL - insetR
-    } else {
-      lb.frame.size.width = view.frame.width - 42
-    }
+    //if insetL + insetR > 42 {
+      //lb.frame.size.width = view.frame.width - insetL - insetR
+    //} else {
+      //lb.frame.size.width = view.frame.width - 42
+    //}
     lb.frame.size.height = lb.sizeThatFits(CGSize(width: lb.frame.size.width, height: CGFloat.greatestFiniteMagnitude)).height
-    lb.frame.origin.x = (view.frame.width - lb.frame.size.width) / 2
+    //lb.frame.origin.x = (view.frame.width - lb.frame.size.width) / 2
     lb.frame.origin.y = view.frame.height - lb.frame.size.height - insetB + 14
     
-    //lb.textAlignment = .center
   }
   
   
-    private func adjustLabel() {
+    private func adjustLabelOld() {
         //if insetL + insetR > 42 {
             //lb.frame.size.width = self.view.frame.width - insetL - insetR
         //} else {
@@ -718,6 +716,15 @@ player.play()*/
       webview3.frame.size.width = view.frame.width - insetL - insetR
       //webview3.frame.size.height = view.frame.height - urlField.frame.origin.y
       webview3.frame.size.height = view.frame.height - urlField.frame.origin.y - urlField.frame.size.height - 5
+      
+      lb.frame.origin.x = insetL + 21
+      lb.frame.size.width = view.frame.width - insetL - insetR - 42
+      //if insetL == 0 {
+        //lb.frame.origin.x += 5
+        //lb.frame.size.width -= 5
+      //}
+      adjustLabel()
+      //addToDevLabel(text: "")
       
       lastDeviceOrientation = deviceOrientation
       lb.text = lb.text! + " \(insetT) \(insetB) \(insetL) \(insetR) \(deviceOrientation)"
@@ -955,9 +962,9 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
   
   
   func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-    //lb.text = lb.text! + " m:\(message.body)"
-    //adjustLabel()
-    addToDevLabel(text: "m:\(message.body)")
+    lb.text = lb.text! + " m:\(message.body)"
+    adjustLabel()
+    //addToDevLabel(text: "m:\(message.body)")
   }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -1194,9 +1201,9 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
     urlField.text = webview.url!.absoluteString
     //showAlert(message: defaultUserAgent)
     
-    //lb.text = lb.text! + " w:dF"
-    //adjustLabel()
-    addToDevLabel(text: "w:dF")
+    lb.text = lb.text! + " w:dF"
+    adjustLabel()
+    //addToDevLabel(text: "w:dF")
     //webview.evaluateJavaScript("var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0, maximum-scale=10.0, user-scalable=yes'); document.getElementsByTagName('head')[0].appendChild(meta);", completionHandler: nil)
     //webview.evaluateJavaScript("var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); }", completionHandler: nil)
     
