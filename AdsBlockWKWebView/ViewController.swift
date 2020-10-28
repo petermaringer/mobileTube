@@ -504,7 +504,8 @@ player.play()*/
     
     //showAlert(message: "D:\(url)")
     //lb.text = lb.text! + " D"
-    //adjustLabel()
+    lb.text! += " \(defaultUserAgent)"
+    adjustLabel()
   }
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
@@ -735,6 +736,11 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
         webview.allowsLinkPreview = false
         webview.clipsToBounds = false
         webview.scrollView.clipsToBounds = false
+        
+webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
+          self.defaultUserAgent = result as! String
+        }
+        
         //webview.isHidden = true
         view.addSubview(webview)
         
