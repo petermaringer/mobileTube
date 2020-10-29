@@ -1198,7 +1198,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     //showAlert(message: defaultUserAgent)
     
     if currentUserAgent == "default" {
-      webview.customUserAgent = nil
+      webview.customUserAgent = defaultUserAgent
     } else {
       webview.customUserAgent = desktopUserAgent
     }
