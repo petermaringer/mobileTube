@@ -1076,11 +1076,11 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
     }
     
-    if currentUserAgent == "default" {
-      webview.customUserAgent = nil
-    } else {
-      webview.customUserAgent = desktopUserAgent
-    }
+    //if currentUserAgent == "default" {
+      //webview.customUserAgent = nil
+    //} else {
+      //webview.customUserAgent = desktopUserAgent
+    //}
     
     if navigationAction.navigationType == .linkActivated {
       let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at", "https://www.willhaben.at", "https://maps.google.com"]
@@ -1196,6 +1196,12 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
     urlField.text = webview.url!.absoluteString
     //showAlert(message: defaultUserAgent)
+    
+    if currentUserAgent == "default" {
+      webview.customUserAgent = nil
+    } else {
+      webview.customUserAgent = desktopUserAgent
+    }
     
     lb.text = lb.text! + " w:dF"
     adjustLabel()
