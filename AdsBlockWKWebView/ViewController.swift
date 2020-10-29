@@ -1087,7 +1087,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
     }
     
-    let desktopUrls: Array<String> = ["https://my.norton.com/extspa/passwordmanager", "https://www.youtube.com"]
+    let desktopUrls: Array<String> = ["https://my.norton.com/extspa/passwordmanager", "https://de.yahoo.com"]
     var desktopStop = false
     desktopUrls.forEach { item in
       if navigationAction.request.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
@@ -1095,7 +1095,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
     }
     if desktopStop == true {
-      //webview.customUserAgent = desktopUserAgent
+      webview.customUserAgent = desktopUserAgent
       //webview.load(navigationAction.request)
       lb.text! += " \(navigationAction.request.url!.absoluteString)"
       adjustLabel()
