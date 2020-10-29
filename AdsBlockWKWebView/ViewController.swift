@@ -135,6 +135,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
   
   var url: String!
   var defaultUserAgent: String = "default"
+  let desktopUserAgent: String = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
   
   var restoreIndex: Int = 0
   var restoreIndexLast: Int = 0
@@ -740,7 +741,6 @@ webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el =
 webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
           self.defaultUserAgent = result as! String
         }
-        
         //webview.isHidden = true
         view.addSubview(webview)
         
@@ -989,13 +989,12 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
   
   private func changeUserAgent() {
     
-    let desktopUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
     if webview.customUserAgent != desktopUserAgent {
     
     //if defaultUserAgent == "default" {
       webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         self.defaultUserAgent = result as! String
-        self.webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
+        self.webview.customUserAgent = desktopUserAgent
         //self.webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
         self.webview.reload()
       }
@@ -1088,6 +1087,22 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
     }
     
+    let desktopUrls: Array<String> = ["https://my.norton.com/extspa/passwordmanager", "https://www.youtube.com"]
+    var desktopStop = false
+    desktopUrls.forEach { item in
+      if navigationAction.request.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
+        desktopStop = true
+      }
+    }
+    if desktopStop == true {
+      webview.customUserAgent = desktopUserAgent
+      //webview.load(navigationAction.request)
+      lb.text! += " \(navigationAction.request.url!.absoluteString)"
+      adjustLabel()
+      //decisionHandler(.cancel)
+      //return
+    }
+    
     //if navigationAction.request.url?.scheme == "https" && UIApplication.shared.canOpenURL(navigationAction.request.url!) {
       //decisionHandler(.cancel)
       //return
@@ -1096,11 +1111,11 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     
     if navigationAction.request.url?.scheme == "itms-appss" {
       webview.stopLoading()
-      webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
+      webview.customUserAgent = desktopUserAgent
       let newUrlStr = navigationAction.request.url!.absoluteString.replacingOccurrences(of: "itms-appss", with: "https")
       let newUrl = URL(string: newUrlStr)
       //var newUrl = URLRequest(url: URL(string: newUrlStr)!)
-      //newUrl.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
+      //newUrl.setValue(desktopUserAgent, forHTTPHeaderField: "User-Agent")
       if counter < 3 {
       counter += 1
       webview.load(URLRequest(url: newUrl!))
