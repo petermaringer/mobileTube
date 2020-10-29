@@ -1095,7 +1095,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
     }
     if desktopStop == true {
-      webview.customUserAgent = desktopUserAgent
+      //webview.customUserAgent = desktopUserAgent
       //webview.load(navigationAction.request)
       lb.text! += " \(navigationAction.request.url!.absoluteString)"
       adjustLabel()
