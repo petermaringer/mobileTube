@@ -994,7 +994,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     //if defaultUserAgent == "default" {
       webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         self.defaultUserAgent = result as! String
-        self.webview.customUserAgent = desktopUserAgent
+        self.webview.customUserAgent = self.desktopUserAgent
         //self.webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
         self.webview.reload()
       }
