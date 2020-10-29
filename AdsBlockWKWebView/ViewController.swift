@@ -1067,6 +1067,8 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
     }
     
+    webview.customUserAgent = nil
+    
     if navigationAction.navigationType == .linkActivated {
       let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at", "https://www.willhaben.at", "https://maps.google.com"]
       var unilinkStop = false
