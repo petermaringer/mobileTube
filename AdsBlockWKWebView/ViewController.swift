@@ -1080,14 +1080,14 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       if unilinkStop == true {
         //webview.customUserAgent = nil
         webview.load(navigationAction.request)
-        lb.text = lb.text! + " \(navigationAction.request.url!.absoluteString)"
+        lb.text! += " uni:\(navigationAction.request.url!.absoluteString)"
         adjustLabel()
         decisionHandler(.cancel)
         return
       }
     }
     
-    let desktopUrls: Array<String> = ["https://my.norton.com/extspa/passwordmanager", "https://de.yahoo.com"]
+    let desktopUrls: Array<String> = ["https://apps.apple.com", "https://my.norton.com/extspa/passwordmanager", "https://de.yahoo.com"]
     var desktopStop = false
     desktopUrls.forEach { item in
       if navigationAction.request.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
@@ -1097,7 +1097,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     if desktopStop == true {
       webview.customUserAgent = desktopUserAgent
       //webview.load(navigationAction.request)
-      lb.text! += " \(navigationAction.request.url!.absoluteString)"
+      lb.text! += " desk:\(navigationAction.request.url!.absoluteString)"
       adjustLabel()
       //decisionHandler(.cancel)
       //return
@@ -1120,6 +1120,8 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       counter += 1
       webview.load(URLRequest(url: newUrl!))
       //webview.load(newUrl)
+      lb.text! += " itms-appss:\(navigationAction.request.url!.absoluteString)"
+      adjustLabel()
       }
       //webview.customUserAgent = nil
       //UIApplication.shared.open(navigationAction.request.url!, options: [:], completionHandler: nil)
