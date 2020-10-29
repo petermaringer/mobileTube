@@ -134,6 +134,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
   var array: Array<String> = []
   
   var url: String!
+  var currentUserAgent: String = "default"
   var defaultUserAgent: String = "default"
   let desktopUserAgent: String = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
   
@@ -988,9 +989,17 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
   
   
   private func changeUserAgent() {
+    if currentUserAgent == "default" {
+      webview.customUserAgent = desktopUserAgent
+      currentUserAgent = "desktop"
+    } else {
+      webview.customUserAgent = nil
+      currentUserAgent = "default"
+    }
+    webview.reload()
     
+    /*
     if webview.customUserAgent != desktopUserAgent {
-    
     //if defaultUserAgent == "default" {
       webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         self.defaultUserAgent = result as! String
@@ -1001,11 +1010,11 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     } else {
       webview.customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Mobile/15E148 Safari/604.1"
       //webview.customUserAgent = nil
-      
       //webview.customUserAgent = defaultUserAgent
       //defaultUserAgent = "default"
       webview.reload()
     }
+    */
   }
   
   //url = url.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
@@ -1067,7 +1076,11 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
     }
     
-    webview.customUserAgent = nil
+    if currentUserAgent == "default" {
+      webview.customUserAgent = nil
+    } else {
+      webview.customUserAgent = desktopUserAgent
+    }
     
     if navigationAction.navigationType == .linkActivated {
       let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at", "https://www.willhaben.at", "https://maps.google.com"]
@@ -1080,7 +1093,6 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         }
       }
       if unilinkStop == true {
-        //webview.customUserAgent = nil
         webview.load(navigationAction.request)
         lb.text! += " uni:\(navigationAction.request.url!.absoluteString)"
         adjustLabel()
