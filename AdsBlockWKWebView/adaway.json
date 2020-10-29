@@ -3,6 +3,8 @@
 {"trigger":{"url-filter":"^https?://.*adnxs\\.comXXX","load-type":["third-party"]},"action":{"type":"block"}},
 
 
+{"trigger":{"url-filter":"nebula-cdn\\.kampyle\\.com","load-type":["third-party"]},"action":{"type":"block"}},
+
 {"trigger":{"url-filter":"at\\.iocnt\\.net","load-type":["third-party"]},"action":{"type":"block"}},
 
 {"trigger":{"url-filter":"facebook\\.com/v.*/plugins/like","load-type":["third-party"]},"action":{"type":"block"}},
