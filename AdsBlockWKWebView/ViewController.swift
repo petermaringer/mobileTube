@@ -1197,11 +1197,11 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     urlField.text = webview.url!.absoluteString
     //showAlert(message: defaultUserAgent)
     
-    if currentUserAgent == "default" {
-      webview.customUserAgent = defaultUserAgent
-    } else {
-      webview.customUserAgent = desktopUserAgent
-    }
+    //if currentUserAgent == "default" {
+      //webview.customUserAgent = defaultUserAgent
+    //} else {
+      //webview.customUserAgent = desktopUserAgent
+    //}
     
     lb.text = lb.text! + " w:dF"
     adjustLabel()
