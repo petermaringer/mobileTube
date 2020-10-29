@@ -1096,11 +1096,10 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     }
     if desktopStop == true {
       webview.customUserAgent = desktopUserAgent
-      //webview.load(navigationAction.request)
       lb.text! += " desk:\(navigationAction.request.url!.absoluteString)"
       adjustLabel()
-      //decisionHandler(.cancel)
-      //return
+      decisionHandler(.allow)
+      return
     }
     
     //if navigationAction.request.url?.scheme == "https" && UIApplication.shared.canOpenURL(navigationAction.request.url!) {

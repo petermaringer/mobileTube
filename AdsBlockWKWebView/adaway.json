@@ -3,6 +3,8 @@
 {"trigger":{"url-filter":"^https?://.*adnxs\\.comXXX","load-type":["third-party"]},"action":{"type":"block"}},
 
 
+{"trigger":{"url-filter":"at\\.iocnt\\.net","load-type":["third-party"]},"action":{"type":"block"}},
+
 {"trigger":{"url-filter":"facebook\\.com/v.*/plugins/like","load-type":["third-party"]},"action":{"type":"block"}},
 
 {"trigger":{"url-filter":"platform\\.twitter\\.com/widgets/widget_iframeXXX","load-type":["third-party"]},"action":{"type":"block"}},
@@ -16,8 +18,6 @@
 {"trigger":{"url-filter":"track\\.adform\\.net","load-type":["third-party"]},"action":{"type":"block"}},
 
 {"trigger":{"url-filter":"adsrvr\\.org","load-type":["third-party"]},"action":{"type":"block"}},
-
-{"trigger":{"url-filter":"static\\.pinpoll\\.com","load-type":["third-party"]},"action":{"type":"block"}},
 
 {"trigger":{"url-filter":"adservice\\.google\\.com","load-type":["third-party"]},"action":{"type":"block"}},
 
