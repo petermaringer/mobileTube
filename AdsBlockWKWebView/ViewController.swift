@@ -1077,7 +1077,9 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     }
     
     if currentUserAgent == "default" {
-      webview.customUserAgent = defaultUserAgent
+      webview.customUserAgent = nil
+      lb.text! += " nil"
+      adjustLabel()
     } else {
       webview.customUserAgent = desktopUserAgent
     }
@@ -1196,12 +1198,6 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
   func webView(_ webview: WKWebView, didFinish navigation: WKNavigation!) {
     urlField.text = webview.url!.absoluteString
     //showAlert(message: defaultUserAgent)
-    
-    //if currentUserAgent == "default" {
-      //webview.customUserAgent = defaultUserAgent
-    //} else {
-      //webview.customUserAgent = desktopUserAgent
-    //}
     
     lb.text = lb.text! + " w:dF"
     adjustLabel()
