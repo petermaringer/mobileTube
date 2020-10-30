@@ -1082,6 +1082,8 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       adjustLabel()
     } else {
       webview.customUserAgent = desktopUserAgent
+      lb.text! += " des"
+      adjustLabel()
     }
     
     if navigationAction.navigationType == .linkActivated {
@@ -1103,7 +1105,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
     }
     
-    let desktopUrls: Array<String> = ["https://apps.apple.com", "https://my.norton.com/extspa/passwordmanager", "https://identitysafe.norton.com", "https://de.yahoo.com"]
+    let desktopUrls: Array<String> = ["https://apps.apple.com", "https://my.norton.com/extspa/passwordmanagerXXX", "https://identitysafe.norton.com", "https://de.yahoo.com"]
     var desktopStop = false
     desktopUrls.forEach { item in
       if navigationAction.request.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
