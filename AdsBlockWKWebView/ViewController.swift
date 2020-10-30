@@ -1093,9 +1093,11 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         //decisionHandler(.cancel)
         //return
       }
-      lb.text! += " BF"
-      adjustLabel()
+      //lb.text! += " BF"
+      //adjustLabel()
     }
+    lb.text! += " \(navigationAction.navigationType)"
+    adjustLabel()
     
     if navigationAction.navigationType == .linkActivated {
       let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at", "https://www.willhaben.at", "https://maps.google.com"]
