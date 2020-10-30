@@ -1078,11 +1078,16 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     
     if currentUserAgent == "default" {
       webview.customUserAgent = nil
-      lb.text! += " nil"
-      adjustLabel()
+      //lb.text! += " nil"
+      //adjustLabel()
     } else {
       webview.customUserAgent = desktopUserAgent
-      lb.text! += " des"
+      //lb.text! += " des"
+      //adjustLabel()
+    }
+    
+    if navigationAction.navigationType == .backForward {
+      lb.text! += " bf"
       adjustLabel()
     }
     
@@ -1105,7 +1110,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
     }
     
-    let desktopUrls: Array<String> = ["https://apps.apple.com", "https://my.norton.com/extspa/passwordmanagerXXX", "https://identitysafe.norton.com", "https://de.yahoo.com"]
+    let desktopUrls: Array<String> = ["https://apps.apple.com", "https://identitysafe.norton.com", "https://de.yahoo.com"]
     var desktopStop = false
     desktopUrls.forEach { item in
       if navigationAction.request.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
