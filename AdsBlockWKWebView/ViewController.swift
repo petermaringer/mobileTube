@@ -1088,11 +1088,13 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     
     if navigationAction.navigationType == .backForward {
       if navigationAction.request.url!.absoluteString == "https://www.paypal.com/at/home" {
-        lb.text! += " bf"
-        adjustLabel()
-        decisionHandler(.cancel)
-        return
+        //lb.text! += " bf"
+        //adjustLabel()
+        //decisionHandler(.cancel)
+        //return
       }
+      lb.text! += " BF"
+      adjustLabel()
     }
     
     if navigationAction.navigationType == .linkActivated {
