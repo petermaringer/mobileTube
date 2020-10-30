@@ -1096,7 +1096,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       //lb.text! += " BF"
       //adjustLabel()
     }
-    lb.text! += " \(navigationAction.navigationType)"
+    lb.text! += " WKNT(\(navigationAction.navigationType.rawValue))"
     adjustLabel()
     
     if navigationAction.navigationType == .linkActivated {
