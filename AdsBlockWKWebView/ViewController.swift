@@ -1087,8 +1087,10 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     }
     
     if navigationAction.navigationType == .backForward {
-      lb.text! += " bf"
-      adjustLabel()
+      if navigationAction.request.url!.absoluteString == "https://www.paypal.com/at/home" {
+        lb.text! += " bf"
+        adjustLabel()
+      }
     }
     
     if navigationAction.navigationType == .linkActivated {
