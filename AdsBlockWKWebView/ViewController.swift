@@ -1069,9 +1069,17 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     url = url.addingPercentEncoding(withAllowedCharacters: allowed)
     //showAlert(message: url)
     var urlobj = URL(string: url)
-    if !(url.hasPrefix("https://") || url.hasPrefix("http://")) {
+    
+    /*if !(url.hasPrefix("https://") || url.hasPrefix("http://")) {
       urlobj = URL(string: "http://" + url)
+    }*/
+    
+    if urlobj.scheme.isEmpty {
+      urlobj.scheme = "http"
     }
+    lb.text! += " \(urlobj.scheme)"
+    adjustLabel()
+    
     let request = URLRequest(url: urlobj!)
     webview.load(request)
   }
@@ -1089,27 +1097,18 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     
     if currentUserAgent == "default" {
       webview.customUserAgent = nil
-      //lb.text! += " nil"
-      //adjustLabel()
     } else {
       webview.customUserAgent = desktopUserAgent
-      //lb.text! += " des"
-      //adjustLabel()
     }
     
+    
+    lb.text! += " WKNT(\(navigationAction.navigationType.rawValue))"
+    adjustLabel()
     if navigationAction.navigationType != .other {
       navTypeBackForward = false
     }
     if navigationAction.navigationType == .backForward {
-      //if navigationAction.request.url!.absoluteString == "https://www.paypal.com/at/home" {
-        //lb.text! += " bf"
-        //adjustLabel()
-        //decisionHandler(.cancel)
-        //return
-      //}
       navTypeBackForward = true
-      //lb.text! += " BF"
-      //adjustLabel()
     }
     if navigationAction.navigationType == .other && navTypeBackForward == true {
       lb.text! += " STOP"
@@ -1117,8 +1116,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       decisionHandler(.cancel)
       return
     }
-    lb.text! += " WKNT(\(navigationAction.navigationType.rawValue))"
-    adjustLabel()
+    
     
     if navigationAction.navigationType == .linkActivated {
       let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at", "https://www.willhaben.at", "https://maps.google.com"]
