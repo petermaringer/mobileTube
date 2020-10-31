@@ -509,6 +509,13 @@ player.play()*/
     //lb.text = lb.text! + " D"
     lb.text! += " \(defaultUserAgent)"
     adjustLabel()
+    
+    let range = (lb.text! as NSString).range(of: "STOP")
+    let mutableAttributedString = NSMutableAttributedString(string: lb.text!)
+    mutableAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: range)
+    lb.attributedText = mutableAttributedString
+    adjustLabel()
+    
   }
   
   func textFieldShouldClear(_ textField: UITextField) -> Bool {
@@ -1104,13 +1111,6 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     if navigationAction.navigationType == .other && navTypeBackForward == true {
       lb.text! += " STOP"
       adjustLabel()
-      
-      let range = (lb.text! as NSString).range(of: "STOP")
-      let mutableAttributedString = NSMutableAttributedString(string: lb.text!)
-      mutableAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: range)
-      lb.attributedText = mutableAttributedString
-      adjustLabel()
-      
     }
     lb.text! += " WKNT(\(navigationAction.navigationType.rawValue))"
     adjustLabel()
