@@ -1075,11 +1075,18 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     }*/
     
     //if urlobj!.scheme!.isEmpty {
-    if !url.contains("://") {
-      urlobj = URL(string: "http://" + url)
+    
+    if let regularExpression = try? NSRegularExpression(pattern: "^.{1,10}://") {
+      let matchedResults = regularExpression.numberOfMatches(in: url, options: [], range: NSRange(location: 0, length: url.length))
+      lb.text! += " \(matchedResults)"
+      adjustLabel()
     }
-    lb.text! += " \(urlobj!.absoluteString)"
-    adjustLabel()
+    
+    //if !url.contains("://") {
+      //urlobj = URL(string: "http://" + url)
+    //}
+    //lb.text! += " \(urlobj!.absoluteString)"
+    //adjustLabel()
     
     let request = URLRequest(url: urlobj!)
     webview.load(request)
