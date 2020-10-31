@@ -575,13 +575,8 @@ player.play()*/
   
   private func adjustLabel() {
     
-    /*let range = (lb.text! as NSString).range(of: "STOP")
-    let mutableAttributedString = NSMutableAttributedString(string: lb.text!)
-    mutableAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: range)
-    lb.attributedText = mutableAttributedString*/
-    
     let attributedString = NSMutableAttributedString(string: lb.text!)
-    if let regularExpression = try? NSRegularExpression(pattern: "STOP", options: .caseInsensitive) {
+    if let regularExpression = try? NSRegularExpression(pattern: "STOP") {
       let matchedResults = regularExpression.matches(in: lb.text!, options: [], range: NSRange(location: 0, length: attributedString.length))
       for matched in matchedResults {
         attributedString.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.red], range: matched.range)
@@ -1119,6 +1114,8 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     if navigationAction.navigationType == .other && navTypeBackForward == true {
       lb.text! += " STOP"
       adjustLabel()
+      decisionHandler(.cancel)
+      return
     }
     lb.text! += " WKNT(\(navigationAction.navigationType.rawValue))"
     adjustLabel()
