@@ -1074,10 +1074,11 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       urlobj = URL(string: "http://" + url)
     }*/
     
-    if urlobj!.scheme!.isEmpty {
+    //if urlobj!.scheme!.isEmpty {
+    if !url.contains("://") {
       urlobj = URL(string: "http://" + url)
     }
-    lb.text! += " \(urlobj!.scheme!)"
+    lb.text! += " \(urlobj!.absoluteString)"
     adjustLabel()
     
     let request = URLRequest(url: urlobj!)
