@@ -137,6 +137,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
   var currentUserAgent: String = "default"
   var defaultUserAgent: String = "default"
   let desktopUserAgent: String = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Safari/605.1.15"
+  var navTypeBackForward: Bool = false
   
   var restoreIndex: Int = 0
   var restoreIndexLast: Int = 0
@@ -1086,15 +1087,23 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       //adjustLabel()
     }
     
+    if navigationAction.navigationType != .other {
+      navTypeBackForward = false
+    }
     if navigationAction.navigationType == .backForward {
-      if navigationAction.request.url!.absoluteString == "https://www.paypal.com/at/home" {
+      //if navigationAction.request.url!.absoluteString == "https://www.paypal.com/at/home" {
         //lb.text! += " bf"
         //adjustLabel()
         //decisionHandler(.cancel)
         //return
-      }
+      //}
+      navTypeBackForward = true
       //lb.text! += " BF"
       //adjustLabel()
+    }
+    if navigationAction.navigationType == .other && navTypeBackForward == true {
+      lb.text! += " STOP"
+      adjustLabel()
     }
     lb.text! += " WKNT(\(navigationAction.navigationType.rawValue))"
     adjustLabel()
