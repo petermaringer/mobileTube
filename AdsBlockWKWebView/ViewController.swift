@@ -575,10 +575,19 @@ player.play()*/
   
   private func adjustLabel() {
     
-    let range = (lb.text! as NSString).range(of: "STOP")
+    /*let range = (lb.text! as NSString).range(of: "STOP")
     let mutableAttributedString = NSMutableAttributedString(string: lb.text!)
     mutableAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: range)
-    lb.attributedText = mutableAttributedString
+    lb.attributedText = mutableAttributedString*/
+    
+    let attributedString = NSMutableAttributedString(string: lb.text!)
+    if let regularExpression = try? NSRegularExpression(pattern: "STOP", options: .caseInsensitive) {
+      let matchedResults = regularExpression.matches(in: lb.text!, options: [], range: NSRange(location: 0, length: attributedString.length))
+      for matched in matchedResults {
+        attributedString.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.red], range: matched.range)
+      }
+      lb.attributedText = attributedString
+    }
     
     lb.frame.size.height = lb.sizeThatFits(CGSize(width: lb.frame.size.width, height: CGFloat.greatestFiniteMagnitude)).height
     lb.frame.origin.y = view.frame.height - lb.frame.size.height - insetB + 14
