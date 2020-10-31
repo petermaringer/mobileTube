@@ -1075,7 +1075,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     }*/
     
     if urlobj!.scheme!.isEmpty {
-      urlobj!.scheme! = "http"
+      urlobj = URL(string: "http://" + url)
     }
     lb.text! += " \(urlobj!.scheme!)"
     adjustLabel()
