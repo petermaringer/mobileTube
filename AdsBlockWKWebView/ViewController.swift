@@ -1105,7 +1105,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       lb.text! += " STOP"
       adjustLabel()
       
-      lb.attributedText = NSMutableAttributedString(string: lb.text!).addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: (lb.text! as NSString).range(of: "STOP"))
+      lb.attributedText = (NSMutableAttributedString(string: lb.text!)).addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: (lb.text! as NSString).range(of: "STOP"))
       adjustLabel()
       
     }
