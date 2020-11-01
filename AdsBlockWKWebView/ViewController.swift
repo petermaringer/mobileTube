@@ -1078,6 +1078,9 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     
     if let regularExpression = try? NSRegularExpression(pattern: "^.{1,10}://") {
       let matchedResults = regularExpression.numberOfMatches(in: url, options: [], range: NSRange(location: 0, length: url.count))
+      if matchedResults == 0 {
+        urlobj = URL(string: "http://" + url)
+      }
       lb.text! += " \(matchedResults)"
       adjustLabel()
     }
