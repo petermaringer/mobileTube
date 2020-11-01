@@ -1073,23 +1073,16 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     /*if !(url.hasPrefix("https://") || url.hasPrefix("http://")) {
       urlobj = URL(string: "http://" + url)
     }*/
-    
-    //if urlobj!.scheme!.isEmpty {
-    
     if let regularExpression = try? NSRegularExpression(pattern: "^.{1,10}://") {
-      let matchedResults = regularExpression.numberOfMatches(in: url, options: [], range: NSRange(location: 0, length: url.count))
-      if matchedResults == 0 {
+      let matchedNumber = regularExpression.numberOfMatches(in: url, options: [], range: NSRange(location: 0, length: url.count))
+      if matchedNumber == 0 {
         urlobj = URL(string: "http://" + url)
       }
-      lb.text! += " \(matchedResults)"
+      lb.text! += " \(matchedNumber)"
+      lb.text! += "|\(urlobj!.absoluteString)"
       adjustLabel()
     }
-    
-    //if !url.contains("://") {
-      //urlobj = URL(string: "http://" + url)
-    //}
-    //lb.text! += " \(urlobj!.absoluteString)"
-    //adjustLabel()
+    navTypeBackForward = false
     
     let request = URLRequest(url: urlobj!)
     webview.load(request)
