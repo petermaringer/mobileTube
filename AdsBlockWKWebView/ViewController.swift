@@ -28,6 +28,7 @@ extension UIColor {
   }
   //static let colorName: UIColor = UIColor.gray.withAlphaComponent(0.75)
   static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 1)
+  static let devBgColor: UIColor = .orange
   static let editButtonBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
 }
 
@@ -449,7 +450,7 @@ player.play()*/
     let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
       self.devButtonClicked(url: self.array[indexPath.row])
     }
-    dev.backgroundColor = .gray
+    dev.backgroundColor = .devBgColor
     return [delete, edit, dev]
   }
   
@@ -762,7 +763,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         lb.text = "log:"
         lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
-        lb.backgroundColor = .gray
+        lb.backgroundColor = UIColor.devBgColor.withAlphaComponent(0.75)
         lb.numberOfLines = 0
         //lb.isUserInteractionEnabled = true
         lb.isHidden = true
@@ -1117,8 +1118,9 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     if navigationAction.navigationType == .other && navTypeBackForward == true {
       lb.text! += " STOP"
       adjustLabel()
-      decisionHandler(.cancel)
-      return
+      sleep(2)
+      //decisionHandler(.cancel)
+      //return
     }
     
     
