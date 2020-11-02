@@ -763,7 +763,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         lb.text = "log:"
         lb.textAlignment = .center
         lb.font = lb.font.withSize(12)
-        lb.backgroundColor = UIColor.devBgColor.withAlphaComponent(0.75)
+        lb.backgroundColor = .devBgColor
         lb.numberOfLines = 0
         //lb.isUserInteractionEnabled = true
         lb.isHidden = true
