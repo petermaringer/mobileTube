@@ -1107,7 +1107,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     }
     
     
-    lb.text! += " WKNT(\(navigationAction.navigationType.rawValue))"
+    lb.text! += " NT(\(navigationAction.navigationType.rawValue))"
     adjustLabel()
     if navigationAction.navigationType != .other {
       navTypeBackForward = false
@@ -1118,9 +1118,9 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     if navigationAction.navigationType == .other && navTypeBackForward == true {
       lb.text! += " STOP"
       adjustLabel()
-      sleep(2)
-      //decisionHandler(.cancel)
-      //return
+      //sleep(2)
+      decisionHandler(.cancel)
+      return
     }
     
     
