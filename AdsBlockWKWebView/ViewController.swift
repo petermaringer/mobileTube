@@ -781,8 +781,9 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         view.addSubview(topNavBgView)
         
         progressView = UIProgressView(frame: CGRect.zero)
-        progressView.progressViewStyle = .default
-        progressView.frame = CGRect(x: 0, y: 64, width: view.frame.width, height: 20)
+        //progressView.progressViewStyle = .default
+        progressView.frame = CGRect(x: 0, y: 75, width: view.frame.width, height: 10)
+        progressView.progressTintColor = .editButtonBgColor
         view.addSubview(progressView)
         
         urlField = UITextField(frame: CGRect.zero)
