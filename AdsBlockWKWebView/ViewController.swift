@@ -477,9 +477,11 @@ player.play()*/
     if lb.isHidden == true {
       lb.isHidden = false
       webview.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
+      webview.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
     } else {
       lb.isHidden = true
       webview.removeObserver(self, forKeyPath: "URL")
+      webview.removeObserver(self, forKeyPath: "estimatedProgress")
       UIPasteboard.general.string = lb.text!
     }
     
@@ -949,10 +951,17 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     if let key = change?[NSKeyValueChangeKey.newKey] {
       
-      webview.evaluateJavaScript("var el = document.querySelector('input[type=file]'); if (el !== null) { window.webkit.messageHandlers.iosListener.postMessage('iF' + el.getAttribute('accept')); el.removeAttribute('accept'); el.removeAttribute('capture'); el.removeAttribute('onclick'); el.click(); }", completionHandler: nil)
+      if keyPath == "URL" {
+        webview.evaluateJavaScript("var el = document.querySelector('input[type=file]'); if (el !== null) { window.webkit.messageHandlers.iosListener.postMessage('iF' + el.getAttribute('accept')); el.removeAttribute('accept'); el.removeAttribute('capture'); el.removeAttribute('onclick'); el.click(); }", completionHandler: nil)
+        lb.text! += " oV:" + String(String(describing: key).prefix(15))
+        adjustLabel()
+      }
       
-      lb.text = lb.text! + " oV:" + String(String(describing: key).prefix(15))
-      adjustLabel()
+      if keyPath == "estimatedProgress" {
+        lb.text! += " oV:" + String(String(describing: key).prefix(15))
+        adjustLabel()
+      }
+      
     }
   }
   
