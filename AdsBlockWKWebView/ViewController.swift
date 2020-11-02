@@ -125,6 +125,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
   
   var topNavBgView: UIView!
   //var topNavBgView: UIVisualEffectView!
+  var progressView: UIProgressView!
   
   var urlField: UITextField!
   var button: UIButton!
@@ -779,6 +780,11 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         //topNavBgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(topNavBgView)
         
+        progressView = UIProgressView(frame: CGRect.zero)
+        progressView.progressViewStyle = .default
+        progressView.frame = CGRect(x: 0, y: 64, width: view.frame.width, height: 20)
+        view.addSubview(progressView)
+        
         urlField = UITextField(frame: CGRect.zero)
         //urlField = UITextField()
         urlField.placeholder = "Type your Address"
@@ -958,7 +964,8 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       }
       
       if keyPath == "estimatedProgress" {
-        lb.text! += " oV:" + String(String(describing: key).prefix(15))
+        progressView.progress = Float(webview.estimatedProgress)
+        lb.text! += " oV:" + String(String(describing: key).prefix(5))
         adjustLabel()
       }
       
