@@ -789,7 +789,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         progressView = UIProgressView(frame: CGRect.zero)
         //progressView.progressViewStyle = .bar
         progressView.progressTintColor = .editButtonBgColor
-        progressView.trackTintColor = .lightGray
+        progressView.trackTintColor = .clear
         view.addSubview(progressView)
         
         urlField = UITextField(frame: CGRect.zero)
@@ -972,6 +972,13 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       
       if keyPath == "estimatedProgress" {
         progressView.progress = Float(webview.estimatedProgress)
+        
+        if webview.estimatedProgress == 1 {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            progressView.progress = Float(0)
+          }
+        }
+        
         lb.text! += " oV:" + String(String(describing: key).prefix(5))
         adjustLabel()
       }
