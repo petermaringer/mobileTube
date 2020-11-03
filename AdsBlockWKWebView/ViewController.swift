@@ -975,7 +975,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         
         if webview.estimatedProgress == 1 {
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            progressView.progress = Float(0)
+            self.progressView.progress = Float(0)
           }
         }
         
