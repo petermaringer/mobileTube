@@ -656,7 +656,7 @@ player.play()*/
       topNavBgView.frame.size.height = urlField.frame.origin.y + urlField.frame.size.height + 5
       
       progressView.frame.origin.x = insetL
-      progressView.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height
+      progressView.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 1
       progressView.frame.size.width = view.frame.width - insetL - insetR
       progressView.frame.size.height = 2
       progressView.transform = progressView.transform.scaledBy(x: 1, y: 2)
@@ -789,6 +789,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         progressView = UIProgressView(frame: CGRect.zero)
         //progressView.progressViewStyle = .bar
         progressView.progressTintColor = .editButtonBgColor
+        progressView.trackTintColor = .lightgray
         view.addSubview(progressView)
         
         urlField = UITextField(frame: CGRect.zero)
