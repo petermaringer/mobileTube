@@ -659,6 +659,7 @@ player.play()*/
       progressView.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height
       progressView.frame.size.width = view.frame.width - insetL - insetR
       progressView.frame.size.height = 2
+      progressView.transform = progressView.transform.scaledBy(x: 1, y: 2)
       
       tableView.frame.origin.x = insetL
       tableView.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 5
@@ -786,9 +787,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         view.addSubview(topNavBgView)
         
         progressView = UIProgressView(frame: CGRect.zero)
-        //progressView.progressViewStyle = .default
-        //progressView.frame = CGRect(x: 0, y: 75, width: view.frame.width, height: 10)
-        progressView.transform = progressView.transform.scaledBy(x: 1, y: 4)
+        //progressView.progressViewStyle = .bar
         progressView.progressTintColor = .editButtonBgColor
         view.addSubview(progressView)
         
