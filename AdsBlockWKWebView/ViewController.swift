@@ -789,7 +789,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         progressView = UIProgressView(frame: CGRect.zero)
         //progressView.progressViewStyle = .bar
         progressView.progressTintColor = .editButtonBgColor
-        progressView.trackTintColor = .lightgray
+        progressView.trackTintColor = .lightGray
         view.addSubview(progressView)
         
         urlField = UITextField(frame: CGRect.zero)
