@@ -655,11 +655,13 @@ player.play()*/
       topNavBgView.frame.size.width = view.frame.width
       topNavBgView.frame.size.height = urlField.frame.origin.y + urlField.frame.size.height + 5
       
-      progressView.frame.origin.x = insetL
-      progressView.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 1
-      progressView.frame.size.width = view.frame.width - insetL - insetR
+      //progressView.frame.origin.x = insetL
+      progressView.frame.origin.x = urlField.frame.origin.x
+      progressView.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 2
+      //progressView.frame.size.width = view.frame.width - insetL - insetR
+      progressView.frame.size.width = urlField.frame.size.width
       progressView.frame.size.height = 2
-      progressView.transform = progressView.transform.scaledBy(x: 1, y: 2)
+      progressView.transform = progressView.transform.scaledBy(x: 1, y: 1.5)
       
       tableView.frame.origin.x = insetL
       tableView.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 5
@@ -972,13 +974,11 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       
       if keyPath == "estimatedProgress" {
         progressView.progress = Float(webview.estimatedProgress)
-        
         if webview.estimatedProgress == 1 {
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             self.progressView.progress = Float(0)
           }
         }
-        
         lb.text! += " oV:" + String(String(describing: key).prefix(5))
         adjustLabel()
       }
