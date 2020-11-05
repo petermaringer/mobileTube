@@ -461,11 +461,14 @@ player.play()*/
     let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, bool) in
       self.deleteButtonClicked(url: self.array[indexPath.row])
     }
+    let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, bool) in
+      self.editButtonClicked(url: self.array[indexPath.row])
+    }
+    edit.backgroundColor = .editButtonBgColor
     
-    let swipeActions = UISwipeActionsConfiguration(actions: [delete])
+    let swipeActions = UISwipeActionsConfiguration(actions: [delete, edit])
     swipeActions.performsFirstActionWithFullSwipe = false
     return swipeActions
-    //return UISwipeActionsConfiguration.init()
   }
   
   @objc func deleteButtonClicked(url: String) {
