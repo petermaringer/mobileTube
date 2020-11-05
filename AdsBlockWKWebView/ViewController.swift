@@ -441,9 +441,13 @@ player.play()*/
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-    let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+    let delete = UITableViewRowAction(style: .normal, title: "Delete") { (action, indexPath) in
       self.deleteButtonClicked(url: self.array[indexPath.row])
     }
+    
+    //destructive
+    delete.backgroundColor = .red
+    
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
       self.editButtonClicked(url: self.array[indexPath.row])
     }
@@ -477,6 +481,7 @@ player.play()*/
   }
   
   @objc func devButtonClicked(url: String) {
+    urlField.endEditing(true)
     
     if lb.isHidden == true {
       lb.isHidden = false
@@ -513,7 +518,7 @@ player.play()*/
     //}
     
     //showAlert(message: "D:\(url)")
-    //lb.text = lb.text! + " D"
+    //lb.text! += " D"
     lb.text! += " \(defaultUserAgent)"
     adjustLabel()
   }
