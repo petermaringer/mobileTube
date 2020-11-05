@@ -457,7 +457,6 @@ player.play()*/
   
   @available(iOS 11.0, *)
   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    
     let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, bool) in
       self.deleteButtonClicked(url: self.array[indexPath.row])
     }
@@ -465,8 +464,11 @@ player.play()*/
       self.editButtonClicked(url: self.array[indexPath.row])
     }
     edit.backgroundColor = .editButtonBgColor
-    
-    let swipeActions = UISwipeActionsConfiguration(actions: [delete, edit])
+    let dev = UIContextualAction(style: .normal, title: "Dev") { (action, view, bool) in
+      self.devButtonClicked(url: self.array[indexPath.row])
+    }
+    dev.backgroundColor = .devBgColor
+    let swipeActions = UISwipeActionsConfiguration(actions: [delete, edit, dev])
     swipeActions.performsFirstActionWithFullSwipe = false
     return swipeActions
   }
