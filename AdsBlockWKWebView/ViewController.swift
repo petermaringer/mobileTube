@@ -508,6 +508,9 @@ player.play()*/
       UIPasteboard.general.string = lb.text!
     }
     
+    let urlArr = webview.url!.absoluteString.components(separatedBy: "/")
+    let host = urlArr[2]
+    
     let server = "www.example.com"
     let account = "tester2"
     let password = ("test123").data(using: String.Encoding.utf8)!
@@ -533,7 +536,7 @@ player.play()*/
     
     //showAlert(message: "D:\(url)")
     //lb.text! += " D"
-    lb.text! += " \(defaultUserAgent)"
+    lb.text! += " \(defaultUserAgent) \(host)"
     adjustLabel()
   }
   
