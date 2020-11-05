@@ -871,6 +871,10 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         restoreUrls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
         }
         
+        if restoreUrls[restoreIndex] != "https://google.com" {
+          restoreUrls.insert("https://google.com", at: 0)
+        }
+        
         UserDefaults.standard.set(restoreUrls, forKey: "urlsBackup")
         
         if (UserDefaults.standard.object(forKey: "currentIndexButLast") != nil) {
@@ -975,7 +979,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       if keyPath == "estimatedProgress" {
         progressView.progress = Float(webview.estimatedProgress)
         if webview.estimatedProgress == 1 {
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.progressView.progress = Float(0)
           }
         }
