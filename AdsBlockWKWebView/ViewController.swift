@@ -440,11 +440,6 @@ player.play()*/
     //startLoading()
   }
   
-  @available(iOS 11.0, *)
-  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    return UISwipeActionsConfiguration.init()
-  }
-  
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
       self.deleteButtonClicked(url: self.array[indexPath.row])
@@ -458,6 +453,19 @@ player.play()*/
     }
     dev.backgroundColor = .devBgColor
     return [delete, edit, dev]
+  }
+  
+  @available(iOS 11.0, *)
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    
+    let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, indexPath) in
+      self.deleteButtonClicked(url: self.array[indexPath.row])
+    }
+    
+    let swipeActions = UISwipeActionsConfiguration(actions: [delete])
+    swipeActions.performsFirstActionWithFullSwipe = false
+    return swipeActions
+    //return UISwipeActionsConfiguration.init()
   }
   
   @objc func deleteButtonClicked(url: String) {
