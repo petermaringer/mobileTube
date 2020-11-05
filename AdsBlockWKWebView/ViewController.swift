@@ -458,7 +458,7 @@ player.play()*/
   @available(iOS 11.0, *)
   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     
-    let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, indexPath) in
+    let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, bool) in
       self.deleteButtonClicked(url: self.array[indexPath.row])
     }
     
