@@ -132,7 +132,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
   var lb: UILabel!
   
   var tableView: UITableView!
-  var origArray: Array<String> = ["https://google.com"]
+  var origArray: Array<String> = ["https://www.google.com/"]
   var array: Array<String> = []
   
   var url: String!
@@ -143,7 +143,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
   
   var restoreIndex: Int = 0
   var restoreIndexLast: Int = 0
-  var restoreUrls: Array<String> = ["https://google.com"]
+  var restoreUrls: Array<String> = ["https://www.google.com/"]
   var restorePosition: Int = 0
   //var bfarray: Array<String> = []
   var webview2: WebView!
@@ -871,8 +871,8 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         restoreUrls = UserDefaults.standard.stringArray(forKey: "urls") ?? [String]()
         }
         
-        if restoreUrls[restoreIndex] != "https://google.com" {
-          restoreUrls.insert("https://google.com", at: 0)
+        if restoreUrls[restoreIndex] != "https://www.google.com/" {
+          restoreUrls.insert("https://www.google.com/", at: 0)
         }
         
         UserDefaults.standard.set(restoreUrls, forKey: "urlsBackup")
@@ -939,8 +939,8 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     }
     
     
-        //url = URL(string: "https://www.google.com")
-        url = "https://www.google.com"
+        //url = URL(string: "https://www.google.com/")
+        url = "https://www.google.com/"
         
         if #available(iOS 11, *) {
             let group = DispatchGroup()
