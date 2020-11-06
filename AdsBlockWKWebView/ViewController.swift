@@ -841,7 +841,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         //urlField.inputAccessoryView = customView
         
         urlField.inputAccessoryView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 5))
-        urlField.inputAccessoryView.backgroundColor = .appBgColor
+        urlField.inputAccessoryView!.backgroundColor = .appBgColor
         
         urlField.keyboardType = UIKeyboardType.webSearch
         urlField.returnKeyType = UIReturnKeyType.done
