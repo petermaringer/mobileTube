@@ -28,9 +28,12 @@ extension UIColor {
   }
   //static let colorName: UIColor = UIColor.gray.withAlphaComponent(0.75)
   static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 1)
-  static let devBgColor: UIColor = .orange
+  static let viewBgLightColor: UIColor = UIColor(white: 0.95, alpha: 1)
   static let appBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
+  static let appBgLightColor: UIColor = UIColor(r: 216, g: 213, b: 234, a: 255)
+  static let devBgColor: UIColor = .orange
   static let fieldBgColor: UIColor = .white
+  static let buttonFgColor: UIColor = .white
 }
 
 
@@ -417,7 +420,7 @@ player.play()*/
   
   func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath)
-    cell?.contentView.backgroundColor = .appBgColor
+    cell?.contentView.backgroundColor = .appBgLightColor
     //cell?.backgroundColor = .gray
   }
   
@@ -836,12 +839,9 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         urlField.autocapitalizationType = .none
         urlField.autocorrectionType = UITextAutocorrectionType.no
         
-        //let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 5))
-        //customView.backgroundColor = .appBgColor
-        //urlField.inputAccessoryView = customView
-        
-        urlField.inputAccessoryView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 5))
-        urlField.inputAccessoryView!.backgroundColor = .appBgColor
+        let keyboardView = UIView(frame: CGRect(x: 0, y: view.frame.height - 2, width: view.frame.width, height: 2))
+        keyboardView.backgroundColor = .appBgColor
+        urlField.inputAccessoryView = keyboardView
         
         urlField.keyboardType = UIKeyboardType.webSearch
         urlField.returnKeyType = UIReturnKeyType.done
@@ -866,7 +866,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         button.clipsToBounds = true
         
         button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.buttonFgColor, for: .normal)
         button.addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
         
         //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonClicked))
@@ -881,7 +881,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         tableView.dataSource = self
         tableView.delegate = self
         //tableView.backgroundColor = .lightGray
-        tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        tableView.backgroundColor = .viewBgLightColor
         tableView.rowHeight = 30
         //tableView.estimatedRowHeight = 0
         //tableView.estimatedSectionHeaderHeight = 0
