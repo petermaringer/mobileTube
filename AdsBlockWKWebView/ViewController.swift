@@ -30,6 +30,7 @@ extension UIColor {
   static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 1)
   static let devBgColor: UIColor = .orange
   static let appBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
+  static let fieldBgColor: UIColor = .white
 }
 
 
@@ -416,7 +417,7 @@ player.play()*/
   
   func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath)
-    cell?.contentView.backgroundColor = .gray
+    cell?.contentView.backgroundColor = .appBgColor
     //cell?.backgroundColor = .gray
   }
   
@@ -820,10 +821,10 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         view.addSubview(progressView)
         
         urlField = UITextField(frame: CGRect.zero)
-        //urlField = UITextField()
         urlField.placeholder = "Type your Address"
         urlField.font = UIFont.systemFont(ofSize: 15)
-        urlField.backgroundColor = .white
+        urlField.tintColor = .appBgColor
+        urlField.backgroundColor = .fieldBgColor
         //urlField.borderStyle = UITextField.BorderStyle.roundedRect
         //urlField.layer.borderWidth = 0
         
@@ -834,6 +835,14 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         urlField.clipsToBounds = true
         urlField.autocapitalizationType = .none
         urlField.autocorrectionType = UITextAutocorrectionType.no
+        
+        //let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 5))
+        //customView.backgroundColor = .appBgColor
+        //urlField.inputAccessoryView = customView
+        
+        urlField.inputAccessoryView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 5))
+        urlField.inputAccessoryView.backgroundColor = .appBgColor
+        
         urlField.keyboardType = UIKeyboardType.webSearch
         urlField.returnKeyType = UIReturnKeyType.done
         urlField.clearButtonMode = UITextField.ViewMode.whileEditing
@@ -887,7 +896,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         //tableView.contentSize.width = 100
         //tableView.clipsToBounds = false
         //tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -30)
-        tableView.separatorColor = .gray
+        tableView.separatorColor = .appBgColor
         //tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
