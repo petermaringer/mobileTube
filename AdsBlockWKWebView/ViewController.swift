@@ -851,7 +851,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         button = UIButton(frame: CGRect.zero)
         //button.frame = CGRectMake(15, -50, 300, 500)
         //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
-        button.backgroundColor = .systemIndigo
+        button.backgroundColor = .appBgColor
         
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
