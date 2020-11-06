@@ -29,7 +29,7 @@ extension UIColor {
   //static let colorName: UIColor = UIColor.gray.withAlphaComponent(0.75)
   static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 1)
   static let devBgColor: UIColor = .orange
-  static let editButtonBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
+  static let appBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
 }
 
 
@@ -447,7 +447,7 @@ player.play()*/
     let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
       self.editButtonClicked(url: self.array[indexPath.row])
     }
-    edit.backgroundColor = .editButtonBgColor
+    edit.backgroundColor = .appBgColor
     let dev = UITableViewRowAction(style: .normal, title: "Dev") { (action, indexPath) in
       self.devButtonClicked(url: self.array[indexPath.row])
     }
@@ -463,7 +463,7 @@ player.play()*/
     let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, bool) in
       self.editButtonClicked(url: self.array[indexPath.row])
     }
-    edit.backgroundColor = .editButtonBgColor
+    edit.backgroundColor = .appBgColor
     let dev = UIContextualAction(style: .normal, title: "Dev") { (action, view, bool) in
       self.devButtonClicked(url: self.array[indexPath.row])
     }
@@ -815,7 +815,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         
         progressView = UIProgressView(frame: CGRect.zero)
         //progressView.progressViewStyle = .bar
-        progressView.progressTintColor = .editButtonBgColor
+        progressView.progressTintColor = .appBgColor
         progressView.trackTintColor = .clear
         view.addSubview(progressView)
         
@@ -851,7 +851,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         button = UIButton(frame: CGRect.zero)
         //button.frame = CGRectMake(15, -50, 300, 500)
         //button.frame = CGRect(x: 100, y: 400, width: 100, height: 50)
-        button.backgroundColor = .gray
+        button.backgroundColor = .systemIndigo
         
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
@@ -943,8 +943,8 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     webview3.isOpaque = false
     //webview3.backgroundColor = .orange
     //webview3.scrollView.backgroundColor = .orange
-    webview3.backgroundColor = .editButtonBgColor
-    webview3.scrollView.backgroundColor = .editButtonBgColor
+    webview3.backgroundColor = .appBgColor
+    webview3.scrollView.backgroundColor = .appBgColor
     webview3.scrollView.isScrollEnabled = true
     //webview3.scrollView.bounces = false
     view.addSubview(webview3)
