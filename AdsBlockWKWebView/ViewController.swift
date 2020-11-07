@@ -778,7 +778,7 @@ player.play()*/
         //webviewConfig.mediaTypesRequiringUserActionForPlayback = []
         webviewConfig.mediaTypesRequiringUserActionForPlayback = .all
         //webviewConfig.ignoresViewportScaleLimits = true
-        //webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); } window.webkit.messageHandlers.iosListener.postMessage('dF'); setTimeout(function() { var videos = document.getElementsByTagName('video'); for (var i = 0; i < videos.length; i++) { videos.item(i).pause(); window.webkit.messageHandlers.iosListener.postMessage('vs' + videos.item(i).src + 'vc' + videos.item(i).currentSrc); } }, 3000); var el = document.querySelector('input[type=file]'); if (el !== null) { window.webkit.messageHandlers.iosListener.postMessage('iF'); el.removeAttribute('capture'); }", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
+        webviewConfig.userContentController.addUserScript(WKUserScript(source: "var el = document.querySelector('meta[name=viewport]'); if (el !== null) { el.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=15.0, user-scalable=yes'); } window.webkit.messageHandlers.iosListener.postMessage('dF'); setTimeout(function() { var videos = document.getElementsByTagName('video'); for (var i = 0; i < videos.length; i++) { videos.item(i).pause(); window.webkit.messageHandlers.iosListener.postMessage('vs' + videos.item(i).src + 'vc' + videos.item(i).currentSrc); } }, 3000); var el = document.querySelector('input[type=file]'); if (el !== null) { window.webkit.messageHandlers.iosListener.postMessage('iF'); el.removeAttribute('capture'); }", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
         webviewConfig.userContentController.addUserScript(WKUserScript(source: "document.addEventListener('click', function() { window.webkit.messageHandlers.iosListener.postMessage('c'); })", injectionTime: .atDocumentEnd, forMainFrameOnly: false))
         webviewConfig.userContentController.add(self, name: "iosListener")
         
@@ -1194,7 +1194,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     
     
     if navigationAction.navigationType == .linkActivated {
-      let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at", "https://www.willhaben.at", "https://maps.google.com"]
+      let unilinkUrls: Array<String> = ["https://open.spotify.com", "https://www.amazon.de", "https://mobile.willhaben.at", "https://www.willhaben.at", "https://maps.google.com", "https://tvthek.orf.at"]
       var unilinkStop = false
       unilinkUrls.forEach { item in
         if navigationAction.request.url!.absoluteString.lowercased().hasPrefix(item.lowercased()) {
