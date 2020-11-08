@@ -2,6 +2,10 @@
 
 
 
+{"trigger":{"url-filter":"stackoverflow\\.com"},"action":{"type":"css-display-none","selector":"div[id*='js-gdpr-consent-banner']"}},
+
+{"trigger":{"url-filter":"imasdk\\.googleapis\\.com","load-type":["third-party"]},"action":{"type":"block"}},
+
 {"trigger":{"url-filter":"google-analytics\\.com","load-type":["third-party"]},"action":{"type":"block"}},
 
 {"trigger":{"url-filter":"at-config-preproduction\\.sensic\\.net","load-type":["third-party"]},"action":{"type":"block"}},
