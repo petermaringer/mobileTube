@@ -93,9 +93,11 @@
 {"trigger":{"url-filter":"at-config\\.sensic\\.net","load-type":["third-party"]},"action":{"type":"block"}},
 
 
-{"trigger":{"url-filter":"m\\.investing\\.com"},"action":{"type":"css-display-none","selector":"div[class*='installAppPopup']"}},
+{"trigger":{"url-filter":"bitstamp\\.net"},"action":{"type":"css-display-none","selector":"div[id='cookie-consent']"}},
 
-{"trigger":{"url-filter":"stackoverflow\\.com"},"action":{"type":"css-display-none","selector":"div[id*='js-gdpr-consent-banner']"}},
+{"trigger":{"url-filter":"m\\.investing\\.com"},"action":{"type":"css-display-none","selector":"div[class^='installAppPopup']"}},
+
+{"trigger":{"url-filter":"stackoverflow\\.com"},"action":{"type":"css-display-none","selector":"div[id='js-gdpr-consent-banner']"}},
 
 
 {"trigger":{"url-filter":".*","if-domain":["www.stiegl.at","*ottakringerbrauerei.at"]},"action":{"type":"block"}}
