@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5ED4D2BC1F47AF2E0019CC83"
-               BuildableName = "AdsBlockWKWebView.app"
-               BlueprintName = "AdsBlockWKWebView"
-               ReferencedContainer = "container:AdsBlockWKWebView.xcodeproj">
+               BuildableName = "mobileTube.app"
+               BlueprintName = "mobileTube"
+               ReferencedContainer = "container:mobileTube.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5ED4D2BC1F47AF2E0019CC83"
-            BuildableName = "AdsBlockWKWebView.app"
-            BlueprintName = "AdsBlockWKWebView"
-            ReferencedContainer = "container:AdsBlockWKWebView.xcodeproj">
+            BuildableName = "mobileTube.app"
+            BlueprintName = "mobileTube"
+            ReferencedContainer = "container:mobileTube.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5ED4D2BC1F47AF2E0019CC83"
-            BuildableName = "AdsBlockWKWebView.app"
-            BlueprintName = "AdsBlockWKWebView"
-            ReferencedContainer = "container:AdsBlockWKWebView.xcodeproj">
+            BuildableName = "mobileTube.app"
+            BlueprintName = "mobileTube"
+            ReferencedContainer = "container:mobileTube.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5ED4D2BC1F47AF2E0019CC83"
-            BuildableName = "AdsBlockWKWebView.app"
-            BlueprintName = "AdsBlockWKWebView"
-            ReferencedContainer = "container:AdsBlockWKWebView.xcodeproj">
+            BuildableName = "mobileTube.app"
+            BlueprintName = "mobileTube"
+            ReferencedContainer = "container:mobileTube.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

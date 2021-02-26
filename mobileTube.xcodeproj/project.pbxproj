@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5ED4D2BD1F47AF2E0019CC83 /* AdsBlockWKWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdsBlockWKWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ED4D2BD1F47AF2E0019CC83 /* mobileTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobileTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ED4D2C01F47AF2E0019CC83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5ED4D2C21F47AF2E0019CC83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5ED4D2C71F47AF2E0019CC83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		5ED4D2B41F47AF2E0019CC83 = {
 			isa = PBXGroup;
 			children = (
-				5ED4D2BF1F47AF2E0019CC83 /* AdsBlockWKWebView */,
+				5ED4D2BF1F47AF2E0019CC83 /* mobileTube */,
 				5ED4D2BE1F47AF2E0019CC83 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		5ED4D2BE1F47AF2E0019CC83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5ED4D2BD1F47AF2E0019CC83 /* AdsBlockWKWebView.app */,
+				5ED4D2BD1F47AF2E0019CC83 /* mobileTube.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5ED4D2BF1F47AF2E0019CC83 /* AdsBlockWKWebView */ = {
+		5ED4D2BF1F47AF2E0019CC83 /* mobileTube */ = {
 			isa = PBXGroup;
 			children = (
 				5ED4D2C01F47AF2E0019CC83 /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				5ED4D2C91F47AF2E0019CC83 /* LaunchScreen.storyboard */,
 				5ED4D2CC1F47AF2E0019CC83 /* Info.plist */,
 			);
-			path = AdsBlockWKWebView;
+			path = mobileTube;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5ED4D2BC1F47AF2E0019CC83 /* AdsBlockWKWebView */ = {
+		5ED4D2BC1F47AF2E0019CC83 /* mobileTube */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5ED4D2CF1F47AF2E0019CC83 /* Build configuration list for PBXNativeTarget "AdsBlockWKWebView" */;
+			buildConfigurationList = 5ED4D2CF1F47AF2E0019CC83 /* Build configuration list for PBXNativeTarget "mobileTube" */;
 			buildPhases = (
 				5ED4D2B91F47AF2E0019CC83 /* Sources */,
 				5ED4D2BA1F47AF2E0019CC83 /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = AdsBlockWKWebView;
-			productName = AdsBlockWKWebView;
-			productReference = 5ED4D2BD1F47AF2E0019CC83 /* AdsBlockWKWebView.app */;
+			name = mobileTube;
+			productName = mobileTube;
+			productReference = 5ED4D2BD1F47AF2E0019CC83 /* mobileTube.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -107,7 +107,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5ED4D2B81F47AF2E0019CC83 /* Build configuration list for PBXProject "AdsBlockWKWebView" */;
+			buildConfigurationList = 5ED4D2B81F47AF2E0019CC83 /* Build configuration list for PBXProject "mobileTube" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -120,7 +120,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5ED4D2BC1F47AF2E0019CC83 /* AdsBlockWKWebView */,
+				5ED4D2BC1F47AF2E0019CC83 /* mobileTube */,
 			);
 		};
 /* End PBXProject section */
@@ -276,10 +276,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NG9KE3E3Q3;
-				INFOPLIST_FILE = AdsBlockWKWebView/Info.plist;
+				INFOPLIST_FILE = mobileTube/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = at.co.weinmann.AdsBlockWKWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = at.co.weinmann.mobiletube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -291,10 +291,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NG9KE3E3Q3;
-				INFOPLIST_FILE = AdsBlockWKWebView/Info.plist;
+				INFOPLIST_FILE = mobileTube/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = at.co.weinmann.AdsBlockWKWebView;
+				PRODUCT_BUNDLE_IDENTIFIER = at.co.weinmann.mobiletube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -304,7 +304,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5ED4D2B81F47AF2E0019CC83 /* Build configuration list for PBXProject "AdsBlockWKWebView" */ = {
+		5ED4D2B81F47AF2E0019CC83 /* Build configuration list for PBXProject "mobileTube" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5ED4D2CD1F47AF2E0019CC83 /* Debug */,
@@ -313,7 +313,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5ED4D2CF1F47AF2E0019CC83 /* Build configuration list for PBXNativeTarget "AdsBlockWKWebView" */ = {
+		5ED4D2CF1F47AF2E0019CC83 /* Build configuration list for PBXNativeTarget "mobileTube" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5ED4D2D01F47AF2E0019CC83 /* Debug */,
