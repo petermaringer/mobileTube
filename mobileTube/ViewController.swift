@@ -29,7 +29,8 @@ extension UIColor {
   //static let colorName: UIColor = UIColor.gray.withAlphaComponent(0.75)
   static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 1)
   static let viewBgLightColor: UIColor = UIColor(white: 0.95, alpha: 1)
-  static let appBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
+  static let appBgColor: UIColor = .red
+  //static let appBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
   static let appBgLightColor: UIColor = UIColor(r: 216, g: 213, b: 234, a: 255)
   static let devBgColor: UIColor = .orange
   static let fieldBgColor: UIColor = .white
@@ -733,10 +734,10 @@ player.play()*/
       
       webview3.frame.origin.x = insetL
       //webview3.frame.origin.y = urlField.frame.origin.y
-      webview3.frame.origin.y = urlField.frame.origin.y + urlField.frame.size.height + 5
+      webview3.frame.origin.y = urlField.frame.origin.y
       webview3.frame.size.width = view.frame.width - insetL - insetR
       //webview3.frame.size.height = view.frame.height - urlField.frame.origin.y
-      webview3.frame.size.height = view.frame.height - urlField.frame.origin.y - urlField.frame.size.height - 5
+      webview3.frame.size.height = view.frame.height - urlField.frame.origin.y
       
       lb.frame.origin.x = insetL + 21
       lb.frame.size.width = view.frame.width - insetL - insetR - 42
