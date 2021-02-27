@@ -27,9 +27,10 @@ extension UIColor {
     self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
   }
   //static let colorName: UIColor = UIColor.gray.withAlphaComponent(0.75)
-  static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 1)
+  static let viewBgColor: UIColor = .white
+  //static let viewBgColor: UIColor = UIColor(white: 0.90, alpha: 1)
   static let viewBgLightColor: UIColor = UIColor(white: 0.95, alpha: 1)
-  static let appBgColor: UIColor = .red
+  static let appBgColor: UIColor = .white
   //static let appBgColor: UIColor = UIColor(r: 66, g: 46, b: 151, a: 255)
   static let appBgLightColor: UIColor = UIColor(r: 216, g: 213, b: 234, a: 255)
   static let devBgColor: UIColor = .orange
@@ -794,7 +795,7 @@ player.play()*/
 webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
           self.defaultUserAgent = result as! String
         }
-        //webview.isHidden = true
+        webview.isHidden = true
         view.addSubview(webview)
         
         counter += 1
