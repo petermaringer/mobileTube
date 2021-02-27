@@ -918,7 +918,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
         
         if restoreIndexLast > 0 {
           DispatchQueue.main.async {
-            //self.askRestore()
+            self.askRestore()
           }
         }
         
@@ -946,10 +946,8 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     //webview2.loadHTMLString("<strong>So long and thanks for all the fish!</strong><br><a href='https://orf.at'>hoho</a>", baseURL: nil)
     
     webview3 = WebView(frame: CGRect.zero, history: WebViewHistory())
-    webview3.allowsBackForwardNavigationGestures = true
-    webview3.load(URLRequest(url: URL(string: "https://m.youtube.com")!))
     //webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1><br><br>\(bflist)</body>", baseURL: nil)
-    //webview3.loadHTMLString("<body style='background-color:transparent;color:white;'><h1 id='a' style='position:fixed;top:50px;background-color:white;color:black;'>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1><br><br><div id='b' onclick='copy()'>\(bflist)</div><script>function copy() { var range = document.createRange(); range.selectNode(document.getElementById('b')); window.getSelection().removeAllRanges(); window.getSelection().addRange(range); document.execCommand('copy'); window.getSelection().removeAllRanges(); }</script></body>", baseURL: nil)
+    webview3.loadHTMLString("<body style='background-color:transparent;color:white;'><h1 id='a' style='position:fixed;top:50px;background-color:white;color:black;'>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1><br><br><div id='b' onclick='copy()'>\(bflist)</div><script>function copy() { var range = document.createRange(); range.selectNode(document.getElementById('b')); window.getSelection().removeAllRanges(); window.getSelection().addRange(range); document.execCommand('copy'); window.getSelection().removeAllRanges(); }</script></body>", baseURL: nil)
     webview3.isOpaque = false
     //webview3.backgroundColor = .orange
     //webview3.scrollView.backgroundColor = .orange
@@ -1360,7 +1358,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
     if restoreIndex == restoreIndexLast {
       restoreIndex += 1
       webview.go(to: webview.backForwardList.item(at: restorePosition * -1)!)
-      //webview3.removeFromSuperview()
+      webview3.removeFromSuperview()
       
       //var myBackList = [WKBackForwardListItem]()
       //myBackList.append(webview.backForwardList.item(at: 0)!)
@@ -1376,7 +1374,7 @@ webview.evaluateJavaScript("navigator.userAgent") { (result, error) in
       //let restoreUrlsList = "LASTbflist: " + restoreUrls.joined(separator:" ")
       //webview3.loadHTMLString("<body style='background-color:transparent;'><h1>Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)</h1><br><br>\(restoreUrlsList)</body>", baseURL: nil)
       
-//webview3.evaluateJavaScript("document.getElementById('a').innerHTML = 'Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)';", completionHandler: nil)
+webview3.evaluateJavaScript("document.getElementById('a').innerHTML = 'Loading last Session... \(restoreIndex+1)/\(restoreIndexLast+1)';", completionHandler: nil)
     }
     
     //let urlss = UserDefaults.standard.array(forKey: "urls") as? [URL] ?? [URL]()
